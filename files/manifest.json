@@ -7,6 +7,7 @@
   "accuracy": 7,
   "overlap": 0,
   "brightness": -0.05,
+  "pad_to_full_length": true,
   "size": {
     "x": 256,
     "y": 42,

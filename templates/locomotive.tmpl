@@ -1,7 +1,17 @@
 {{ $zoom := parseint .globals.zoom }}
 
+// Graphics - animated or not
+{{ if .animated -}}
+{{ $ani1 := concat .id "_anim_1" }}{{ altsprites $ani1 "template_rail" $zoom }}
+{{ $ani2 := concat .id "_anim_2" }}{{ altsprites $ani2 "template_rail" $zoom }}
+{{ $ani3 := concat .id "_anim_3" }}{{ altsprites $ani3 "template_rail" $zoom }}
+{{ $ani4 := concat .id "_anim_4" }}{{ altsprites $ani4 "template_rail" $zoom }}
+{{ else -}}
 {{ altsprites .id "template_rail" $zoom }}
+{{- end }}
 
+
+// Articulation
 switch(FEAT_TRAINS, SELF, switch_{{.id}}_articulation, extra_callback_info1) {
     1 .. 2: return vehicle_{{.id}};
     return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
@@ -14,11 +24,30 @@ switch (FEAT_TRAINS, SELF, switch_{{.id}}_length, position_in_consist % 3)
     {{- end}}    
 }
 
+
+{{ if .animated -}}
+switch (FEAT_TRAINS, SELF, switch_{{.id}}_animation, motion_counter % 4) 
+{
+    0: return spriteset_{{.id}}_anim_1;
+    1: return spriteset_{{.id}}_anim_2;
+    2: return spriteset_{{.id}}_anim_3;
+    3: return spriteset_{{.id}}_anim_4;
+}
+
+switch (FEAT_TRAINS, SELF, switch_{{.id}}_graphics, position_in_consist % 3) 
+{
+    1: switch_{{.id}}_animation;
+    return spriteset_invisible;
+}
+{{else -}}
 switch (FEAT_TRAINS, SELF, switch_{{.id}}_graphics, position_in_consist % 3) 
 {
     1: return spriteset_{{.id}};
     return spriteset_invisible;
 }
+{{- end}}
+
+
 
 item(FEAT_TRAINS, vehicle_{{.id}}) {
     property {

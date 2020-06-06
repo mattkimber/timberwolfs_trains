@@ -1,198 +1,198 @@
-name,id,template,year,end_year,service,cars,power,weight,tender_weight,tractive_effort,te_coeff,speed,length,width,height,capacity,voxel_size,articulated_lengths
-Trevithick Locomotive (NG),trevithick_locomotive,na,1802,,,,,5,,,,5,,,,,0x0x0,#N/A
-"Murray ""Salamanca""",murray_salamanca,na,1812,,,,,5,,,,,,,,,0x0x0,#N/A
-Stephenson Locomotion,stephenson_locomotion,na,1825,,,,,7,,8.5,0.121428571,15,,,,,0x0x0,#N/A
-Stephenson Planet,stephenson_planet,na,1830,,,,,4.3,,,,,,,,,0x0x0,#N/A
-"LMR 0-4-2 ""Lion""",lmr_lion,na,1838,,,,,,,9.6,,45,,,,,0x0x0,#N/A
-"GWR 2-2-2 ""Star""",gwr_star,na,1838,,,,,,,,,,,,,,0x0x0,#N/A
-"Bury ""Coppernob""",bury_coppernob,na,1846,,,,,19,,34,0.178947368,,,,,,0x0x0,#N/A
-GWR 4-2-2 Iron Duke,gwr_iron_duke,na,1846,,,,,42,,,,,6,,,,60x0x0,"1,2,1"
-Crampton Locomotive,crampton_locomotive,na,1847,,,,,,,,,60,,,,,0x0x0,#N/A
-NER 1001 Class,ner_1001_class,na,1852,,,,,64,,65,0.1015625,,,,,,0x0x0,#N/A
-LNWR Lady of the Lake class,lnwr_lady,na,1859,,,,,27.4,,,,70,,,,,0x0x0,#N/A
-GWR 517 Class,gwr_517_class,na,1868,,,,,35.8,,65,0.181564246,,8.65,,3.7,,86x0x55,"2,2,2"
-LB&SCR Stroudley A1,stroudley_a1,na,1872,1880,,,,28,,34,0.121428571,45,7.94,,,,79x0x0,"1,3,1"
-GER Class Y14,ger_class_y14,na,1883,,,,,75.9,,75.4,0.099341238,,,,,,0x0x0,#N/A
-GWR 2301 Dean Goods,gwr_2301_dean_goods,na,1883,,,,,41.2,,76,0.184466019,,14.4,,,,144x0x0,"2,5,2"
-LNER NBR J36,lner_nbr_j36,na,1888,,,,,42.6,,88,0.20657277,,14.99,,,,149x0x0,"2,5,2"
-GWR Dean Single,gwr_dean_single,na,1891,,,,,,,,,,,,,,0x0x0,#N/A
-Midland Railway 115 Class,midland_115_class,na,1896,,,,,48,,68,0.141666667,90,,,,,0x0x0,#N/A
-Drummond M7 Class,drummond_m7_class,na,1897,1911,,,,,,87,,,10.5,,,,105x0x0,"2,3,2"
-Hawthorn Leslie 0-4-0ST,hawthorn_leslie_st,na,1899,,,,,,,,,,,,,,0x0x0,#N/A
-Midland Railway 1000 Class,midland_1000_class,na,1902,,,,,,,97,,,,,,,0x0x0,#N/A
-LNER ES1,lner_es1,na,1903,1904,,,640,57,,111,0.194736842,27,11.56,,3.93,,115x0x58,"2,3,2"
-NER Autocar,ner_autocar,na,1903,,,,,,,,,,,,,,0x0x0,#N/A
-SECR H Class,secr_h_class,na,1904,,,,,55,,77,0.14,,10.02,,,,100x0x0,"2,2,2"
-GWR 4400 Prairie Tank,gwr_4400_prairie_tank,na,1904,1914,,,,63.4,,95,0.149842271,,,,,,0x0x0,#N/A
-LNER Robinson O4,lner_robinson_o4,na,1911,,,,,74,,139,0.187837838,,18.8,,,,188x0x0,"3,6,3"
-GCR Class 9N,gcr_class_9n,na,1911,1926,,,,87,,106,0.12183908,,13.1,,,,131x0x0,"2,4,2"
-GCR Robinson Class 8K,gcr_robinson_class_8k,na,1911,1914,,,,75,,139,0.185333333,,18.81,,,,188x0x0,"3,6,3"
-LNER Gresley K2,lner_gresley_k2,na,1912,,,,,61,,104,0.170491803,60,,,,,0x0x0,#N/A
-LNER Raven EF1,lner_raven_ef1,na,1914,1919,,,1100,76,,140,0.184210526,35,12,,,,120x0x0,"2,4,2"
-LNWR Class G2,lnwr_class_g2,na,1921,1922,,,,63,41,125,0.198412698,,,,,,0x0x0,#N/A
-LNER Raven A2,lner_raven_a2,na,1922,1924,,,,,,119,,,,,,,0x0x0,#N/A
-Fowler 4F,fowler_4f,na,1923,,,,800,91.3,,109,0.119386637,,15.8,,,,158x0x0,"3,4,3"
-GWR 4073 Castle Class,gwr_4073_castle_class,na,1923,1950,,,,81.1,,141,0.173859433,102,19.86,,4.07,,198x0x61,"3,6,3"
-Midland Railway 2441 Class,midland_2441_class,na,1899,1902,,,,49.5,,92,0.185858586,,,,,,0x0x0,#N/A
-"Fowler 3F ""Jinty""",fowler_3f_jinty,na,1924,,,,700,50.2,,93,0.185258964,,9.57,,,,95x0x0,"2,2,2"
-GWR 5600 Class,gwr_5600_class,na,1924,1928,,,,,,115,,,,,,,0x0x0,#N/A
-LMS Hughes Crab,lms_hughes_crab,na,1926,1932,,,1290,67,,118,0.176119403,,18.08,,,,180x0x0,"3,5,3"
-LNER Gresley D49,lner_gresley_d49,na,1927,,,,,66,,96,0.145454545,,17.9,,,,179x0x0,"3,5,3"
-GWR 6000 King Class,gwr_6000_king_class,na,1927,1936,,,,90.4,,179,0.19800885,,20.78,,4.08,,207x0x61,"4,5,4"
-LMS Fowler 2-6-4T,lms_fowler_264t,na,1927,1934,,,,87.6,,102,0.116438356,,14.4,,,,144x0x0,"2,5,2"
-GWR 4900 Hall Class,gwr_4900_hall_class,na,1928,1943,,,,76.2,,121,0.158792651,,19.2,,4.04,,192x0x60,"3,6,3"
-LNER Gresley A3,lner_gresley_a3,na,1928,1935,,,,92.8,,146,0.157327586,108,21.46,,,,214x0x0,"4,5,4"
-GWR 5700 Pannier Tank,gwr_5700_pannier_tank,na,1929,1950,,,,48.3,,100,0.207039337,,9.5,,3.735,,95x0x56,"2,2,2"
-SR Schools Class,sr_schools_class,na,1930,1935,,,,68.2,43.1,111,0.162756598,95,17.93,,3.96,,179x0x59,"3,5,3"
-GWR Collett 14xx,gwr_collett_14xx,na,1932,,,,,43,,62,0.144186047,,9.12,,3.82,,91x0x57,"2,2,2"
-LMS Stanier Class 5,lms_stanier_class_5,na,1934,1951,,,,73.4,,113,0.153950954,,19.4,,,,194x0x0,"3,6,3"
-LMS Stanier Jubilee,lms_stanier_jubilee,na,1934,1936,,,1375,80.8,,118,0.146039604,,19.73,,,,197x0x0,"3,6,3"
-Stanier 8F,stanier_8f,na,1935,,,,1300,73,,144,0.197260274,,19.22,,,,192x0x0,"3,6,3"
-LNER Gresley A4,lner_gresley_a4,na,1935,1938,,,1850,104.6,,157,0.150095602,125,21.65,,3.99,,216x0x59,"4,5,4"
-LMS Stanier 2-6-4T,lms_stanier_264t,na,1935,1943,,,,89.2,,110,0.123318386,,14.4,,,,144x0x0,"2,5,2"
-LNER Gresley V2,lner_gresley_v2,na,1936,,,,,,,150,,,20.24,,,,202x0x0,"3,6,3"
-GWR 6800 Grange Class,gwr_6800_grange_class,na,1936,1939,,,,75.2,,128,0.170212766,,19.21,,3.96,,192x0x59,"3,6,3"
-LMS Stanier Coronation ,lms_stanier_coronation,na,1937,1948,,,3300,110,,180,0.163636364,,22.49,,4.039,,224x0x60,"4,6,4"
-SR Merchant Navy Class,sr_merchant_navy_class,na,1941,1949,,,,96.3,,167,0.173416407,105,21.23,,,,212x0x0,"4,5,4"
-SR CC Electric,sr_cc_electric,na,1941,1948,,,1470,101,,178,0.176237624,75,,,,,0x0x0,#N/A
-LNER Thompson B1,lner_thompson_b1,na,1942,,,,,72,,119,0.165277778,,,,,,0x0x0,#N/A
-SR Bulleid Q1,sr_bulleid_q1,na,1942,1942,,,,90.7,,134,0.147739802,,16.73,,,,167x0x0,"3,4,3"
-"Hunslet ""Austerity"" 0-6-0ST",hunslet_austerity,na,1943,1964,,,,49,,106,0.216326531,,9.25,,,,92x0x0,"2,2,2"
-WD Austerity 2-8-0,wd_austerity_280,na,1943,1945,,,,71.4,56.4,152,0.212885154,,19.35,,,,193x0x0,"3,6,3"
-GWR 6959 Modified Hall Class,modified_hall_class,na,1944,1950,,,,77,,121,0.157142857,,19.2,,4.01,,192x0x60,"3,6,3"
-GWR 1000 County Class,gwr_1000_county_class,na,1945,,,,,78.1,,145,0.185659411,,19.21,,4.08,,192x0x61,"3,6,3"
-SR West Country Class,sr_west_country_class,na,1945,1951,,,,87.4,,138,0.157894737,,20.54,,,,205x0x0,"4,5,4"
-SR Bulleid Leader,sr_bulleid_leader,na,1946,1949,,,,152,,117,0.076973684,,20.42,,,,204x0x0,"4,5,4"
-Ivatt 2MT,ivatt_2mt,na,1946,1953,,,,48,,77,0.160416667,,16.2,,,,162x0x0,"3,4,3"
-EE 10000,ee_10000,na,1947,1948,,,1600,129.7,,184,0.141865844,93,18.64,,3.95,,186x0x59,"3,6,3"
-LNER Peppercorn A1,lner_peppercorn_a1,na,1948,1949,,,2700,106.9,,166,0.155285313,100,22.24,,3.99,,222x0x59,"4,6,4"
-BR Class 76 (EM1),br_class_76,na,1950,1953,,,1300,89.3,,200,0.223964166,65,15.34,,,,153x0x0,"3,4,3"
-BR 6MT Clan Class ,br_6mt_clan_class,na,1951,1952,,,,89.92,14.38,122,0.135676157,,20.96,,3.98,,209x0x59,"4,5,4"
-BR 7F Britannia Class ,br_7f_britannia_class,na,1951,1954,,,,95.5,50,143,0.14973822,,20.96,,3.98,,209x0x59,"4,5,4"
-BR Class 08,br_class_08,na,1952,1962,,,350,49.8,,160,0.321285141,20,8.92,,3.87,,89x0x58,"2,2,2"
-BR Class 77 (EM2),br_class_77,na,1953,1954,,,2490,104.1,,200,0.192122959,90,17.98,,,,179x0x0,"3,5,3"
-BR 9F,br_9f,na,1954,1960,,,,90,51,176,0.195555556,90,20.17,,,,201x0x0,"3,6,3"
-"EE Class 55 ""Deltic""",deltic,na,1955,1962,,,3300,108,,233,0.215740741,106,21.18,,3.91,,211x0x58,"4,5,4"
-Brush Class 31,brush_class_31,na,1957,1962,,,1250,108.4,,160,0.147601476,80,17.3,,3.84,,173x0x57,"3,5,3"
-"EE Class 20 ""Chopper""",ee_class_20,locomotive,1957,1968,,,1000,73,,186,0.254794521,75,14.25,2.67,3.85,,142x40x57,"2,5,2"
-EE GT3,ee_gt3,na,1958,1961,,,2750,45,,169,0.375555556,90,20.74,,,,207x0x0,"4,5,4"
-"BR Class 42 ""Warship""",br_class_42_warship,na,1958,1961,,,2070,79.3,,214,0.269861286,90,18.29,,3.67,,182x0x55,"3,5,3"
-"EE Class 40 ""Whistler""",ee_class_40_whistler,na,1958,1962,,,2000,135,,231,0.171111111,90,21.18,,3.91,,211x0x58,"4,5,4"
-"BR Class 28 ""Metrovick""",br_class_28_metrovick,na,1958,1959,,,1200,98.6,,222,0.22515213,75,17.26,,3.7,,172x0x55,"3,5,3"
-BR Class 71 (HA),br_class_71,na,1958,1960,,,2300,78.24,,195,0.249233129,90,,,,,0x0x0,#N/A
-"EE Class 23 ""Baby Deltic""",baby_deltic,na,1959,1959,,,1100,75.2,,209,0.277925532,75,16,,3.86,,160x0x57,"3,4,3"
-AEI Class 81 (AL1),aei_class_81,na,1959,1964,,,3388,80.9,,222,0.274412855,100,17.22,,3.77,,172x0x56,"3,5,3"
-"EE Class 37 ""Tractor""",ee_class_37,locomotive,1960,1965,,,1750,102,,247,0.242156863,90,18.75,2.71,3.89,0,187x40x58,"3,6,3"
-"Sulzer Class 45 ""Peak""",sulzer_class_45_peak,na,1960,1962,,,2500,135,,245,0.181481481,90,20.7,,3.91,,207x0x58,"4,5,4"
-"BRCW Class 33 ""Crompton""",brcw_class_33_crompton,na,1960,1962,,,1550,74.2,,200,0.269541779,85,15.47,,3.86,,154x0x57,"3,4,3"
-"MC Class 251 ""Blue Pullman""",blue_pullman,na,1960,,,,1000,304,,,,90,,,,,0x0x0,#N/A
-"BR Class 35 ""Hymek""",br_class_35_hymek,na,1961,1964,,,1700,76.2,,207,0.271653543,90,15.76,,3.91,,157x0x58,"3,4,3"
-"BR Class 52 ""Western""",br_class_52_western,na,1961,1964,,,2000,110,,297,0.27,90,20.73,,3.96,,207x0x59,"4,5,4"
-"Sulzer Class 25 ""Rat""",sulzer_class_25_rat,na,1961,1967,,,1250,74.2,,170,0.229110512,90,15.39,,3.86,,153x0x57,"3,4,3"
-BRCW Class 27,brcw_class_27,na,1961,1962,,,1250,73.7,,187,0.253731343,90,15.47,,3.86,,154x0x57,"3,4,3"
-Brush Class 47,brush_class_47,na,1962,1968,,,2750,114,,245,0.214912281,95,19.38,,3.9,,193x0x58,"3,6,3"
-Clayton Class 17,clayton_class_17,na,1962,1965,,,900,69,,178,0.257971014,60,15.4,,3.86,,154x0x57,"3,4,3"
-"BR Class 14 ""Teddy Bear""",br_class_14_teddy_bear,na,1964,1965,,,650,48.5,,137,0.282474227,40,10.3,,,,103x0x0,"2,3,2"
-BR Class 73 (JB),br_class_73,na,1965,1967,,,1420,76.3,,186,0.243774574,80,16.36,,,,163x0x0,"3,4,3"
-BR Class 86 (AL6),br_class_86,na,1965,1966,,,3600,82,,267,0.325609756,100,17.83,,3.77,,178x0x56,"3,5,3"
-"EE Class 50 ""Hoover""",ee_class_50_hoover,na,1967,1968,,,2700,117,,216,0.184615385,100,20.88,,3.89,,208x0x58,"4,5,4"
-BREL Class 87,brel_class_87,na,1973,1975,,,5000,81,,258,0.318518519,110,17.83,,3.77,,178x0x56,"3,5,3"
-BREL Class 43 HST,brel_class_43_hst,na,1975,1982,,,1770,70.25,,160,0.227758007,125,17.79,,,,177x0x0,"3,5,3"
-BR Class 56,br_class_56,na,1976,1984,,,3250,125,,275,0.22,80,19.35,,3.89,,193x0x58,"3,6,3"
-"BREL Class 58 ""Bone""",brel_class_58_bone,na,1983,1987,,,3300,130,,267,0.205384615,80,19.13,,3.91,,191x0x58,"3,6,3"
-EMD Class 59,emd_class_59,na,1985,1995,,,3300,126,,508,0.403174603,75,21.4,,3.91,,214x0x58,"4,5,4"
-BREL Class 90,brel_class_90,na,1987,1990,,,5000,84.5,,258,0.305325444,110,18.75,,3.96,,187x0x59,"3,6,3"
-"BREL Class 91 ""Intercity 225""",brel_class_91,na,1988,1991,,,6480,81.5,,190,0.233128834,140,19.4,,,,194x0x0,"3,6,3"
-ABB Class 92,abb_class_92,na,1993,1996,,,6760,126,,360,0.285714286,87,21.36,,,,213x0x0,"4,5,4"
-EMD Class 66,emd_class_66,na,1998,2015,,,3300,129.6,,409,0.31558642,75,21.4,,3.9,,214x0x58,"4,5,4"
-"Brush Class 57 ""Bodysnatcher""",brush_class_57,na,1998,2004,,,3000,120.6,,250,0.207296849,95,19.38,,3.9,,193x0x58,"3,6,3"
-EMD Class 67,emd_class_67,na,1999,2000,,,3200,88,,144,0.163636364,125,19.71,,3.93,,197x0x58,"3,6,3"
-GE Class 70,ge_class_70,na,2008,2017,,,3690,129,,534,0.413953488,75,21.27,,3.91,,212x0x58,"4,5,4"
-Stadler Class 88,stadler_class_88,na,2015,2016,,,5400,86,,317,0.368604651,100,,,,,0x0x0,#N/A
-GWR Railcar,gwr_railcar,na,1933,1942,,,260,,,,,,,,,,0x0x0,#N/A
-LNWR Metro-Cammell EMU,metro_cammell_emu,na,1914,,,,1000,,,,,,,,,,0x0x0,#N/A
-Southern Railway 5-BEL,sr_5bel,na,1932,,1972,,1800,253,,,,75,,,,172,0x0x0,#N/A
-Southern Railway 4-COR,sr_4cor,na,1937,1938,1972,,900,160.8,,,,75,,,,,0x0x0,#N/A
-Southern Railway 2-HAL,sr_2hal,na,1938,1939,1971,,550,77,,,,,,,,134,0x0x0,#N/A
-Metro-Cammell Class 101,class_101,na,1956,1960,2003,,300,57.5,,,,70,17.37,,3.77,,173x0x56,"3,5,3"
-Pressed Steel Class 117,class_117,na,1959,1961,2000,,600,103.7,,,,70,19.51,,3.87,,195x0x58,"3,6,3"
-"Pressed Steel Class 121 ""Bubble Car""",class_121_bubble_car,na,1960,,2017,,300,38,,,,70,19.66,,3.77,65,196x0x56,"3,6,3"
-Cravens Class 105,cravens_class_105,na,1956,1959,1988,,300,61,,,,70,17.53,,3.84,,175x0x57,"3,5,3"
-"Bombardier Class 377 ""Electrostar""",bombardier_electrostar,na,2003,,,,1600,173.6,,,,100,20.4,,3.78,,204x0x56,"4,5,4"
-"BREL Class 465 ""Networker""",brel_networker,na,1992,1994,-,,1608,136,,,,75,20.89,,3.77,348,208x0x56,"4,5,4"
-"Alsthom Class 460 ""Juniper""",alsthom_juniper,na,2000,2001,2012,8,3620,,,,,100,,,,,0x0x0,#N/A
-"Hitachi Class 395 ""Javelin""",hitachi_javelin,na,2007,2009,-,,4480,265,,,,157,20.88,,3.82,352,208x0x57,"4,5,4"
-BREL Class 319,brel_class_319,na,1987,1990,,4,1328,140.3,,,,100,19.83,,3.58,,198x0x53,"3,6,3"
-BREL Class 315,brel_class_315,na,1980,1981,-,4,880,127.5,,,,75,19.8,,3.58,318,198x0x53,"3,6,3"
-BREL Class 313,brel_class_313,na,1976,1977,-,3,880,104.5,,,,75,20.33,,3.58,232,203x0x53,"4,5,4"
-"Bombardier Class 170 ""Turbostar""",bombardier_turbostar,na,,,,,,,,,,,,,,,0x0x0,#N/A
-"Bombardier Class 378 ""Capitalstar""",bombardier_capitalstar,na,,,,,,,,,,,,,,,0x0x0,#N/A
-"Siemens Class 450 ""Desiro""",siemens_450_desiro,na,,,,,,,,,,,,,,,0x0x0,#N/A
-"Siemens Class 444 ""Desiro""",siemens_444_desiro,na,,,,,,,,,,,,,,,0x0x0,#N/A
-BREL Class 455,brel_class_455,na,,,,,,,,,,,,,,,0x0x0,#N/A
-BREL Class 456,brel_class_456,na,,,,,,,,,,,,,,,0x0x0,#N/A
-BR Class 506,br_class_506,na,,,,,,,,,,,,,,,0x0x0,#N/A
-"BR Class 414 ""2-Hap""",br_class_414_2hap,na,,,,,,,,,,,,,,,0x0x0,#N/A
-BR Class 310 AM10,br_class_310_am10,na,,,,,,,,,,,,,,,0x0x0,#N/A
-"BREL Class 421 ""4-Cig""",brel_class_421,na,,,,,,,,,,,,,,,0x0x0,#N/A
-"BREL Class 150 ""Sprinter""",brel_class_150_sprinter,na,,,,,,,,,,,,,,,0x0x0,#N/A
-"BREL Class 156 ""Super Sprinter""",super_sprinter,na,,,,,,,,,,,,,,,0x0x0,#N/A
-"BREL Class 158 ""Express Sprinter""",express_sprinter,na,,,,,,,,,,,,,,,0x0x0,#N/A
-"BREL Class 165 ""Network Turbo""",network_turbo,na,,,,,,,,,,,,,,,0x0x0,#N/A
-"BL Class 141 ""Pacer""",pacer,na,,,,,,,,,,,,,,,0x0x0,#N/A
-"CAF Class 195 ""Civity""",caf_class_195_civity,na,,,,,,,,,,,,,,,0x0x0,#N/A
-ABB Class 325,abb_class_325,na,,,,,,,,,,,,,,,0x0x0,#N/A
-"BREL Class 370 ""APT""",brel_class_370_apt,na,,,,,,,,,,,,,,,0x0x0,#N/A
-"Alsthom Class 390 ""Pendolino""",alsthom_pendolino,na,,,,,,,,,,,,,,,0x0x0,#N/A
-"Bombardier Class 220 ""Voyager""",voyager,na,,,,,,,,,,,,,,,0x0x0,#N/A
-"Bombardier Class 221 ""Super Voyager""",super_voyager,na,,,,,,,,,,,,,,,0x0x0,#N/A
-"BREL Class 442 ""Wessex Electric""",wessex_electric,na,,,,,,,,,,,,,,,0x0x0,#N/A
-"GEC-Alsthom ""Eurostar""",gec_eurostar,na,,,,,,,,,,,,,,,0x0x0,#N/A
-Mather & Platt C&SLR Locomotive,mather_locomotive,na,,,,,,,,,,,,,,,0x0x0,#N/A
-LU 1900 Stock,lu_1900_stock,na,,,,,,,,,,,,,,,0x0x0,#N/A
-LU Gate Stock,lu_gate_stock,na,,,,,,,,,,,,,,,0x0x0,#N/A
-LU Standard Stock,lu_standard_stock,na,,,,,,,,,,,,,,,0x0x0,#N/A
-Metropolitan-Vickers Bo-Bo Locomotive,metrovick_locomotive,na,,,,,,,,,,,,,,,0x0x0,#N/A
-LU O/P Stock,lu_op_stock,na,,,,,,,,,,,,,,,0x0x0,#N/A
-LU Q Stock,lu_q_stock,na,,,,,,,,,,,,,,,0x0x0,#N/A
-LU 1938 Stock,lu_1938_stock,na,,,,,,,,,,,,,,,0x0x0,#N/A
-LU 1959 Stock,lu_1959_stock,na,,,,,,,,,,,,,,,0x0x0,#N/A
-LU A60 Stock,lu_a60_stock,na,,,,,,,,,,,,,,,0x0x0,#N/A
-LU 1967 Stock,lu_1967_stock,na,,,,,,,,,,,,,,,0x0x0,#N/A
-LU C69 Stock,lu_c69_stock,na,,,,,,,,,,,,,,,0x0x0,#N/A
-LU 1973 Stock,lu_1973_stock,na,,,,,,,,,,,,,,,0x0x0,#N/A
-LU D78 Stock,lu_d78_stock,na,,,,,,,,,,,,,,,0x0x0,#N/A
-LU 1983 Stock,lu_1983_stock,na,,,,,,,,,,,,,,,0x0x0,#N/A
-LU 1992 Stock,lu_1992_stock,na,,,,,,,,,,,,,,,0x0x0,#N/A
-LU 1995/1996 Stock,lu_1995_stock,na,,,,,,,,,,,,,,,0x0x0,#N/A
-LU 2009 Stock,lu_2009_stock,na,,,,,,,,,,,,,,,0x0x0,#N/A
-LU S Stock,lu_s_stock,na,,,,,,,,,,,,,,,0x0x0,#N/A
-Four-wheel carriage,four_wheel_carriage,na,,,,,,,,,,,,,,,0x0x0,#N/A
-Six-wheel carriage,six_wheel_carriage,na,,,,,,,,,,,,,,,0x0x0,#N/A
-Clerestory carriage,clerestory_carriage,na,,,,,,,,,,,,,,,0x0x0,#N/A
-Pullman carriage,pullman_carriage,na,,,,,,,,,,,,,,,0x0x0,#N/A
-Standard carriage,standard_carriage,na,,,,,,,,,,,,,,,0x0x0,#N/A
-BR Mk1 carriage,passenger_coach_mk1,na,,,,,,,,,,,,,,,0x0x0,#N/A
-BR Mk2 carriage,passenger_coach_mk2,carriage,1956,,,,,40,,,,100,19.66,2.83,3.79,57,196x42x56,"3,6,3"
-BR Mk3 carriage,passenger_coach_mk3,na,,,,,,,,,,,,,,,0x0x0,#N/A
-BR Mk4 carriage,passenger_coach_mk4,na,,,,,,,,,,,,,,,0x0x0,#N/A
-Toad 20t brake van,toad_20t_brake_van,na,,,,,,,,,,,,,,,0x0x0,#N/A
-Standard 20t brake van,standard_20t_brake_van,na,,,,,,,,,,,,,,,0x0x0,#N/A
-10t brake van,10t_brake_van,na,,,,,,,,,,,,,,,0x0x0,#N/A
-Four-wheel tank wagon,four_wheel_tank_wagon,na,,,,,,,,,,,,,,,0x0x0,#N/A
-Six-wheel tank wagon,six_wheel_tank_wagon,na,,,,,,,,,,,,,,,0x0x0,#N/A
-TTA Tank Wagon,tta_tank_wagon,na,,,,,,,,,,,,,,,0x0x0,#N/A
-TEA Tank Wagon,tea_tank_wagon,na,,,,,,,,,,,,,,,0x0x0,#N/A
-3-plank open wagon,open_wagon_3pl,na,,,,,,,,,,,,,,,0x0x0,#N/A
-5-plank open wagon,open_wagon_5pl,na,,,,,,,,,,,,,,,0x0x0,#N/A
-Steel open wagon,steel_open_wagon,na,,,,,,,,,,,,,,,0x0x0,#N/A
-MWA Open Wagon,mwa_open_wagon,na,,,,,,,,,,,,,,,0x0x0,#N/A
-HHA Hopper,hha_hopper,na,,,,,,,,,,,,,,,0x0x0,#N/A
-Bogie bolster wagon,bogie_bolster_wagon,na,,,,,,,,,,,,,,,0x0x0,#N/A
-FEA Flat wagon,fea_flat_wagon,na,,,,,,,,,,,,,,,0x0x0,#N/A
-Cartic,cartic,na,,,,,,,,,,,,,,,0x0x0,#N/A
-Covered Van,covered_van,na,,,,,,,,,,,,,,,0x0x0,#N/A
-Livestock Van,livestock_van,na,,,,,,,,,,,,,,,0x0x0,#N/A
-General Utility Van,general_utility_van,na,,,,,,,,,,,,,,,0x0x0,#N/A
-VDA Van,vda_van,na,,,,,,,,,,,,,,,0x0x0,#N/A
-Coil Carrier,coil_carrier,na,,,,,,,,,,,,,,,0x0x0,#N/A
+name,id,template,year,end_year,service,cars,power,weight,tender_weight,tractive_effort,te_coeff,speed,length,width,height,capacity,voxel_size,ttd_len,articulated_lengths,animated
+Trevithick Locomotive (NG),trevithick_locomotive,na,1802,,,,,5,,,,5,,,,,0x0x0,0,na,
+"Murray ""Salamanca""",murray_salamanca,na,1812,,,,,5,,,,,,,,,0x0x0,0,na,
+Stephenson Locomotion,stephenson_locomotion,na,1825,,,,,7,,8.5,0.12,15,,,,,0x0x0,0,na,
+Stephenson Planet,stephenson_planet,na,1830,,,,,4.3,,,,,,,,,0x0x0,0,na,
+"LMR 0-4-2 ""Lion""",lmr_lion,na,1838,,,,,,,9.6,,45,,,,,0x0x0,0,na,
+"GWR 2-2-2 ""Star""",gwr_star,na,1838,,,,,,,,,,,,,,0x0x0,0,na,
+"Bury ""Coppernob""",bury_coppernob,na,1846,,,,,19,,34,0.18,,,,,,0x0x0,0,na,
+GWR 4-2-2 Iron Duke,gwr_iron_duke,na,1846,,,,,42,,,,,6,,,,70x0x0,4,"1,2,1",
+Crampton Locomotive,crampton_locomotive,na,1847,,,,,,,,,60,,,,,0x0x0,0,na,
+NER 1001 Class,ner_1001_class,na,1852,,,,,64,,65,0.10,,,,,,0x0x0,0,na,
+LNWR Lady of the Lake class,lnwr_lady,na,1859,,,,,27.4,,,,70,,,,,0x0x0,0,na,
+GWR 517 Class,gwr_517_class,na,1868,,,,,35.8,,65,0.18,,8.65,,3.7,,88x0x55,5,"1,3,1",
+LB&SCR Stroudley A1,stroudley_a1,na,1872,1880,,,,28,,34,0.12,45,7.94,,,,88x0x0,5,"1,3,1",
+GER Class Y14,ger_class_y14,na,1883,,,,,75.9,,75.4,0.10,,,,,,0x0x0,0,na,
+GWR 2301 Dean Goods,gwr_2301_dean_goods,na,1883,,,,,41.2,,76,0.18,,14.4,,,,159x0x0,9,"2,5,2",
+LNER NBR J36,lner_nbr_j36,na,1888,,,,,42.6,,88,0.21,,14.99,,,,159x0x0,9,"2,5,2",
+GWR Dean Single,gwr_dean_single,na,1891,,,,,,,,,,,,,,0x0x0,0,na,
+Midland Railway 115 Class,midland_115_class,na,1896,,,,,48,,68,0.14,90,,,,,0x0x0,0,na,
+Drummond M7 Class,drummond_m7_class,na,1897,1911,,,,,,87,,,10.5,,,,106x0x0,6,"2,2,2",
+Hawthorn Leslie 0-4-0ST,hawthorn_leslie_st,na,1899,,,,,,,,,,,,,,0x0x0,0,na,
+Midland Railway 1000 Class,midland_1000_class,na,1902,,,,,,,97,,,,,,,0x0x0,0,na,
+LNER ES1,lner_es1,na,1903,1904,,,640,57,,111,0.19,27,11.56,,3.93,,123x0x58,7,"2,3,2",
+NER Autocar,ner_autocar,na,1903,,,,,,,,,,,,,,0x0x0,0,na,
+SECR H Class,secr_h_class,na,1904,,,,,55,,77,0.14,,10.02,,,,106x0x0,6,"2,2,2",
+GWR 4400 Prairie Tank,gwr_4400_prairie_tank,na,1904,1914,,,,63.4,,95,0.15,,,,,,0x0x0,0,na,
+LNER Robinson O4,lner_robinson_o4,na,1911,,,,,74,,139,0.19,,18.8,,,,194x0x0,11,"3,5,3",
+GCR Class 9N,gcr_class_9n,na,1911,1926,,,,87,,106,0.12,,13.1,,,,141x0x0,8,"2,4,2",
+GCR Robinson Class 8K,gcr_robinson_class_8k,na,1911,1914,,,,75,,139,0.19,,18.81,,,,194x0x0,11,"3,5,3",
+LNER Gresley K2,lner_gresley_k2,na,1912,,,,,61,,104,0.17,60,,,,,0x0x0,0,na,
+LNER Raven EF1,lner_raven_ef1,na,1914,1919,,,1100,76,,140,0.18,35,12,,,,123x0x0,7,"2,3,2",
+LNWR Class G2,lnwr_class_g2,na,1921,1922,,,,63,41,125,0.20,,,,,,0x0x0,0,na,
+LNER Raven A2,lner_raven_a2,na,1922,1924,,,,,,119,,,,,,,0x0x0,0,na,
+Fowler 4F,fowler_4f,na,1923,,,,800,91.3,,109,0.12,,15.8,,,,159x0x0,9,"2,5,2",
+GWR 4073 Castle Class,gwr_4073_castle_class,na,1923,1950,,,,81.1,,141,0.17,102,19.86,,4.07,,212x0x61,12,"3,6,3",
+Midland Railway 2441 Class,midland_2441_class,na,1899,1902,,,,49.5,,92,0.19,,,,,,0x0x0,0,na,
+"Fowler 3F ""Jinty""",fowler_3f_jinty,na,1924,,,,700,50.2,,93,0.19,,9.57,,,,106x0x0,6,"2,2,2",
+GWR 5600 Class,gwr_5600_class,na,1924,1928,,,,,,115,,,,,,,0x0x0,0,na,
+LMS Hughes Crab,lms_hughes_crab,na,1926,1932,,,1290,67,,118,0.18,,18.08,,,,194x0x0,11,"3,5,3",
+LNER Gresley D49,lner_gresley_d49,na,1927,,,,,66,,96,0.15,,17.9,,,,194x0x0,11,"3,5,3",
+GWR 6000 King Class,gwr_6000_king_class,na,1927,1936,,,,90.4,,179,0.20,,20.78,,4.08,,212x0x61,12,"3,6,3",
+LMS Fowler 2-6-4T,lms_fowler_264t,na,1927,1934,,,,87.6,,102,0.12,,14.4,,,,159x0x0,9,"2,5,2",
+GWR 4900 Hall Class,gwr_4900_hall_class,na,1928,1943,,,,76.2,,121,0.16,,19.2,,4.04,,194x0x60,11,"3,5,3",
+LNER Gresley A3,lner_gresley_a3,na,1928,1935,,,,92.8,,146,0.16,108,21.46,,,,230x0x0,13,"4,5,4",
+GWR 5700 Pannier Tank,gwr_5700_pannier_tank,na,1929,1950,,,,48.3,,100,0.21,,9.5,,3.735,,106x0x56,6,"2,2,2",
+SR Schools Class,sr_schools_class,na,1930,1935,,,,68.2,43.1,111,0.16,95,17.93,,3.96,,194x0x59,11,"3,5,3",
+GWR Collett 14xx,gwr_collett_14xx,na,1932,,,,,43,,62,0.14,,9.12,,3.82,,106x0x57,6,"2,2,2",
+LMS Stanier Class 5,lms_stanier_class_5,na,1934,1951,,,,73.4,,113,0.15,,19.4,,,,194x0x0,11,"3,5,3",
+LMS Stanier Jubilee,lms_stanier_jubilee,na,1934,1936,,,1375,80.8,,118,0.15,,19.73,,,,212x0x0,12,"3,6,3",
+Stanier 8F,stanier_8f,na,1935,,,,1300,73,,144,0.20,,19.22,,,,194x0x0,11,"3,5,3",
+LNER Gresley A4,lner_gresley_a4,na,1935,1938,,,1850,104.6,,157,0.15,125,21.65,,3.99,,230x0x59,13,"4,5,4",
+LMS Stanier 2-6-4T,lms_stanier_264t,na,1935,1943,,,,89.2,,110,0.12,,14.4,,,,159x0x0,9,"2,5,2",
+LNER Gresley V2,lner_gresley_v2,na,1936,,,,,,,150,,,20.24,,,,212x0x0,12,"3,6,3",
+GWR 6800 Grange Class,gwr_6800_grange_class,na,1936,1939,,,,75.2,,128,0.17,,19.21,,3.96,,194x0x59,11,"3,5,3",
+LMS Stanier Coronation ,lms_stanier_coronation,na,1937,1948,,,3300,110,,180,0.16,,22.49,,4.039,,230x0x60,13,"4,5,4",
+SR Merchant Navy Class,sr_merchant_navy_class,na,1941,1949,,,,96.3,,167,0.17,105,21.23,,,,212x0x0,12,"3,6,3",
+SR CC Electric,sr_cc_electric,na,1941,1948,,,1470,101,,178,0.18,75,,,,,0x0x0,0,na,
+LNER Thompson B1,lner_thompson_b1,na,1942,,,,,72,,119,0.17,,,,,,0x0x0,0,na,
+SR Bulleid Q1,sr_bulleid_q1,na,1942,1942,,,,90.7,,134,0.15,,16.73,,,,177x0x0,10,"3,4,3",
+"Hunslet ""Austerity"" 0-6-0ST",hunslet_austerity,na,1943,1964,,,,49,,106,0.22,,9.25,,,,106x0x0,6,"2,2,2",
+WD Austerity 2-8-0,wd_austerity_280,na,1943,1945,,,,71.4,56.4,152,0.21,,19.35,,,,194x0x0,11,"3,5,3",
+GWR 6959 Modified Hall Class,modified_hall_class,na,1944,1950,,,,77,,121,0.16,,19.2,,4.01,,194x0x60,11,"3,5,3",
+GWR 1000 County Class,gwr_1000_county_class,na,1945,,,,,78.1,,145,0.19,,19.21,,4.08,,194x0x61,11,"3,5,3",
+SR West Country Class,sr_west_country_class,na,1945,1951,,,,87.4,,138,0.16,,20.54,,,,212x0x0,12,"3,6,3",
+SR Bulleid Leader,sr_bulleid_leader,na,1946,1949,,,,152,,117,0.08,,20.42,,,,212x0x0,12,"3,6,3",
+Ivatt 2MT,ivatt_2mt,na,1946,1953,,,,48,,77,0.16,,16.2,,,,177x0x0,10,"3,4,3",
+EE 10000,ee_10000,na,1947,1948,,,1600,129.7,,184,0.14,93,18.64,,3.95,,194x0x59,11,"3,5,3",
+LNER Peppercorn A1,lner_peppercorn_a1,na,1948,1949,,,2700,106.9,,166,0.16,100,22.24,,3.99,,230x0x59,13,"4,5,4",
+BR Class 76 (EM1),br_class_76,na,1950,1953,,,1300,89.3,,200,0.22,65,15.34,,,,159x0x0,9,"2,5,2",
+BR 6MT Clan Class ,br_6mt_clan_class,na,1951,1952,,,,89.92,14.38,122,0.14,,20.96,,3.98,,212x0x59,12,"3,6,3",
+BR 7F Britannia Class ,br_7f_britannia_class,na,1951,1954,,,,95.5,50,143,0.15,,20.96,,3.98,,212x0x59,12,"3,6,3",
+BR Class 08,br_class_08,locomotive,1952,1962,,,350,49.8,,160,0.32,20,8.92,2.59,3.87,,106x38x58,6,"2,2,2",1
+BR Class 77 (EM2),br_class_77,na,1953,1954,,,2490,104.1,,200,0.19,90,17.98,,,,194x0x0,11,"3,5,3",
+BR 9F,br_9f,na,1954,1960,,,,90,51,176,0.20,90,20.17,,,,212x0x0,12,"3,6,3",
+"EE Class 55 ""Deltic""",deltic,na,1955,1962,,,3300,108,,233,0.22,106,21.18,,3.91,,212x0x58,12,"3,6,3",
+Brush Class 31,brush_class_31,na,1957,1962,,,1250,108.4,,160,0.15,80,17.3,,3.84,,177x0x57,10,"3,4,3",
+"EE Class 20 ""Chopper""",ee_class_20,locomotive,1957,1968,,,1000,73,,186,0.25,75,14.25,2.67,3.85,,141x40x57,8,"2,4,2",
+EE GT3,ee_gt3,na,1958,1961,,,2750,45,,169,0.38,90,20.74,,,,212x0x0,12,"3,6,3",
+"BR Class 42 ""Warship""",br_class_42_warship,na,1958,1961,,,2070,79.3,,214,0.27,90,18.29,,3.67,,194x0x55,11,"3,5,3",
+"EE Class 40 ""Whistler""",ee_class_40_whistler,na,1958,1962,,,2000,135,,231,0.17,90,21.18,,3.91,,212x0x58,12,"3,6,3",
+"BR Class 28 ""Metrovick""",br_class_28_metrovick,na,1958,1959,,,1200,98.6,,222,0.23,75,17.26,,3.7,,177x0x55,10,"3,4,3",
+BR Class 71 (HA),br_class_71,na,1958,1960,,,2300,78.24,,195,0.25,90,,,,,0x0x0,0,na,
+"EE Class 23 ""Baby Deltic""",baby_deltic,na,1959,1959,,,1100,75.2,,209,0.28,75,16,,3.86,,159x0x57,9,"2,5,2",
+AEI Class 81 (AL1),aei_class_81,na,1959,1964,,,3388,80.9,,222,0.27,100,17.22,,3.77,,177x0x56,10,"3,4,3",
+"EE Class 37 ""Tractor""",ee_class_37,locomotive,1960,1965,,,1750,102,,247,0.24,90,18.75,2.71,3.89,0,194x40x58,11,"3,5,3",
+"Sulzer Class 45 ""Peak""",sulzer_class_45_peak,na,1960,1962,,,2500,135,,245,0.18,90,20.7,,3.91,,212x0x58,12,"3,6,3",
+"BRCW Class 33 ""Crompton""",brcw_class_33_crompton,na,1960,1962,,,1550,74.2,,200,0.27,85,15.47,,3.86,,159x0x57,9,"2,5,2",
+"MC Class 251 ""Blue Pullman""",blue_pullman,na,1960,,,,1000,304,,,,90,,,,,0x0x0,0,na,
+"BR Class 35 ""Hymek""",br_class_35_hymek,na,1961,1964,,,1700,76.2,,207,0.27,90,15.76,,3.91,,159x0x58,9,"2,5,2",
+"BR Class 52 ""Western""",br_class_52_western,na,1961,1964,,,2000,110,,297,0.27,90,20.73,,3.96,,212x0x59,12,"3,6,3",
+"Sulzer Class 25 ""Rat""",sulzer_class_25_rat,na,1961,1967,,,1250,74.2,,170,0.23,90,15.39,,3.86,,159x0x57,9,"2,5,2",
+BRCW Class 27,brcw_class_27,na,1961,1962,,,1250,73.7,,187,0.25,90,15.47,,3.86,,159x0x57,9,"2,5,2",
+Brush Class 47,brush_class_47,na,1962,1968,,,2750,114,,245,0.21,95,19.38,,3.9,,194x0x58,11,"3,5,3",
+Clayton Class 17,clayton_class_17,na,1962,1965,,,900,69,,178,0.26,60,15.4,,3.86,,159x0x57,9,"2,5,2",
+"BR Class 14 ""Teddy Bear""",br_class_14_teddy_bear,na,1964,1965,,,650,48.5,,137,0.28,40,10.3,,,,106x0x0,6,"2,2,2",
+BR Class 73 (JB),br_class_73,na,1965,1967,,,1420,76.3,,186,0.24,80,16.36,,,,177x0x0,10,"3,4,3",
+BR Class 86 (AL6),br_class_86,na,1965,1966,,,3600,82,,267,0.33,100,17.83,,3.77,,194x0x56,11,"3,5,3",
+"EE Class 50 ""Hoover""",ee_class_50_hoover,na,1967,1968,,,2700,117,,216,0.18,100,20.88,,3.89,,212x0x58,12,"3,6,3",
+BREL Class 87,brel_class_87,na,1973,1975,,,5000,81,,258,0.32,110,17.83,,3.77,,194x0x56,11,"3,5,3",
+BREL Class 43 HST,brel_class_43_hst,na,1975,1982,,,1770,70.25,,160,0.23,125,17.79,,,,177x0x0,10,"3,4,3",
+BR Class 56,br_class_56,na,1976,1984,,,3250,125,,275,0.22,80,19.35,,3.89,,194x0x58,11,"3,5,3",
+"BREL Class 58 ""Bone""",brel_class_58_bone,na,1983,1987,,,3300,130,,267,0.21,80,19.13,,3.91,,194x0x58,11,"3,5,3",
+EMD Class 59,emd_class_59,na,1985,1995,,,3300,126,,508,0.40,75,21.4,,3.91,,230x0x58,13,"4,5,4",
+BREL Class 90,brel_class_90,na,1987,1990,,,5000,84.5,,258,0.31,110,18.75,,3.96,,194x0x59,11,"3,5,3",
+"BREL Class 91 ""Intercity 225""",brel_class_91,na,1988,1991,,,6480,81.5,,190,0.23,140,19.4,,,,194x0x0,11,"3,5,3",
+ABB Class 92,abb_class_92,na,1993,1996,,,6760,126,,360,0.29,87,21.36,,,,212x0x0,12,"3,6,3",
+EMD Class 66,emd_class_66,na,1998,2015,,,3300,129.6,,409,0.32,75,21.4,,3.9,,230x0x58,13,"4,5,4",
+"Brush Class 57 ""Bodysnatcher""",brush_class_57,na,1998,2004,,,3000,120.6,,250,0.21,95,19.38,,3.9,,194x0x58,11,"3,5,3",
+EMD Class 67,emd_class_67,na,1999,2000,,,3200,88,,144,0.16,125,19.71,,3.93,,212x0x58,12,"3,6,3",
+GE Class 70,ge_class_70,na,2008,2017,,,3690,129,,534,0.41,75,21.27,,3.91,,212x0x58,12,"3,6,3",
+Stadler Class 88,stadler_class_88,na,2015,2016,,,5400,86,,317,0.37,100,,,,,0x0x0,0,na,
+GWR Railcar,gwr_railcar,na,1933,1942,,,260,,,,,,,,,,0x0x0,0,na,
+LNWR Metro-Cammell EMU,metro_cammell_emu,na,1914,,,,1000,,,,,,,,,,0x0x0,0,na,
+Southern Railway 5-BEL,sr_5bel,na,1932,,1972,,1800,253,,,,75,,,,172,0x0x0,0,na,
+Southern Railway 4-COR,sr_4cor,na,1937,1938,1972,,900,160.8,,,,75,,,,,0x0x0,0,na,
+Southern Railway 2-HAL,sr_2hal,na,1938,1939,1971,,550,77,,,,,,,,134,0x0x0,0,na,
+Metro-Cammell Class 101,class_101,na,1956,1960,2003,,300,57.5,,,,70,17.37,,3.77,,177x0x56,10,"3,4,3",
+Pressed Steel Class 117,class_117,na,1959,1961,2000,,600,103.7,,,,70,19.51,,3.87,,194x0x58,11,"3,5,3",
+"Pressed Steel Class 121 ""Bubble Car""",class_121_bubble_car,na,1960,,2017,,300,38,,,,70,19.66,,3.77,65,212x0x56,12,"3,6,3",
+Cravens Class 105,cravens_class_105,na,1956,1959,1988,,300,61,,,,70,17.53,,3.84,,177x0x57,10,"3,4,3",
+"Bombardier Class 377 ""Electrostar""",bombardier_electrostar,na,2003,,,,1600,173.6,,,,100,20.4,,3.78,,212x0x56,12,"3,6,3",
+"BREL Class 465 ""Networker""",brel_networker,na,1992,1994,-,,1608,136,,,,75,20.89,,3.77,348,212x0x56,12,"3,6,3",
+"Alsthom Class 460 ""Juniper""",alsthom_juniper,na,2000,2001,2012,8,3620,,,,,100,,,,,0x0x0,0,na,
+"Hitachi Class 395 ""Javelin""",hitachi_javelin,na,2007,2009,-,,4480,265,,,,157,20.88,,3.82,352,212x0x57,12,"3,6,3",
+BREL Class 319,brel_class_319,na,1987,1990,,4,1328,140.3,,,,100,19.83,,3.58,,212x0x53,12,"3,6,3",
+BREL Class 315,brel_class_315,na,1980,1981,-,4,880,127.5,,,,75,19.8,,3.58,318,212x0x53,12,"3,6,3",
+BREL Class 313,brel_class_313,na,1976,1977,-,3,880,104.5,,,,75,20.33,,3.58,232,212x0x53,12,"3,6,3",
+"Bombardier Class 170 ""Turbostar""",bombardier_turbostar,na,,,,,,,,,,,,,,,0x0x0,0,na,
+"Bombardier Class 378 ""Capitalstar""",bombardier_capitalstar,na,,,,,,,,,,,,,,,0x0x0,0,na,
+"Siemens Class 450 ""Desiro""",siemens_450_desiro,na,,,,,,,,,,,,,,,0x0x0,0,na,
+"Siemens Class 444 ""Desiro""",siemens_444_desiro,na,,,,,,,,,,,,,,,0x0x0,0,na,
+BREL Class 455,brel_class_455,na,,,,,,,,,,,,,,,0x0x0,0,na,
+BREL Class 456,brel_class_456,na,,,,,,,,,,,,,,,0x0x0,0,na,
+BR Class 506,br_class_506,na,,,,,,,,,,,,,,,0x0x0,0,na,
+"BR Class 414 ""2-Hap""",br_class_414_2hap,na,,,,,,,,,,,,,,,0x0x0,0,na,
+BR Class 310 AM10,br_class_310_am10,na,,,,,,,,,,,,,,,0x0x0,0,na,
+"BREL Class 421 ""4-Cig""",brel_class_421,na,,,,,,,,,,,,,,,0x0x0,0,na,
+"BREL Class 150 ""Sprinter""",brel_class_150_sprinter,na,,,,,,,,,,,,,,,0x0x0,0,na,
+"BREL Class 156 ""Super Sprinter""",super_sprinter,na,,,,,,,,,,,,,,,0x0x0,0,na,
+"BREL Class 158 ""Express Sprinter""",express_sprinter,na,,,,,,,,,,,,,,,0x0x0,0,na,
+"BREL Class 165 ""Network Turbo""",network_turbo,na,,,,,,,,,,,,,,,0x0x0,0,na,
+"BL Class 141 ""Pacer""",pacer,na,,,,,,,,,,,,,,,0x0x0,0,na,
+"CAF Class 195 ""Civity""",caf_class_195_civity,na,,,,,,,,,,,,,,,0x0x0,0,na,
+ABB Class 325,abb_class_325,na,,,,,,,,,,,,,,,0x0x0,0,na,
+"BREL Class 370 ""APT""",brel_class_370_apt,na,,,,,,,,,,,,,,,0x0x0,0,na,
+"Alsthom Class 390 ""Pendolino""",alsthom_pendolino,na,,,,,,,,,,,,,,,0x0x0,0,na,
+"Bombardier Class 220 ""Voyager""",voyager,na,,,,,,,,,,,,,,,0x0x0,0,na,
+"Bombardier Class 221 ""Super Voyager""",super_voyager,na,,,,,,,,,,,,,,,0x0x0,0,na,
+"BREL Class 442 ""Wessex Electric""",wessex_electric,na,,,,,,,,,,,,,,,0x0x0,0,na,
+"GEC-Alsthom ""Eurostar""",gec_eurostar,na,,,,,,,,,,,,,,,0x0x0,0,na,
+Mather & Platt C&SLR Locomotive,mather_locomotive,na,,,,,,,,,,,,,,,0x0x0,0,na,
+LU 1900 Stock,lu_1900_stock,na,,,,,,,,,,,,,,,0x0x0,0,na,
+LU Gate Stock,lu_gate_stock,na,,,,,,,,,,,,,,,0x0x0,0,na,
+LU Standard Stock,lu_standard_stock,na,,,,,,,,,,,,,,,0x0x0,0,na,
+Metropolitan-Vickers Bo-Bo Locomotive,metrovick_locomotive,na,,,,,,,,,,,,,,,0x0x0,0,na,
+LU O/P Stock,lu_op_stock,na,,,,,,,,,,,,,,,0x0x0,0,na,
+LU Q Stock,lu_q_stock,na,,,,,,,,,,,,,,,0x0x0,0,na,
+LU 1938 Stock,lu_1938_stock,na,,,,,,,,,,,,,,,0x0x0,0,na,
+LU 1959 Stock,lu_1959_stock,na,,,,,,,,,,,,,,,0x0x0,0,na,
+LU A60 Stock,lu_a60_stock,na,,,,,,,,,,,,,,,0x0x0,0,na,
+LU 1967 Stock,lu_1967_stock,na,,,,,,,,,,,,,,,0x0x0,0,na,
+LU C69 Stock,lu_c69_stock,na,,,,,,,,,,,,,,,0x0x0,0,na,
+LU 1973 Stock,lu_1973_stock,na,,,,,,,,,,,,,,,0x0x0,0,na,
+LU D78 Stock,lu_d78_stock,na,,,,,,,,,,,,,,,0x0x0,0,na,
+LU 1983 Stock,lu_1983_stock,na,,,,,,,,,,,,,,,0x0x0,0,na,
+LU 1992 Stock,lu_1992_stock,na,,,,,,,,,,,,,,,0x0x0,0,na,
+LU 1995/1996 Stock,lu_1995_stock,na,,,,,,,,,,,,,,,0x0x0,0,na,
+LU 2009 Stock,lu_2009_stock,na,,,,,,,,,,,,,,,0x0x0,0,na,
+LU S Stock,lu_s_stock,na,,,,,,,,,,,,,,,0x0x0,0,na,
+Four-wheel carriage,four_wheel_carriage,na,,,,,,,,,,,,,,,0x0x0,0,na,
+Six-wheel carriage,six_wheel_carriage,na,,,,,,,,,,,,,,,0x0x0,0,na,
+Clerestory carriage,clerestory_carriage,na,,,,,,,,,,,,,,,0x0x0,0,na,
+Pullman carriage,pullman_carriage,na,,,,,,,,,,,,,,,0x0x0,0,na,
+Standard carriage,standard_carriage,na,,,,,,,,,,,,,,,0x0x0,0,na,
+BR Mk1 carriage,passenger_coach_mk1,na,,,,,,,,,,,,,,,0x0x0,0,na,
+BR Mk2 carriage,passenger_coach_mk2,carriage,1956,,,,,40,,,,100,19.66,2.83,3.79,57,212x42x56,12,"3,6,3",
+BR Mk3 carriage,passenger_coach_mk3,na,,,,,,,,,,,,,,,0x0x0,0,na,
+BR Mk4 carriage,passenger_coach_mk4,na,,,,,,,,,,,,,,,0x0x0,0,na,
+Toad 20t brake van,toad_20t_brake_van,na,,,,,,,,,,,,,,,0x0x0,0,na,
+Standard 20t brake van,standard_20t_brake_van,na,,,,,,,,,,,,,,,0x0x0,0,na,
+10t brake van,10t_brake_van,na,,,,,,,,,,,,,,,0x0x0,0,na,
+Four-wheel tank wagon,four_wheel_tank_wagon,na,,,,,,,,,,,,,,,0x0x0,0,na,
+Six-wheel tank wagon,six_wheel_tank_wagon,na,,,,,,,,,,,,,,,0x0x0,0,na,
+TTA Tank Wagon,tta_tank_wagon,na,,,,,,,,,,,,,,,0x0x0,0,na,
+TEA Tank Wagon,tea_tank_wagon,na,,,,,,,,,,,,,,,0x0x0,0,na,
+3-plank open wagon,open_wagon_3pl,na,,,,,,,,,,,,,,,0x0x0,0,na,
+5-plank open wagon,open_wagon_5pl,na,,,,,,,,,,,,,,,0x0x0,0,na,
+Steel open wagon,steel_open_wagon,na,,,,,,,,,,,,,,,0x0x0,0,na,
+MWA Open Wagon,mwa_open_wagon,na,,,,,,,,,,,,,,,0x0x0,0,na,
+HHA Hopper,hha_hopper,na,,,,,,,,,,,,,,,0x0x0,0,na,
+Bogie bolster wagon,bogie_bolster_wagon,na,,,,,,,,,,,,,,,0x0x0,0,na,
+FEA Flat wagon,fea_flat_wagon,na,,,,,,,,,,,,,,,0x0x0,0,na,
+Cartic,cartic,na,,,,,,,,,,,,,,,0x0x0,0,na,
+Covered Van,covered_van,na,,,,,,,,,,,,,,,0x0x0,0,na,
+Livestock Van,livestock_van,na,,,,,,,,,,,,,,,0x0x0,0,na,
+General Utility Van,general_utility_van,na,,,,,,,,,,,,,,,0x0x0,0,na,
+VDA Van,vda_van,na,,,,,,,,,,,,,,,0x0x0,0,na,
+Coil Carrier,coil_carrier,na,,,,,,,,,,,,,,,0x0x0,0,na,
