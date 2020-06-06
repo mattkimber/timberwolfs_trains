@@ -43,14 +43,14 @@ item(FEAT_TRAINS, vehicle_{{.id}}) {
         model_life:                   VEHICLE_NEVER_EXPIRES;
         vehicle_life:                 30;
 
-        default_cargo_type: PASS;
+        default_cargo_type:           PASS;
 
         power:                        0 hp;
         {{if .speed}}speed:                        {{.speed}} mph;{{end}}
         reliability_decay:            20;
-        loading_speed:                9;
-        cost_factor:                  5;
-        running_cost_factor:          5;
+        {{if .loading_speed}}loading_speed:                {{.loading_speed}};{{end}}
+        cost_factor:                  {{.cost}};
+        running_cost_factor:          {{.running_cost}};
         sprite_id:                    SPRITE_ID_NEW_TRAIN;
         misc_flags:                   bitmask(TRAIN_FLAG_2CC);
         refit_cost:                   0;

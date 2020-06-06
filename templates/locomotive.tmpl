@@ -49,6 +49,17 @@ switch (FEAT_TRAINS, SELF, switch_{{.id}}_graphics, position_in_consist % 3)
 
 
 
+// Visual effect
+switch (FEAT_TRAINS, SELF, switch_{{.id}}_visual_effect, position_in_consist % 3) 
+{ 
+    {{ if eq .type "steam" -}}
+    1: return visual_effect(VISUAL_EFFECT_STEAM, -3);
+    {{else -}}
+    1: return visual_effect(VISUAL_EFFECT_DIESEL, 0);
+    {{- end}}
+    return VISUAL_EFFECT_DISABLE;
+}
+
 item(FEAT_TRAINS, vehicle_{{.id}}) {
     property {
         name:                         {{.name_string}};
@@ -57,20 +68,27 @@ item(FEAT_TRAINS, vehicle_{{.id}}) {
         model_life:                   VEHICLE_NEVER_EXPIRES;
         vehicle_life:                 30;
 
-        engine_class: ENGINE_CLASS_DIESEL;
+        {{ if eq .type "steam" -}}
+        engine_class:                 ENGINE_CLASS_STEAM;
+        running_cost_base:            RUNNING_COST_STEAM;
+        {{else -}}
+        engine_class:                 ENGINE_CLASS_DIESEL;
+        running_cost_base:            RUNNING_COST_DIESEL;
+        {{- end}}
+
         tractive_effort_coefficient:  {{.te_coeff}};
 
         power:                        {{.power}} hp;
         speed:                        {{.speed}} mph;
         reliability_decay:            20;
-        loading_speed:                9;
-        cost_factor:                  5;
-        running_cost_factor:          5;
+        {{if .loading_speed}}loading_speed:                {{.loading_speed}};{{end}}
+        cost_factor:                  {{.cost}};
+        running_cost_factor:          {{.running_cost}};
         sprite_id:                    SPRITE_ID_NEW_TRAIN;
         misc_flags:                   bitmask(TRAIN_FLAG_2CC);
         refit_cost:                   0;
-        track_type:                   RAIL;
-        running_cost_base:            RUNNING_COST_DIESEL;
+        track_type:                   {{.railtype}};
+
         {{if .capacity}}cargo_capacity:               {{.capacity}};{{end}}
         weight:                       {{.weight}} ton;
         length:                       8;
@@ -81,5 +99,6 @@ item(FEAT_TRAINS, vehicle_{{.id}}) {
         default:  switch_{{.id}}_graphics;
         articulated_part: switch_{{.id}}_articulation;
         length: switch_{{.id}}_length;
+        visual_effect_and_powered: switch_{{.id}}_visual_effect;
     }
 }
