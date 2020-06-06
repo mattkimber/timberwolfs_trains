@@ -1,0 +1,56 @@
+{{ $zoom := parseint .globals.zoom }}
+
+{{ altsprites .id "template_rail" $zoom }}
+
+switch(FEAT_TRAINS, SELF, switch_{{.id}}_articulation, extra_callback_info1) {
+    1 .. 2: return vehicle_{{.id}};
+    return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+}
+
+switch (FEAT_TRAINS, SELF, switch_{{.id}}_length, position_in_consist % 3) 
+{
+    {{- range $index, $element := slice .articulated_lengths -}}
+    {{$index }}: return {{ $element }};
+    {{- end}}    
+}
+
+switch (FEAT_TRAINS, SELF, switch_{{.id}}_graphics, position_in_consist % 3) 
+{
+    1: return spriteset_{{.id}};
+    return spriteset_invisible;
+}
+
+item(FEAT_TRAINS, vehicle_{{.id}}) {
+    property {
+        name:                         {{.name_string}};
+        climates_available:           bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL);
+        introduction_date:            date({{.year}}, 1, 1);
+        model_life:                   VEHICLE_NEVER_EXPIRES;
+        vehicle_life:                 30;
+
+        engine_class: ENGINE_CLASS_DIESEL;
+        tractive_effort_coefficient:  {{.te_coeff}};
+
+        power:                        {{.power}} hp;
+        speed:                        {{.speed}} mph;
+        reliability_decay:            20;
+        loading_speed:                9;
+        cost_factor:                  5;
+        running_cost_factor:          5;
+        sprite_id:                    SPRITE_ID_NEW_TRAIN;
+        misc_flags:                   bitmask(TRAIN_FLAG_2CC);
+        refit_cost:                   0;
+        track_type:                   RAIL;
+        running_cost_base:            RUNNING_COST_DIESEL;
+        {{if .capacity}}cargo_capacity:               {{.capacity}};{{end}}
+        weight:                       {{.weight}} ton;
+        length:                       8;
+        
+    }
+
+    graphics {
+        default:  switch_{{.id}}_graphics;
+        articulated_part: switch_{{.id}}_articulation;
+        length: switch_{{.id}}_length;
+    }
+}

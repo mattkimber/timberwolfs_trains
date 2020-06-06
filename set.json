@@ -1,0 +1,76 @@
+{
+    "grf": {
+        "author_id": "TWF",
+        "grf_id": 7,
+        "name": "Timberwolf's UK Trains",
+        "description": "Work in progress for what will one day be a 2x zoom set of UK trains",
+        "min_compat_version": 1,
+        "filename": "timberwolfs_trains.nml",
+        "language": "english", 
+        "parameters": []
+    },
+    "cargo_table": [        
+        "PASS", "TOUR", "MAIL", "COAL", "IORE", "GRVL", "SAND", "AORE", 
+        "CORE", "CLAY", "SCMT", "WOOD", "LIME", "GOOD", "FOOD", "STEL", 
+        "FMSP", "ENSP", "BEER", "BDMT", "MNSP", "PAPR", "WDPR", "VEHI",
+        "COPR", "DYES", "OIL_", "RFPR", "PETR", "PLAS", "WATR", "FISH", 
+        "CERE", "FICR", "FRVG", "FRUT", "GRAI", "LVST", "MAIZ", "MILK", 
+        "RUBR", "SGBT", "SGCN", "WHEA", "WOOL", "OLSD", "SUGR", "METL",
+        "VALU", "JAVA", "BRCK", "CSTI", "CTAR", "ACID", "CHLO", "COKE", 
+        "CMNT", "MNO2", "IRON", "QLME", "SALT", "SASH", "SULP", "ZINC", 
+        "SLAG", "RCYC", "CASS"
+    ],
+    "sprite_templates": [
+        {
+            "names": ["template_rail_1x", "template_rail_2x"],
+            "location_scales": [1,2],
+            "size_scales": [1,2],
+            "offset_scales": [0.25,0.5],
+            "locations" : [
+                [0,0],
+                [16,0],
+                [60,0],
+                [128,0],
+                [172,0],
+                [188,0],
+                [232,0],
+                [300,0]
+            ],
+            "sizes": [
+                [8,42],
+                [36,31],
+                [60,18],
+                [36,31],
+                [8,42],
+                [36,31],
+                [60,18],
+                [36,31]
+            ],
+            "offsets": [
+                [-12,-88],
+                [-96,-68],
+                [-120,-56],
+                [-40,-68],
+                [-12,-80],
+                [-104,-64],
+                [-104,-56],
+                [-48,-72]
+            ]
+        }
+    ],
+    "sprites": {
+        "table": "table.csv",
+        "template_directory": "templates",
+        "globals": {
+            "zoom": "2"
+        }
+    },
+    "static_templates": [
+        {
+            "template":  "templates/static/invisible.nml"
+        },
+        {
+            "template":  "templates/static/header.nml"
+        }
+    ]  
+}
