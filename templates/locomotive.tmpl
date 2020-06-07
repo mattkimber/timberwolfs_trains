@@ -13,15 +13,15 @@
 
 // Articulation
 switch(FEAT_TRAINS, SELF, switch_{{.id}}_articulation, extra_callback_info1) {
-    1 .. 2: return vehicle_{{.id}};
+    0 .. {{if .tender}}5{{else}}2{{end}}: return vehicle_{{.id}};
     return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
 }
 
-switch (FEAT_TRAINS, SELF, switch_{{.id}}_length, position_in_consist % 3) 
+switch (FEAT_TRAINS, SELF, switch_{{.id}}_length, position_in_consist % {{if .tender}}6{{else}}3{{end}}) 
 {
-    {{- range $index, $element := slice .articulated_lengths -}}
+    {{range $index, $element := slice .articulated_lengths -}}
     {{$index }}: return {{ $element }};
-    {{- end}}    
+    {{end}}    
 }
 
 
@@ -45,15 +45,22 @@ switch(FEAT_TRAINS, SELF, switch_{{.id}}_animation_overlay, [
     return spriteset_invisible;
 }
 
-switch (FEAT_TRAINS, SELF, switch_{{.id}}_graphics, position_in_consist % 3) 
+switch (FEAT_TRAINS, SELF, switch_{{.id}}_graphics, position_in_consist % {{if .tender}}6{{else}}3{{end}}) 
 {
     1: switch_{{.id}}_animation_overlay;
+    {{- if .tender }}
+    4: return spriteset_{{.tender}};
+    {{- end}}
     return spriteset_invisible;
 }
+
 {{else -}}
-switch (FEAT_TRAINS, SELF, switch_{{.id}}_graphics, position_in_consist % 3) 
+switch (FEAT_TRAINS, SELF, switch_{{.id}}_graphics, position_in_consist % {{if .tender}}6{{else}}3{{end}}) 
 {
     1: return spriteset_{{.id}};
+    {{- if .tender }}
+    4: return spriteset_{{.tender}};
+    {{- end}}
     return spriteset_invisible;
 }
 {{- end}}
@@ -61,7 +68,7 @@ switch (FEAT_TRAINS, SELF, switch_{{.id}}_graphics, position_in_consist % 3)
 
 
 // Visual effect
-switch (FEAT_TRAINS, SELF, switch_{{.id}}_visual_effect, position_in_consist % 3) 
+switch (FEAT_TRAINS, SELF, switch_{{.id}}_visual_effect, position_in_consist % {{if .tender}}6{{else}}3{{end}}) 
 { 
     {{ if eq .type "steam" -}}
     1: return visual_effect(VISUAL_EFFECT_STEAM, -3);
@@ -102,7 +109,6 @@ item(FEAT_TRAINS, vehicle_{{.id}}) {
 
         {{if .capacity}}cargo_capacity:               {{.capacity}};{{end}}
         weight:                       {{.weight}} ton;
-        length:                       8;
         
     }
 

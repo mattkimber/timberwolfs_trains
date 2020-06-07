@@ -1,0 +1,39 @@
+{
+    "files": [
+      "stanier_jubilee.vox"
+    ],
+    "operations": [
+      {
+        "name": "_anim_1",
+        "type": "repeat",
+        "truncate": true,
+        "mask_original": true,
+        "n": 0,        
+        "file": "valvegear/jubilee_1.vox"
+      },      
+      {
+        "name": "_anim_2",
+        "type": "repeat",
+        "truncate": true,
+        "mask_original": true,
+        "n": 0,        
+        "file": "valvegear/jubilee_2.vox"
+      },      
+      {
+        "name": "_anim_3",
+        "type": "repeat",
+        "truncate": true,
+        "mask_original": true,
+        "n": 0,        
+        "file": "valvegear/jubilee_3.vox"
+      },      
+      {
+        "name": "_anim_4",
+        "type": "repeat",
+        "truncate": true,
+        "mask_original": true,
+        "n": 0,        
+        "file": "valvegear/jubilee_4.vox"
+      }
+    ]
+}

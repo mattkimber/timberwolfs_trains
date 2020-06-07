@@ -17,15 +17,15 @@ alternative_sprites(spriteset_{{.id}}, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/{{.
 
 
 switch(FEAT_TRAINS, SELF, switch_{{.id}}_articulation, extra_callback_info1) {
-    1 .. 2: return vehicle_{{.id}};
+    0 .. 2: return vehicle_{{.id}};
     return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
 }
 
 switch (FEAT_TRAINS, SELF, switch_{{.id}}_length, position_in_consist % 3) 
 {
-    {{- range $index, $element := slice .articulated_lengths -}}
+    {{range $index, $element := slice .articulated_lengths -}}
     {{$index }}: return {{ $element }};
-    {{- end}}    
+    {{end}}    
 }
 
 switch (FEAT_TRAINS, SELF, switch_{{.id}}_graphics, position_in_consist % 3) 
@@ -58,7 +58,6 @@ item(FEAT_TRAINS, vehicle_{{.id}}) {
         running_cost_base:            RUNNING_COST_STEAM;
         cargo_capacity:               {{.capacity}} / 3;
         weight:                       {{.weight}} ton;
-        length:                       8;
         
     }
 
