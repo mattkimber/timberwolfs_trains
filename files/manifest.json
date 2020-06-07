@@ -6,7 +6,8 @@
   "sampler": "disc",
   "accuracy": 7,
   "overlap": 0,
-  "brightness": -0.05,
+  "brightness": -0.025,
+  "contrast": 0.025,
   "pad_to_full_length": true,
   "size": {
     "x": 256,

@@ -26,8 +26,8 @@ UK prototypes, so for models to sit right on tracks this should be at least 26 v
 "broad gauge" effect can be compensated for by moving vehicle bodies down 4 voxels, giving the appearance of a narrower
 track gauge.
 
-Note that for most vehicles it will be useful to round them to the nearest size for their in-game length. The tracking table formula handles this using a caculation of `(TTD length * 17)`.
-
+Note that for most vehicles it will be useful to round them to the nearest size for their in-game length. The tracking table formula handles this,
+although the voxel object may need padding to correctly align when coupled.
 
 ## Colours
 
