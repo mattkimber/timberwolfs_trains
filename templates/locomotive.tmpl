@@ -71,7 +71,7 @@ switch (FEAT_TRAINS, SELF, switch_{{.id}}_graphics, position_in_consist % {{if .
 switch (FEAT_TRAINS, SELF, switch_{{.id}}_visual_effect, position_in_consist % {{if .tender}}6{{else}}3{{end}}) 
 { 
     {{ if eq .type "steam" -}}
-    1: return visual_effect(VISUAL_EFFECT_STEAM, -3);
+    0: return visual_effect(VISUAL_EFFECT_STEAM, -1);
     {{else -}}
     1: return visual_effect(VISUAL_EFFECT_DIESEL, 0);
     {{- end}}

@@ -1,6 +1,8 @@
 {
     "files": [
-      "stanier_jubilee.vox"
+      "stanier_jubilee.vox",
+      "stanier_class_5.vox",
+      "hughes_crab.vox"
     ],
     "operations": [
       {
