@@ -3,3 +3,7 @@ traininfo_y_offset=3;
 
 
  disable_item(FEAT_TRAINS, 0, 115);
+
+ railtypetable {
+    "RAIL", "ELRL", "SAAN"
+}
