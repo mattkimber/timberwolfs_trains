@@ -1,13 +1,13 @@
 {{ $zoom := parseint .globals.zoom }}
 
+{{ altsprites .id "template_rail" $zoom }}
+
 // Graphics - animated or not
 {{ if .animated -}}
-{{ $ani1 := concat .id "_anim_1" }}{{ altsprites $ani1 "template_rail" $zoom }}
-{{ $ani2 := concat .id "_anim_2" }}{{ altsprites $ani2 "template_rail" $zoom }}
-{{ $ani3 := concat .id "_anim_3" }}{{ altsprites $ani3 "template_rail" $zoom }}
-{{ $ani4 := concat .id "_anim_4" }}{{ altsprites $ani4 "template_rail" $zoom }}
-{{ else -}}
-{{ altsprites .id "template_rail" $zoom }}
+{{ $ani1 := concat .id "_anim_1" }}{{ altsprites8 $ani1 "template_rail" $zoom }}
+{{ $ani2 := concat .id "_anim_2" }}{{ altsprites8 $ani2 "template_rail" $zoom }}
+{{ $ani3 := concat .id "_anim_3" }}{{ altsprites8 $ani3 "template_rail" $zoom }}
+{{ $ani4 := concat .id "_anim_4" }}{{ altsprites8 $ani4 "template_rail" $zoom }}
 {{- end }}
 
 
@@ -34,9 +34,20 @@ switch (FEAT_TRAINS, SELF, switch_{{.id}}_animation, motion_counter % 4)
     3: return spriteset_{{.id}}_anim_4;
 }
 
+switch(FEAT_TRAINS, SELF, switch_{{.id}}_animation_overlay, [
+    STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 1 ? CB_FLAG_MORE_SPRITES : 0) | PALETTE_USE_DEFAULT, 0x100),
+    getbits(extra_callback_info1, 8, 8)
+    ]) {
+    0: spriteset_{{.id}};
+    1: switch_{{.id}}_animation;
+
+    // This should never be executed
+    return spriteset_invisible;
+}
+
 switch (FEAT_TRAINS, SELF, switch_{{.id}}_graphics, position_in_consist % 3) 
 {
-    1: switch_{{.id}}_animation;
+    1: switch_{{.id}}_animation_overlay;
     return spriteset_invisible;
 }
 {{else -}}
@@ -85,7 +96,7 @@ item(FEAT_TRAINS, vehicle_{{.id}}) {
         cost_factor:                  {{.cost}};
         running_cost_factor:          {{.running_cost}};
         sprite_id:                    SPRITE_ID_NEW_TRAIN;
-        misc_flags:                   bitmask(TRAIN_FLAG_2CC);
+        misc_flags:                   bitmask(TRAIN_FLAG_2CC {{if .animated}}, TRAIN_FLAG_SPRITE_STACK{{end}});
         refit_cost:                   0;
         track_type:                   {{.railtype}};
 

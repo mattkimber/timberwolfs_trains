@@ -187,8 +187,14 @@
     {
       "_comment": "water cycle",
       "start": 245,
-      "end": 254,
+      "end": 252,
       "is_animated_light": true
+    },
+    {
+      "_comment": "cargopositor mask",
+      "start": 253,
+      "end": 255,
+      "non_renderable": true
     }
   ],
   "entries": [

@@ -8,6 +8,7 @@
         "name": "_anim_1",
         "type": "repeat",
         "truncate": true,
+        "mask_original": true,
         "n": 0,        
         "file": "valvegear/shunter_1.vox"
       },      
@@ -15,6 +16,7 @@
         "name": "_anim_2",
         "type": "repeat",
         "truncate": true,
+        "mask_original": true,
         "n": 0,        
         "file": "valvegear/shunter_2.vox"
       },      
@@ -22,6 +24,7 @@
         "name": "_anim_3",
         "type": "repeat",
         "truncate": true,
+        "mask_original": true,
         "n": 0,        
         "file": "valvegear/shunter_3.vox"
       },      
@@ -29,6 +32,7 @@
         "name": "_anim_4",
         "type": "repeat",
         "truncate": true,
+        "mask_original": true,
         "n": 0,        
         "file": "valvegear/shunter_4.vox"
       }
