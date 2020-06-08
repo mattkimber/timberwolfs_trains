@@ -7,7 +7,7 @@
 cp voxels/static/* intermediate
 
 for i in `ls intermediate`; do 
-    fn=`echo 4x/${i}_32bpp.png | sed -e s/.vox//`
+    fn=`echo 2x/${i}_32bpp.png | sed -e s/.vox//`
 
     if [ -e $fn ]; then 
         echo "$i [cached]"
