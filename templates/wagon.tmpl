@@ -21,14 +21,14 @@ switch(FEAT_TRAINS, SELF, switch_{{.id}}_articulation, extra_callback_info1) {
     return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
 }
 
-switch (FEAT_TRAINS, SELF, switch_{{.id}}_length, position_in_consist % 3) 
+switch (FEAT_TRAINS, SELF, switch_{{.id}}_length, position_in_articulated_veh % 3) 
 {
     {{range $index, $element := slice .articulated_lengths -}}
     {{$index }}: return {{ $element }};
     {{end}}    
 }
 
-switch (FEAT_TRAINS, SELF, switch_{{.id}}_graphics, position_in_consist % 3) 
+switch (FEAT_TRAINS, SELF, switch_{{.id}}_graphics, position_in_articulated_veh % 3) 
 {
     1: return spriteset_{{.id}};
     return spriteset_invisible;
