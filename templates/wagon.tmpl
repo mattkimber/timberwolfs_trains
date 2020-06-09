@@ -1,7 +1,7 @@
 {{ $zoom := parseint .globals.zoom }}
 
 
-{{ altsprites .id "template_rail" $zoom }}
+{{$template := concat "template_rail_" .ttd_len}}{{ altsprites .id $template $zoom }}
 
 /*
 spriteset (spriteset_{{.id}}, "1x/{{.id}}_8bpp.png" )

@@ -1,19 +1,31 @@
 {{ $zoom := parseint .globals.zoom }}
 
-{{ altsprites .id "template_rail" $zoom }}
+{{$template := concat "template_rail_" .ttd_len}}{{ altsprites .id $template $zoom }}
 
 // Graphics - animated or not
 {{ if .animated -}}
-{{ $ani1 := concat .id "_anim_1" }}{{ altsprites8 $ani1 "template_rail" $zoom }}
-{{ $ani2 := concat .id "_anim_2" }}{{ altsprites8 $ani2 "template_rail" $zoom }}
-{{ $ani3 := concat .id "_anim_3" }}{{ altsprites8 $ani3 "template_rail" $zoom }}
-{{ $ani4 := concat .id "_anim_4" }}{{ altsprites8 $ani4 "template_rail" $zoom }}
+{{ $ani1 := concat .id "_anim_1" }}{{ altsprites8 $ani1 $template $zoom }}
+{{ $ani2 := concat .id "_anim_2" }}{{ altsprites8 $ani2 $template $zoom }}
+{{ $ani3 := concat .id "_anim_3" }}{{ altsprites8 $ani3 $template $zoom }}
+{{ $ani4 := concat .id "_anim_4" }}{{ altsprites8 $ani4 $template $zoom }}
+{{- else if .double_headed -}}
+spriteset (spriteset_reverse_{{.id}}, "1x/{{.id}}_8bpp.png" )
+{ {{$template}}_rev_1x() }
+
+alternative_sprites(spriteset_reverse_{{.id}}, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "1x/{{.id}}_32bpp.png", "1x/{{.id}}_mask.png")
+{ {{$template}}_rev_1x() }
+
+alternative_sprites(spriteset_reverse_{{.id}}, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/{{.id}}_8bpp.png")
+{ {{$template}}_rev_2x() }
+
+alternative_sprites(spriteset_reverse_{{.id}}, ZOOM_LEVEL_IN_2X, BIT_DEPTH_32BPP, "2x/{{.id}}_32bpp.png", "2x/{{.id}}_mask.png")
+{ {{$template}}_rev_2x() }
 {{- end }}
 
 
 // Articulation
 switch(FEAT_TRAINS, SELF, switch_{{.id}}_articulation, extra_callback_info1) {
-    0 .. {{if .tender}}5{{else}}2{{end}}: return vehicle_{{.id}};
+    0 .. {{if .tender}}5{{else}}2{{end}}: vehicle_{{.id}};
     return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
 }
 
@@ -54,6 +66,17 @@ switch (FEAT_TRAINS, SELF, switch_{{.id}}_graphics, position_in_articulated_veh 
     return spriteset_invisible;
 }
 
+{{else if .double_headed -}}
+switch (FEAT_TRAINS, SELF, switch_{{.id}}_reverse, position_in_consist_from_end != 1 || position_in_consist < 2) {
+    1: return spriteset_{{.id}};
+    return spriteset_reverse_{{.id}};
+}
+
+switch (FEAT_TRAINS, SELF, switch_{{.id}}_graphics, position_in_articulated_veh % 3) 
+{
+    1: return switch_{{.id}}_reverse;
+    return spriteset_invisible;
+}
 {{else -}}
 switch (FEAT_TRAINS, SELF, switch_{{.id}}_graphics, position_in_articulated_veh % {{if .tender}}6{{else}}3{{end}}) 
 {
