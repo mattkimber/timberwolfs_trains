@@ -135,7 +135,10 @@ item(FEAT_TRAINS, vehicle_{{.id}}) {
         refit_cost:                   0;
         track_type:                   {{.railtype}};
 
-        {{if .capacity}}cargo_capacity:               {{.capacity}};{{end}}
+        {{if .capacity}}
+        cargo_capacity:               {{.capacity}} / 3;
+        default_cargo_type:           {{.default_cargo}};
+        {{end}}
         weight:                       {{.weight}} ton;
         
     }
@@ -145,5 +148,6 @@ item(FEAT_TRAINS, vehicle_{{.id}}) {
         articulated_part: switch_{{.id}}_articulation;
         length: switch_{{.id}}_length;
         visual_effect_and_powered: switch_{{.id}}_visual_effect;
+        {{if .capacity}}purchase_cargo_capacity: spriteset_{{.id}};{{end}}
     }
 }
