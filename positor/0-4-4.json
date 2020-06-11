@@ -1,0 +1,39 @@
+{
+    "files": [
+      "secr_h_class.vox"
+    ],
+    "operations": [
+      {
+        "name": "_anim_1",
+        "type": "repeat",
+        "truncate": true,
+        "mask_original": true,
+        "n": 0,        
+        "file": "valvegear/0-4-4_1.vox"
+      },      
+      {
+        "name": "_anim_2",
+        "type": "repeat",
+        "truncate": true,
+        "mask_original": true,
+        "n": 0,        
+        "file": "valvegear/0-4-4_2.vox"
+      },      
+      {
+        "name": "_anim_3",
+        "type": "repeat",
+        "truncate": true,
+        "mask_original": true,
+        "n": 0,        
+        "file": "valvegear/0-4-4_3.vox"
+      },      
+      {
+        "name": "_anim_4",
+        "type": "repeat",
+        "truncate": true,
+        "mask_original": true,
+        "n": 0,        
+        "file": "valvegear/0-4-4_4.vox"
+      }
+    ]
+}

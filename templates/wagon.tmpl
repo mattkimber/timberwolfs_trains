@@ -63,6 +63,7 @@ item(FEAT_TRAINS, vehicle_{{.id}}) {
 
     graphics {
         default:  switch_{{.id}}_graphics;
+        additional_text: return {{.additional_text_string}};
         articulated_part: switch_{{.id}}_articulation;
         length: switch_{{.id}}_length;
         purchase_cargo_capacity: spriteset_{{.id}};

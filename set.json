@@ -190,6 +190,8 @@
     "sprites": {
         "table": "table.csv",
         "template_directory": "templates",
+        "additional_text_field": "additional_text",
+        "additional_text_format": "{SILVER}%s",
         "globals": {
             "zoom": "2"
         }
