@@ -193,7 +193,8 @@
         "additional_text_field": "additional_text",
         "additional_text_format": "{SILVER}%s",
         "globals": {
-            "zoom": "2"
+            "zoom": "2",
+            "bpp": "8"
         }
     },
     "static_templates": [

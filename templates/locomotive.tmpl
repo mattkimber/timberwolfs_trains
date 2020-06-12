@@ -1,6 +1,7 @@
 {{ $zoom := parseint .globals.zoom }}
 
-{{$template := concat "template_rail_" .ttd_len}}{{ altsprites .id $template $zoom }}
+{{$template := concat "template_rail_" .ttd_len -}}
+{{if eq .globals.bpp "32"}}{{ altsprites .id $template $zoom }}{{else}}{{ altsprites8 .id $template $zoom }}{{end}}
 
 // Graphics - animated or not
 {{ if .animated -}}
@@ -11,15 +12,18 @@
 {{- else if .double_headed -}}
 spriteset (spriteset_reverse_{{.id}}, "1x/{{.id}}_8bpp.png" )
 { {{$template}}_rev_1x() }
-
+{{if eq .globals.bpp "32"}}
 alternative_sprites(spriteset_reverse_{{.id}}, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "1x/{{.id}}_32bpp.png", "1x/{{.id}}_mask.png")
 { {{$template}}_rev_1x() }
+{{- end}}
 
 alternative_sprites(spriteset_reverse_{{.id}}, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/{{.id}}_8bpp.png")
 { {{$template}}_rev_2x() }
 
+{{if eq .globals.bpp "32"}}
 alternative_sprites(spriteset_reverse_{{.id}}, ZOOM_LEVEL_IN_2X, BIT_DEPTH_32BPP, "2x/{{.id}}_32bpp.png", "2x/{{.id}}_mask.png")
 { {{$template}}_rev_2x() }
+{{- end}}
 {{- end }}
 
 
