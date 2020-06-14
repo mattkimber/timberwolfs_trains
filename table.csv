@@ -24,6 +24,7 @@ Hawthorn Leslie 0-4-0ST,hawthorn_leslie_st,na,,RAIL,1899,,,,,,,,,,,,,,,,,,,,,,,,
 Midland Railway 2441 Class,midland_2441_class,na,,RAIL,1899,1902,,,,,,,,,,,49.5,,,92,0.19,,,,,,,,0x0x0,0,,na,,,,10,10,,,vct,,vct_,
 Collett Tender,collett_tender,tender,,RAIL,1900,,,,,,,,,,,,42,,,,,,,7.5,8,,,,82x0x0,5,,"1,3,1",,,,10,10,,,edw,,edw_,
 Midland Tender,midland_tender,tender,,RAIL,1900,,,,,,,,,,,,42,,,,,,,7.5,8,,,,82x0x0,5,,"1,3,1",,,,10,10,,,edw,,edw_,
+Gresley 4 axle Tender,four_axle_tender,tender,,RAIL,1927,,,,,,,,,,,,53,,,,,,,7.5,8,,,,82x0x0,5,,"1,3,1",,,,10,10,,,big4,,big4_,
 Gresley Tender,gresley_tender,tender,,RAIL,1900,,,,,,,,,,,,42,,,,,,,7.5,8,,,,82x0x0,5,,"1,3,1",,,,10,10,,,edw,,edw_,
 LU 1900 Stock,lu_1900_stock,na,,RAIL,1900,,,,,,,,,,,,,,,,,,,,,,,,0x0x0,0,,na,,,,10,10,,,edw,LU,edw_LU,
 Peckett Saddle Tank,peckett_st,locomotive,steam,RAIL,1901,1914,1955,,350,14,20,2,160,146,0.9,329.96633,23,,,49,0.21,30,,6.12,6.12,,,,60x0x0,4,,"1,2,1",,,1,10,10,,,edw,Cheap,edw_Cheap,This 0-4-0 saddle tank engine is typical of the many acquired by the GWR from smaller railways during the 1923 grouping of railway companies into the Big Four.
@@ -55,8 +56,8 @@ LMS Hughes Crab,hughes_crab,locomotive,steam,RAIL,1926,1932,,,1400,21,26,2,180,1
 LNER Gresley D49,gresley_d49,locomotive,steam,RAIL,1927,,1961,,1200,17,26,3,180,164,2,1200.745739,66,53,,96,0.15,75,,17.9,10.4,,,,102x0x0,6,gresley_tender,"2,2,2,1,3,1",,,1,10,10,,,big4,Passenger,big4_Passenger,The D49 is a Nigel Gresley designed 4-4-0 locomotive for passenger traffic.
 GWR King Class,gwr_king_class,locomotive,steam,RAIL,1927,1936,1962,,3000,16.25,28,4,250,232,1.98,3094.166691,90.4,,,179,0.20,105,,20.78,13.28,,4.08,,136x0x61,8,collett_tender,"2,4,2,1,3,1",,,1,10,10,,,big4,Express,big4_Express,"The King Class is a larger and more powerful development of the Castle Class, designed for even higher sustained speeds."
 LMS Fowler 2-6-4T,fowler_264t,locomotive,steam,RAIL,1927,1934,1966,,950,19,26,2,200,206,1.7,1394.236482,87.6,,,102,0.12,80,,14.4,14.4,,,,136x0x0,8,,"2,4,2",,,1,10,10,,,big4,Mixed Traffic,big4_Mixed Traffic,"Fowler's 2-6-4T achieved high speeds for a tank engine, and was typically used on longer distance services."
-GWR 4900 Hall Class,gwr_4900_hall_class,na,,RAIL,1928,1943,,,,,,,,,,,76.2,,,121,0.16,,,19.2,19.2,,4.04,,186x0x60,11,,"3,5,3",,,,10,10,,,big4,,big4_,
-LNER Gresley A3,lner_gresley_a3,na,,RAIL,1928,1935,,,,,,,,,,,92.8,,,146,0.16,108,1,21.46,21.46,,,,221x0x0,13,,"4,5,4",,,,10,10,,,big4,Express,big4_Express,
+GWR Hall Class,gwr_hall_class,locomotive,steam,RAIL,1928,1943,1965,,1600,18.5,30,2,225,195,1.8,1620.501894,76.2,47,,121,0.16,80,,19.2,11.7,,4.04,,120x0x60,7,collett_tender,"2,3,2,1,3,1",,,1,10,10,,,big4,Mixed Traffic,big4_Mixed Traffic,"The GWR 4900 Hall Class set the template for the 4-6-0 mixed traffic locomotive, fast enough for express passenger services with enough tractive effort for freight."
+LNER Gresley A3,gresley_a3,locomotive,steam,RAIL,1928,1935,1966,,2600,19,26,3,220,236,2,2639.8125,92.8,54,,146,0.16,108,1,21.46,13.96,,,,136x0x0,8,four_axle_tender,"2,4,2,1,3,1",,,1,10,10,,,big4,Express,big4_Express,The Gresley A3 is a Pacific (4-6-2) locomotive famed for its 100mph+ performance hauling LNER's Flying Scotsman service.
 GWR 5700 Pannier Tank,gwr_5700_pannier_tank,na,,RAIL,1929,1950,,,,,,,,,,,48.3,,,100,0.21,,,9.5,9.5,,3.735,,102x0x56,6,,"2,2,2",,,,10,10,,,big4,,big4_,
 SR Schools Class,sr_schools_class,na,,RAIL,1930,1935,,,,,,,,,,,68.2,43.1,,111,0.16,95,,17.93,17.93,,3.96,,186x0x59,11,,"3,5,3",,,,10,10,,,big4,,big4_,
 GWR Collett 14xx,gwr_collett_14xx,na,,RAIL,1932,,,,,,,,,,,,43,,,62,0.14,,,9.12,9.12,,3.82,,82x0x57,5,,"1,3,1",,,,10,10,,,big4,,big4_,
