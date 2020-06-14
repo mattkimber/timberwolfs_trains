@@ -1,0 +1,101 @@
+{{ $zoom := parseint .globals.zoom }}
+
+
+{{- $layout := slice .layout -}}
+{{- $newsprites := slice .new_sprites -}}
+{{- $len := .ttd_len -}}{{- $bpp := .globals.bpp -}}
+
+{{- range $index, $element := $layout -}}
+{{- $newsprite := index $newsprites $index -}}
+{{- if eq $newsprite "1" -}}
+{{$template := concat "template_rail_" $len -}}
+{{if eq $bpp "32"}}{{ altsprites $element $template $zoom }}{{else}}{{ altsprites8 $element $template $zoom }}{{end}}
+{{end -}}
+{{end}}
+
+// Articulation
+switch(FEAT_TRAINS, SELF, switch_{{.id}}_articulation, extra_callback_info1) {
+    0 .. ({{.cars}} * 3) - 1: vehicle_{{.id}};
+    return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+}
+
+// Currently all parts of an MU must be the same length
+switch (FEAT_TRAINS, SELF, switch_{{.id}}_length, position_in_articulated_veh % 3 ) 
+{
+    {{range $index, $element := slice .articulated_lengths -}}
+    {{$index }}: return {{ $element }};
+    {{end}}    
+}
+
+
+switch (FEAT_TRAINS, SELF, switch_{{.id}}_graphics, position_in_articulated_veh % ({{.cars}} * 3)) 
+{
+    {{range $index, $element := $layout -}}
+    ({{$index}} * 3) + 1: return spriteset_{{$element}};
+    {{end}}
+    return spriteset_invisible;
+}
+
+
+// Visual effect
+switch (FEAT_TRAINS, SELF, switch_{{.id}}_visual_effect, position_in_articulated_veh % ({{.cars}}  * 3)) 
+{ 
+    {{ if eq .type "steam" -}}
+    0: return visual_effect(VISUAL_EFFECT_STEAM, -1);
+    {{ else if eq .type "electric" -}}
+    1: return visual_effect(VISUAL_EFFECT_ELECTRIC, 0);
+    {{else -}}
+    1: return visual_effect(VISUAL_EFFECT_DIESEL, 0);
+    {{- end}}
+    return VISUAL_EFFECT_DISABLE;
+}
+
+item(FEAT_TRAINS, vehicle_{{.id}}) {
+    property {
+        name:                         {{.name_string}};
+        climates_available:           bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL);
+        introduction_date:            date({{.year}}, 1, 1);
+        model_life:                   VEHICLE_NEVER_EXPIRES;
+        vehicle_life:                 30;
+
+        {{ if eq .type "steam" -}}
+        engine_class:                 ENGINE_CLASS_STEAM;
+        running_cost_base:            RUNNING_COST_STEAM;
+        {{ else if eq .type "electric" -}}
+        engine_class:                 ENGINE_CLASS_ELECTRIC;
+        running_cost_base:            RUNNING_COST_ELECTRIC;
+        {{else -}}
+        engine_class:                 ENGINE_CLASS_DIESEL;
+        running_cost_base:            RUNNING_COST_DIESEL;
+        {{- end}}
+
+        tractive_effort_coefficient:  {{.te_coeff}};
+
+        power:                        {{.power}} hp;
+        speed:                        {{.speed}} mph;
+        reliability_decay:            20;
+        {{if .loading_speed}}loading_speed:                {{.loading_speed}};{{end}}
+        cost_factor:                  {{.cost}};
+        running_cost_factor:          {{.running_cost}};
+        sprite_id:                    SPRITE_ID_NEW_TRAIN;
+        misc_flags:                   bitmask(TRAIN_FLAG_2CC);
+        refit_cost:                   0;
+        track_type:                   {{.railtype}};
+
+        {{if .capacity}}
+        cargo_capacity:               {{.capacity}} / 3;
+        default_cargo_type:           {{.default_cargo}};
+        {{end}}
+        weight:                       {{.weight}} ton;
+        
+    }
+
+    graphics {
+        default:  switch_{{.id}}_graphics;
+        additional_text: return {{.additional_text_string}};
+        articulated_part: switch_{{.id}}_articulation;
+        length: switch_{{.id}}_length;
+        visual_effect_and_powered: switch_{{.id}}_visual_effect;
+        {{if .capacity}}purchase_cargo_capacity: spriteset_{{.id}};{{end}}
+    }
+}
