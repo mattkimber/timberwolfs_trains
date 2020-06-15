@@ -1,7 +1,6 @@
 {
     "files": [
-      "gresley_d49.vox",
-      "sr_schools_class.vox"
+      "gwr_1400_class.vox"
     ],
     "operations": [
       {
@@ -10,7 +9,7 @@
         "truncate": true,
         "mask_original": true,
         "n": 0,        
-        "file": "valvegear/4-4-0_1.vox"
+        "file": "valvegear/gwr_1400_1.vox"
       },      
       {
         "name": "_anim_2",
@@ -18,7 +17,7 @@
         "truncate": true,
         "mask_original": true,
         "n": 0,        
-        "file": "valvegear/4-4-0_2.vox"
+        "file": "valvegear/gwr_1400_2.vox"
       },      
       {
         "name": "_anim_3",
@@ -26,7 +25,7 @@
         "truncate": true,
         "mask_original": true,
         "n": 0,        
-        "file": "valvegear/4-4-0_3.vox"
+        "file": "valvegear/gwr_1400_3.vox"
       },      
       {
         "name": "_anim_4",
@@ -34,7 +33,7 @@
         "truncate": true,
         "mask_original": true,
         "n": 0,        
-        "file": "valvegear/4-4-0_4.vox"
+        "file": "valvegear/gwr_1400_4.vox"
       }
     ]
 }
