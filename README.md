@@ -17,9 +17,9 @@ Height: 15 voxels/m
 
 In this scale a Mark Two coach is 196x42x58.
 
-Some useful properties:
+Wheels should be scaled according to the length (10 voxels/m) rather than other dimensions.
 
-BR standard wheel diameter of 3'6 = 15 voxels
+Some useful properties:
 
 "Realistic" track gauge would be 21 voxels (round up to 22). OpenTTD's standard is to be somewhat broad gauge compared to
 UK prototypes, so for models to sit right on tracks this should be at least 26 voxels with 4 voxel wide wheels. This 
@@ -29,7 +29,7 @@ track gauge.
 Note that for most vehicles it will be useful to round them to the nearest size for their in-game length. The tracking
 table formula handles this, although the voxel object may need padding to correctly align when coupled.
 
-(TODO: better list of voxel sizes which work / don't)
+The tracking table contains suitable voxel sizes for each size. These sizes assume vehicles have buffers!
 
 ## Smart 32bpp
 
