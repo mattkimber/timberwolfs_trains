@@ -23,7 +23,9 @@
       "gwr_5700_class.vox",
       "sr_schools_class.vox",
       "gwr_1400_class.vox",
-      "stanier_8f.vox"
+      "stanier_8f.vox",
+      "gresley_a4.vox",
+      "gresley_v2.vox"
     ],
     "operations": [
       {

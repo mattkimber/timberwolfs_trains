@@ -11,7 +11,9 @@
       "fowler_264t.vox",
       "gwr_hall_class.vox",
       "gresley_a3.vox",
-      "stanier_8f.vox"
+      "stanier_8f.vox",
+      "gresley_a4.vox",
+      "gresley_v2.vox"
     ],
     "operations": [
       {

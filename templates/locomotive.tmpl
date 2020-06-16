@@ -143,7 +143,7 @@ item(FEAT_TRAINS, vehicle_{{.id}}) {
         cargo_capacity:               {{.capacity}} / 3;
         default_cargo_type:           {{.default_cargo}};
         {{end}}
-        weight:                       {{.weight}} ton;
+        weight:                       {{.weight}} {{if .tender_weight}} + {{.tender_weight}} {{end}} ton;
         
     }
 
