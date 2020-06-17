@@ -13,7 +13,9 @@
       "gresley_a3.vox",
       "stanier_8f.vox",
       "gresley_a4.vox",
-      "gresley_v2.vox"
+      "gresley_v2.vox",
+      "gwr_grange_class.vox",
+      "stanier_coronation.vox"
     ],
     "operations": [
       {
