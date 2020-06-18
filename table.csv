@@ -78,7 +78,7 @@ Southern Railway 2-HAL,sr_2hal,multiple_unit,electric,THIRD_RAIL,1938,1939,1971,
 LU 1938 Stock,lu_1938_stock,na,,RAIL,1938,,,,,,,,,,,,,,,,,,,,,,,,0x0x0,0,,na,,,,10,10,,,big4,LU,big4_LU,
 Merchant Navy Tender,merchant_navy_tender,tender,,RAIL,1925,,,,,,,,,,,,52,,,,,,,7.64,8,,,,82x0x0,5,,"1,3,1",,,,,,,,big4,,big4_,
 SR Merchant Navy Class,sr_merchant_navy,locomotive,steam,RAIL,1941,1949,1967,,2100,18,24,3,250,242,1.9,2543.361244,96.3,52,,167,0.11,105,1,21.23,13.73,,,,136x0x0,8,merchant_navy_tender,"2,4,2,1,3,1",,,1,10,10,,,big4,Express,big4_Express,"The SR Merchant Navy is a large, powerful locomotive with an air-smoothed casing. Bulleid's novel design features proved to be troublesome, and the class was later rebuilt."
-SR CC Electric,sr_cc_electric,na,,RAIL,1941,1948,,,1470,,,,,,,,101,,,178,0.18,75,1,,,,,,0x0x0,0,,na,,,,10,10,,,big4,,big4_,
+SR CC Electric,sr_cc_electric,locomotive,electric,THIRD_RAIL,1941,1948,1968,,1470,,,,,,,,101,,,178,0.18,75,1,17,17,,,,164x0x0,10,,"3,4,3",,,,10,10,,,big4,MT (Electric),big4_MT (Electric),"With six traction motors, the CC is adept at handling both heavy freight and long passenger trains."
 LNER Thompson B1,lner_thompson_b1,na,,RAIL,1942,,,,,,,,,,,,72,,,119,0.17,,,,,,,,0x0x0,0,,na,,,,10,10,,,big4,,big4_,
 SR Bulleid Q1,sr_bulleid_q1,na,,RAIL,1942,1942,,,,,,,,,,,90.7,,,134,0.15,,,16.73,16.73,,,,164x0x0,10,,"3,4,3",,,,10,10,,,big4,,big4_,
 "Hunslet ""Austerity"" 0-6-0ST",hunslet_austerity,na,,RAIL,1943,1964,,,,,,,,,,,49,,,106,0.22,,,9.25,9.25,,,,82x0x0,5,,"1,3,1",,,,10,10,,,big4,Cheap,big4_Cheap,
