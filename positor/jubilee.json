@@ -16,7 +16,10 @@
       "gresley_v2.vox",
       "gwr_grange_class.vox",
       "stanier_coronation.vox",
-      "sr_merchant_navy.vox"
+      "sr_merchant_navy.vox",
+      "wd_austerity.vox",
+      "gwr_county_class.vox",
+      "sr_west_country.vox"
     ],
     "operations": [
       {

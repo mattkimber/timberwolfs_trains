@@ -1,5 +1,6 @@
 {{ $zoom := parseint .globals.zoom }}
 
+{{ if not .reuse_sprites -}}
 {{$template := concat "template_rail_" .ttd_len -}}
 {{if eq .globals.bpp "32"}}{{ altsprites .id $template $zoom }}{{else}}{{ altsprites8 .id $template $zoom }}{{end}}
 
@@ -24,8 +25,8 @@ alternative_sprites(spriteset_reverse_{{.id}}, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP,
 alternative_sprites(spriteset_reverse_{{.id}}, ZOOM_LEVEL_IN_2X, BIT_DEPTH_32BPP, "2x/{{.id}}_32bpp.png", "2x/{{.id}}_mask.png")
 { {{$template}}_rev_2x() }
 {{- end}}
+{{- end}}
 {{- end }}
-
 
 // Articulation
 switch(FEAT_TRAINS, SELF, switch_{{.id}}_articulation, extra_callback_info1) {
@@ -40,21 +41,21 @@ switch (FEAT_TRAINS, SELF, switch_{{.id}}_length, position_in_articulated_veh % 
     {{end}}    
 }
 
-
+{{ $sprite := .id}}{{ if .reuse_sprites }}{{ $sprite = .reuse_sprites }}{{end -}}
 {{ if .animated -}}
 switch (FEAT_TRAINS, SELF, switch_{{.id}}_animation, motion_counter % 4) 
 {
-    0: return spriteset_{{.id}}_anim_1;
-    1: return spriteset_{{.id}}_anim_2;
-    2: return spriteset_{{.id}}_anim_3;
-    3: return spriteset_{{.id}}_anim_4;
+    0: return spriteset_{{$sprite}}_anim_1;
+    1: return spriteset_{{$sprite}}_anim_2;
+    2: return spriteset_{{$sprite}}_anim_3;
+    3: return spriteset_{{$sprite}}_anim_4;
 }
 
 switch(FEAT_TRAINS, SELF, switch_{{.id}}_animation_overlay, [
     STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 1 ? CB_FLAG_MORE_SPRITES : 0) | PALETTE_USE_DEFAULT, 0x100),
     getbits(extra_callback_info1, 8, 8)
     ]) {
-    0: spriteset_{{.id}};
+    0: spriteset_{{$sprite}};
     1: switch_{{.id}}_animation;
 
     // This should never be executed
@@ -72,8 +73,8 @@ switch (FEAT_TRAINS, SELF, switch_{{.id}}_graphics, position_in_articulated_veh 
 
 {{else if .double_headed -}}
 switch (FEAT_TRAINS, SELF, switch_{{.id}}_reverse, position_in_consist_from_end != 1 || position_in_consist < 2) {
-    1: return spriteset_{{.id}};
-    return spriteset_reverse_{{.id}};
+    1: return spriteset_{{$sprite}};
+    return spriteset_reverse_{{$sprite}};
 }
 
 switch (FEAT_TRAINS, SELF, switch_{{.id}}_graphics, position_in_articulated_veh % 3) 
@@ -84,7 +85,7 @@ switch (FEAT_TRAINS, SELF, switch_{{.id}}_graphics, position_in_articulated_veh 
 {{else -}}
 switch (FEAT_TRAINS, SELF, switch_{{.id}}_graphics, position_in_articulated_veh % {{if .tender}}6{{else}}3{{end}}) 
 {
-    1: return spriteset_{{.id}};
+    1: return spriteset_{{$sprite}};
     {{- if .tender }}
     4: return spriteset_{{.tender}};
     {{- end}}
