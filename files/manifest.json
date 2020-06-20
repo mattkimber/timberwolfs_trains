@@ -3,9 +3,9 @@
   "lighting_elevation": 65,
   "depth_influence": 0,
   "soften_edges": 1.5,
-  "sampler": "disc",
-  "accuracy": 7,
-  "overlap": 0,
+  "sampler": "square",
+  "accuracy": 4,
+  "overlap": 0.0,
   "brightness": -0.025,
   "contrast": 0.025,
   "pad_to_full_length": false,
@@ -24,7 +24,7 @@
       "width": 36
     },
     { "angle": 90,
-      "width": 60,
+      "width": 64,
       "height": 18
     },
     { "angle": 135,
@@ -38,7 +38,7 @@
       "width": 36
     },
     { "angle": 270,
-      "width": 60,
+      "width": 64,
       "height": 18
     },
     { "angle": 315,
