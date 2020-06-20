@@ -7,5 +7,5 @@ traininfo_y_offset=3;
  railtypetable {
     RAIL, ELRL, 
     PLATEWAY: [PTWY, SAAN], 
-    THIRD_RAIL: [TDRL,SAC3]
+    THIRD_RAIL: [TDRL,SAC3,ELRL]
 }
