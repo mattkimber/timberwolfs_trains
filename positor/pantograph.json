@@ -1,0 +1,27 @@
+{
+    "files": [
+      "dual_power/brel_class_313_mid.vox"
+    ],
+    "operations": [
+      {
+        "name": "_pan_up",
+        "type": "repeat",
+        "truncate": true,
+        "mask_original": true,
+        "n": 0,        
+        "file": "dual_power/pantograph/pan_up.vox"
+      },      
+      {
+        "name": "_pan_down",
+        "type": "repeat",
+        "truncate": true,
+        "mask_original": true,
+        "n": 0,        
+        "file": "dual_power/pantograph/pan_down.vox"
+      },      
+      {
+        "name": "",
+        "type": "produce_empty"
+      }
+    ]
+}
