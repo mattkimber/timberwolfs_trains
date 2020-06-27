@@ -139,10 +139,10 @@ BR Mk3 carriage,passenger_coach_mk3,wagon,,RAIL,1975,,,,,,,,,,,,,34,,9,,,125,,23
 "BREL Class 56 ""Grid""",brel_class_56,locomotive,diesel,RAIL,1976,1984,,,3250,,,,,,,,,125,,,275,0.22,80,,19.35,19.35,,3.89,,186x0x58,11,,"3,5,3",,,,,,10,10,,,gen3,Freight,gen3_Freight,"The Class 56 is designed for heavy freight work. It contains many improvements to the electric drivetrain compared to earlier diesel-electric locomotives, making it more reliable and easier to operate."
 BREL Class 313,brel_class_313,multiple_unit,dual_electric,DUAL_POWER,1976,1977,-,3,880,,,,,,,,,104.5,,,140,0.13,75,,20.33,20.33,,3.58,75,198x0x53,12,,"3,6,3","brel_class_313,brel_class_313_mid,brel_class_313_rear",brel_class_313_mid,"1,1,1",,,10,10,,PASS,gen3,EMU,gen3_EMU,The Class 313 is a dual voltage EMU capable of running both on overhead electrified lines and third rail systems.
 LU D78 Stock,lu_d78_stock,na,,RAIL,1978,,,,,,,,,,,,,,,,,,,,,,,,,0x0x0,0,,na,,,,,,10,10,,,gen3,LU,gen3_LU,
-BREL Class 315,brel_class_315,na,,RAIL,1980,1981,-,4,880,,,,,,,,,127.5,,,,,75,,19.8,19.8,,3.58,318,198x0x53,12,,"3,6,3",,,,,,10,10,,,gen3,EMU,gen3_EMU,
-"BREL Class 58 ""Bone""",brel_class_58_bone,na,,RAIL,1983,1987,,,3300,,,,,,,,,130,,,267,0.21,80,,19.13,19.13,,3.91,,186x0x58,11,,"3,5,3",,,,,,10,10,,,gen3,,gen3_,
+BREL Class 315,brel_class_315,multiple_unit,electric,ELRL,1980,1981,-,4,880,,,,,,,,,127.5,,,140,0.11,75,,19.8,19.8,,3.58,78,198x0x53,12,,"3,6,3","brel_class_315,brel_class_315_mid,brel_class_315_pan,brel_class_315_rear",,"1,1,1,1",,,10,10,,PASS,gen3,EMU,gen3_EMU,"The Class 315 is the last class of the 1972 standard EMU design, running on 25kV overhead AC power and used for inner suburban services."
+"BREL Class 58 ""Bone""",brel_class_58,locomotive,diesel,RAIL,1983,1987,,,3300,,,,,,,,,130,,,267,0.21,80,,19.13,19.13,,3.91,,186x0x58,11,,"3,5,3",,,,,,10,10,,,gen3,Freight,gen3_Freight,"The Class 58 used a modular design with replaceable modules mounted to an underframe. It was nicknamed ""Bone"" after the narrow central section."
 LU 1983 Stock,lu_1983_stock,na,,RAIL,1983,,,,,,,,,,,,,,,,,,,,,,,,,0x0x0,0,,na,,,,,,10,10,,,gen3,LU,gen3_LU,
-EMD Class 59,emd_class_59,na,,RAIL,1985,1995,,,3300,,,,,,,,,126,,,508,0.40,75,,21.4,21.4,,3.91,,221x0x58,13,,"4,5,4",,,,,,10,10,,,gen4,,gen4_,
+EMD Class 59,emd_class_59,locomotive,diesel,RAIL,1985,1995,,,3300,,,,,,,,,126,,,290,0.23,75,,21.4,21.4,,3.91,,221x0x58,13,,"4,5,4",,,,,,10,10,,,gen4,Freight,gen4_Freight,"The Class 59 is the first US-built locomotive to operate in mainland Great Britain. It is derived from the SD40, with a British cab layout."
 BREL Class 90,brel_class_90,na,,RAIL,1987,1990,,,5000,,,,,,,,,84.5,,,258,0.31,110,,18.75,18.75,,3.96,,186x0x59,11,,"3,5,3",,,,,,10,10,,,gen4,,gen4_,
 BREL Class 319,brel_class_319,na,,RAIL,1987,1990,,4,1328,,,,,,,,,140.3,,,,,100,,19.83,19.83,,3.58,,198x0x53,12,,"3,6,3",,,,,,10,10,,,gen4,EMU,gen4_EMU,
 "BREL Class 91 ""Intercity 225""",brel_class_91,na,,RAIL,1988,1991,,,6480,,,,,,,,,81.5,,,190,0.23,140,,19.4,19.4,,,,186x0x0,11,,"3,5,3",,,,,,10,10,,,gen4,Express (Electric),gen4_Express (Electric),
@@ -150,13 +150,13 @@ BREL Class 319,brel_class_319,na,,RAIL,1987,1990,,4,1328,,,,,,,,,140.3,,,,,100,,
 LU 1992 Stock,lu_1992_stock,na,,RAIL,1992,,,,,,,,,,,,,,,,,,,,,,,,,0x0x0,0,,na,,,,,,10,10,,,gen4,LU,gen4_LU,
 ABB Class 92,abb_class_92,na,,RAIL,1993,1996,,,6760,,,,,,,,,126,,,360,0.29,87,,21.36,21.36,,,,221x0x0,13,,"4,5,4",,,,,,10,10,,,gen4,,gen4_,
 LU 1995/1996 Stock,lu_1995_stock,na,,RAIL,1995,,,,,,,,,,,,,,,,,,,,,,,,,0x0x0,0,,na,,,,,,10,10,,,prv,LU,prv_LU,
-EMD Class 66,emd_class_66,na,,RAIL,1998,2015,,,3300,,,,,,,,,129.6,,,409,0.32,75,,21.4,21.4,,3.9,,221x0x58,13,,"4,5,4",,,,,,10,10,,,prv,,prv_,
+EMD Class 66,emd_class_66,locomotive,diesel,RAIL,1998,2015,,,3300,,,,,,,,,129.6,,,260,0.20,75,,21.4,21.4,,3.9,,221x0x58,13,,"4,5,4",,,,,,10,10,,,prv,Freight,prv_Freight,"After the successful introduction of the Class 59, EWS approached GM's Electro-Motive diesel with a huge order of 250 locomotives which would become Class 66."
 "Brush Class 57 ""Bodysnatcher""",brush_class_57,na,,RAIL,1998,2004,,,3000,,,,,,,,,120.6,,,250,0.21,95,,19.38,19.38,,3.9,,186x0x58,11,,"3,5,3",,,,,,10,10,,,prv,Freight,prv_Freight,
 EMD Class 67,emd_class_67,na,,RAIL,1999,2000,,,3200,,,,,,,,,88,,,144,0.16,125,,19.71,19.71,,3.93,,198x0x58,12,,"3,6,3",,,,,,10,10,,,prv,,prv_,
 "Alsthom Class 460 ""Juniper""",alsthom_juniper,na,,RAIL,2000,2001,2012,8,3620,,,,,,,,,,,,,,100,,,,,,,0x0x0,0,,na,,,,,,10,10,,,prv,EMU (Express),prv_EMU (Express),
 "Bombardier Class 377 ""Electrostar""",bombardier_electrostar,na,,RAIL,2003,,,,1600,,,,,,,,,173.6,,,,,100,,20.4,20.4,,3.78,,198x0x56,12,,"3,6,3",,,,,,10,10,,,prv,EMU,prv_EMU,
 "Hitachi Class 395 ""Javelin""",hitachi_javelin,na,,RAIL,2007,2009,-,,4480,,,,,,,,,265,,,,,157,,20.88,20.88,,3.82,352,198x0x57,12,,"3,6,3",,,,,,10,10,,,mod,EMU (Express),mod_EMU (Express),
-GE Class 70,ge_class_70,na,,RAIL,2008,2017,,,3690,,,,,,,,,129,,,534,0.41,75,,21.27,21.27,,3.91,,198x0x58,12,,"3,6,3",,,,,,10,10,,,mod,,mod_,
+GE Class 70,ge_class_70,na,,RAIL,2008,2017,,,3690,,,,,,,,,129,,,330,0.26,75,,21.27,21.27,,3.91,,198x0x58,12,,"3,6,3",,,,,,10,10,,,mod,,mod_,
 LU 2009 Stock,lu_2009_stock,na,,RAIL,2009,,,,,,,,,,,,,,,,,,,,,,,,,0x0x0,0,,na,,,,,,10,10,,,mod,LU,mod_LU,
 LU S Stock,lu_s_stock,na,,RAIL,2010,,,,,,,,,,,,,,,,,,,,,,,,,0x0x0,0,,na,,,,,,10,10,,,mod,LU,mod_LU,
 Stadler Class 88,stadler_class_88,na,,RAIL,2015,2016,,,5400,,,,,,,,,86,,,317,0.37,100,,,,,,,0x0x0,0,,na,,,,,,10,10,,,mod,,mod_,
