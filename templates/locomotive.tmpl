@@ -1,7 +1,7 @@
 {{ $zoom := parseint .globals.zoom }}
+{{$template := concat "template_rail_" .ttd_len -}}
 
 {{ if not .reuse_sprites -}}
-{{$template := concat "template_rail_" .ttd_len -}}
 {{if eq .globals.bpp "32"}}{{ altsprites .id $template $zoom }}{{else}}{{ altsprites8 .id $template $zoom }}{{end}}
 
 // Graphics - animated or not
@@ -28,6 +28,12 @@ alternative_sprites(spriteset_reverse_{{.id}}, ZOOM_LEVEL_IN_2X, BIT_DEPTH_32BPP
 {{- end}}
 {{- end }}
 
+{{- $type := .type }}{{ $id := .id}}
+{{ if eq .type "dual_electric" -}}
+{{ $pan_up := concat $id  "_pan_up" }}{{ altsprites8 $pan_up $template $zoom }}
+{{ $pan_down := concat $id "_pan_down" }}{{ altsprites8 $pan_down $template $zoom }}
+{{end}}
+
 // Articulation
 switch(FEAT_TRAINS, SELF, switch_{{.id}}_articulation, extra_callback_info1) {
     0 .. {{if .tender}}5{{else}}2{{end}}: vehicle_{{.id}};
@@ -40,6 +46,27 @@ switch (FEAT_TRAINS, SELF, switch_{{.id}}_length, position_in_articulated_veh % 
     {{$index }}: return {{ $element }};
     {{end}}    
 }
+
+{{ if eq .type "dual_electric" -}}
+switch (FEAT_TRAINS, SELF, switch_{{.id}}_pantograph_state, current_railtype) 
+{
+    ELRL: return spriteset_{{.id}}_pan_up;
+    SAAZ: return spriteset_{{.id}}_pan_up;
+    return spriteset_{{.id}}_pan_down;
+}
+
+
+switch(FEAT_TRAINS, SELF, switch_{{.id}}_pantograph, [
+    STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 1 ? CB_FLAG_MORE_SPRITES : 0) | PALETTE_USE_DEFAULT, 0x100),
+    getbits(extra_callback_info1, 8, 8)
+    ]) {
+    0: spriteset_{{.id}};
+    1: switch_{{.id}}_pantograph_state;
+
+    // This should never be executed
+    return spriteset_invisible;
+}
+{{end}}
 
 {{ $sprite := .id}}{{ if .reuse_sprites }}{{ $sprite = .reuse_sprites }}{{end -}}
 {{ if .animated -}}
@@ -85,7 +112,7 @@ switch (FEAT_TRAINS, SELF, switch_{{.id}}_graphics, position_in_articulated_veh 
 {{else -}}
 switch (FEAT_TRAINS, SELF, switch_{{.id}}_graphics, position_in_articulated_veh % {{if .tender}}6{{else}}3{{end}}) 
 {
-    1: return spriteset_{{$sprite}};
+    1: {{if eq $type "dual_electric"}}return switch_{{$id}}_pantograph{{else}}return spriteset_{{$sprite}}{{end}};
     {{- if .tender }}
     4: return spriteset_{{.tender}};
     {{- end}}
@@ -106,6 +133,13 @@ switch (FEAT_TRAINS, SELF, switch_{{.id}}_visual_effect_railtype, current_railty
     return visual_effect(VISUAL_EFFECT_ELECTRIC, 0);
 }
 {{end}}
+{{ if eq .type "dual_electric" -}}
+switch (FEAT_TRAINS, SELF, switch_{{.id}}_power, current_railtype) {
+    ELRL: return {{.power}};
+    SAAZ: return {{.power}};
+    return {{.secondary_power}};
+}
+{{ end }}
 
 // Visual effect
 switch (FEAT_TRAINS, SELF, switch_{{.id}}_visual_effect, position_in_articulated_veh % {{if .tender}}6{{else}}3{{end}}) 
@@ -150,7 +184,7 @@ item(FEAT_TRAINS, vehicle_{{.id}}) {
         cost_factor:                  {{.cost}};
         running_cost_factor:          {{.running_cost}};
         sprite_id:                    SPRITE_ID_NEW_TRAIN;
-        misc_flags:                   bitmask(TRAIN_FLAG_2CC {{if .animated}}, TRAIN_FLAG_SPRITE_STACK{{end}});
+        misc_flags:                   bitmask(TRAIN_FLAG_2CC {{if .animated}}, TRAIN_FLAG_SPRITE_STACK{{end}}{{if eq .type "dual_electric"}}, TRAIN_FLAG_SPRITE_STACK{{end}});
         refit_cost:                   0;
         track_type:                   {{.railtype}};
 
@@ -168,7 +202,7 @@ item(FEAT_TRAINS, vehicle_{{.id}}) {
         articulated_part: switch_{{.id}}_articulation;
         length: switch_{{.id}}_length;
         visual_effect_and_powered: switch_{{.id}}_visual_effect;
-        {{ if eq .type "dual_power" -}}power: switch_{{.id}}_power;{{end}}
+        {{ if eq .type "dual_power" -}}power: switch_{{.id}}_power;{{end}}{{ if eq .type "dual_electric" -}}power: switch_{{.id}}_power;{{end}}
         {{if .capacity}}purchase_cargo_capacity: spriteset_{{.id}};{{end}}
     }
 }

@@ -150,12 +150,12 @@ BREL Class 91,brel_class_91,locomotive,electric,ELRL,1988,1991,,,6480,,,,,,,,,81
 Driving Van Trailer,brel_class_91_dvt,locomotive,electric,ELRL,1988,1991,,,5,,,,,,,,,40,,,5,0.01,140,,19.4,19.4,,,,186x0x0,11,,"3,5,3",,,,,,10,10,1,1,,gen4,Express (Electric),gen4_Express (Electric),"This driving van trailer can be used with other electric locomotives, either as a leading or trailing vehicle. It is recommended for use with the Class 91."
 "BREL Class 465 ""Networker""",brel_networker,multiple_unit,electric,THIRD_RAIL,1992,1994,-,4,1608,,,,,,,,,136,,,165,0.12,75,,20.89,20.89,,3.77,81,198x0x56,12,,"3,6,3","brel_networker,brel_networker_mid,brel_networker_mid,brel_networker_rear",,"1,1,0,1",,,10,10,,,PASS,gen4,EMU,gen4_EMU,"The BREL Networker was built by three different companies (ABB, Metro-Cammell and BREL) with minor detail differences between each manufacturer's output."
 LU 1992 Stock,lu_1992_stock,na,,RAIL,1992,,,,,,,,,,,,,,,,,,,,,,,,,0x0x0,0,,na,,,,,,10,10,,,,gen4,LU,gen4_LU,
-ABB Class 92,abb_class_92,na,,RAIL,1993,1996,,,6760,,,,,,,,,126,,,360,0.29,87,,21.36,21.36,,,,221x0x0,13,,"4,5,4",,,,,,10,10,,,,gen4,,gen4_,
+ABB Class 92,abb_class_92,locomotive,dual_electric,DUAL_POWER,1993,1996,,,6760,5360,,,,,,,,126,,,360,0.29,87,,21.36,21.36,,,,221x0x0,13,,"4,5,4",,,,,,10,10,,,,gen4,Freight,gen4_Freight,The Class 92 was designed to operate services through the Channel Tunnel. It can run on both the Southern Region third rail system and overhead wires.
 LU 1995/1996 Stock,lu_1995_stock,na,,RAIL,1995,,,,,,,,,,,,,,,,,,,,,,,,,0x0x0,0,,na,,,,,,10,10,,,,prv,LU,prv_LU,
 EMD Class 66,emd_class_66,locomotive,diesel,RAIL,1998,2015,,,3300,,,,,,,,,129.6,,,260,0.20,75,,21.4,21.4,,3.9,,221x0x58,13,,"4,5,4",,,,,,10,10,,,,prv,Freight,prv_Freight,"After the successful introduction of the Class 59, EWS approached GM's Electro-Motive diesel with a huge order of 250 locomotives which would become Class 66."
 "Brush Class 57 ""Bodysnatcher""",brush_class_57,locomotive,diesel,RAIL,1998,2004,,,3000,,,,,,,,,120.6,,,250,0.21,95,,19.38,19.38,,3.9,,186x0x58,11,,"3,5,3",,,,,,10,10,,,,prv,Freight,prv_Freight,"The Class 57 is a re-engineered locomotive using Class 47 bodyshells and parts, giving rise to its ""Bodysnatcher"" nickname."
-EMD Class 67,emd_class_67,na,,RAIL,1999,2000,,,3200,,,,,,,,,88,,,144,0.16,125,,19.71,19.71,,3.93,,198x0x58,12,,"3,6,3",,,,,,10,10,,,,prv,,prv_,
-"Alsthom Class 460 ""Juniper""",alsthom_juniper,na,,RAIL,2000,2001,2012,8,3620,,,,,,,,,,,,,,100,,,,,,,0x0x0,0,,na,,,,,,10,10,,,,prv,EMU (Express),prv_EMU (Express),
+Alstom Class 67,br_class_67,locomotive,diesel,RAIL,1999,2000,,,3200,,,,,,,,,88,,,144,0.16,125,,19.71,19.71,,3.93,,198x0x58,12,,"3,6,3",,,,,,10,10,,,,prv,Freight,prv_Freight,"The Class 67 is a high speed freight locomotive designed for mail service. It uses EMD engines, generators and traction motors."
+"Alstom Class 460 ""Juniper""",alstom_juniper,multiple_unit,electric,THIRD_RAIL,2000,2001,2012,8,3620,,,,,,,,,319,,,240,0.08,100,,,21,,,69,198x0x0,12,,"3,6,3","alstom_juniper,alstom_juniper_mid,alstom_juniper_mid,alstom_juniper_mid,alstom_juniper_mid,alstom_juniper_mid,alstom_juniper_mid,alstom_juniper_rear",,"1,1,0,0,0,0,0,1",,,10,10,,,PASS,prv,EMU (Express),prv_EMU (Express),"The Class 460 was built to replace locomotive-hauled services on the Gatwick Express. It had a short service life, with most units converted to Class 458/5 for suburban use."
 "Bombardier Class 377 ""Electrostar""",bombardier_electrostar,na,,RAIL,2003,,,,1600,,,,,,,,,173.6,,,,,100,,20.4,20.4,,3.78,,198x0x56,12,,"3,6,3",,,,,,10,10,,,,prv,EMU,prv_EMU,
 "Hitachi Class 395 ""Javelin""",hitachi_javelin,na,,RAIL,2007,2009,-,,4480,,,,,,,,,265,,,,,157,,20.88,20.88,,3.82,352,198x0x57,12,,"3,6,3",,,,,,10,10,,,,mod,EMU (Express),mod_EMU (Express),
 GE Class 70,ge_class_70,na,,RAIL,2008,2017,,,3690,,,,,,,,,129,,,330,0.26,75,,21.27,21.27,,3.91,,198x0x58,12,,"3,6,3",,,,,,10,10,,,,mod,,mod_,
@@ -168,6 +168,7 @@ Stadler Class 88,stadler_class_88,na,,RAIL,2015,2016,,,5400,,,,,,,,,86,,,317,0.3
 "Siemens Class 444 ""Desiro""",siemens_444_desiro,na,,RAIL,,,,,,,,,,,,,,,,,,,,,,,,,,0x0x0,0,,na,,,,,,10,10,,,,#N/A,,#N/A,
 BREL Class 455,brel_class_455,na,,RAIL,,,,,,,,,,,,,,,,,,,,,,,,,,0x0x0,0,,na,,,,,,10,10,,,,#N/A,,#N/A,
 BREL Class 456,brel_class_456,na,,RAIL,,,,,,,,,,,,,,,,,,,,,,,,,,0x0x0,0,,na,,,,,,10,10,,,,#N/A,,#N/A,
+Brush Class 60,brush_class_60,na,,RAIL,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 BR Class 506,br_class_506,na,,RAIL,,,,,,,,,,,,,,,,,,,,,,,,,,0x0x0,0,,na,,,,,,10,10,,,,#N/A,,#N/A,
 "BR Class 414 ""2-Hap""",br_class_414_2hap,na,,RAIL,,,,,,,,,,,,,,,,,,,,,,,,,,0x0x0,0,,na,,,,,,10,10,,,,#N/A,,#N/A,
 BR Class 310 AM10,br_class_310_am10,na,,RAIL,,,,,,,,,,,,,,,,,,,,,,,,,,0x0x0,0,,na,,,,,,10,10,,,,#N/A,,#N/A,
@@ -180,7 +181,7 @@ BR Class 310 AM10,br_class_310_am10,na,,RAIL,,,,,,,,,,,,,,,,,,,,,,,,,,0x0x0,0,,n
 "CAF Class 195 ""Civity""",caf_class_195_civity,na,,RAIL,,,,,,,,,,,,,,,,,,,,,,,,,,0x0x0,0,,na,,,,,,10,10,,,,#N/A,,#N/A,
 ABB Class 325,abb_class_325,na,,RAIL,,,,,,,,,,,,,,,,,,,,,,,,,,0x0x0,0,,na,,,,,,10,10,,,,#N/A,,#N/A,
 "BREL Class 370 ""APT""",brel_class_370_apt,na,,RAIL,,,,,,,,,,,,,,,,,,,,,,,,,,0x0x0,0,,na,,,,,,10,10,,,,#N/A,,#N/A,
-"Alsthom Class 390 ""Pendolino""",alsthom_pendolino,na,,RAIL,,,,,,,,,,,,,,,,,,,,,,,,,,0x0x0,0,,na,,,,,,10,10,,,,#N/A,,#N/A,
+"Alstom Class 390 ""Pendolino""",alstom_pendolino,na,,RAIL,,,,,,,,,,,,,,,,,,,,,,,,,,0x0x0,0,,na,,,,,,10,10,,,,#N/A,,#N/A,
 "Bombardier Class 220 ""Voyager""",voyager,na,,RAIL,,,,,,,,,,,,,,,,,,,,,,,,,,0x0x0,0,,na,,,,,,10,10,,,,#N/A,,#N/A,
 "Bombardier Class 221 ""Super Voyager""",super_voyager,na,,RAIL,,,,,,,,,,,,,,,,,,,,,,,,,,0x0x0,0,,na,,,,,,10,10,,,,#N/A,,#N/A,
 "BREL Class 442 ""Wessex Electric""",wessex_electric,na,,RAIL,,,,,,,,,,,,,,,,,,,,,,,,,,0x0x0,0,,na,,,,,,10,10,,,,#N/A,,#N/A,
