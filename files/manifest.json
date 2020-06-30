@@ -3,9 +3,11 @@
   "lighting_elevation": 65,
   "depth_influence": 0,
   "soften_edges": 1.5,
-  "sampler": "square",
-  "accuracy": 4,
-  "overlap": 0.0,
+  "alpha_edge_threshold": 0.75,
+  "sampler": "disc",
+  "real_accuracy": 11,
+  "accuracy": 2,
+  "overlap": -0.1,
   "brightness": -0.025,
   "contrast": 0.025,
   "pad_to_full_length": false,
@@ -43,6 +45,87 @@
     },
     { "angle": 315,
       "width": 36
+    },
+    {
+        "angle": 15,
+        "width": 17,
+        "height": 38
+    },
+    {
+        "angle": 60,
+        "width": 45,
+        "height": 26
+    },
+    {
+        "angle": 105,
+        "width": 53,
+        "height": 22
+    },
+    {
+        "angle": 150,
+        "width": 27,
+        "height": 35
+    },
+    {
+        "angle": 195,
+        "width": 17,
+        "height": 38
+    },
+    {
+        "angle": 240,
+        "width": 45,
+        "height": 26
+    },
+    {
+        "angle": 285,
+        "width": 53,
+        "height": 22
+    },
+    {
+        "angle": 330,
+        "width": 27,
+        "height": 35
+    },
+    {
+        "angle": 30,
+        "width": 27,
+        "height": 35
+    },
+    {
+        "angle": 75,
+        "width": 53,
+        "height": 22
+    },
+    {
+        "angle": 120,
+        "width": 45,
+        "height": 26
+    },
+    {
+        "angle": 165,
+        "width": 17,
+        "height": 38
+    },
+    {
+        "angle": 210,
+        "width": 27,
+        "height": 35
+    },
+    {
+        "angle": 255,
+        "width": 53,
+        "height": 22
+    },
+    {
+        "angle": 300,
+        "width": 45,
+        "height": 26
+    },
+    {
+        "angle": 345,
+        "width": 17,
+        "height": 38
     }
-  ]
+]
 }
+
