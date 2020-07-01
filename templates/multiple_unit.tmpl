@@ -11,13 +11,17 @@
 {{$template := concat "template_rail_" $len -}}
 {{if eq $bpp "32"}}{{ altsprites $element $template $zoom }}{{else}}{{ altsprites8 $element $template $zoom }}{{end}}
 
-{{if eq $len "12" }}
-{{$template_turn := concat "template_rail_turn_" $len -}}
-{{if eq $bpp "32"}}{{ altspritesn $element $template_turn $zoom "_turn" }}{{else}}{{ altsprites8n $element $template_turn $zoom "_turn" }}{{end}}
+{{$template_turn := concat "template_rail_turn_l1_" $len -}}
+{{if eq $bpp "32"}}{{ altspritesn $element $template_turn $zoom "_turn_l1" }}{{else}}{{ altsprites8n $element $template_turn $zoom "_turn_l1" }}{{end}}
 
-{{$template_turn_2 := concat "template_rail_turn_2_" $len -}}
-{{if eq $bpp "32"}}{{ altspritesn $element $template_turn_2 $zoom "_turn_2" }}{{else}}{{ altsprites8n $element $template_turn_2 $zoom "_turn_2" }}{{end}}
-{{end}}
+{{$template_turn = concat "template_rail_turn_l2_" $len -}}
+{{if eq $bpp "32"}}{{ altspritesn $element $template_turn $zoom "_turn_l2" }}{{else}}{{ altsprites8n $element $template_turn $zoom "_turn_l2" }}{{end}}
+
+{{$template_turn = concat "template_rail_turn_r1_" $len -}}
+{{if eq $bpp "32"}}{{ altspritesn $element $template_turn $zoom "_turn_r1" }}{{else}}{{ altsprites8n $element $template_turn $zoom "_turn_r1" }}{{end}}
+
+{{$template_turn = concat "template_rail_turn_r2_" $len -}}
+{{if eq $bpp "32"}}{{ altspritesn $element $template_turn $zoom "_turn_r2" }}{{else}}{{ altsprites8n $element $template_turn $zoom "_turn_r2" }}{{end}}
 
 {{end -}}
 {{end}}
@@ -27,6 +31,16 @@
 {{ $template := concat "template_rail_" .ttd_len -}}
 {{ $pan_up := concat $pantograph_unit "_pan_up" }}{{ altsprites8 $pan_up $template $zoom }}
 {{ $pan_down := concat $pantograph_unit "_pan_down" }}{{ altsprites8 $pan_down $template $zoom }}
+
+{{$template_turn := concat "template_rail_turn_l1_" $len -}}
+{{ altsprites8n $pan_up $template_turn $zoom "_turn_l1" }}{{ altsprites8n $pan_down $template_turn $zoom "_turn_l1" }}
+{{$template_turn = concat "template_rail_turn_l2_" $len -}}
+{{ altsprites8n $pan_up $template_turn $zoom "_turn_l2" }}{{ altsprites8n $pan_down $template_turn $zoom "_turn_l2" }}
+{{$template_turn = concat "template_rail_turn_r1_" $len -}}
+{{ altsprites8n $pan_up $template_turn $zoom "_turn_r1" }}{{ altsprites8n $pan_down $template_turn $zoom "_turn_r1" }}
+{{$template_turn = concat "template_rail_turn_r2_" $len -}}
+{{ altsprites8n $pan_up $template_turn $zoom "_turn_r2" }}{{ altsprites8n $pan_down $template_turn $zoom "_turn_r2" }}
+
 {{end}}
 
 // Articulation
@@ -43,13 +57,50 @@ switch (FEAT_TRAINS, SELF, switch_{{.id}}_length, position_in_articulated_veh % 
     {{end}}    
 }
 
+{{range $index, $element := $layout -}}
+{{- $newsprite := index $newsprites $index -}}
+{{- if eq $newsprite "1" -}}
+switch (FEAT_TRAINS, SELF, switch_{{$element}}_curve, curv_info)  {
+    vehicle_curv_info(1, 0): return spriteset_{{$element}}_turn_r1;
+    vehicle_curv_info(0, 1): return spriteset_{{$element}}_turn_r2;
+
+    vehicle_curv_info(-1, 0): return spriteset_{{$element}}_turn_l2;
+    vehicle_curv_info(0, -1): return spriteset_{{$element}}_turn_l1;
+
+
+    return spriteset_{{$element}};
+}
+{{end}}
+{{end}}
 
 {{ if eq .type "dual_electric" -}}
+switch (FEAT_TRAINS, SELF, switch_{{.id}}_pan_up_curve, curv_info)  {
+    vehicle_curv_info(1, 0): return spriteset_{{.pantograph_unit}}_pan_up_turn_r1;
+    vehicle_curv_info(0, 1): return spriteset_{{.pantograph_unit}}_pan_up_turn_r2;
+
+    vehicle_curv_info(-1, 0): return spriteset_{{.pantograph_unit}}_pan_up_turn_l2;
+    vehicle_curv_info(0, -1): return spriteset_{{.pantograph_unit}}_pan_up_turn_l1;
+
+
+    return spriteset_{{.pantograph_unit}}_pan_up;
+}
+
+switch (FEAT_TRAINS, SELF, switch_{{.id}}_pan_down_curve, curv_info)  {
+    vehicle_curv_info(1, 0): return spriteset_{{.pantograph_unit}}_pan_down_turn_r1;
+    vehicle_curv_info(0, 1): return spriteset_{{.pantograph_unit}}_pan_down_turn_r2;
+
+    vehicle_curv_info(-1, 0): return spriteset_{{.pantograph_unit}}_pan_down_turn_l2;
+    vehicle_curv_info(0, -1): return spriteset_{{.pantograph_unit}}_pan_down_turn_l1;
+
+
+    return spriteset_{{.pantograph_unit}}_pan_down;
+}
+
 switch (FEAT_TRAINS, SELF, switch_{{.id}}_pantograph_state, current_railtype) 
 {
-    ELRL: return spriteset_{{.pantograph_unit}}_pan_up;
-    SAAZ: return spriteset_{{.pantograph_unit}}_pan_up;
-    return spriteset_{{.pantograph_unit}}_pan_down;
+    ELRL: return switch_{{.id}}_pan_up_curve;
+    SAAZ: return switch_{{.id}}_pan_up_curve;
+    return switch_{{.id}}_pan_down_curve;
 }
 
 
@@ -57,7 +108,7 @@ switch(FEAT_TRAINS, SELF, switch_{{.id}}_pantograph, [
     STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 1 ? CB_FLAG_MORE_SPRITES : 0) | PALETTE_USE_DEFAULT, 0x100),
     getbits(extra_callback_info1, 8, 8)
     ]) {
-    0: spriteset_{{.pantograph_unit}};
+    0: switch_{{.pantograph_unit}}_curve;
     1: switch_{{.id}}_pantograph_state;
 
     // This should never be executed
@@ -65,36 +116,13 @@ switch(FEAT_TRAINS, SELF, switch_{{.id}}_pantograph, [
 }
 {{end}}
 
-{{if eq $len "12" }}
-{{range $index, $element := $layout -}}
-{{- $newsprite := index $newsprites $index -}}
-{{- if eq $newsprite "1" -}}
-switch (FEAT_TRAINS, SELF, switch_{{$element}}_curve, curv_info)  {
-    vehicle_curv_info(1, 0): return spriteset_{{$element}}_turn;
-    vehicle_curv_info(0, 1): return spriteset_{{$element}}_turn_2;
-
-    vehicle_curv_info(-1, 0): return spriteset_{{$element}}_turn;
-    vehicle_curv_info(0, -1): return spriteset_{{$element}}_turn_2;
-
-
-    return spriteset_{{$element}};
-}
-{{end}}
-{{end}}
-{{end}}
-
-
 switch (FEAT_TRAINS, SELF, switch_{{.id}}_graphics, position_in_articulated_veh % ({{.cars}} * 3)) 
 {
     {{range $index, $element := $layout -}}
     {{- if eq $type "dual_electric"}}
-    ({{$index}} * 3) + 1: {{if eq $element $pantograph_unit }}return switch_{{$id}}_pantograph{{else}}return spriteset_{{$element}}{{end}};
+    ({{$index}} * 3) + 1: {{if eq $element $pantograph_unit }}return switch_{{$id}}_pantograph{{else}}return switch_{{$element}}_curve{{end}};
     {{- else }}
-    {{if eq $len "12" }}
     ({{$index}} * 3) + 1: return switch_{{$element}}_curve;
-    {{else}}
-    ({{$index}} * 3) + 1: return spriteset_{{$element}};
-    {{end}}
     {{- end}}
     {{end}}
     return spriteset_invisible;
