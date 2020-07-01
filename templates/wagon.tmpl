@@ -1,20 +1,20 @@
 {{ $zoom := parseint .globals.zoom }}
 
 
-{{$template := concat "template_rail_" .ttd_len -}}
+{{$template := concat "template_auto_" .ttd_len -}}
 {{if eq .globals.bpp "32"}}{{ altsprites .id $template $zoom }}{{else}}{{ altsprites8 .id $template $zoom }}{{end}}
 
-{{$template_turn := concat "template_rail_turn_l1_" .ttd_len -}}
+{{$template_turn := concat "template_auto_turn_l1_" .ttd_len -}}
 {{if eq .globals.bpp "32"}}{{ altspritesn .id $template_turn $zoom "_turn_l1" }}{{else}}{{ altsprites8n .id $template_turn $zoom "_turn_l1" }}{{end}}
-{{$template_turn = concat "template_rail_turn_l2_" .ttd_len -}}
+{{$template_turn = concat "template_auto_turn_l2_" .ttd_len -}}
 {{if eq .globals.bpp "32"}}{{ altspritesn .id $template_turn $zoom "_turn_l2" }}{{else}}{{ altsprites8n .id $template_turn $zoom "_turn_l2" }}{{end}}
-{{$template_turn = concat "template_rail_turn_r1_" .ttd_len -}}
+{{$template_turn = concat "template_auto_turn_r1_" .ttd_len -}}
 {{if eq .globals.bpp "32"}}{{ altspritesn .id $template_turn $zoom "_turn_r1" }}{{else}}{{ altsprites8n .id $template_turn $zoom "_turn_r1" }}{{end}}
-{{$template_turn = concat "template_rail_turn_r2_" .ttd_len -}}
+{{$template_turn = concat "template_auto_turn_r2_" .ttd_len -}}
 {{if eq .globals.bpp "32"}}{{ altspritesn .id $template_turn $zoom "_turn_r2" }}{{else}}{{ altsprites8n .id $template_turn $zoom "_turn_r2" }}{{end}}
 
 
-switch (FEAT_TRAINS, SELF, switch_{{.id}}_curve, curv_info)  {
+switch (FEAT_TRAINS, SELF, switch_{{.id}}_curve, getbits(extra_callback_info1, 0, 8) == 0 ? curv_info : 0)  {
     vehicle_curv_info(1, 0): return spriteset_{{.id}}_turn_r1;
     vehicle_curv_info(0, 1): return spriteset_{{.id}}_turn_r2;
 
@@ -39,7 +39,7 @@ switch (FEAT_TRAINS, SELF, switch_{{.id}}_length, position_in_articulated_veh % 
 
 switch (FEAT_TRAINS, SELF, switch_{{.id}}_graphics, position_in_articulated_veh % 3) 
 {
-    1: return spriteset_{{.id}};
+    1: return switch_{{.id}}_curve;
     return spriteset_invisible;
 }
 

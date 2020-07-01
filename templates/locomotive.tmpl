@@ -1,5 +1,5 @@
 {{ $zoom := parseint .globals.zoom }}
-{{$template := concat "template_rail_" .ttd_len -}}
+{{$template := concat "template_auto_" .ttd_len -}}
 
 {{ if not .reuse_sprites -}}
 {{if eq .globals.bpp "32"}}{{ altsprites .id $template $zoom }}{{else}}{{ altsprites8 .id $template $zoom }}{{end}}
@@ -10,7 +10,7 @@
 {{ $ani2 := concat .id "_anim_2" }}{{ altsprites8 $ani2 $template $zoom }}
 {{ $ani3 := concat .id "_anim_3" }}{{ altsprites8 $ani3 $template $zoom }}
 {{ $ani4 := concat .id "_anim_4" }}{{ altsprites8 $ani4 $template $zoom }}
-{{- else if .double_headed -}}
+{{- else if eq .double_headed "sss" -}}
 spriteset (spriteset_reverse_{{.id}}, "1x/{{.id}}_8bpp.png" )
 { {{$template}}_rev_1x() }
 {{if eq .globals.bpp "32"}}
@@ -98,7 +98,7 @@ switch (FEAT_TRAINS, SELF, switch_{{.id}}_graphics, position_in_articulated_veh 
     return spriteset_invisible;
 }
 
-{{else if .double_headed -}}
+{{else if eq .double_headed "dss" -}}
 switch (FEAT_TRAINS, SELF, switch_{{.id}}_reverse, position_in_consist_from_end != 1 || position_in_consist < 2) {
     1: return spriteset_{{$sprite}};
     return spriteset_reverse_{{$sprite}};

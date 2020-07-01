@@ -5,12 +5,11 @@
   "soften_edges": 1.5,
   "alpha_edge_threshold": 0.75,
   "sampler": "disc",
-  "real_accuracy": 11,
-  "accuracy": 2,
+  "accuracy": 9,
   "overlap": -0.1,
   "brightness": -0.025,
   "contrast": 0.025,
-  "pad_to_full_length": false,
+  "pad_to_full_length": true,
   "size": {
     "x": 256,
     "y": 42,
@@ -18,33 +17,10 @@
   },
   "render_elevation": 30,
   "sprites": [
-    { "angle": 0,
-      "width": 8,
-      "height": 42
-    },
-    { "angle": 45,
-      "width": 36
-    },
-    { "angle": 90,
-      "width": 62,
-      "height": 17
-    },
-    { "angle": 135,
-      "width": 36
-    },
-    { "angle": 180,
-      "width": 8,
-      "height": 42
-    },
-    { "angle": 225,
-      "width": 36
-    },
-    { "angle": 270,
-      "width": 62,
-      "height": 17
-    },
-    { "angle": 315,
-      "width": 36
+    { 
+        "angle": 0,
+        "width": 8,
+        "height": 42
     },
     {
         "angle": 15,
@@ -52,47 +28,31 @@
         "height": 38
     },
     {
+        "angle": 30,
+        "width": 27,
+        "height": 35
+    },
+    { 
+        "angle": 45,
+        "width": 36
+    },
+    {
         "angle": 60,
         "width": 45,
         "height": 26
     },
     {
-        "angle": 105,
-        "width": 53,
-        "height": 22
-    },
-    {
-        "angle": 150,
-        "width": 27,
-        "height": 35
-    },
-    {
-        "angle": 195,
-        "width": 17,
-        "height": 38
-    },
-    {
-        "angle": 240,
-        "width": 45,
-        "height": 26
-    },
-    {
-        "angle": 285,
-        "width": 53,
-        "height": 22
-    },
-    {
-        "angle": 330,
-        "width": 27,
-        "height": 35
-    },
-    {
-        "angle": 30,
-        "width": 27,
-        "height": 35
-    },
-    {
         "angle": 75,
+        "width": 53,
+        "height": 22
+    },
+    { 
+        "angle": 90,
+        "width": 62,
+        "height": 17
+    },
+    {
+        "angle": 105,
         "width": 53,
         "height": 22
     },
@@ -101,8 +61,27 @@
         "width": 45,
         "height": 26
     },
+    { 
+        "angle": 135,
+        "width": 36
+    },
+    {
+        "angle": 150,
+        "width": 27,
+        "height": 35
+    },
     {
         "angle": 165,
+        "width": 17,
+        "height": 38
+    },
+    { 
+        "angle": 180,
+        "width": 8,
+        "height": 42
+    },
+    {
+        "angle": 195,
         "width": 17,
         "height": 38
     },
@@ -111,8 +90,27 @@
         "width": 27,
         "height": 35
     },
+    { 
+        "angle": 225,
+        "width": 36
+    },
+    {
+        "angle": 240,
+        "width": 45,
+        "height": 26
+    },
     {
         "angle": 255,
+        "width": 53,
+        "height": 22
+    },
+    { 
+        "angle": 270,
+        "width": 62,
+        "height": 17
+    },
+    {
+        "angle": 285,
         "width": 53,
         "height": 22
     },
@@ -120,6 +118,15 @@
         "angle": 300,
         "width": 45,
         "height": 26
+    },
+    { 
+        "angle": 315,
+        "width": 36
+    },
+    {
+        "angle": 330,
+        "width": 27,
+        "height": 35
     },
     {
         "angle": 345,
