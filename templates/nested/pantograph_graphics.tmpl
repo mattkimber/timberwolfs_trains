@@ -1,0 +1,13 @@
+{{define "pantograph_graphics"}}
+{{- $type := .type }}{{$id := .id}}{{$pantograph_unit := .pantograph_unit -}}{{$zoom := parseint .globals.zoom }}{{$len :=.ttd_len}}
+// pan unit: {{$pantograph_unit}}
+{{ $template := concat "template_auto_" .ttd_len -}}
+{{ $pan_up := concat $pantograph_unit "_pan_up" }}{{ altsprites8 $pan_up $template $zoom }}
+{{ $pan_down := concat $pantograph_unit "_pan_down" }}{{ altsprites8 $pan_down $template $zoom }}
+
+{{$template_turn := concat "template_auto_turn_1_" $len -}}
+{{ altsprites8n $pan_up $template_turn $zoom "_turn_1" }}{{ altsprites8n $pan_down $template_turn $zoom "_turn_1" }}
+{{$template_turn = concat "template_auto_turn_2_" $len -}}
+{{ altsprites8n $pan_up $template_turn $zoom "_turn_2" }}{{ altsprites8n $pan_down $template_turn $zoom "_turn_2" }}
+
+{{end}}

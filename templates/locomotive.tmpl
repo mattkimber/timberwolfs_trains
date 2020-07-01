@@ -4,35 +4,45 @@
 {{ if not .reuse_sprites -}}
 {{if eq .globals.bpp "32"}}{{ altsprites .id $template $zoom }}{{else}}{{ altsprites8 .id $template $zoom }}{{end}}
 
+{{$template_turn := concat "template_auto_turn_1_" .ttd_len -}}
+{{if eq .globals.bpp "32"}}{{ altspritesn .id $template_turn $zoom "_turn_1" }}{{else}}{{ altsprites8n .id $template_turn $zoom "_turn_1" }}{{end}}
+
+{{$template_turn = concat "template_auto_turn_2_" .ttd_len -}}
+{{if eq .globals.bpp "32"}}{{ altspritesn .id $template_turn $zoom "_turn_2" }}{{else}}{{ altsprites8n .id $template_turn $zoom "_turn_2" }}{{end}}
+
+
 // Graphics - animated or not
 {{ if .animated -}}
-{{ $ani1 := concat .id "_anim_1" }}{{ altsprites8 $ani1 $template $zoom }}
-{{ $ani2 := concat .id "_anim_2" }}{{ altsprites8 $ani2 $template $zoom }}
-{{ $ani3 := concat .id "_anim_3" }}{{ altsprites8 $ani3 $template $zoom }}
-{{ $ani4 := concat .id "_anim_4" }}{{ altsprites8 $ani4 $template $zoom }}
-{{- else if eq .double_headed "sss" -}}
-spriteset (spriteset_reverse_{{.id}}, "1x/{{.id}}_8bpp.png" )
-{ {{$template}}_rev_1x() }
-{{if eq .globals.bpp "32"}}
-alternative_sprites(spriteset_reverse_{{.id}}, ZOOM_LEVEL_NORMAL, BIT_DEPTH_32BPP, "1x/{{.id}}_32bpp.png", "1x/{{.id}}_mask.png")
-{ {{$template}}_rev_1x() }
-{{- end}}
+{{ $ani := concat .id "_anim_1" }}{{ altsprites8 $ani $template $zoom }}
+{{$template_turn := concat "template_auto_turn_1_" .ttd_len -}}{{ altspritesn $ani $template_turn $zoom "_turn_1" }}
+{{$template_turn := concat "template_auto_turn_2_" .ttd_len -}}{{ altspritesn $ani $template_turn $zoom "_turn_2" }}
+{{ $ani := concat .id "_anim_2" }}{{ altsprites8 $ani $template $zoom }}
+{{$template_turn := concat "template_auto_turn_1_" .ttd_len -}}{{ altspritesn $ani $template_turn $zoom "_turn_1" }}
+{{$template_turn := concat "template_auto_turn_2_" .ttd_len -}}{{ altspritesn $ani $template_turn $zoom "_turn_2" }}
+{{ $ani := concat .id "_anim_3" }}{{ altsprites8 $ani $template $zoom }}
+{{$template_turn := concat "template_auto_turn_1_" .ttd_len -}}{{ altspritesn $ani $template_turn $zoom "_turn_1" }}
+{{$template_turn := concat "template_auto_turn_2_" .ttd_len -}}{{ altspritesn $ani $template_turn $zoom "_turn_2" }}
+{{ $ani := concat .id "_anim_4" }}{{ altsprites8 $ani $template $zoom }}
+{{$template_turn := concat "template_auto_turn_1_" .ttd_len -}}{{ altspritesn $ani $template_turn $zoom "_turn_1" }}
+{{$template_turn := concat "template_auto_turn_2_" .ttd_len -}}{{ altspritesn $ani $template_turn $zoom "_turn_2" }}
+{{- else if .double_headed -}}
+{{$rev := concat .id "_rev" }}
+{{if eq .globals.bpp "32"}}{{ altsprites $rev $template $zoom }}{{else}}{{ altsprites8 $rev $template $zoom }}{{end}}
 
-alternative_sprites(spriteset_reverse_{{.id}}, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/{{.id}}_8bpp.png")
-{ {{$template}}_rev_2x() }
+{{$template_turn := concat "template_auto_turn_1_" .ttd_len -}}
+{{if eq .globals.bpp "32"}}{{ altspritesn $rev $template_turn $zoom "_turn_1" }}{{else}}{{ altsprites8n $rev $template_turn $zoom "_turn_1" }}{{end}}
 
-{{if eq .globals.bpp "32"}}
-alternative_sprites(spriteset_reverse_{{.id}}, ZOOM_LEVEL_IN_2X, BIT_DEPTH_32BPP, "2x/{{.id}}_32bpp.png", "2x/{{.id}}_mask.png")
-{ {{$template}}_rev_2x() }
-{{- end}}
+{{$template_turn = concat "template_auto_turn_2_" .ttd_len -}}
+{{if eq .globals.bpp "32"}}{{ altspritesn $rev $template_turn $zoom "_turn_2" }}{{else}}{{ altsprites8n $rev $template_turn $zoom "_turn_2" }}{{end}}
+
 {{- end}}
 {{- end }}
 
 {{- $type := .type }}{{ $id := .id}}
-{{ if eq .type "dual_electric" -}}
-{{ $pan_up := concat $id  "_pan_up" }}{{ altsprites8 $pan_up $template $zoom }}
-{{ $pan_down := concat $id "_pan_down" }}{{ altsprites8 $pan_down $template $zoom }}
-{{end}}
+{{ if eq .type "dual_electric" -}}{{template "pantograph_graphics" . }}{{end}}
+
+{{ if not .reuse_sprites }}{{template "curve_switch" .id }}{{end}}
+{{ if .double_headed }}{{$rev := concat .id "_rev"}}{{template "curve_switch" $rev }}{{end}}
 
 // Articulation
 switch(FEAT_TRAINS, SELF, switch_{{.id}}_articulation, extra_callback_info1) {
@@ -48,41 +58,32 @@ switch (FEAT_TRAINS, SELF, switch_{{.id}}_length, position_in_articulated_veh % 
 }
 
 {{ if eq .type "dual_electric" -}}
-switch (FEAT_TRAINS, SELF, switch_{{.id}}_pantograph_state, current_railtype) 
-{
-    ELRL: return spriteset_{{.id}}_pan_up;
-    SAAZ: return spriteset_{{.id}}_pan_up;
-    return spriteset_{{.id}}_pan_down;
-}
-
-
-switch(FEAT_TRAINS, SELF, switch_{{.id}}_pantograph, [
-    STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 1 ? CB_FLAG_MORE_SPRITES : 0) | PALETTE_USE_DEFAULT, 0x100),
-    getbits(extra_callback_info1, 8, 8)
-    ]) {
-    0: spriteset_{{.id}};
-    1: switch_{{.id}}_pantograph_state;
-
-    // This should never be executed
-    return spriteset_invisible;
-}
+{{template "pantograph_switch" . }}
 {{end}}
 
 {{ $sprite := .id}}{{ if .reuse_sprites }}{{ $sprite = .reuse_sprites }}{{end -}}
 {{ if .animated -}}
+
+{{ if not .reuse_sprites }}
+{{$anim := concat $sprite "_anim_1" }}{{template "curve_switch" $anim  }}
+{{$anim := concat $sprite "_anim_2" }}{{template "curve_switch" $anim  }}
+{{$anim := concat $sprite "_anim_3" }}{{template "curve_switch" $anim  }}
+{{$anim := concat $sprite "_anim_4" }}{{template "curve_switch" $anim  }}
+{{end}}
+
 switch (FEAT_TRAINS, SELF, switch_{{.id}}_animation, motion_counter % 4) 
 {
-    0: return spriteset_{{$sprite}}_anim_1;
-    1: return spriteset_{{$sprite}}_anim_2;
-    2: return spriteset_{{$sprite}}_anim_3;
-    3: return spriteset_{{$sprite}}_anim_4;
+    0: return switch_{{$sprite}}_anim_1_curve;
+    1: return switch_{{$sprite}}_anim_2_curve;
+    2: return switch_{{$sprite}}_anim_3_curve;
+    3: return switch_{{$sprite}}_anim_4_curve;
 }
 
 switch(FEAT_TRAINS, SELF, switch_{{.id}}_animation_overlay, [
     STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 1 ? CB_FLAG_MORE_SPRITES : 0) | PALETTE_USE_DEFAULT, 0x100),
     getbits(extra_callback_info1, 8, 8)
     ]) {
-    0: spriteset_{{$sprite}};
+    0: switch_{{$sprite}}_curve;
     1: switch_{{.id}}_animation;
 
     // This should never be executed
@@ -93,15 +94,27 @@ switch (FEAT_TRAINS, SELF, switch_{{.id}}_graphics, position_in_articulated_veh 
 {
     1: switch_{{.id}}_animation_overlay;
     {{- if .tender }}
-    4: return spriteset_{{.tender}};
+    4: return switch_{{.tender}}_curve;
     {{- end}}
     return spriteset_invisible;
 }
 
-{{else if eq .double_headed "dss" -}}
+{{else if .double_headed -}}
+switch (FEAT_TRAINS, SELF, switch_{{.id}}_fwd_graphics, position_in_articulated_veh % 3) 
+{
+    1: return switch_{{.id}}_curve;
+    return spriteset_invisible;
+}
+
+switch (FEAT_TRAINS, SELF, switch_{{.id}}_rev_graphics, position_in_articulated_veh % 3) 
+{
+    1: return switch_{{.id}}_rev_curve;
+    return spriteset_invisible;
+}
+
 switch (FEAT_TRAINS, SELF, switch_{{.id}}_reverse, position_in_consist_from_end != 1 || position_in_consist < 2) {
-    1: return spriteset_{{$sprite}};
-    return spriteset_reverse_{{$sprite}};
+    1: return switch_{{.id}}_fwd_graphics;
+    return switch_{{.id}}_rev_graphics;
 }
 
 switch (FEAT_TRAINS, SELF, switch_{{.id}}_graphics, position_in_articulated_veh % 3) 
@@ -112,9 +125,9 @@ switch (FEAT_TRAINS, SELF, switch_{{.id}}_graphics, position_in_articulated_veh 
 {{else -}}
 switch (FEAT_TRAINS, SELF, switch_{{.id}}_graphics, position_in_articulated_veh % {{if .tender}}6{{else}}3{{end}}) 
 {
-    1: {{if eq $type "dual_electric"}}return switch_{{$id}}_pantograph{{else}}return spriteset_{{$sprite}}{{end}};
+    1: {{if eq $type "dual_electric"}}return switch_{{$id}}_pantograph{{else}}return switch_{{$sprite}}_curve{{end}};
     {{- if .tender }}
-    4: return spriteset_{{.tender}};
+    4: return switch_{{.tender}}_curve;
     {{- end}}
     return spriteset_invisible;
 }
@@ -198,6 +211,7 @@ item(FEAT_TRAINS, vehicle_{{.id}}) {
 
     graphics {
         default:  switch_{{.id}}_graphics;
+        purchase:  spriteset_{{$sprite}};
         additional_text: return {{.additional_text_string}};
         articulated_part: switch_{{.id}}_articulation;
         length: switch_{{.id}}_length;

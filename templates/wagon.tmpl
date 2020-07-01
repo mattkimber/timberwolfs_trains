@@ -4,26 +4,12 @@
 {{$template := concat "template_auto_" .ttd_len -}}
 {{if eq .globals.bpp "32"}}{{ altsprites .id $template $zoom }}{{else}}{{ altsprites8 .id $template $zoom }}{{end}}
 
-{{$template_turn := concat "template_auto_turn_l1_" .ttd_len -}}
-{{if eq .globals.bpp "32"}}{{ altspritesn .id $template_turn $zoom "_turn_l1" }}{{else}}{{ altsprites8n .id $template_turn $zoom "_turn_l1" }}{{end}}
-{{$template_turn = concat "template_auto_turn_l2_" .ttd_len -}}
-{{if eq .globals.bpp "32"}}{{ altspritesn .id $template_turn $zoom "_turn_l2" }}{{else}}{{ altsprites8n .id $template_turn $zoom "_turn_l2" }}{{end}}
-{{$template_turn = concat "template_auto_turn_r1_" .ttd_len -}}
-{{if eq .globals.bpp "32"}}{{ altspritesn .id $template_turn $zoom "_turn_r1" }}{{else}}{{ altsprites8n .id $template_turn $zoom "_turn_r1" }}{{end}}
-{{$template_turn = concat "template_auto_turn_r2_" .ttd_len -}}
-{{if eq .globals.bpp "32"}}{{ altspritesn .id $template_turn $zoom "_turn_r2" }}{{else}}{{ altsprites8n .id $template_turn $zoom "_turn_r2" }}{{end}}
+{{$template_turn := concat "template_auto_turn_1_" .ttd_len -}}
+{{if eq .globals.bpp "32"}}{{ altspritesn .id $template_turn $zoom "_turn_1" }}{{else}}{{ altsprites8n .id $template_turn $zoom "_turn_1" }}{{end}}
+{{$template_turn = concat "template_auto_turn_2_" .ttd_len -}}
+{{if eq .globals.bpp "32"}}{{ altspritesn .id $template_turn $zoom "_turn_2" }}{{else}}{{ altsprites8n .id $template_turn $zoom "_turn_2" }}{{end}}
 
-
-switch (FEAT_TRAINS, SELF, switch_{{.id}}_curve, getbits(extra_callback_info1, 0, 8) == 0 ? curv_info : 0)  {
-    vehicle_curv_info(1, 0): return spriteset_{{.id}}_turn_r1;
-    vehicle_curv_info(0, 1): return spriteset_{{.id}}_turn_r2;
-
-    vehicle_curv_info(-1, 0): return spriteset_{{.id}}_turn_l2;
-    vehicle_curv_info(0, -1): return spriteset_{{.id}}_turn_l1;
-
-
-    return spriteset_{{.id}};
-}
+{{template "curve_switch" .id }}
 
 switch(FEAT_TRAINS, SELF, switch_{{.id}}_articulation, extra_callback_info1) {
     0 .. 2: return vehicle_{{.id}};
@@ -75,6 +61,7 @@ item(FEAT_TRAINS, vehicle_{{.id}}) {
         additional_text: return {{.additional_text_string}};
         articulated_part: switch_{{.id}}_articulation;
         length: switch_{{.id}}_length;
+        purchase: spriteset_{{.id}};
         purchase_cargo_capacity: spriteset_{{.id}};
     }
 }
