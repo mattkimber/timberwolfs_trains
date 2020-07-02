@@ -5,7 +5,7 @@
   "soften_edges": 1.5,
   "alpha_edge_threshold": 0.75,
   "sampler": "disc",
-  "accuracy": 9,
+  "accuracy": 11,
   "overlap": -0.1,
   "brightness": -0.025,
   "contrast": 0.025,
