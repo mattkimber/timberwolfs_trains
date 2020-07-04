@@ -6,7 +6,7 @@
   "alpha_edge_threshold": 0.75,
   "sampler": "disc",
   "accuracy": 11,
-  "overlap": -0.1,
+  "overlap": -0.15,
   "brightness": -0.025,
   "contrast": 0.025,
   "pad_to_full_length": false,
