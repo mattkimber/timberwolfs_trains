@@ -104,7 +104,7 @@ item(FEAT_TRAINS, vehicle_{{.id}}) {
         cost_factor:                  {{.cost}};
         running_cost_factor:          {{.running_cost}};
         sprite_id:                    SPRITE_ID_NEW_TRAIN;
-        misc_flags:                   bitmask(TRAIN_FLAG_2CC, TRAIN_FLAG_MU {{if eq .type "dual_electric"}}, TRAIN_FLAG_SPRITE_STACK{{end}});
+        misc_flags:                   bitmask(TRAIN_FLAG_2CC, TRAIN_FLAG_MU {{if eq .type "dual_electric"}}, TRAIN_FLAG_SPRITE_STACK{{end}} {{ if .tilting }}, TRAIN_FLAG_TILT {{end}});
         refit_cost:                   0;
         track_type:                   {{.railtype}};
 
@@ -118,11 +118,11 @@ item(FEAT_TRAINS, vehicle_{{.id}}) {
 
     graphics {
         default:  switch_{{.id}}_graphics;
-        purchase:  spriteset_{{.id}};
+        purchase:  {{if .reuse_sprites}}spriteset_{{.reuse_sprites}}{{else}}spriteset_{{.id}}{{end}};
         additional_text: return {{.additional_text_string}};
         articulated_part: switch_{{.id}}_articulation;
         length: switch_{{.id}}_length;
         visual_effect_and_powered: switch_{{.id}}_visual_effect;
-        {{if .capacity}}purchase_cargo_capacity: spriteset_{{.id}};{{end}}
+        {{if .capacity}}purchase_cargo_capacity:  {{if .reuse_sprites}}spriteset_{{.reuse_sprites}}{{else}}spriteset_{{.id}}{{end}};{{end}}
     }
 }
