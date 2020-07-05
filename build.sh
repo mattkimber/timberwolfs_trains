@@ -4,7 +4,11 @@
 ../cargopositor/cargopositor.exe -o intermediate -v voxels -t positor/*
 
 # Copy static files
-cp voxels/static/* intermediate
+cp voxels/static/mu/* intermediate
+cp voxels/static/carriage/* intermediate
+cp voxels/static/loco/* intermediate
+cp voxels/static/tender/* intermediate
+cp voxels/static/wagon/* intermediate
 
 for i in `ls intermediate`; do 
     fn=`echo 2x/${i}_32bpp.png | sed -e s/.vox//`

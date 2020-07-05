@@ -187,7 +187,7 @@ LU S Stock,lu_s_stock,na,,RAIL,2010,,,,,,,,,,,,,,,,,,,,,,,,,0x0x0,0,,na,,,,,,10,
 "Stadler Class 68 ""Warskip""",stadler_class_68,locomotive,diesel,RAIL,2013,2016,,,3800,,,,,,,,,85,,,317,0.37,100,,20.5,20.5,,,,198x0x0,12,,"3,3,6",,,,,,10,10,,,,,mod,Mixed Traffic,mod_Mixed Traffic,The Class 68 is a modern mixed traffic disel locomotive with a powerful 16-cylinder Caterpillar engine.
 Stadler Class 88,stadler_class_88,na,,RAIL,2015,2016,,,5400,940,,,,,,,,86,,,317,0.37,100,,20.5,20.5,,,,198x0x0,12,,"3,3,6",,,,,,10,10,,,,,mod,Freight (Electric),mod_Freight (Electric),
 "CAF Class 195 ""Civity""",caf_civity,multiple_unit,diesel,RAIL,2019,,,2,1046,,,,,,,,,80,,,145,0.18,100,,24,24,2.7,3.85,63,238x40x57,14,,"4,4,6","caf_civity,caf_civity_rear",,"1,1",,,10,10,,,,PASS,mod,DMU,mod_DMU,The Class 195 is designed to replace Sprinter and Pacer units with a multiple unit of far higher quality and passenger comfort.
-"BREL Class 370 ""APT""",brel_class_370_apt,na,,RAIL,,,,,,,,,,,,,,,,,,,,,,,,,,0x0x0,0,,na,,,,,,10,10,,,,,#N/A,,#N/A,
+"BREL Class 370 ""APT-P""",apt,multiple_unit,electric,ELRL,1979,1986,,14,8000,,,,,,,,,434,,,210,0.05,155,,20.9,20.9,2.7,3.5,39,198x40x52,12,,"3,3,6","apt,apt_mid,apt_mid,apt_mid,apt_mid,apt_tbf,apt_power,apt_power,apt_tbf_rev,apt_mid,apt_mid,apt_mid,apt_mid,apt_rear",,"1,1,0,0,0,1,1,0,1,0,0,0,0,1",,,10,10,,,,PASS,lbr,EMU (Express),lbr_EMU (Express),"The APT-P (Advanced Passenger Train, Prototype) was intended to be a high speed express with a raft of innovative features from tilting carriages to water brakes. Unfortunately those advanced features proved troublesome in use, and the units were scrapped by the late 1980s."
 "GEC-Alsthom Class 373 ""Eurostar""",eurostar,na,,RAIL,,,,,,,,,,,,,,,,,,,,,,,,,,0x0x0,0,,na,,,,,,10,10,,,,,#N/A,,#N/A,
 "GEC-Alsthom Class 374 ""Eurostar e320""",eurostar_e320,na,,RAIL,,,,,,,,,,,,,,,,,,,,,,,,,,0x0x0,0,,na,,,,,,10,10,,,,,#N/A,,#N/A,
 Mather & Platt C&SLR Locomotive,mather_locomotive,na,,RAIL,,,,,,,,,,,,,,,,,,,,,,,,,,0x0x0,0,,na,,,,,,10,10,,,,,#N/A,,#N/A,
@@ -220,5 +220,4 @@ Class 755,class_755,na,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,na,,,,,,,,,,,,,,,
 Class 800,class_800,na,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,na,,,,,,,,,,,,,,,
 Class 802,class_802,na,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,na,,,,,,,,,,,,,,,
 Aventra,aventra,na,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,na,,,,,,,,,,,,,,,
-A-Train,a_train,na,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,na,,,,,,,,,,,,,,,
 SR 4CC Double Decker,sr_4cc,na,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
