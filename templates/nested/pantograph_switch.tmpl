@@ -1,4 +1,5 @@
 {{ define "pantograph_switch" }}
+{{ if not .reuse_sprites}}
 {{ $name := concat .pantograph_unit "_pan_up" }}
 {{template "curve_switch" $name }}
 {{ $name = concat .pantograph_unit "_pan_down" }}
@@ -10,7 +11,7 @@ switch (FEAT_TRAINS, SELF, switch_{{.pantograph_unit}}_pantograph_state, current
     SAAZ: return switch_{{.pantograph_unit}}_pan_up_curve;
     return switch_{{.pantograph_unit}}_pan_down_curve;
 }
-
+{{end}}
 switch(FEAT_TRAINS, SELF, switch_{{.id}}_pantograph, [
     STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 1 ? CB_FLAG_MORE_SPRITES : 0) | PALETTE_USE_DEFAULT, 0x100),
     getbits(extra_callback_info1, 8, 8)

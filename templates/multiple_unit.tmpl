@@ -29,13 +29,24 @@ switch(FEAT_TRAINS, SELF, switch_{{.id}}_articulation, extra_callback_info1) {
     return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
 }
 
-// Currently all parts of an MU must be the same length
+{{ if .manual_lengths }}
+{{- $lengths := slice .manual_lengths }}
+// This MU has different lengths per unit
+switch (FEAT_TRAINS, SELF, switch_{{.id}}_length, position_in_articulated_veh % {{len $lengths}} ) 
+{
+    {{range $index, $element := $lengths -}}
+    {{$index }}: return {{ $element }};
+    {{end}}    
+}
+{{ else }}
+// All parts of this MU are the same length
 switch (FEAT_TRAINS, SELF, switch_{{.id}}_length, position_in_articulated_veh % 3 ) 
 {
     {{range $index, $element := slice .articulated_lengths -}}
     {{$index }}: return {{ $element }};
     {{end}}    
 }
+{{end}}
 
 {{range $index, $element := $layout -}}
 {{- $newsprite := index $newsprites $index -}}
