@@ -201,7 +201,7 @@ Four-wheel carriage,four_wheel_carriage,na,,RAIL,,,,,,,,,,,,,,,,,,,,,,,,,,0x0x0,
 Six-wheel carriage,six_wheel_carriage,na,,RAIL,,,,,,,,,,,,,,,,,,,,,,,,,,0x0x0,0,,na,,,,,,,10,10,,,,,#N/A,,#N/A,
 Clerestory carriage,clerestory_carriage,na,,RAIL,,,,,,,,,,,,,,,,,,,,,,,,,,0x0x0,0,,na,,,,,,,10,10,,,,,#N/A,,#N/A,
 Standard carriage,standard_carriage,na,,RAIL,,,,,,,,,,,,,,,,,,,,,,,,,,0x0x0,0,,na,,,,,,,10,10,,,,,#N/A,,#N/A,
-Toad 20t brake van,toad_20t_brake_van,na,,RAIL,,,,,,,,,,,,,,,,,,,,,,,,,,0x0x0,0,,na,,,,,,,10,10,,,,,#N/A,,#N/A,
+Toad 20t brake van,toad_20t_brake_van,wagon,,RAIL,1894,,1970,,,,,,,,,,,20,,,,,70,,7.3,11,,,0,102x0x0,6,,"2,2,2",,,,,,,10,10,,,,BRAKE,vct,Extra,vct_Extra,"The Great Western Railway standardised brake van designs from 1894. The distinctive design includes an open ""veranda"" at the back of the vehicle."
 Standard 20t brake van,standard_20t_brake_van,na,,RAIL,,,,,,,,,,,,,,,,,,,,,,,,,,0x0x0,0,,na,,,,,,,10,10,,,,,#N/A,,#N/A,
 10t brake van,10t_brake_van,na,,RAIL,,,,,,,,,,,,,,,,,,,,,,,,,,0x0x0,0,,na,,,,,,,10,10,,,,,#N/A,,#N/A,
 TTA Tank Wagon,tta_tank_wagon,na,,RAIL,,,,,,,,,,,,,,,,,,,,,,,,,,0x0x0,0,,na,,,,,,,10,10,,,,,#N/A,,#N/A,
