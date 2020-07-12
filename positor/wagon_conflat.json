@@ -6,6 +6,27 @@
         {
             "name": "",
             "type": "produce_empty"
+        },
+        {
+            "name": "_container_none",
+            "type": "scale",
+            "mask_original": true,
+            "n": 0,
+            "file": "cargo/none/br_container.vox"
+        },
+        {
+            "name": "_container_half",
+            "type": "scale",
+            "mask_original": true,
+            "n": 0,
+            "file": "cargo/half/br_container.vox"
+        },
+        {
+            "name": "_container_full",
+            "type": "scale",
+            "mask_original": true,
+            "n": 0,
+            "file": "cargo/full/br_container.vox"
         }
     ]
 }

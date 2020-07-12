@@ -7,6 +7,27 @@
         {
             "name": "",
             "type": "produce_empty"
-        }
+        },
+        {
+            "name": "_bulk_none",
+            "type": "scale",
+            "mask_original": true,
+            "n": 0,        
+            "file": "cargo/none/bulk.vox"
+          },
+        {
+            "name": "_bulk_half",
+            "type": "scale",
+            "mask_original": true,
+            "n": 0,        
+            "file": "cargo/half/bulk.vox"
+          },
+          {
+              "name": "_bulk_full",
+              "type": "scale",
+              "mask_original": true,
+              "n": 0,        
+              "file": "cargo/full/bulk.vox"
+          }
     ]
 }

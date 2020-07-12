@@ -1,0 +1,12 @@
+{{define "cargo_curve_switch"}}
+switch (FEAT_TRAINS, SELF, switch_{{.}}_curve, getbits(extra_callback_info1, 0, 8) == 0 ? curv_info : 0)  {
+    vehicle_curv_info(1, 0): return spritegroup_{{.}}_turn_1;
+    vehicle_curv_info(0, 1): return spritegroup_{{.}}_turn_2;
+
+    vehicle_curv_info(-1, 0): return spritegroup_{{.}}_turn_2;
+    vehicle_curv_info(0, -1): return spritegroup_{{.}}_turn_1;
+
+
+    return spritegroup_{{.}};
+}
+{{end}}

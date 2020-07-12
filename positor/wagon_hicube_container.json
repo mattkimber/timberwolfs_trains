@@ -1,7 +1,6 @@
 {
     "files": [
-      "cargo/wagon/ffa_container_wagon.vox",
-      "cargo/wagon/fsa_container_wagon.vox"
+        "cargo/wagon/kta_container_wagon.vox"
     ],
     "operations": [
         {
@@ -13,21 +12,21 @@
             "type": "scale",
             "mask_original": true,
             "n": 0,
-            "file": "cargo/none/iso_container.vox"
+            "file": "cargo/none/hicube_container.vox"
         },
         {
             "name": "_container_half",
             "type": "scale",
             "mask_original": true,
             "n": 0,
-            "file": "cargo/half/iso_container.vox"
+            "file": "cargo/half/hicube_container.vox"
         },
         {
             "name": "_container_full",
             "type": "scale",
             "mask_original": true,
             "n": 0,
-            "file": "cargo/full/iso_container.vox"
+            "file": "cargo/full/hicube_container.vox"
         }
     ]
 }

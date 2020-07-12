@@ -1,0 +1,444 @@
+// -> Aluminium Ore
+recolour_aore = reserve_sprites(1);
+
+replace(recolour_aore) {
+    recolour_sprite {
+        0x01..0x06: 0x7a..0x7f;
+    }
+}
+
+
+// -> Building materials
+recolour_bdmt = reserve_sprites(1);
+
+replace(recolour_bdmt) {
+    recolour_sprite {
+        0x01..0x06: 0x49..0x4e;
+    }
+}
+
+// -> BEANS!
+recolour_bean = reserve_sprites(1);
+
+replace(recolour_bean) {
+    recolour_sprite {
+        0x01..0x06: 0xc0..0xc5;
+        0x02: 0xb9;
+        0x04: 0xc0;
+        0x05: 0xba;
+        0x06: 0xba;
+    }
+}
+
+// -> Cassava
+recolour_cass = reserve_sprites(1);
+
+replace(recolour_cass) {
+    recolour_sprite {
+        0x01..0x06: 0x09..0x0e;
+    }
+}
+
+// -> Carbon Black
+recolour_cblk = reserve_sprites(1);
+
+replace(recolour_cblk) {
+    recolour_sprite {
+        0x01: 0x01;
+        0x02: 0x01;
+        0x03: 0x02;
+        0x04: 0x02;
+        0x05: 0x03;
+        0x06: 0x03;
+    }
+}
+
+// -> Cement
+recolour_cmnt = reserve_sprites(1);
+
+replace(recolour_cmnt) {
+    recolour_sprite {
+        0x01..0x06: 0x11..0x16;
+    }
+}
+
+// -> Cereal
+recolour_cere = reserve_sprites(1);
+
+replace(recolour_cere) {
+    recolour_sprite {
+        0x01..0x06: 0x74..0x79;
+        0x01: 0x75;
+    }
+}
+
+
+// -> Clay
+recolour_clay = reserve_sprites(1);
+
+replace(recolour_clay) {
+    recolour_sprite {
+        0x01..0x06: 0x72..0x77;
+    }
+}
+
+
+// -> Coal
+recolour_coal = reserve_sprites(1);
+
+replace(recolour_coal) {
+    recolour_sprite {
+        0x01..0x0a: 0x01..0x0a;
+    }
+}
+
+// Coke
+recolour_coke = reserve_sprites(1);
+
+replace(recolour_coke) {
+    recolour_sprite {
+        0x06: 0x08;
+        0x01..0x05: 0x02..0x06;
+    }
+}
+
+// -> Copper Ore
+recolour_core = reserve_sprites(1);
+
+replace(recolour_core) {
+    recolour_sprite {
+        0x01..0x0a: 0x46..0x4f;
+    }
+}
+
+// -> Cotton Candy
+recolour_ctcd = reserve_sprites(1);
+
+replace(recolour_ctcd) {
+    recolour_sprite {
+        0x03..0x06: 0x2e..0x31;
+        0x01: 0xa6;
+        0x02: 0xa7;
+    }
+}
+
+// -> Ferrochrome
+recolour_fecr = reserve_sprites(1);
+
+replace(recolour_fecr) {
+    recolour_sprite {
+        0x01..0x06: 0x12..0x17;
+    }
+}
+
+// -> Plant fibres
+recolour_ficr = reserve_sprites(1);
+
+replace(recolour_ficr) {
+    recolour_sprite {
+        0x01..0x06: 0x58..0x5d;
+    }
+}
+
+// -> Fruit
+recolour_frut = reserve_sprites(1);
+
+replace(recolour_frut) {
+    recolour_sprite {
+        0x01: 0x58;
+        0x02: 0x59;
+        0x03: 0x2f;
+        0x04: 0x64;
+        0x05: 0xa4;
+        0x06: 0x1d;
+    }
+}
+
+// -> Grain
+recolour_grai = reserve_sprites(1);
+
+replace(recolour_grai) {
+    recolour_sprite {
+        0x01..0x06: 0x22..0x27;
+    }
+}
+
+// -> Gravel
+recolour_grvl = reserve_sprites(1);
+
+replace(recolour_grvl) {
+    recolour_sprite {
+        0x01..0x06: 0x10..0x15;
+        0x02: 0x37;
+        0x04: 0x38;
+    }
+}
+
+
+// -> Iron Ore
+recolour_iore = reserve_sprites(1);
+
+replace(recolour_iore) {
+    recolour_sprite {
+        0x01..0x06: 0x49..0x4e;
+    }
+}
+
+
+// -> Lime
+recolour_lime = reserve_sprites(1);
+
+replace(recolour_lime) {
+    recolour_sprite {
+        0x01..0x06: 0x09..0x0e;
+        0x05..0x06: 0x66..0x67;
+    }
+}
+
+// -> Kaolin
+recolour_kaol = reserve_sprites(1);
+
+replace(recolour_kaol) {
+    recolour_sprite {
+        0x01: 0x77;
+        0x02: 0x77;
+        0x03: 0x78;
+        0x03: 0x78;
+        0x04: 0x79;
+        0x05: 0x79;
+        0x06: 0x79;
+    }
+}
+
+// -> Maiz
+recolour_maiz = reserve_sprites(1);
+
+replace(recolour_maiz) {
+    recolour_sprite {
+        0x01..0x06: 0x74..0x79;
+        0x01: 0x75;
+    }
+}
+
+// -> Manganese Oxide
+recolour_mno2 = reserve_sprites(1);
+
+replace(recolour_mno2) {
+    recolour_sprite {
+        0x01: 0x10;
+        0x02: 0x10;
+        0x03: 0x11;
+        0x03: 0x11;
+        0x04: 0x12;
+        0x05: 0x13;
+    }
+}
+
+// -> Nitrate
+recolour_nitr = reserve_sprites(1);
+
+replace(recolour_nitr) {
+    recolour_sprite {
+        0x01..0x02: 0xa6..0xa7;
+        0x03..0x06: 0xa6..0xa9;
+    }
+}
+
+// -> Oilseed
+recolour_olsd = reserve_sprites(1);
+
+replace(recolour_olsd) {
+    recolour_sprite {
+        0x01..0x06: 0x3e..0x43;
+    }
+}
+
+
+// -> Peat
+recolour_peat = reserve_sprites(1);
+
+replace(recolour_peat) {
+    recolour_sprite {
+        0x01..0x06: 0x68..0x6d;
+    }
+}
+
+// -> Phosphate
+recolour_phos = reserve_sprites(1);
+
+replace(recolour_phos) {
+    recolour_sprite {
+        0x01..0x06: 0xc0..0xc5;
+    }
+}
+
+// -> Potash
+recolour_pota = reserve_sprites(1);
+
+replace(recolour_pota) {
+    recolour_sprite {
+        0x01..0x06: 0x2b..0x30;
+    }
+}
+
+
+// -> Pyrite Ore
+recolour_pore = reserve_sprites(1);
+
+replace(recolour_pore) {
+    recolour_sprite {
+        0x02: 0x24;
+        0x04: 0x35;
+        0x06: 0x33;
+    }
+}
+
+
+// -> Quicklime
+recolour_qlme = reserve_sprites(1);
+
+replace(recolour_qlme) {
+    recolour_sprite {
+        0x01..0x06: 0x09..0x0e;
+        0x05..0x06: 0x66..0x67;
+    }
+}
+
+// -> Recyclables
+recolour_rcyc = reserve_sprites(1);
+
+replace(recolour_rcyc) {
+    recolour_sprite {
+        0x01..0x06: 0x08..0x0d;
+        0x02: 0x93;
+        0x03: 0xb5;
+    }
+}
+
+// -> Salt
+recolour_salt = reserve_sprites(1);
+
+replace(recolour_salt) {
+    recolour_sprite {
+        0x01..0x06: 0x09..0x0e;
+        0x02: 0x85;
+        0x03: 0x86;
+    }
+}
+
+// -> Sand
+recolour_sand = reserve_sprites(1);
+
+replace(recolour_sand) {
+    recolour_sprite {
+        0x01..0x06: 0x35..0x3a;
+    }
+}
+
+
+// -> Soda ash
+recolour_sash = reserve_sprites(1);
+
+replace(recolour_sash) {
+    recolour_sprite {
+        0x01..0x06: 0x0a..0x0f;
+    }
+}
+
+
+// -> Scrap Metal
+recolour_scmt = reserve_sprites(1);
+
+replace(recolour_scmt) {
+    recolour_sprite {
+        0x01: 0x02;
+        0x02: 0x01;
+        0x03: 0x3c;
+        0x04: 0x46;
+    }
+}
+
+// -> Sugar Beet
+recolour_sgbt = reserve_sprites(1);
+
+replace(recolour_sgbt) {
+    recolour_sprite {
+        0x01..0x06: 0x29..0x2e;
+    }
+}
+
+// -> Sugar Cane
+recolour_sgcn = reserve_sprites(1);
+
+replace(recolour_sgcn) {
+    recolour_sprite {
+        0x01..0x06: 0x62..0x67;
+    }
+}
+
+// -> Slag
+recolour_slag = reserve_sprites(1);
+
+replace(recolour_slag) {
+    recolour_sprite {
+        0x01..0x04: 0x06..0x09;
+        0x05: 0x25;
+        0x06: 0x0b;
+    }
+}
+
+
+// -> Sugar
+recolour_sugr = reserve_sprites(1);
+
+replace(recolour_sugr) {
+    recolour_sprite {
+        0x01..0x06: 0x09..0x0e;
+        0x02: 0x85;
+        0x03: 0x86;
+    }
+}
+
+// -> Sulphur
+recolour_sulp = reserve_sprites(1);
+
+replace(recolour_sulp) {
+    recolour_sprite {
+        0x01..0x04: 0x40..0x43;
+        0x05..0x06: 0xc3..0xc4;
+    }
+}
+
+// -> Toffee
+recolour_toff = reserve_sprites(1);
+
+replace(recolour_toff) {
+    recolour_sprite {
+        0x01..0x06: 0x73..0x78;
+    }
+}
+
+// -> Uranium
+recolour_uran = reserve_sprites(1);
+
+replace(recolour_uran) {
+    recolour_sprite {
+        0x01: 0xd0;
+        0x02: 0xd0;
+        0x03: 0xd0;
+        0x04: 0xd1;
+        0x05: 0xd1;
+        0x06: 0xd1;
+    }
+}
+
+
+// -> Wheat
+recolour_whea = reserve_sprites(1);
+
+replace(recolour_whea) {
+    recolour_sprite {
+        0x01..0x06: 0x74..0x79;
+    }
+}
+
