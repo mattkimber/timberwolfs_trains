@@ -1,0 +1,11 @@
+{
+    "files": [
+      "cargo/wagon/conflat.vox"
+    ],
+    "operations": [
+        {
+            "name": "",
+            "type": "produce_empty"
+        }
+    ]
+}

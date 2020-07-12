@@ -1,0 +1,12 @@
+{
+    "files": [
+      "cargo/wagon/hha_hopper.vox",
+      "cargo/wagon/mgr_hopper.vox"
+    ],
+    "operations": [
+        {
+            "name": "",
+            "type": "produce_empty"
+        }
+    ]
+}

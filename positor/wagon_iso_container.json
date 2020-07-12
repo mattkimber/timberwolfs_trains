@@ -1,0 +1,13 @@
+{
+    "files": [
+      "cargo/wagon/ffa_container_wagon.vox",
+      "cargo/wagon/fsa_container_wagon.vox",
+      "cargo/wagon/kta_container_wagon.vox"
+    ],
+    "operations": [
+        {
+            "name": "",
+            "type": "produce_empty"
+        }
+    ]
+}

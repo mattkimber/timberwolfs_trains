@@ -1,0 +1,12 @@
+{
+    "files": [
+      "cargo/wagon/baa_steel_wagon.vox",
+      "cargo/wagon/bya_steel_wagon.vox"
+    ],
+    "operations": [
+        {
+            "name": "",
+            "type": "produce_empty"
+        }
+    ]
+}
