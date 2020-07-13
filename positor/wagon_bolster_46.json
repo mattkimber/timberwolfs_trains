@@ -1,0 +1,31 @@
+{
+    "files": [
+      "cargo/wagon/bolster_wagon.vox"
+    ],
+    "operations": [
+        {
+            "name": "",
+            "type": "produce_empty"
+        },
+        {
+            "name": "_bdmt_none",
+            "type": "repeat",
+            "mask_original": true,
+            "n": 1,
+            "file": "cargo/none/nothing.vox"
+        },
+        {
+            "name": "_bdmt_half",
+            "type": "repeat",
+            "mask_original": true,
+            "n": 1,
+            "file": "cargo/half/building_materials.vox"
+        },
+        {
+            "name": "_bdmt_full",
+            "type": "repeat",
+            "mask_original": true,
+            "file": "cargo/repeated/building_materials.vox"
+        }
+    ]
+}
