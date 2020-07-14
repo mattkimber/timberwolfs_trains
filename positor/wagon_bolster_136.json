@@ -20,13 +20,32 @@
             "type": "repeat",
             "mask_original": true,
             "n": 2,
-            "file": "cargo/repeated/building_materials.vox"
+            "file": "cargo/half/building_materials_2.vox"
         },
         {
             "name": "_bdmt_full",
             "type": "repeat",
             "mask_original": true,
             "file": "cargo/repeated/building_materials.vox"
+        },
+        {
+            "name": "_wood_none",
+            "type": "repeat",
+            "mask_original": true,
+            "n": 1,
+            "file": "cargo/none/nothing.vox"
+        },
+        {
+            "name": "_wood_half",
+            "type": "scale",
+            "mask_original": true,
+            "file": "cargo/half/logs_large_2.vox"
+        },
+        {
+            "name": "_wood_full",
+            "type": "scale",
+            "mask_original": true,
+            "file": "cargo/full/logs_large_2.vox"
         }
     ]
 }

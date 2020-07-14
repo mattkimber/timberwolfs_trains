@@ -14,7 +14,7 @@
 {{if eq .cargo_handling "Bulk" -}}
 {{ $cargo_list = "bulk" -}}
 {{else if eq .cargo_handling "Bolster" -}}
-{{ $cargo_list = "bdmt" -}}
+{{ $cargo_list = "bdmt,wood" -}}
 {{else if eq .cargo_handling "Container" -}}
 {{ $cargo_list = "container" -}}
 {{end -}}
@@ -30,18 +30,18 @@
 {{end -}}
 {{$cargoid := concat $id $elus }}
 spritegroup spritegroup_{{$cargoid}} {
-	loading: [spriteset_{{$id}}_{{$element}}_none, spriteset_{{$id}}_{{$element}}_half, spriteset_{{$id}}_{{$element}}_full ];
-	loaded: [spriteset_{{$id}}_{{$element}}_none, spriteset_{{$id}}_{{$element}}_half, spriteset_{{$id}}_{{$element}}_full ];
+	loading: [spriteset_{{$id}}_{{$element}}_none, spriteset_{{$id}}_{{$element}}_half, spriteset_{{$id}}_{{$element}}_half, spriteset_{{$id}}_{{$element}}_full ];
+	loaded: [spriteset_{{$id}}_{{$element}}_none, spriteset_{{$id}}_{{$element}}_half, spriteset_{{$id}}_{{$element}}_half, spriteset_{{$id}}_{{$element}}_full ];
 }
 
 spritegroup spritegroup_{{$cargoid}}_turn_1 {
-	loading: [spriteset_{{$id}}_{{$element}}_none_turn_1, spriteset_{{$id}}_{{$element}}_half_turn_1, spriteset_{{$id}}_{{$element}}_full_turn_1 ];
-	loaded: [spriteset_{{$id}}_{{$element}}_none_turn_1, spriteset_{{$id}}_{{$element}}_half_turn_1, spriteset_{{$id}}_{{$element}}_full_turn_1 ];
+	loading: [spriteset_{{$id}}_{{$element}}_none_turn_1, spriteset_{{$id}}_{{$element}}_half_turn_1, spriteset_{{$id}}_{{$element}}_half_turn_1, spriteset_{{$id}}_{{$element}}_full_turn_1 ];
+	loaded: [spriteset_{{$id}}_{{$element}}_none_turn_1, spriteset_{{$id}}_{{$element}}_half_turn_1, spriteset_{{$id}}_{{$element}}_half_turn_1, spriteset_{{$id}}_{{$element}}_full_turn_1 ];
 }
 
 spritegroup spritegroup_{{$cargoid}}_turn_2 {
-	loading: [spriteset_{{$id}}_{{$element}}_none_turn_2, spriteset_{{$id}}_{{$element}}_half_turn_2, spriteset_{{$id}}_{{$element}}_full_turn_2 ];
-	loaded: [spriteset_{{$id}}_{{$element}}_none_turn_2, spriteset_{{$id}}_{{$element}}_half_turn_2, spriteset_{{$id}}_{{$element}}_full_turn_2 ];
+	loading: [spriteset_{{$id}}_{{$element}}_none_turn_2,spriteset_{{$id}}_{{$element}}_half_turn_2, spriteset_{{$id}}_{{$element}}_half_turn_2, spriteset_{{$id}}_{{$element}}_full_turn_2 ];
+	loaded: [spriteset_{{$id}}_{{$element}}_none_turn_2,spriteset_{{$id}}_{{$element}}_half_turn_2, spriteset_{{$id}}_{{$element}}_half_turn_2, spriteset_{{$id}}_{{$element}}_full_turn_2 ];
 }
 
 {{template "cargo_curve_switch" $cargoid }}
@@ -50,7 +50,7 @@ spritegroup spritegroup_{{$cargoid}}_turn_2 {
 
 {{ $has_cargo_switch := "" }}
 {{ $bulk_cargos := "aore,bdmt,bean,cass,cblk,cmnt,cere,clay,coal,coke,core,ctcd,fecr,ficr,frut,grai,grvl,iore,lime,kaol,maiz,mno2,nitr,olsd,peat,phos,pota,pore,qlme,rcyc,salt,sand,sash,scmt,sgbt,sgcn,slag,sugr,sulp,toff,uran,whea" }}
-{{ $bolster_cargos := "bdmt" }}
+{{ $bolster_cargos := "bdmt,wood" }}
 
 {{ if eq .cargo_handling "Bulk" }}
 {{ $has_cargo_switch = "1" }}
