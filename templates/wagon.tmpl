@@ -14,7 +14,7 @@
 {{if eq .cargo_handling "Bulk" -}}
 {{ $cargo_list = "bulk" -}}
 {{else if eq .cargo_handling "Bolster" -}}
-{{ $cargo_list = "bdmt,wood" -}}
+{{ $cargo_list = "bdmt,wood,crate,metal" -}}
 {{else if eq .cargo_handling "Container" -}}
 {{ $cargo_list = "container" -}}
 {{end -}}
@@ -50,13 +50,13 @@ spritegroup spritegroup_{{$cargoid}}_turn_2 {
 
 {{ $has_cargo_switch := "" }}
 {{ $bulk_cargos := "aore,bdmt,bean,cass,cblk,cmnt,cere,clay,coal,coke,core,ctcd,fecr,ficr,frut,grai,grvl,iore,lime,kaol,maiz,mno2,nitr,olsd,peat,phos,pota,pore,qlme,rcyc,salt,sand,sash,scmt,sgbt,sgcn,slag,sugr,sulp,toff,uran,whea" }}
-{{ $bolster_cargos := "bdmt,wood" }}
+{{ $bolster_cargos := "bdmt,wood,batt,beer,boom,bubl,cera,fzdr,java,nuts,papr,powr,toys,veng,vpts,plas,dyes,mnsp,ficr,soap,coat,copr,csti,iron,metl,stal,stcb,stel,stst,zinc" }}
 
 {{ if eq .cargo_handling "Bulk" }}
 {{ $has_cargo_switch = "1" }}
 {{ range $index, $element := slice $bulk_cargos }}
 switch(FEAT_TRAINS, SELF, switch_{{$id}}_cargo_{{$element}}, [
-    STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 1 ? CB_FLAG_MORE_SPRITES : 0) | (getbits(extra_callback_info1, 8, 8) == 1 ? recolour_{{$element}} : PALETTE_USE_DEFAULT), 0x100),
+    STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 1 ? CB_FLAG_MORE_SPRITES : 0) | (getbits(extra_callback_info1, 8, 8) == 1 ? recolour_bulk + {{$index}} : PALETTE_USE_DEFAULT), 0x100),
     getbits(extra_callback_info1, 8, 8)
     ]) {
     0: switch_{{$id}}_curve;
@@ -75,14 +75,19 @@ switch (FEAT_TRAINS, SELF, switch_{{$id}}_graphics_{{$element}}, position_in_art
 {{ else if eq .cargo_handling "Bolster" }}
 {{ $has_cargo_switch = "1" }}
 {{ range $index, $element := slice $bolster_cargos }}
-{{ $palette := "PALETTE_USE_DEFAULT" }}
+{{ $palette := "PALETTE_USE_DEFAULT" }}{{ $cargosprite := $element }}
+
+// Check recolour cargo
+// Be careful to update numbers when adding/removing cargo types
+{{if eq $element "batt" "beer" "boom" "bubl" "cera" "fzdr" "java" "nuts" "papr" "powr" "toys" "veng" "vpts" "plas" "dyes" "ficr" "mnsp" "soap" "coat" }}{{ $palette = printf "recolour_crate + %d - 2" $index }}{{ $cargosprite = "crate"}}{{end}}
+{{if eq $element "copr" "csti" "iron" "metl" "stal" "stcb" "stel" "stst" "zinc" }}{{ $palette =  printf "recolour_metal + %d - 21" $index }}{{ $cargosprite = "metal"}}{{end}}
 
 switch(FEAT_TRAINS, SELF, switch_{{$id}}_cargo_{{$element}}, [
     STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 1 ? CB_FLAG_MORE_SPRITES : 0) | (getbits(extra_callback_info1, 8, 8) == 1 ? {{$palette}} : PALETTE_USE_DEFAULT), 0x100),
     getbits(extra_callback_info1, 8, 8)
     ]) {
     0: switch_{{$id}}_curve;
-    1: switch_{{$id}}_{{$element}}_curve;
+    1: switch_{{$id}}_{{$cargosprite}}_curve;
 
     // This should never be executed
     return spriteset_invisible;
@@ -126,17 +131,19 @@ switch (FEAT_TRAINS, SELF, switch_{{.id}}_length, position_in_articulated_veh % 
     {{end}}    
 }
 
+{{ if ne .cargo_handling "Container" }}
 switch (FEAT_TRAINS, SELF, switch_{{.id}}_graphics, position_in_articulated_veh % 3) 
 {
     1: return switch_{{.id}}_curve;
     return spriteset_invisible;
 }
+{{end}}
 
 
 item(FEAT_TRAINS, vehicle_{{.id}}) {
     property {
         name:                         {{.name_string}};
-        climates_available:           bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL);
+        climates_available:           bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL, CLIMATE_TOYLAND);
         introduction_date:            date({{.year}}, 1, 1);
         model_life:                   VEHICLE_NEVER_EXPIRES;
         vehicle_life:                 30;
@@ -199,6 +206,8 @@ item(FEAT_TRAINS, vehicle_{{.id}}) {
         {{ else if eq .cargo_handling "Bolster" }}
         {{ range $index, $element := slice $bolster_cargos }}
         {{ toupper $element }}: switch_{{$id}}_graphics_{{$element}};{{end}}
+        // Manual re-used bolster cargo
+        BRCK: switch_{{$id}}_graphics_bdmt;
         {{end}}
         additional_text: return {{.additional_text_string}};
         articulated_part: switch_{{.id}}_articulation;
