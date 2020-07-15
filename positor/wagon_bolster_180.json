@@ -9,7 +9,7 @@
             "type": "produce_empty"
         },
         {
-            "name": "_bdmt_none",
+            "name": "_none",
             "type": "repeat",
             "mask_original": true,
             "n": 1,
@@ -29,13 +29,6 @@
             "file": "cargo/repeated/building_materials.vox"
         },
         {
-            "name": "_wood_none",
-            "type": "repeat",
-            "mask_original": true,
-            "n": 1,
-            "file": "cargo/none/nothing.vox"
-        },
-        {
             "name": "_wood_half",
             "type": "scale",
             "mask_original": true,
@@ -46,13 +39,6 @@
             "type": "scale",
             "mask_original": true,
             "file": "cargo/full/logs_large_2.vox"
-        },
-        {
-            "name": "_crate_none",
-            "type": "repeat",
-            "mask_original": true,
-            "n": 1,
-            "file": "cargo/none/nothing.vox"
         },
         {
             "name": "_crate_half",
@@ -69,13 +55,6 @@
             "file": "cargo/full/crate.vox"
         },
         {
-            "name": "_metal_none",
-            "type": "repeat",
-            "mask_original": true,
-            "n": 1,
-            "file": "cargo/none/nothing.vox"
-        },
-        {
             "name": "_metal_half",
             "type": "repeat",
             "n": 3,
@@ -88,13 +67,6 @@
             "n": 6,
             "mask_original": true,
             "file": "cargo/full/metal_45.vox"
-        },
-        {
-            "name": "_timber_none",
-            "type": "repeat",
-            "mask_original": true,
-            "n": 1,
-            "file": "cargo/none/nothing.vox"
         },
         {
             "name": "_timber_half",
@@ -111,13 +83,6 @@
             "file": "cargo/full/timber.vox"
         },
         {
-            "name": "_ensp_modern_none",
-            "type": "repeat",
-            "mask_original": true,
-            "n": 1,
-            "file": "cargo/none/nothing.vox"
-        },
-        {
             "name": "_ensp_modern_half",
             "type": "repeat",
             "n": 1,
@@ -130,13 +95,6 @@
             "n": 2,
             "mask_original": true,
             "file": "cargo/full/ensp_modern_90.vox"
-        },
-        {
-            "name": "_ensp_old_none",
-            "type": "repeat",
-            "mask_original": true,
-            "n": 1,
-            "file": "cargo/none/nothing.vox"
         },
         {
             "name": "_ensp_old_half",
@@ -153,13 +111,6 @@
             "file": "cargo/full/ensp_old_90.vox"
         },
         {
-            "name": "_fmsp_modern_none",
-            "type": "repeat",
-            "mask_original": true,
-            "n": 1,
-            "file": "cargo/none/nothing.vox"
-        },
-        {
             "name": "_fmsp_modern_half",
             "type": "repeat",
             "n": 1,
@@ -172,13 +123,6 @@
             "n": 2,
             "mask_original": true,
             "file": "cargo/full/fmsp_modern_90.vox"
-        },
-        {
-            "name": "_fmsp_old_none",
-            "type": "repeat",
-            "mask_original": true,
-            "n": 1,
-            "file": "cargo/none/nothing.vox"
         },
         {
             "name": "_fmsp_old_half",
@@ -195,13 +139,6 @@
             "file": "cargo/full/fmsp_old_90.vox"
         },
         {
-            "name": "_tyre_none",
-            "type": "repeat",
-            "mask_original": true,
-            "n": 1,
-            "file": "cargo/none/nothing.vox"
-        },
-        {
             "name": "_tyre_half",
             "type": "repeat",
             "n": 3,
@@ -214,6 +151,158 @@
             "n": 6,
             "mask_original": true,
             "file": "cargo/full/tyres.vox"
+        },
+        {
+            "name": "_pipe_half",
+            "type": "scale",
+            "mask_original": true,
+            "file": "cargo/half/pipe.vox"
+        },
+        {
+            "name": "_pipe_full",
+            "type": "scale",
+            "mask_original": true,
+            "file": "cargo/full/pipe.vox"
+        },
+        {
+            "name": "_vehicle_1800_half",
+            "type": "repeat",
+            "n": 1,
+            "mask_original": true,
+            "file": "cargo/full/vehicle_1800.vox"
+        },
+        {
+            "name": "_vehicle_1800_full",
+            "type": "repeat",
+            "n": 3,
+            "mask_original": true,
+            "file": "cargo/full/vehicle_1800.vox"
+        },
+        {
+            "name": "_vehicle_1910_half",
+            "type": "repeat",
+            "n": 1,
+            "mask_original": true,
+            "file": "cargo/full/vehicle_1910.vox"
+        },
+        {
+            "name": "_vehicle_1910_full",
+            "type": "repeat",
+            "n": 3,
+            "mask_original": true,
+            "file": "cargo/full/vehicle_1910.vox"
+        },
+        {
+            "name": "_vehicle_1970_half",
+            "type": "repeat",
+            "n": 1,
+            "mask_original": true,
+            "file": "cargo/full/vehicle_1970.vox"
+        },
+        {
+            "name": "_vehicle_1970_full",
+            "type": "repeat",
+            "n": 3,
+            "mask_original": true,
+            "file": "cargo/full/vehicle_1970.vox"
+        },
+        {
+            "name": "_vehicle_2010_half",
+            "type": "repeat",
+            "n": 1,
+            "mask_original": true,
+            "file": "cargo/full/vehicle_2010.vox"
+        },
+        {
+            "name": "_vehicle_2010_full",
+            "type": "repeat",
+            "n": 3,
+            "mask_original": true,
+            "file": "cargo/full/vehicle_2010.vox"
+        },
+        {
+            "name": "_vehicle_body_1800_half",
+            "type": "repeat",
+            "n": 1,
+            "mask_original": true,
+            "file": "cargo/full/vehicle_body_1800.vox"
+        },
+        {
+            "name": "_vehicle_body_1800_full",
+            "type": "repeat",
+            "n": 3,
+            "mask_original": true,
+            "file": "cargo/full/vehicle_body_1800.vox"
+        },
+        {
+            "name": "_vehicle_body_1910_half",
+            "type": "repeat",
+            "n": 1,
+            "mask_original": true,
+            "file": "cargo/full/vehicle_body_1910.vox"
+        },
+        {
+            "name": "_vehicle_body_1910_full",
+            "type": "repeat",
+            "n": 3,
+            "mask_original": true,
+            "file": "cargo/full/vehicle_body_1910.vox"
+        },
+        {
+            "name": "_vehicle_body_1970_half",
+            "type": "repeat",
+            "n": 1,
+            "mask_original": true,
+            "file": "cargo/full/vehicle_body_1970.vox"
+        },
+        {
+            "name": "_vehicle_body_1970_full",
+            "type": "repeat",
+            "n": 3,
+            "mask_original": true,
+            "file": "cargo/full/vehicle_body_1970.vox"
+        },
+        {
+            "name": "_vehicle_body_2010_half",
+            "type": "repeat",
+            "n": 1,
+            "mask_original": true,
+            "file": "cargo/full/vehicle_body_2010.vox"
+        },
+        {
+            "name": "_vehicle_body_2010_full",
+            "type": "repeat",
+            "n": 3,
+            "mask_original": true,
+            "file": "cargo/full/vehicle_body_2010.vox"
+        },
+        {
+            "name": "_stsh_half",
+            "type": "repeat",
+            "mask_original": true,
+            "n": 2,
+            "file": "cargo/full/metal_coil.vox"
+        },
+        {
+            "name": "_stsh_full",
+            "type": "repeat",
+            "mask_original": true,
+            "n": 4,
+            "file": "cargo/full/metal_coil.vox"
+        },
+        {
+            "name": "_stwr_half",
+            "type": "repeat",
+            "mask_original": true,
+            "n": 2,
+            "file": "cargo/full/wire_rod.vox"
+        },
+        {
+            "name": "_stwr_full",
+            "type": "repeat",
+            "mask_original": true,
+            "n": 4,
+            "file": "cargo/full/wire_rod.vox"
         }
     ]
 }

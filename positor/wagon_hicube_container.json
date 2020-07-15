@@ -8,7 +8,7 @@
             "type": "produce_empty"
         },
         {
-            "name": "_container_none",
+            "name": "_none",
             "type": "scale",
             "mask_original": true,
             "n": 0,

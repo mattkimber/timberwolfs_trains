@@ -1,6 +1,6 @@
 {{ $zoom := parseint .globals.zoom }}
 
-
+{{$lenint := parseint .ttd_len}}
 {{$template := concat "template_auto_" .ttd_len -}}{{$template_turn_1 := concat "template_auto_turn_1_" .ttd_len -}}{{$template_turn_2 := concat "template_auto_turn_2_" .ttd_len -}}
 
 {{if eq .globals.bpp "32"}}{{ altsprites .id $template $zoom }}{{else}}{{ altsprites8 .id $template $zoom }}{{end}}
@@ -14,15 +14,27 @@
 {{if eq .cargo_handling "Bulk" -}}
 {{ $cargo_list = "bulk" -}}
 {{else if eq .cargo_handling "Bolster" -}}
-{{ $cargo_list = "bdmt,wood,crate,metal,timber,fmsp_old,fmsp_modern,ensp_old,ensp_modern,tyre" -}}
+{{ $cargo_list = "bdmt,wood,crate,metal,timber,fmsp_old,fmsp_modern,ensp_old,ensp_modern,tyre,pipe,stsh,stwr" -}}
+
+{{if gt $lenint 4 }}
+{{ $cargo_list = concat $cargo_list ",vehicle_1800,vehicle_1910,vehicle_1970,vehicle_2010,vehicle_body_1800,vehicle_body_1910,vehicle_body_1970,vehicle_body_2010" }}
+{{else}}
+{{ $cargo_list = concat $cargo_list ",vehicle,vehicle_body" }}
+{{end}}
 {{else if eq .cargo_handling "Container" -}}
 {{ $cargo_list = "container" -}}
 {{end -}}
 
+{{ if $cargo_list}}
+{{$fullid := concat $id "_none"}}{{ altsprites8 $fullid $template $zoom }}
+{{ altsprites8n $fullid $template_turn_1 $zoom "_turn_1" }}
+{{ altsprites8n $fullid $template_turn_2 $zoom "_turn_2" }}
+{{end}}
+
 {{ range $index, $element := slice $cargo_list -}}{{ if $element -}}
 // Cargo: {{$element}}
 // cargo sprites are always 8 bit
-{{$elus := concat "_" $element}}{{ range $idx2, $el2 := slice "_none,_half,_full" }}
+{{$elus := concat "_" $element}}{{ range $idx2, $el2 := slice "_half,_full" }}
 {{$cargo := concat $elus $el2  }}
 {{$fullid := concat $id $cargo}}{{ altsprites8 $fullid $template $zoom }}
 {{ altsprites8n $fullid $template_turn_1 $zoom "_turn_1" }}
@@ -30,18 +42,18 @@
 {{end -}}
 {{$cargoid := concat $id $elus }}
 spritegroup spritegroup_{{$cargoid}} {
-	loading: [spriteset_{{$id}}_{{$element}}_none, spriteset_{{$id}}_{{$element}}_half, spriteset_{{$id}}_{{$element}}_half, spriteset_{{$id}}_{{$element}}_full ];
-	loaded: [spriteset_{{$id}}_{{$element}}_none, spriteset_{{$id}}_{{$element}}_half, spriteset_{{$id}}_{{$element}}_half, spriteset_{{$id}}_{{$element}}_full ];
+	loading: [spriteset_{{$id}}_none, spriteset_{{$id}}_{{$element}}_half, spriteset_{{$id}}_{{$element}}_half, spriteset_{{$id}}_{{$element}}_full ];
+	loaded: [spriteset_{{$id}}_none, spriteset_{{$id}}_{{$element}}_half, spriteset_{{$id}}_{{$element}}_half, spriteset_{{$id}}_{{$element}}_full ];
 }
 
 spritegroup spritegroup_{{$cargoid}}_turn_1 {
-	loading: [spriteset_{{$id}}_{{$element}}_none_turn_1, spriteset_{{$id}}_{{$element}}_half_turn_1, spriteset_{{$id}}_{{$element}}_half_turn_1, spriteset_{{$id}}_{{$element}}_full_turn_1 ];
-	loaded: [spriteset_{{$id}}_{{$element}}_none_turn_1, spriteset_{{$id}}_{{$element}}_half_turn_1, spriteset_{{$id}}_{{$element}}_half_turn_1, spriteset_{{$id}}_{{$element}}_full_turn_1 ];
+	loading: [spriteset_{{$id}}_none_turn_1, spriteset_{{$id}}_{{$element}}_half_turn_1, spriteset_{{$id}}_{{$element}}_half_turn_1, spriteset_{{$id}}_{{$element}}_full_turn_1 ];
+	loaded: [spriteset_{{$id}}_none_turn_1, spriteset_{{$id}}_{{$element}}_half_turn_1, spriteset_{{$id}}_{{$element}}_half_turn_1, spriteset_{{$id}}_{{$element}}_full_turn_1 ];
 }
 
 spritegroup spritegroup_{{$cargoid}}_turn_2 {
-	loading: [spriteset_{{$id}}_{{$element}}_none_turn_2,spriteset_{{$id}}_{{$element}}_half_turn_2, spriteset_{{$id}}_{{$element}}_half_turn_2, spriteset_{{$id}}_{{$element}}_full_turn_2 ];
-	loaded: [spriteset_{{$id}}_{{$element}}_none_turn_2,spriteset_{{$id}}_{{$element}}_half_turn_2, spriteset_{{$id}}_{{$element}}_half_turn_2, spriteset_{{$id}}_{{$element}}_full_turn_2 ];
+	loading: [spriteset_{{$id}}_none_turn_2,spriteset_{{$id}}_{{$element}}_half_turn_2, spriteset_{{$id}}_{{$element}}_half_turn_2, spriteset_{{$id}}_{{$element}}_full_turn_2 ];
+	loaded: [spriteset_{{$id}}_none_turn_2,spriteset_{{$id}}_{{$element}}_half_turn_2, spriteset_{{$id}}_{{$element}}_half_turn_2, spriteset_{{$id}}_{{$element}}_full_turn_2 ];
 }
 
 {{template "cargo_curve_switch" $cargoid }}
@@ -50,7 +62,7 @@ spritegroup spritegroup_{{$cargoid}}_turn_2 {
 
 {{ $has_cargo_switch := "" }}
 {{ $bulk_cargos := "aore,bdmt,bean,cass,cblk,cmnt,cere,clay,coal,coke,core,ctcd,fecr,ficr,frut,grai,grvl,iore,lime,kaol,maiz,mno2,nitr,olsd,peat,phos,pota,pore,qlme,rcyc,salt,sand,sash,scmt,sgbt,sgcn,slag,sugr,sulp,toff,uran,whea" }}
-{{ $bolster_cargos := "bdmt,wood,batt,beer,boom,bubl,cera,fzdr,java,nuts,papr,powr,toys,veng,vpts,plas,dyes,mnsp,ficr,soap,coat,copr,csti,iron,metl,stal,stcb,stel,stst,zinc,wdpr,fmsp,ensp,tyre" }}
+{{ $bolster_cargos := "bdmt,wood,batt,beer,boom,bubl,cera,fzdr,java,nuts,papr,powr,toys,veng,vpts,plas,dyes,mnsp,ficr,soap,coat,copr,csti,iron,metl,stal,stcb,stel,stst,zinc,wdpr,fmsp,ensp,tyre,pipe,vbod,vehi,stsh,stwr" }}
 
 {{ if eq .cargo_handling "Bulk" }}
 {{ $has_cargo_switch = "1" }}
@@ -82,6 +94,9 @@ switch (FEAT_TRAINS, SELF, switch_{{$id}}_graphics_{{$element}}, position_in_art
 {{if eq $element "batt" "beer" "boom" "bubl" "cera" "fzdr" "java" "nuts" "papr" "powr" "toys" "veng" "vpts" "plas" "dyes" "ficr" "mnsp" "soap" "coat" }}{{ $palette = printf "recolour_crate + %d - 2" $index }}{{ $cargosprite = "crate"}}{{end}}
 {{if eq $element "copr" "csti" "iron" "metl" "stal" "stcb" "stel" "stst" "zinc" }}{{ $palette =  printf "recolour_metal + %d - 21" $index }}{{ $cargosprite = "metal"}}{{end}}
 {{if eq $element "wdpr" }}{{ $cargosprite = "timber"}}{{end}}
+{{if eq $element "vbod" }}{{ $cargosprite = "vehicle_body"}}{{end}}
+{{if eq $element "vehi" }}{{ $cargosprite = "vehicle"}}{{end}}
+
 
 {{ if eq $element "fmsp" }}
 switch(FEAT_TRAINS, SELF, switch_{{$id}}_age_dependent_cargo_{{$element}}, current_year) {
@@ -93,6 +108,16 @@ switch(FEAT_TRAINS, SELF, switch_{{$id}}_age_dependent_cargo_{{$element}}, curre
     0..1945: switch_{{$id}}_{{$cargosprite}}_old_curve;
     switch_{{$id}}_{{$cargosprite}}_modern_curve;
 }
+{{ else if eq $element "vbod" "vehi" }}
+{{if gt $lenint 4 }}
+switch(FEAT_TRAINS, SELF, switch_{{$id}}_age_dependent_cargo_{{$element}}, current_year) {
+    0..1909: switch_{{$id}}_{{$cargosprite}}_1800_curve;
+    1909..1960: switch_{{$id}}_{{$cargosprite}}_1910_curve;
+    1961..2010: switch_{{$id}}_{{$cargosprite}}_1970_curve;
+    switch_{{$id}}_{{$cargosprite}}_2010_curve;
+}
+{{end}}
+
 {{ end}}
 
 switch(FEAT_TRAINS, SELF, switch_{{$id}}_cargo_{{$element}}, [
@@ -102,7 +127,13 @@ switch(FEAT_TRAINS, SELF, switch_{{$id}}_cargo_{{$element}}, [
     0: switch_{{$id}}_curve;
     {{ if eq $element "fmsp" "ensp" }}
     1: switch_{{$id}}_age_dependent_cargo_{{$element}};
+    {{ else if eq $element "vbod" "vehi" }}
+    {{ if gt $lenint 4 }}
+    1: switch_{{$id}}_age_dependent_cargo_{{$element}};
     {{else}}
+    1: switch_{{$id}}_{{$cargosprite}}_curve;
+    {{end}}
+    {{else }}
     1: switch_{{$id}}_{{$cargosprite}}_curve;
     {{end}}
 
