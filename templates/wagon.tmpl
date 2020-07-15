@@ -14,7 +14,7 @@
 {{if eq .cargo_handling "Bulk" -}}
 {{ $cargo_list = "bulk" -}}
 {{else if eq .cargo_handling "Bolster" -}}
-{{ $cargo_list = "bdmt,wood,crate,metal" -}}
+{{ $cargo_list = "bdmt,wood,crate,metal,timber,fmsp_old,fmsp_modern,ensp_old,ensp_modern,tyre" -}}
 {{else if eq .cargo_handling "Container" -}}
 {{ $cargo_list = "container" -}}
 {{end -}}
@@ -50,7 +50,7 @@ spritegroup spritegroup_{{$cargoid}}_turn_2 {
 
 {{ $has_cargo_switch := "" }}
 {{ $bulk_cargos := "aore,bdmt,bean,cass,cblk,cmnt,cere,clay,coal,coke,core,ctcd,fecr,ficr,frut,grai,grvl,iore,lime,kaol,maiz,mno2,nitr,olsd,peat,phos,pota,pore,qlme,rcyc,salt,sand,sash,scmt,sgbt,sgcn,slag,sugr,sulp,toff,uran,whea" }}
-{{ $bolster_cargos := "bdmt,wood,batt,beer,boom,bubl,cera,fzdr,java,nuts,papr,powr,toys,veng,vpts,plas,dyes,mnsp,ficr,soap,coat,copr,csti,iron,metl,stal,stcb,stel,stst,zinc" }}
+{{ $bolster_cargos := "bdmt,wood,batt,beer,boom,bubl,cera,fzdr,java,nuts,papr,powr,toys,veng,vpts,plas,dyes,mnsp,ficr,soap,coat,copr,csti,iron,metl,stal,stcb,stel,stst,zinc,wdpr,fmsp,ensp,tyre" }}
 
 {{ if eq .cargo_handling "Bulk" }}
 {{ $has_cargo_switch = "1" }}
@@ -81,13 +81,30 @@ switch (FEAT_TRAINS, SELF, switch_{{$id}}_graphics_{{$element}}, position_in_art
 // Be careful to update numbers when adding/removing cargo types
 {{if eq $element "batt" "beer" "boom" "bubl" "cera" "fzdr" "java" "nuts" "papr" "powr" "toys" "veng" "vpts" "plas" "dyes" "ficr" "mnsp" "soap" "coat" }}{{ $palette = printf "recolour_crate + %d - 2" $index }}{{ $cargosprite = "crate"}}{{end}}
 {{if eq $element "copr" "csti" "iron" "metl" "stal" "stcb" "stel" "stst" "zinc" }}{{ $palette =  printf "recolour_metal + %d - 21" $index }}{{ $cargosprite = "metal"}}{{end}}
+{{if eq $element "wdpr" }}{{ $cargosprite = "timber"}}{{end}}
+
+{{ if eq $element "fmsp" }}
+switch(FEAT_TRAINS, SELF, switch_{{$id}}_age_dependent_cargo_{{$element}}, current_year) {
+    0..1920: switch_{{$id}}_{{$cargosprite}}_old_curve;
+    switch_{{$id}}_{{$cargosprite}}_modern_curve;
+}
+{{ else if eq $element "ensp" }}
+switch(FEAT_TRAINS, SELF, switch_{{$id}}_age_dependent_cargo_{{$element}}, current_year) {
+    0..1945: switch_{{$id}}_{{$cargosprite}}_old_curve;
+    switch_{{$id}}_{{$cargosprite}}_modern_curve;
+}
+{{ end}}
 
 switch(FEAT_TRAINS, SELF, switch_{{$id}}_cargo_{{$element}}, [
     STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 1 ? CB_FLAG_MORE_SPRITES : 0) | (getbits(extra_callback_info1, 8, 8) == 1 ? {{$palette}} : PALETTE_USE_DEFAULT), 0x100),
     getbits(extra_callback_info1, 8, 8)
     ]) {
     0: switch_{{$id}}_curve;
+    {{ if eq $element "fmsp" "ensp" }}
+    1: switch_{{$id}}_age_dependent_cargo_{{$element}};
+    {{else}}
     1: switch_{{$id}}_{{$cargosprite}}_curve;
+    {{end}}
 
     // This should never be executed
     return spriteset_invisible;

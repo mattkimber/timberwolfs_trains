@@ -88,6 +88,132 @@
             "n": 6,
             "mask_original": true,
             "file": "cargo/full/metal_45.vox"
+        },
+        {
+            "name": "_timber_none",
+            "type": "repeat",
+            "mask_original": true,
+            "n": 1,
+            "file": "cargo/none/nothing.vox"
+        },
+        {
+            "name": "_timber_half",
+            "type": "repeat",
+            "n": 3,
+            "mask_original": true,
+            "file": "cargo/full/timber.vox"
+        },
+        {
+            "name": "_timber_full",
+            "type": "repeat",
+            "n": 5,
+            "mask_original": true,
+            "file": "cargo/full/timber.vox"
+        },
+        {
+            "name": "_ensp_modern_none",
+            "type": "repeat",
+            "mask_original": true,
+            "n": 1,
+            "file": "cargo/none/nothing.vox"
+        },
+        {
+            "name": "_ensp_modern_half",
+            "type": "repeat",
+            "n": 1,
+            "mask_original": true,
+            "file": "cargo/full/ensp_modern_90.vox"
+        },
+        {
+            "name": "_ensp_modern_full",
+            "type": "repeat",
+            "n": 2,
+            "mask_original": true,
+            "file": "cargo/full/ensp_modern_90.vox"
+        },
+        {
+            "name": "_ensp_old_none",
+            "type": "repeat",
+            "mask_original": true,
+            "n": 1,
+            "file": "cargo/none/nothing.vox"
+        },
+        {
+            "name": "_ensp_old_half",
+            "type": "repeat",
+            "n": 1,
+            "mask_original": true,
+            "file": "cargo/full/ensp_old_90.vox"
+        },
+        {
+            "name": "_ensp_old_full",
+            "type": "repeat",
+            "n": 2,
+            "mask_original": true,
+            "file": "cargo/full/ensp_old_90.vox"
+        },
+        {
+            "name": "_fmsp_modern_none",
+            "type": "repeat",
+            "mask_original": true,
+            "n": 1,
+            "file": "cargo/none/nothing.vox"
+        },
+        {
+            "name": "_fmsp_modern_half",
+            "type": "repeat",
+            "n": 1,
+            "mask_original": true,
+            "file": "cargo/full/fmsp_modern_90.vox"
+        },
+        {
+            "name": "_fmsp_modern_full",
+            "type": "repeat",
+            "n": 2,
+            "mask_original": true,
+            "file": "cargo/full/fmsp_modern_90.vox"
+        },
+        {
+            "name": "_fmsp_old_none",
+            "type": "repeat",
+            "mask_original": true,
+            "n": 1,
+            "file": "cargo/none/nothing.vox"
+        },
+        {
+            "name": "_fmsp_old_half",
+            "type": "repeat",
+            "n": 1,
+            "mask_original": true,
+            "file": "cargo/full/fmsp_old_90.vox"
+        },
+        {
+            "name": "_fmsp_old_full",
+            "type": "repeat",
+            "n": 2,
+            "mask_original": true,
+            "file": "cargo/full/fmsp_old_90.vox"
+        },
+        {
+            "name": "_tyre_none",
+            "type": "repeat",
+            "mask_original": true,
+            "n": 1,
+            "file": "cargo/none/nothing.vox"
+        },
+        {
+            "name": "_tyre_half",
+            "type": "repeat",
+            "n": 3,
+            "mask_original": true,
+            "file": "cargo/full/tyres.vox"
+        },
+        {
+            "name": "_tyre_full",
+            "type": "repeat",
+            "n": 6,
+            "mask_original": true,
+            "file": "cargo/full/tyres.vox"
         }
     ]
 }
