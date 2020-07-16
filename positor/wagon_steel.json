@@ -7,6 +7,27 @@
         {
             "name": "",
             "type": "produce_empty"
+        },
+        {
+            "name": "_none",
+            "type": "repeat",
+            "mask_original": true,
+            "n": 1,
+            "file": "cargo/none/nothing.vox"
+        },
+        {
+            "name": "_metal_half",
+            "type": "repeat",
+            "n": 1,
+            "mask_original": true,
+            "file": "cargo/full/coil_vertical.vox"
+        },
+        {
+            "name": "_metal_full",
+            "type": "repeat",
+            "n": 3,
+            "mask_original": true,
+            "file": "cargo/full/coil_vertical.vox"
         }
     ]
 }

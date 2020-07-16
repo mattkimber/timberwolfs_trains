@@ -218,6 +218,18 @@
             "mask_original": true,
             "n": 1,
             "file": "cargo/full/wire_rod.vox"
+        },
+        {
+            "name": "_rbar_half",
+            "type": "scale",
+            "mask_original": true,
+            "file": "cargo/half/rebar.vox"
+        },
+        {
+            "name": "_rbar_full",
+            "type": "scale",
+            "mask_original": true,
+            "file": "cargo/full/rebar.vox"
         }
     ]
 }

@@ -92,8 +92,8 @@ item(FEAT_TRAINS, vehicle_{{.id}}) {
         name:                         {{.name_string}};
         climates_available:           bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL, CLIMATE_TOYLAND);
         introduction_date:            date({{.year}}, 1, 1);
-        model_life:                   VEHICLE_NEVER_EXPIRES;
-        vehicle_life:                 30;
+        model_life:                   {{if .service}}{{.service}} - {{.year}} - 8;{{else}}VEHICLE_NEVER_EXPIRES;{{end}}
+        vehicle_life:                 {{.vehicle_life}};
 
         {{ if eq .type "steam" -}}
         engine_class:                 ENGINE_CLASS_STEAM;

@@ -13,8 +13,10 @@
 {{ $cargo_list := "" -}}{{ $id := .id -}}
 {{if eq .cargo_handling "Bulk" -}}
 {{ $cargo_list = "bulk" -}}
+{{else if eq .cargo_handling "Steel" -}}
+{{ $cargo_list = "metal" -}}
 {{else if eq .cargo_handling "Bolster" -}}
-{{ $cargo_list = "bdmt,wood,crate,metal,timber,fmsp_old,fmsp_modern,ensp_old,ensp_modern,tyre,pipe,stsh,stwr" -}}
+{{ $cargo_list = "bdmt,wood,crate,metal,timber,fmsp_old,fmsp_modern,ensp_old,ensp_modern,tyre,pipe,stsh,stwr,rbar" -}}
 
 {{if gt $lenint 4 }}
 {{ $cargo_list = concat $cargo_list ",vehicle_1800,vehicle_1910,vehicle_1970,vehicle_2010,vehicle_body_1800,vehicle_body_1910,vehicle_body_1970,vehicle_body_2010" }}
@@ -62,8 +64,8 @@ spritegroup spritegroup_{{$cargoid}}_turn_2 {
 
 {{ $has_cargo_switch := "" }}
 {{ $bulk_cargos := "aore,bdmt,bean,cass,cblk,cmnt,cere,clay,coal,coke,core,ctcd,fecr,ficr,frut,grai,grvl,iore,lime,kaol,maiz,mno2,nitr,olsd,peat,phos,pota,pore,qlme,rcyc,salt,sand,sash,scmt,sgbt,sgcn,slag,sugr,sulp,toff,uran,whea" }}
-{{ $bolster_cargos := "bdmt,wood,batt,beer,boom,bubl,cera,fzdr,java,nuts,papr,powr,toys,veng,vpts,plas,dyes,mnsp,ficr,soap,coat,copr,csti,iron,metl,stal,stcb,stel,stst,zinc,wdpr,fmsp,ensp,tyre,pipe,vbod,vehi,stsh,stwr" }}
-
+{{ $bolster_cargos := "bdmt,wood,batt,beer,boom,bubl,cera,fzdr,java,nuts,papr,powr,toys,veng,vpts,plas,dyes,mnsp,ficr,soap,coat,copr,csti,iron,metl,stal,stcb,stel,stst,zinc,wdpr,fmsp,ensp,tyre,pipe,vbod,vehi,stsh,stwr,rbar" }}
+{{ $metal_cargos := "copr,csti,iron,metl,stal,stcb,stel,stst,zinc" }}
 {{ if eq .cargo_handling "Bulk" }}
 {{ $has_cargo_switch = "1" }}
 {{ range $index, $element := slice $bulk_cargos }}
@@ -73,6 +75,29 @@ switch(FEAT_TRAINS, SELF, switch_{{$id}}_cargo_{{$element}}, [
     ]) {
     0: switch_{{$id}}_curve;
     1: switch_{{$id}}_bulk_curve;
+
+    // This should never be executed
+    return spriteset_invisible;
+}
+
+switch (FEAT_TRAINS, SELF, switch_{{$id}}_graphics_{{$element}}, position_in_articulated_veh % 3) 
+{
+    1: return switch_{{$id}}_cargo_{{$element}};
+    return spriteset_invisible;
+}
+{{ end }}
+{{else if eq .cargo_handling "Steel" }}
+{{ $has_cargo_switch = "1" }}
+{{ range $index, $element := slice $metal_cargos }}
+{{ $palette := printf "recolour_metal + %d" $index }}
+
+switch(FEAT_TRAINS, SELF, switch_{{$id}}_cargo_{{$element}}, [
+    STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 1 ? CB_FLAG_MORE_SPRITES : 0) | (getbits(extra_callback_info1, 8, 8) == 1 ? {{$palette}} : PALETTE_USE_DEFAULT), 0x100),
+    getbits(extra_callback_info1, 8, 8)
+    ]) {
+    0: switch_{{$id}}_curve;
+    1: switch_{{$id}}_metal_curve;
+
 
     // This should never be executed
     return spriteset_invisible;
@@ -179,7 +204,7 @@ switch (FEAT_TRAINS, SELF, switch_{{.id}}_length, position_in_articulated_veh % 
     {{end}}    
 }
 
-{{ if ne .cargo_handling "Container" }}
+{{ if ne  .cargo_handling "Container" }}
 switch (FEAT_TRAINS, SELF, switch_{{.id}}_graphics, position_in_articulated_veh % 3) 
 {
     1: return switch_{{.id}}_curve;
@@ -193,8 +218,8 @@ item(FEAT_TRAINS, vehicle_{{.id}}) {
         name:                         {{.name_string}};
         climates_available:           bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL, CLIMATE_TOYLAND);
         introduction_date:            date({{.year}}, 1, 1);
-        model_life:                   VEHICLE_NEVER_EXPIRES;
-        vehicle_life:                 30;
+        model_life:                   {{if .service}}{{.service}} - {{.year}} - 8;{{else}}VEHICLE_NEVER_EXPIRES;{{end}}
+        vehicle_life:                 {{.vehicle_life}};
 
         default_cargo_type:           {{if ne .default_cargo "BRAKE"}}{{.default_cargo}}{{else}}GOOD{{end}};
 
@@ -256,7 +281,11 @@ item(FEAT_TRAINS, vehicle_{{.id}}) {
         {{ toupper $element }}: switch_{{$id}}_graphics_{{$element}};{{end}}
         // Manual re-used bolster cargo
         BRCK: switch_{{$id}}_graphics_bdmt;
+        {{ else if eq .cargo_handling "Steel" }}
+        {{ range $index, $element := slice $metal_cargos }}
+        {{ toupper $element }}: switch_{{$id}}_graphics_{{$element}};{{end}}
         {{end}}
+
         additional_text: return {{.additional_text_string}};
         articulated_part: switch_{{.id}}_articulation;
         length: switch_{{.id}}_length;

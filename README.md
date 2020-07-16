@@ -31,27 +31,6 @@ table formula handles this, although the voxel object may need padding to correc
 
 The tracking table contains suitable voxel sizes for each size. These sizes assume vehicles have buffers!
 
-## Smart 32bpp
-
-32bpp extra zoom sets get large easily. Timberwolf's Road Vehicles 2.1.2 has 115 vehicles and is 35MB in size, the majority
-of which is repeated sprites of the same vehicle with multiple different cargo and loading states. While a rail vehicle set
-does not need to repeat cargo graphics across so many vehicles, there is still the potential for many near-duplicate sprites
-to add valve gear animations, open carriage doors at stations and other small graphical details.
-
-A 32bpp sprite with mask is around 4-5x the size of an 8bpp one. We can save a lot of file size at the cost of some extra
-computational expense drawing sprites by using OpenTTD's sprite composition feature in the following way:
-
-* Base vehicle sprites are 32bpp, with masks.
-* Animated elements are 8bpp overlays, containing only the moving parts.
-
-The small size and motion of such elements means they do not benefit from the added colour range of 32bpp, and by using 
-a sprite containing *only* the element they are also smaller on disk than one containing the full vehicle due to image
-compression. (Note that this latter condition may not be true for sprites in memory, but this is less critical than
-minimising download time and storage required for the set)
-
-This needs a snappier name than "compositing 8bpp sprites over 32bpp ones to save file size" so I've called it 
-Smart 32bpp.
-
 ### Making it work
 
 Documentation on the sprite composition is a little thin on the ground, to make the feature work in NML the 
