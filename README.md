@@ -10,7 +10,15 @@ There are two features with running costs.
    only a third of their usual running costs.
 2. As locomotives get older, their running costs will start to increase. The increase will start when
    the engine is within 5 years of its maximum age, eventually increasing to 3x the original running
-   cost.
+   cost. This is to provide an interesting trade-off between getting more life out of engines by using
+   them beyond their design life, and spending money on replacements.
+
+Types that were unreliable or unsuccessful in real life are given a shorter design life to tie in
+with this behaviour.
+
+## Tare speeds
+
+As per prototype, most goods wagons can run faster empty than when loaded.
 
 ## Scale
 

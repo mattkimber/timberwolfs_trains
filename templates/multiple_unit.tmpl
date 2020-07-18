@@ -89,13 +89,25 @@ switch (FEAT_TRAINS, SELF, switch_{{.id}}_visual_effect, position_in_articulated
     return VISUAL_EFFECT_DISABLE;
 }
 
+
+{{template "attach_mu_switch" .}}
+
+
 item(FEAT_TRAINS, vehicle_{{.id}}, {{.numeric_id}}) {
     property {
         name:                         {{.name_string}};
         climates_available:           bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL, CLIMATE_TOYLAND);
         introduction_date:            date({{.year}}, 1, 1);
-        model_life:                   {{if .service}}{{.service}} - {{.year}} - 8;{{else}}VEHICLE_NEVER_EXPIRES;{{end}}
+        model_life:                   {{if .service}}{{.lifespan}};{{else}}VEHICLE_NEVER_EXPIRES;{{end}}
+        retire_early:                 -4;
         vehicle_life:                 {{.vehicle_life}};
+
+        {{if eq .default_cargo "PASS" }}
+        refittable_cargo_classes: bitmask(CC_PASSENGERS);
+        cargo_allow_refit: [ YETI, YETY ]; 
+        {{ else if eq .default_cargo "MAIL" }}
+        refittable_cargo_classes: bitmask(CC_MAIL);
+        {{end}}
 
         {{ if eq .type "steam" -}}
         engine_class:                 ENGINE_CLASS_STEAM;
@@ -140,5 +152,7 @@ item(FEAT_TRAINS, vehicle_{{.id}}, {{.numeric_id}}) {
         purchase_running_cost_factor: return {{.running_cost}};
         visual_effect_and_powered: switch_{{.id}}_visual_effect;
         {{if .capacity}}purchase_cargo_capacity:  {{if .reuse_sprites}}spriteset_{{.reuse_sprites}}{{else}}spriteset_{{.id}}{{end}};{{end}}
+        
+        can_attach_wagon: switch_{{.id}}_attach_wagons;
     }
 }

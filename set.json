@@ -23,7 +23,8 @@
             "nested/curve_switch",
             "nested/pantograph_switch",
             "nested/pantograph_graphics",
-            "nested/running_cost_switch"
+            "nested/running_cost_switch",
+            "nested/attach_mu_switch"
         ]
     },
     "static_templates": [
@@ -40,6 +41,9 @@
             "template":  "templates/static/recolour.nml"
         }
     ],
+    "fixed_strings": {
+        "str_mu_cannot_attach": "Multiple units can only be coupled to another multiple unit of the same (or compatible) type."
+    },
     "cargo_table": [        
         "PASS",
         "TOUR",
