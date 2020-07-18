@@ -13,7 +13,8 @@ traininfo_y_offset=3;
 
  basecost {
      PR_BUILD_VEHICLE_WAGON: 3;
-     PR_RUNNING_TRAIN_STEAM: 2;
-     PR_RUNNING_TRAIN_DIESEL: 2;
-     PR_RUNNING_TRAIN_ELECTRIC: 2;
+     PR_BUILD_VEHICLE_TRAIN: -1;
+     PR_RUNNING_TRAIN_STEAM: -3;     // Wagon running costs
+     PR_RUNNING_TRAIN_DIESEL: 2;    // Train running costs
  }
+

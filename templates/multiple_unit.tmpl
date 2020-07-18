@@ -59,6 +59,8 @@ switch (FEAT_TRAINS, SELF, switch_{{.id}}_length, position_in_articulated_veh % 
 {{template "pantograph_switch" . }}
 {{end}}
 
+{{template "running_cost_switch" . }}
+
 switch (FEAT_TRAINS, SELF, switch_{{.id}}_graphics, position_in_articulated_veh % ({{.cars}} * 3)) 
 {
     {{range $index, $element := $layout -}}
@@ -87,7 +89,7 @@ switch (FEAT_TRAINS, SELF, switch_{{.id}}_visual_effect, position_in_articulated
     return VISUAL_EFFECT_DISABLE;
 }
 
-item(FEAT_TRAINS, vehicle_{{.id}}) {
+item(FEAT_TRAINS, vehicle_{{.id}}, {{.numeric_id}}) {
     property {
         name:                         {{.name_string}};
         climates_available:           bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL, CLIMATE_TOYLAND);
@@ -97,15 +99,13 @@ item(FEAT_TRAINS, vehicle_{{.id}}) {
 
         {{ if eq .type "steam" -}}
         engine_class:                 ENGINE_CLASS_STEAM;
-        running_cost_base:            RUNNING_COST_STEAM;
         {{ else if eq .type "electric" -}}
         engine_class:                 ENGINE_CLASS_ELECTRIC;
-        running_cost_base:            RUNNING_COST_ELECTRIC;
         {{else -}}
         engine_class:                 ENGINE_CLASS_DIESEL;
-        running_cost_base:            RUNNING_COST_DIESEL;
         {{- end}}
 
+        running_cost_base:            RUNNING_COST_DIESEL;
         tractive_effort_coefficient:  {{.te_coeff}};
 
         power:                        {{.power}} hp;
@@ -118,11 +118,14 @@ item(FEAT_TRAINS, vehicle_{{.id}}) {
         misc_flags:                   bitmask(TRAIN_FLAG_2CC, TRAIN_FLAG_MU {{if eq .type "dual_electric"}}, TRAIN_FLAG_SPRITE_STACK{{end}} {{ if .tilting }}, TRAIN_FLAG_TILT {{end}});
         refit_cost:                   0;
         track_type:                   {{.railtype}};
+ 
+        dual_headed:                0;
 
         {{if .capacity}}
         cargo_capacity:               {{.capacity}} / 3;
+        {{if ne .capacity "0"}}
         default_cargo_type:           {{.default_cargo}};
-        {{end}}
+        {{end}}{{end}}
         weight:                       {{.weight}} ton;
         
     }
@@ -133,6 +136,8 @@ item(FEAT_TRAINS, vehicle_{{.id}}) {
         additional_text: return {{.additional_text_string}};
         articulated_part: switch_{{.id}}_articulation;
         length: switch_{{.id}}_length;
+        running_cost_factor: switch_{{.id}}_running_cost;
+        purchase_running_cost_factor: return {{.running_cost}};
         visual_effect_and_powered: switch_{{.id}}_visual_effect;
         {{if .capacity}}purchase_cargo_capacity:  {{if .reuse_sprites}}spriteset_{{.reuse_sprites}}{{else}}spriteset_{{.id}}{{end}};{{end}}
     }

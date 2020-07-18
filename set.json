@@ -22,7 +22,8 @@
             "nested/cargo_curve_switch",
             "nested/curve_switch",
             "nested/pantograph_switch",
-            "nested/pantograph_graphics"
+            "nested/pantograph_graphics",
+            "nested/running_cost_switch"
         ]
     },
     "static_templates": [

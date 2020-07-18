@@ -2,6 +2,16 @@
 
 A set of UK trains.
 
+## Running Costs
+
+There are two features with running costs.
+
+1. Vehicles that are not moving (e.g. loading/unloading cargo or waiting at a signal) will incur
+   only a third of their usual running costs.
+2. As locomotives get older, their running costs will start to increase. The increase will start when
+   the engine is within 5 years of its maximum age, eventually increasing to 3x the original running
+   cost.
+
 ## Scale
 
 This set takes advantage of the larger canvas in MagicaVoxel to have larger, more detailed objects.

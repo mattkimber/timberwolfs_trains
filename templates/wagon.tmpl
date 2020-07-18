@@ -212,8 +212,7 @@ switch (FEAT_TRAINS, SELF, switch_{{.id}}_graphics, position_in_articulated_veh 
 }
 {{end}}
 
-
-item(FEAT_TRAINS, vehicle_{{.id}}) {
+item(FEAT_TRAINS, vehicle_{{.id}}, {{.numeric_id}}) {
     property {
         name:                         {{.name_string}};
         climates_available:           bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL, CLIMATE_TOYLAND);
