@@ -1,9 +1,9 @@
 {{ define "pantograph_switch" }}
 {{ if not .reuse_sprites}}
 {{ $name := concat .pantograph_unit "_pan_up" }}
-{{template "curve_switch" $name }}
+{{if ne .ttd_len "4"}}{{template "curve_switch" $name }}{{else}}{{template "curve_switch_short" $name }}{{end}}
 {{ $name = concat .pantograph_unit "_pan_down" }}
-{{template "curve_switch" $name }}
+{{if ne .ttd_len "4"}}{{template "curve_switch" $name }}{{else}}{{template "curve_switch_short" $name }}{{end}}
 
 switch (FEAT_TRAINS, SELF, switch_{{.pantograph_unit}}_pantograph_state, current_railtype) 
 {

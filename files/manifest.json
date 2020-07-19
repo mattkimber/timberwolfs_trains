@@ -10,6 +10,7 @@
   "brightness": -0.025,
   "contrast": 0.025,
   "pad_to_full_length": false,
+  "is_hill": false,
   "size": {
     "x": 256,
     "y": 42,

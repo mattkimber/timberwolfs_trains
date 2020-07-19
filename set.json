@@ -13,7 +13,7 @@
         "table": "table.csv",
         "template_directory": "templates",
         "additional_text_field": "additional_text",
-        "additional_text_format": "{SILVER}%s",
+        "additional_text_format": "%s",
         "globals": {
             "zoom": "2",
             "bpp": "8"
@@ -21,10 +21,13 @@
         "nestable_templates": [ 
             "nested/cargo_curve_switch",
             "nested/curve_switch",
+            "nested/cargo_curve_switch_short",
+            "nested/curve_switch_short",
             "nested/pantograph_switch",
             "nested/pantograph_graphics",
             "nested/running_cost_switch",
-            "nested/attach_mu_switch"
+            "nested/attach_mu_switch",
+            "nested/extra_text_switch"
         ]
     },
     "static_templates": [
@@ -39,6 +42,9 @@
         },
         {
             "template":  "templates/static/recolour.nml"
+        },
+        {
+            "template": "templates/static/sprite_templates_hills.nml"
         }
     ],
     "fixed_strings": {

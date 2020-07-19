@@ -1,0 +1,17 @@
+{
+    "files": [
+      "*.vox"
+    ],
+    "operations": [
+      {
+        "name": "_up",
+        "type": "rotate_y",
+        "angle": 10
+      },
+      {
+        "name": "_down",
+        "type": "rotate_y",
+        "angle": -10
+      }
+    ]
+}

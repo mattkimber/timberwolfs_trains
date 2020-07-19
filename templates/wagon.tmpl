@@ -1,13 +1,21 @@
 {{ $zoom := parseint .globals.zoom }}
 
 {{$lenint := parseint .ttd_len}}
-{{$template := concat "template_auto_" .ttd_len -}}{{$template_turn_1 := concat "template_auto_turn_1_" .ttd_len -}}{{$template_turn_2 := concat "template_auto_turn_2_" .ttd_len -}}
+{{$template := concat "template_auto_" .ttd_len -}}
+{{$template_turn_1 := concat "template_auto_turn_1_" .ttd_len -}}
+{{$template_turn_2 := concat "template_auto_turn_2_" .ttd_len -}}
+{{$template_up := concat "template_auto_up_" .ttd_len -}}
+{{$template_down := concat "template_auto_down_" .ttd_len -}}
 
 {{if eq .globals.bpp "32"}}{{ altsprites .id $template $zoom }}{{else}}{{ altsprites8 .id $template $zoom }}{{end}}
 {{if eq .globals.bpp "32"}}{{ altspritesn .id $template_turn_1 $zoom "_turn_1" }}{{else}}{{ altsprites8n .id $template_turn_1 $zoom "_turn_1" }}{{end}}
 {{if eq .globals.bpp "32"}}{{ altspritesn .id $template_turn_2 $zoom "_turn_2" }}{{else}}{{ altsprites8n .id $template_turn_2 $zoom "_turn_2" }}{{end}}
 
-{{template "curve_switch" .id }}
+{{$hill := concat .id "_up"}}{{if eq .globals.bpp "32"}}{{ altspritesn $hill $template_up $zoom "_up" }}{{else}}{{ altsprites8n $hill $template_up $zoom "_up" }}{{end}}
+{{$hill = concat .id "_down"}}{{if eq .globals.bpp "32"}}{{ altspritesn $hill $template_down $zoom "_down" }}{{else}}{{ altsprites8n $hill $template_down $zoom "_down" }}{{end}}
+
+
+{{if ne .ttd_len "4"}}{{template "curve_switch" .id }}{{else}}{{template "curve_switch_short" .id }}{{end}}
 
 // Cargo sprites
 {{ $cargo_list := "" -}}{{ $id := .id -}}
@@ -31,6 +39,9 @@
 {{$fullid := concat $id "_none"}}{{ altsprites8 $fullid $template $zoom }}
 {{ altsprites8n $fullid $template_turn_1 $zoom "_turn_1" }}
 {{ altsprites8n $fullid $template_turn_2 $zoom "_turn_2" }}
+{{$hill := concat $fullid "_up"}}{{ altsprites8n $hill $template_up $zoom "_up" }}
+{{$hill = concat $fullid "_down"}}{{ altsprites8n $hill $template_down $zoom "_down" }}
+
 {{end}}
 
 {{ range $index, $element := slice $cargo_list -}}{{ if $element -}}
@@ -41,6 +52,8 @@
 {{$fullid := concat $id $cargo}}{{ altsprites8 $fullid $template $zoom }}
 {{ altsprites8n $fullid $template_turn_1 $zoom "_turn_1" }}
 {{ altsprites8n $fullid $template_turn_2 $zoom "_turn_2" }}
+{{$hill := concat $fullid "_up"}}{{ altsprites8n $hill $template_up $zoom "_up" }}
+{{$hill = concat $fullid "_down"}}{{ altsprites8n $hill $template_down $zoom "_down" }}
 {{end -}}
 {{$cargoid := concat $id $elus }}
 spritegroup spritegroup_{{$cargoid}} {
@@ -58,7 +71,20 @@ spritegroup spritegroup_{{$cargoid}}_turn_2 {
 	loaded: [spriteset_{{$id}}_none_turn_2,spriteset_{{$id}}_{{$element}}_half_turn_2, spriteset_{{$id}}_{{$element}}_half_turn_2, spriteset_{{$id}}_{{$element}}_full_turn_2 ];
 }
 
-{{template "cargo_curve_switch" $cargoid }}
+spritegroup spritegroup_{{$cargoid}}_up {
+	loading: [spriteset_{{$id}}_none_up_up,spriteset_{{$id}}_{{$element}}_half_up_up, spriteset_{{$id}}_{{$element}}_half_up_up, spriteset_{{$id}}_{{$element}}_full_up_up ];
+	loaded: [spriteset_{{$id}}_none_up_up,spriteset_{{$id}}_{{$element}}_half_up_up, spriteset_{{$id}}_{{$element}}_half_up_up, spriteset_{{$id}}_{{$element}}_full_up_up ];
+}
+
+spritegroup spritegroup_{{$cargoid}}_down {
+	loading: [spriteset_{{$id}}_none_down_down,spriteset_{{$id}}_{{$element}}_half_down_down, spriteset_{{$id}}_{{$element}}_half_down_down, spriteset_{{$id}}_{{$element}}_full_down_down ];
+	loaded: [spriteset_{{$id}}_none_down_down,spriteset_{{$id}}_{{$element}}_half_down_down, spriteset_{{$id}}_{{$element}}_half_down_down, spriteset_{{$id}}_{{$element}}_full_down_down ];
+}
+
+
+
+{{if gt $lenint 4}}{{template "cargo_curve_switch" $cargoid }}{{else}}{{template "cargo_curve_switch_short" $cargoid }}{{end}}
+
 {{end -}}{{ end }}
 // End cargo sprites
 
@@ -220,6 +246,9 @@ switch (FEAT_TRAINS, SELF, switch_{{.id}}_speed, cargo_count)
 }
 {{end}}
 
+{{template "extra_text_switch" . }}
+
+
 item(FEAT_TRAINS, vehicle_{{.id}}, {{.numeric_id}}) {
     property {
         name:                         {{.name_string}};
@@ -295,7 +324,7 @@ item(FEAT_TRAINS, vehicle_{{.id}}, {{.numeric_id}}) {
 
 
         {{if .tare_speed}}speed: switch_{{.id}}_speed;{{end}}
-        additional_text: return {{.additional_text_string}};
+        additional_text: {{ if .tare_speed -}}{{.id}}_extra_text_switch{{else}}return {{.additional_text_string}}{{end}};
         articulated_part: switch_{{.id}}_articulation;
         length: switch_{{.id}}_length;
         purchase: spriteset_{{.id}};

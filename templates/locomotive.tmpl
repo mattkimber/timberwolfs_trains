@@ -10,21 +10,35 @@
 {{$template_turn = concat "template_auto_turn_2_" .ttd_len -}}
 {{if eq .globals.bpp "32"}}{{ altspritesn .id $template_turn $zoom "_turn_2" }}{{else}}{{ altsprites8n .id $template_turn $zoom "_turn_2" }}{{end}}
 
+{{$template_turn := concat "template_auto_up_" .ttd_len -}}{{$hill := concat .id "_up" }}
+{{if eq .globals.bpp "32"}}{{ altspritesn $hill $template_turn $zoom "_up" }}{{else}}{{ altsprites8n $hill $template_turn $zoom "_up" }}{{end}}
+
+{{$template_turn := concat "template_auto_down_" .ttd_len -}}{{$hill = concat .id "_down" }}
+{{if eq .globals.bpp "32"}}{{ altspritesn $hill $template_turn $zoom "_down" }}{{else}}{{ altsprites8n $hill $template_turn $zoom "_down" }}{{end}}
+
 
 // Graphics - animated or not
 {{ if .animated -}}
 {{ $ani := concat .id "_anim_1" }}{{ altsprites8 $ani $template $zoom }}
 {{$template_turn := concat "template_auto_turn_1_" .ttd_len -}}{{ altspritesn $ani $template_turn $zoom "_turn_1" }}
 {{$template_turn := concat "template_auto_turn_2_" .ttd_len -}}{{ altspritesn $ani $template_turn $zoom "_turn_2" }}
+{{$template_turn := concat "template_auto_up_" .ttd_len -}}{{$hill := concat $ani "_up" }}{{ altspritesn $hill $template_turn $zoom "_up" }}
+{{$template_turn := concat "template_auto_down_" .ttd_len -}}{{$hill = concat $ani "_down" }}{{ altspritesn $hill $template_turn $zoom "_down" }}
 {{ $ani := concat .id "_anim_2" }}{{ altsprites8 $ani $template $zoom }}
 {{$template_turn := concat "template_auto_turn_1_" .ttd_len -}}{{ altspritesn $ani $template_turn $zoom "_turn_1" }}
 {{$template_turn := concat "template_auto_turn_2_" .ttd_len -}}{{ altspritesn $ani $template_turn $zoom "_turn_2" }}
+{{$template_turn := concat "template_auto_up_" .ttd_len -}}{{$hill = concat $ani "_up" }}{{ altspritesn $hill $template_turn $zoom "_up" }}
+{{$template_turn := concat "template_auto_down_" .ttd_len -}}{{$hill = concat $ani "_down" }}{{ altspritesn $hill $template_turn $zoom "_down" }}
 {{ $ani := concat .id "_anim_3" }}{{ altsprites8 $ani $template $zoom }}
 {{$template_turn := concat "template_auto_turn_1_" .ttd_len -}}{{ altspritesn $ani $template_turn $zoom "_turn_1" }}
 {{$template_turn := concat "template_auto_turn_2_" .ttd_len -}}{{ altspritesn $ani $template_turn $zoom "_turn_2" }}
+{{$template_turn := concat "template_auto_up_" .ttd_len -}}{{$hill = concat $ani "_up" }}{{ altspritesn $hill $template_turn $zoom "_up" }}
+{{$template_turn := concat "template_auto_down_" .ttd_len -}}{{$hill = concat $ani "_down" }}{{ altspritesn $hill $template_turn $zoom "_down" }}
 {{ $ani := concat .id "_anim_4" }}{{ altsprites8 $ani $template $zoom }}
 {{$template_turn := concat "template_auto_turn_1_" .ttd_len -}}{{ altspritesn $ani $template_turn $zoom "_turn_1" }}
 {{$template_turn := concat "template_auto_turn_2_" .ttd_len -}}{{ altspritesn $ani $template_turn $zoom "_turn_2" }}
+{{$template_turn := concat "template_auto_up_" .ttd_len -}}{{$hill = concat $ani "_up" }}{{ altspritesn $hill $template_turn $zoom "_up" }}
+{{$template_turn := concat "template_auto_down_" .ttd_len -}}{{$hill = concat $ani "_down" }}{{ altspritesn $hill $template_turn $zoom "_down" }}
 {{- else if .double_headed -}}
 {{$rev := concat .id "_rev" }}
 {{if eq .globals.bpp "32"}}{{ altsprites $rev $template $zoom }}{{else}}{{ altsprites8 $rev $template $zoom }}{{end}}
@@ -35,14 +49,20 @@
 {{$template_turn = concat "template_auto_turn_2_" .ttd_len -}}
 {{if eq .globals.bpp "32"}}{{ altspritesn $rev $template_turn $zoom "_turn_2" }}{{else}}{{ altsprites8n $rev $template_turn $zoom "_turn_2" }}{{end}}
 
+{{$template_turn := concat "template_auto_up_" .ttd_len -}}{{$hill := concat $rev "_up" }}
+{{if eq .globals.bpp "32"}}{{ altspritesn $hill $template_turn $zoom "_up" }}{{else}}{{ altsprites8n $hill $template_turn $zoom "_up" }}{{end}}
+
+{{$template_turn := concat "template_auto_down_" .ttd_len -}}{{$hill = concat $rev "_down" }}
+{{if eq .globals.bpp "32"}}{{ altspritesn $hill $template_turn $zoom "_down" }}{{else}}{{ altsprites8n $hill $template_turn $zoom "_down" }}{{end}}
+
 {{- end}}
 {{- end }}
 
 {{- $type := .type }}{{ $id := .id}}
 {{ if eq .type "dual_electric" -}}{{template "pantograph_graphics" . }}{{end}}
 
-{{ if not .reuse_sprites }}{{template "curve_switch" .id }}{{end}}
-{{ if .double_headed }}{{$rev := concat .id "_rev"}}{{template "curve_switch" $rev }}{{end}}
+{{ if not .reuse_sprites }}{{if ne .ttd_len "4"}}{{template "curve_switch" .id }}{{else}}{{template "curve_switch_short" .id }}{{end}}{{end}}
+{{ if .double_headed }}{{$rev := concat .id "_rev"}}{{if ne .ttd_len "4"}}{{template "curve_switch" $rev }}{{else}}{{template "curve_switch_short" $rev }}{{end}}{{end}}
 
 // Articulation
 switch(FEAT_TRAINS, SELF, switch_{{.id}}_articulation, extra_callback_info1) {
@@ -61,14 +81,14 @@ switch (FEAT_TRAINS, SELF, switch_{{.id}}_length, position_in_articulated_veh % 
 {{template "pantograph_switch" . }}
 {{end}}
 
-{{ $sprite := .id}}{{ if .reuse_sprites }}{{ $sprite = .reuse_sprites }}{{end -}}
+{{$len := .ttd_len}}{{ $sprite := .id}}{{ if .reuse_sprites }}{{ $sprite = .reuse_sprites }}{{end -}}
 {{ if .animated -}}
 
 {{ if not .reuse_sprites }}
-{{$anim := concat $sprite "_anim_1" }}{{template "curve_switch" $anim  }}
-{{$anim := concat $sprite "_anim_2" }}{{template "curve_switch" $anim  }}
-{{$anim := concat $sprite "_anim_3" }}{{template "curve_switch" $anim  }}
-{{$anim := concat $sprite "_anim_4" }}{{template "curve_switch" $anim  }}
+{{$anim := concat $sprite "_anim_1" }}{{if eq $len "4"}}{{template "curve_switch" $anim }}{{else}}{{template "curve_switch_short"$anim }}{{end}}
+{{$anim := concat $sprite "_anim_2" }}{{if eq $len "4"}}{{template "curve_switch" $anim }}{{else}}{{template "curve_switch_short"$anim }}{{end}}
+{{$anim := concat $sprite "_anim_3" }}{{if eq $len "4"}}{{template "curve_switch" $anim }}{{else}}{{template "curve_switch_short"$anim }}{{end}}
+{{$anim := concat $sprite "_anim_4" }}{{if eq $len "4"}}{{template "curve_switch" $anim }}{{else}}{{template "curve_switch_short"$anim }}{{end}}
 {{end}}
 
 switch (FEAT_TRAINS, SELF, switch_{{.id}}_animation, motion_counter % 4) 
@@ -225,3 +245,4 @@ item(FEAT_TRAINS, vehicle_{{.id}}, {{.numeric_id}}) {
         {{if ne .capacity "0"}}purchase_cargo_capacity:  {{if .reuse_sprites}}spriteset_{{.reuse_sprites}}{{else}}spriteset_{{.id}}{{end}};{{end}}
     }
 }
+

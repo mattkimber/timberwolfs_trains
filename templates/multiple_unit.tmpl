@@ -17,6 +17,12 @@
 {{$template_turn = concat "template_auto_turn_2_" $len -}}
 {{if eq $bpp "32"}}{{ altspritesn $element $template_turn $zoom "_turn_2" }}{{else}}{{ altsprites8n $element $template_turn $zoom "_turn_2" }}{{end}}
 
+{{$template_turn := concat "template_auto_up_" $len -}}{{$hill := concat $element "_up" }}
+{{if eq $bpp "32"}}{{ altspritesn $hill $template_turn $zoom "_up" }}{{else}}{{ altsprites8n $hill $template_turn $zoom "_up" }}{{end}}
+
+{{$template_turn := concat "template_auto_down_" $len -}}{{$hill = concat $element "_down" }}
+{{if eq $bpp "32"}}{{ altspritesn $hill $template_turn $zoom "_down" }}{{else}}{{ altsprites8n $hill $template_turn $zoom "_down" }}{{end}}
+
 {{end -}}
 {{end}}
 
@@ -51,7 +57,7 @@ switch (FEAT_TRAINS, SELF, switch_{{.id}}_length, position_in_articulated_veh % 
 {{range $index, $element := $layout -}}
 {{- $newsprite := index $newsprites $index -}}
 {{- if eq $newsprite "1" -}}
-{{template "curve_switch" $element }}
+{{if eq $len "4"}}{{template "curve_switch" $element }}{{else}}{{template "curve_switch_short" $element }}{{end}}
 {{end}}
 {{end}}
 

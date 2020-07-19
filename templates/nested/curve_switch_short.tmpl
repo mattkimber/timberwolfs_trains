@@ -1,5 +1,5 @@
-{{define "curve_switch"}}
-switch (FEAT_TRAINS, SELF, switch_{{.}}_height, getbits(extra_callback_info1, 0, 8) == 0 ? other_veh_z_offset(-1) : 0) {
+{{define "curve_switch_short"}}
+switch (FEAT_TRAINS, SELF, switch_{{.}}_height, getbits(extra_callback_info1, 0, 8) == 0 ? other_veh_z_offset(-1) + other_veh_z_offset(1) : 0) {
     -128..-1: return spriteset_{{.}}_down_down;
     1..127: return spriteset_{{.}}_up_up;
     return spriteset_{{.}};
