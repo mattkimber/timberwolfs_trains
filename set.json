@@ -7,7 +7,38 @@
         "min_compat_version": 1,
         "filename": "timberwolfs_trains.nml",
         "language": "english", 
-        "parameters": []
+        "parameters": [
+            {
+                "id": "build_costs",
+                "name": "Purchase cost modifier",
+                "desc": "Increase or decrease build costs to change difficulty, or balance with other GRF sets. Higher values may be difficult, especially in the early game",
+                "type": "int",
+                "min_value": 0,
+                "max_value": 7,
+                "default_value": 2,
+                "value_names": [ "0.25x", "0.5x", "1x", "2x", "4x", "8x", "16x", "32x" ]
+            },
+            {
+                "id": "running_costs",
+                "name": "Running cost modifier",
+                "desc": "Increase or decrease running costs to change difficulty, or balance with other GRF sets.  Higher values may be difficult, especially in the early game.",
+                "type": "int",
+                "min_value": 0,
+                "max_value": 7,
+                "default_value": 2,
+                "value_names": [ "0.25x", "0.5x", "1x", "2x", "4x", "8x", "16x", "32x" ]
+            },
+            {
+                "id": "max_mu_length",
+                "name": "Maximum multiple unit length",
+                "desc": "Some multiple units included in this set have very long consists in prototypical usage (e.g. Eurostar). Alter this parameter to set the maximum length in tiles for these longer units.",
+                "type": "int",
+                "min_value": 0,
+                "max_value": 2,
+                "default_value": 1,
+                "value_names": [ "Unlimited (realistic)", "6 tiles (default)", "4 tiles (short)" ]
+            }
+        ]
     },
     "sprites": {
         "table": "table.csv",
@@ -27,7 +58,9 @@
             "nested/pantograph_graphics",
             "nested/running_cost_switch",
             "nested/attach_mu_switch",
-            "nested/extra_text_switch"
+            "nested/extra_text_switch",
+            "nested/power_car_check",
+            "nested/tare_speed_switch"
         ]
     },
     "static_templates": [
@@ -48,7 +81,8 @@
         }
     ],
     "fixed_strings": {
-        "str_mu_cannot_attach": "Multiple units can only be coupled to another multiple unit of the same (or compatible) type."
+        "str_mu_cannot_attach": "Multiple units can only be coupled to another multiple unit of the same (or compatible) type.",
+        "str_needs_second_power_car": "This consist needs a second power car of the same type. Buy one from the purchase menu and attach it to the end of the train."
     },
     "cargo_table": [        
         "PASS",

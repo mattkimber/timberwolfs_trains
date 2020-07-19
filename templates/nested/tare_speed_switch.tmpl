@@ -1,0 +1,21 @@
+{{define "tare_speed_switch" -}}
+{{if .tare_speed}}
+
+{{ $speed := parseint .speed }}{{if lt $speed 60 }}
+switch (FEAT_TRAINS, PARENT, switch_{{.id}}_speed_brakevan, hasbit(bitmask_consist_info, HAS_BRAKE_VAN)) {
+    1: return (({{.speed}}+5) * 8) / 5;
+    return ({{.speed}} * 8) / 5;
+}
+{{end}}
+
+switch (FEAT_TRAINS, SELF, switch_{{.id}}_speed, cargo_count) 
+{
+    0: return ({{.tare_speed}} * 8) / 5;
+    {{if lt $speed 60 }}
+    return switch_{{.id}}_speed_brakevan;
+    {{else}}
+    return ({{.speed}} * 8) / 5;
+    {{end}}
+}
+{{end}}
+{{- end}}

@@ -12,9 +12,11 @@ traininfo_y_offset=3;
 }
 
  basecost {
-     PR_BUILD_VEHICLE_WAGON: 3;
-     PR_BUILD_VEHICLE_TRAIN: -1;
-     PR_RUNNING_TRAIN_STEAM: -3;     // Wagon running costs
-     PR_RUNNING_TRAIN_DIESEL: 2;    // Train running costs
+     PR_BUILD_VEHICLE_WAGON: param_build_costs + 1;
+     PR_BUILD_VEHICLE_TRAIN: param_build_costs - 3;
+     PR_RUNNING_TRAIN_STEAM: param_running_costs - 5;     // Wagon running costs
+     PR_RUNNING_TRAIN_DIESEL: param_running_costs;    // Train running costs
  }
+
+HAS_BRAKE_VAN = 1;
 

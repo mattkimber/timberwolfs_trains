@@ -57,7 +57,7 @@ switch (FEAT_TRAINS, SELF, switch_{{.id}}_length, position_in_articulated_veh % 
 {{range $index, $element := $layout -}}
 {{- $newsprite := index $newsprites $index -}}
 {{- if eq $newsprite "1" -}}
-{{if eq $len "4"}}{{template "curve_switch" $element }}{{else}}{{template "curve_switch_short" $element }}{{end}}
+{{if ne $len "4"}}{{template "curve_switch" $element }}{{else}}{{template "curve_switch_short" $element }}{{end}}
 {{end}}
 {{end}}
 
@@ -102,7 +102,7 @@ switch (FEAT_TRAINS, SELF, switch_{{.id}}_visual_effect, position_in_articulated
 item(FEAT_TRAINS, vehicle_{{.id}}, {{.numeric_id}}) {
     property {
         name:                         {{.name_string}};
-        climates_available:           bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL, CLIMATE_TOYLAND);
+        climates_available:           {{ if .enable_param }} {{.enable_param}} ? {{end}} ALL_CLIMATES {{ if .enable_param }} : NO_CLIMATE {{end}};
         introduction_date:            date({{.year}}, 1, 1);
         model_life:                   {{if .service}}{{.lifespan}};{{else}}VEHICLE_NEVER_EXPIRES;{{end}}
         retire_early:                 -4;
@@ -136,7 +136,6 @@ item(FEAT_TRAINS, vehicle_{{.id}}, {{.numeric_id}}) {
         misc_flags:                   bitmask(TRAIN_FLAG_2CC, TRAIN_FLAG_MU {{if eq .type "dual_electric"}}, TRAIN_FLAG_SPRITE_STACK{{end}} {{ if .tilting }}, TRAIN_FLAG_TILT {{end}});
         refit_cost:                   0;
         track_type:                   {{.railtype}};
- 
         dual_headed:                0;
 
         {{if .capacity}}

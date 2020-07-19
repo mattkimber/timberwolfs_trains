@@ -190,12 +190,12 @@ switch (FEAT_TRAINS, SELF, switch_{{.id}}_visual_effect, position_in_articulated
 }
 
 {{template "running_cost_switch" . }}
+{{ if .requires_second_power_car }}{{template "power_car_check" . }}{{end}}
 
 item(FEAT_TRAINS, vehicle_{{.id}}, {{.numeric_id}}) {
     property {
         name:                         {{.name_string}};
-        climates_available:           bitmask(CLIMATE_TEMPERATE, CLIMATE_ARCTIC, CLIMATE_TROPICAL, CLIMATE_TOYLAND);
-        introduction_date:            date({{.year}}, 1, 1);
+climates_available:           {{ if .enable_param }} {{.enable_param}} ? {{end}} ALL_CLIMATES {{ if .enable_param }} : NO_CLIMATE {{end}};        introduction_date:            date({{.year}}, 1, 1);
         model_life:                   {{if .service}}{{.lifespan}};{{else}}VEHICLE_NEVER_EXPIRES;{{end}}
         retire_early:                 -4;
         vehicle_life:                 {{.vehicle_life}};
@@ -210,7 +210,6 @@ item(FEAT_TRAINS, vehicle_{{.id}}, {{.numeric_id}}) {
 
         running_cost_base:            RUNNING_COST_DIESEL;
         tractive_effort_coefficient:  {{.te_coeff}};
-
         power:                        {{.power}} hp;
         speed:                        {{.speed}} mph;
         reliability_decay:            20;
@@ -243,6 +242,7 @@ item(FEAT_TRAINS, vehicle_{{.id}}, {{.numeric_id}}) {
         purchase_running_cost_factor: return {{.running_cost}};
         {{ if eq .type "dual_power" -}}power: switch_{{.id}}_power;{{end}}{{ if eq .type "dual_electric" -}}power: switch_{{.id}}_power;{{end}}
         {{if ne .capacity "0"}}purchase_cargo_capacity:  {{if .reuse_sprites}}spriteset_{{.reuse_sprites}}{{else}}spriteset_{{.id}}{{end}};{{end}}
+        {{ if .requires_second_power_car }}start_stop: switch_{{.id}}_power_car_check;{{end}}
     }
 }
 

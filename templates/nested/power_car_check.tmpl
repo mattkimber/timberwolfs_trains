@@ -1,0 +1,7 @@
+{{ define "power_car_check" }}
+switch(FEAT_TRAINS, SELF, switch_{{.id}}_power_car_check, count_veh_id(vehicle_{{.id}})) {
+    // Articulated units are counted independently
+    0..3:  return string(STR_NEEDS_SECOND_POWER_CAR);
+    return CB_RESULT_NO_TEXT;
+}
+{{end}}
