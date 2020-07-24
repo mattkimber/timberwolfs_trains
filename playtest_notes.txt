@@ -1,0 +1,11 @@
+- No mail transport in 1900? (steeltown problem?)
+- K2 Ragtimer needs a speed buff to make it competitive?
+- Tracks need costs + balancing
+- LNWR EMU slow loading
+- Long gap 1913-1923
+- Locos introduced on same day
+- Mail carriage version of regular carriages
+- Cargo decay logic for Pullmans and others
+- Streamlined carriage needs to be longer and streamlinier (plus observation car?)
+
+(RVs) expiry of early trams
