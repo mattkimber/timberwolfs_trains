@@ -1,8 +1,8 @@
 {{define "running_cost_switch" -}}
 
  switch(FEAT_TRAINS, SELF, switch_{{.id}}_running_cost, current_speed) {
-     0: return min(({{.running_cost}} + max((age_in_days - (max_age_in_days - 1825)) / 75, 0)) / 3, {{.running_cost}});
-     return min({{.running_cost}} + max((age_in_days - (max_age_in_days - 1825)) / 75, 0), {{.running_cost}} * 3);
+     0: return min(({{.running_cost}} + max((age_in_days - (max_age_in_days - 1825)) / 75, 0)) / 3, ({{.running_cost}} * 4) / 3);
+     return min({{.running_cost}} + max((age_in_days - (max_age_in_days - 1825)) / 75, 0), {{.running_cost}} * 4);
  }
 
 {{- end}}

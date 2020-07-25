@@ -56,15 +56,13 @@
         },
         {
             "name": "_metal_half",
-            "type": "repeat",
-            "n": 1,
+            "type": "scale",
             "mask_original": true,
-            "file": "cargo/full/metal_45.vox"
+            "file": "cargo/half/metal_45.vox"
         },
         {
             "name": "_metal_full",
-            "type": "repeat",
-            "n": 2,
+            "type": "scale",
             "mask_original": true,
             "file": "cargo/full/metal_45.vox"
         },
@@ -281,28 +279,28 @@
             "type": "repeat",
             "mask_original": true,
             "n": 1,
-            "file": "cargo/full/metal_coil.vox"
+            "file": "cargo/full/metal_coil_35.vox"
         },
         {
             "name": "_stsh_full",
             "type": "repeat",
             "mask_original": true,
-            "n": 1,
-            "file": "cargo/full/metal_coil.vox"
+            "n": 2,
+            "file": "cargo/full/metal_coil_35.vox"
         },
         {
             "name": "_stwr_half",
             "type": "repeat",
             "mask_original": true,
             "n": 1,
-            "file": "cargo/full/wire_rod.vox"
+            "file": "cargo/full/wire_rod_35.vox"
         },
         {
             "name": "_stwr_full",
             "type": "repeat",
             "mask_original": true,
-            "n": 1,
-            "file": "cargo/full/wire_rod.vox"
+            "n": 2,
+            "file": "cargo/full/wire_rod_35.vox"
         },
         {
             "name": "_rbar_half",
