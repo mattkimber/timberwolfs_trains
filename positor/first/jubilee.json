@@ -4,7 +4,6 @@
       "stanier_class_5.vox",
       "hughes_crab.vox",
       "gwr_4400_class.vox",
-      "robinson_8k.vox",
       "gresley_k2.vox",
       "gwr_castle_class.vox",
       "gwr_king_class.vox",
@@ -17,14 +16,12 @@
       "gwr_grange_class.vox",
       "stanier_coronation.vox",
       "sr_merchant_navy.vox",
-      "wd_austerity.vox",
       "gwr_county_class.vox",
       "sr_west_country.vox",
       "ivatt_class_2.vox",
       "peppercorn_a1.vox",
       "br_britannia_class.vox",
-      "br_clan_class.vox",
-      "br_class_9f.vox"
+      "br_clan_class.vox"
     ],
     "operations": [
       {
