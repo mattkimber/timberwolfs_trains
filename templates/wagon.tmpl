@@ -15,6 +15,16 @@
 {{$hill = concat .id "_down"}}{{if eq .globals.bpp "32"}}{{ altspritesn $hill $template_down $zoom "_down" }}{{else}}{{ altsprites8n $hill $template_down $zoom "_down" }}{{end}}
 
 
+{{if .replace_last_wagon}}
+// Last wagon replacement sprite
+{{if eq .globals.bpp "32"}}{{ altsprites .replace_last_wagon $template $zoom }}{{else}}{{ altsprites8 .replace_last_wagon $template $zoom }}{{end}}
+{{if eq .globals.bpp "32"}}{{ altspritesn .replace_last_wagon $template_turn_1 $zoom "_turn_1" }}{{else}}{{ altsprites8n .replace_last_wagon $template_turn_1 $zoom "_turn_1" }}{{end}}
+{{if eq .globals.bpp "32"}}{{ altspritesn .replace_last_wagon $template_turn_2 $zoom "_turn_2" }}{{else}}{{ altsprites8n .replace_last_wagon $template_turn_2 $zoom "_turn_2" }}{{end}}
+
+{{$hill := concat .replace_last_wagon "_up"}}{{if eq .globals.bpp "32"}}{{ altspritesn $hill $template_up $zoom "_up" }}{{else}}{{ altsprites8n $hill $template_up $zoom "_up" }}{{end}}
+{{$hill = concat .replace_last_wagon "_down"}}{{if eq .globals.bpp "32"}}{{ altspritesn $hill $template_down $zoom "_down" }}{{else}}{{ altsprites8n $hill $template_down $zoom "_down" }}{{end}}
+{{end}}
+
 {{if ne .ttd_len "4"}}{{template "curve_switch" .id }}{{else}}{{template "curve_switch_short" .id }}{{end}}
 
 // Cargo sprites
@@ -231,11 +241,33 @@ switch (FEAT_TRAINS, SELF, switch_{{.id}}_length, position_in_articulated_veh % 
 }
 
 {{ if ne  .cargo_handling "Container" }}
+{{if .replace_last_wagon}}
+{{template "curve_switch" .replace_last_wagon }}
+
+switch (FEAT_TRAINS, SELF, switch_{{.id}}_graphics_normal, position_in_articulated_veh % 3) 
+{
+    1: return switch_{{.id}}_curve;
+    return spriteset_invisible;
+}
+
+switch (FEAT_TRAINS, SELF, switch_{{.id}}_graphics_last, position_in_articulated_veh % 3) 
+{
+    1: return switch_{{.replace_last_wagon}}_curve;
+    return spriteset_invisible;
+}
+
+switch (FEAT_TRAINS, SELF, switch_{{.id}}_graphics, position_in_consist_from_end) 
+{
+    1: return switch_{{.id}}_graphics_last;
+    return switch_{{.id}}_graphics_normal;
+}
+{{else}}
 switch (FEAT_TRAINS, SELF, switch_{{.id}}_graphics, position_in_articulated_veh % 3) 
 {
     1: return switch_{{.id}}_curve;
     return spriteset_invisible;
 }
+{{end}}
 {{end}}
 
 
@@ -246,7 +278,8 @@ switch (FEAT_TRAINS, SELF, switch_{{.id}}_graphics, position_in_articulated_veh 
 item(FEAT_TRAINS, vehicle_{{.id}}, {{.numeric_id}}) {
     property {
         name:                         {{.name_string}};
-climates_available:           {{ if .enable_param }} {{.enable_param}} ? {{end}} ALL_CLIMATES {{ if .enable_param }} : NO_CLIMATE {{end}};        introduction_date:            date({{.year}}, 1, 1);
+        climates_available:           {{ if .enable_param }} {{.enable_param}} ? {{end}} ALL_CLIMATES {{ if .enable_param }} : NO_CLIMATE {{end}};
+        introduction_date:            date({{.year}}, {{.intro_month}}, 5);
         model_life:                   {{if .service}}{{.lifespan}};{{else}}VEHICLE_NEVER_EXPIRES;{{end}}
         retire_early:                 -4;        
         vehicle_life:                 {{.vehicle_life}};
@@ -280,6 +313,8 @@ climates_available:           {{ if .enable_param }} {{.enable_param}} ? {{end}}
         {{else if eq .cargo_handling "Tanker" }}
         refittable_cargo_classes: bitmask(CC_LIQUID);
         {{end}}
+
+        {{if .cargo_age_period}}cargo_age_period:             {{.cargo_age_period}};{{end}}
 
         power:                        0 hp;
         {{if .speed}}speed:                        {{.speed}} mph;{{end}}

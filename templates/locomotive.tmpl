@@ -195,7 +195,8 @@ switch (FEAT_TRAINS, SELF, switch_{{.id}}_visual_effect, position_in_articulated
 item(FEAT_TRAINS, vehicle_{{.id}}, {{.numeric_id}}) {
     property {
         name:                         {{.name_string}};
-climates_available:           {{ if .enable_param }} {{.enable_param}} ? {{end}} ALL_CLIMATES {{ if .enable_param }} : NO_CLIMATE {{end}};        introduction_date:            date({{.year}}, 1, 1);
+        climates_available:           {{ if .enable_param }} {{.enable_param}} ? {{end}} ALL_CLIMATES {{ if .enable_param }} : NO_CLIMATE {{end}};        
+        introduction_date:            date({{.year}}, {{.intro_month}}, 5);
         model_life:                   {{if .service}}{{.lifespan}};{{else}}VEHICLE_NEVER_EXPIRES;{{end}}
         retire_early:                 -4;
         vehicle_life:                 {{.vehicle_life}};
@@ -208,6 +209,7 @@ climates_available:           {{ if .enable_param }} {{.enable_param}} ? {{end}}
         engine_class:                 ENGINE_CLASS_DIESEL;
         {{- end}}
 
+        {{if .cargo_age_period}}cargo_age_period:             {{.cargo_age_period}};{{end}}
         running_cost_base:            RUNNING_COST_DIESEL;
         tractive_effort_coefficient:  {{.te_coeff}};
         power:                        {{.power}} hp;
