@@ -2,11 +2,15 @@
 [x] Mail carriage version of regular carriages
 
 [x] K2 Ragtimer needs a speed buff to make it competitive?
-[ ] Tracks need costs + balancing
+[x] Tracks need costs + balancing
 [x] LNWR EMU slow loading
-[ ] Long gap 1913-1923
+[x] Long gap 1913-1923
 [x] Locos introduced on same day
 [x] Cargo decay logic for Pullmans and others
 [x] Streamlined carriage needs to be longer and streamlinier (plus observation car?)
 
-(RVs) expiry of early trams
+[x] expiry of early trams
+
+
+[ ] Gaps in diagonal tracks
+[ ] Alignment of - to \ curves
