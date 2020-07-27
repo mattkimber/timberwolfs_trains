@@ -37,6 +37,16 @@
                 "max_value": 2,
                 "default_value": 1,
                 "value_names": [ "Unlimited (realistic)", "6 tiles (default)", "4 tiles (short)" ]
+            },
+            {
+                "id": "run_cost_penalty",
+                "name": "Running cost penalty for old trains",
+                "desc": "When trains reach the end of their working life they will become more expensive to run. Higher settings cause this this to happen faster and the increase in costs to be larger. For casual network games and other situations where players may not be able to replace expired vehicles for several decades, 'mild' is recommended as it will still allow most well-designed networks to break even or return a small profit.",
+                "type": "int",
+                "min_value": 0,
+                "max_value": 2,
+                "default_value": 1,
+                "value_names": [ "Mild", "Spicy", "Painful" ]
             }
         ]
     },
