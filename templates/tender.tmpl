@@ -1,6 +1,7 @@
 {{ $zoom := parseint .globals.zoom }}
-
+{{ $plen := parseint .ttd_len -}}
 {{$template := concat "template_auto_" .ttd_len -}}
+
 {{if eq .globals.bpp "32"}}{{ altsprites .id $template $zoom }}{{else}}{{ altsprites8 .id $template $zoom }}{{end}}
 
 {{$template_turn := concat "template_auto_turn_1_" .ttd_len -}}
@@ -15,4 +16,4 @@
 {{$template_turn = concat "template_auto_down_" .ttd_len -}}
 {{$hill = concat .id "_down"}}{{if eq .globals.bpp "32"}}{{ altspritesn $hill $template_turn $zoom "_down" }}{{else}}{{ altsprites8n $hill $template_turn $zoom "_down" }}{{end}}
 
-{{if ne .ttd_len "4"}}{{template "curve_switch" .id }}{{else}}{{template "curve_switch_short" .id }}{{end}}
+// {{if gt $plen 8}}{{template "curve_switch_long" .id }}{{else if gt $plen 4 }}{{template "curve_switch_medium" .id }}{{else}}{{template "curve_switch_short" .id }}{{end}}

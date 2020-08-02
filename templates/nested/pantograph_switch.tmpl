@@ -1,9 +1,10 @@
 {{ define "pantograph_switch" }}
+{{ $plen := parseint .ttd_len }}
 {{ if not .reuse_sprites}}
 {{ $name := concat .pantograph_unit "_pan_up" }}
-{{if ne .ttd_len "4"}}{{template "curve_switch" $name }}{{else}}{{template "curve_switch_short" $name }}{{end}}
+{{if gt $plen 8}}{{template "curve_switch_long" $name }}{{else if gt $plen 4 }}{{template "curve_switch_medium" $name }}{{else}}{{template "curve_switch_short" $name }}{{end}}
 {{ $name = concat .pantograph_unit "_pan_down" }}
-{{if ne .ttd_len "4"}}{{template "curve_switch" $name }}{{else}}{{template "curve_switch_short" $name }}{{end}}
+{{if gt $plen 8}}{{template "curve_switch_long" $name }}{{else if gt $plen 4 }}{{template "curve_switch_medium" $name }}{{else}}{{template "curve_switch_short" $name }}{{end}}
 
 switch (FEAT_TRAINS, SELF, switch_{{.pantograph_unit}}_pantograph_state, current_railtype) 
 {
@@ -11,6 +12,23 @@ switch (FEAT_TRAINS, SELF, switch_{{.pantograph_unit}}_pantograph_state, current
     SAAZ: return switch_{{.pantograph_unit}}_pan_up_curve;
     return switch_{{.pantograph_unit}}_pan_down_curve;
 }
+
+{{if gt $plen 8}}
+switch (FEAT_TRAINS, SELF, switch_{{.pantograph_unit}}_pantograph_state_front, current_railtype) 
+{
+    ELRL: return switch_{{.pantograph_unit}}_pan_up_curve_front;
+    SAAZ: return switch_{{.pantograph_unit}}_pan_up_curve_front;
+    return switch_{{.pantograph_unit}}_pan_down_curve_front;
+}
+
+switch (FEAT_TRAINS, SELF, switch_{{.pantograph_unit}}_pantograph_state_rear, current_railtype) 
+{
+    ELRL: return switch_{{.pantograph_unit}}_pan_up_curve_rear;
+    SAAZ: return switch_{{.pantograph_unit}}_pan_up_curve_rear;
+    return switch_{{.pantograph_unit}}_pan_down_curve_rear;
+}
+{{end}}
+
 {{end}}
 switch(FEAT_TRAINS, SELF, switch_{{.id}}_pantograph, [
     STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 1 ? CB_FLAG_MORE_SPRITES : 0) | PALETTE_USE_DEFAULT, 0x100),
@@ -22,4 +40,28 @@ switch(FEAT_TRAINS, SELF, switch_{{.id}}_pantograph, [
     // This should never be executed
     return spriteset_invisible;
 }
+
+{{if gt $plen 8}}
+switch(FEAT_TRAINS, SELF, switch_{{.id}}_pantograph_front, [
+    STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 1 ? CB_FLAG_MORE_SPRITES : 0) | PALETTE_USE_DEFAULT, 0x100),
+    getbits(extra_callback_info1, 8, 8)
+    ]) {
+    0: switch_{{.pantograph_unit}}_curve_front;
+    1: switch_{{.pantograph_unit}}_pantograph_state_front;
+
+    // This should never be executed
+    return spriteset_invisible;
+}
+
+switch(FEAT_TRAINS, SELF, switch_{{.id}}_pantograph_rear, [
+    STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 1 ? CB_FLAG_MORE_SPRITES : 0) | PALETTE_USE_DEFAULT, 0x100),
+    getbits(extra_callback_info1, 8, 8)
+    ]) {
+    0: switch_{{.pantograph_unit}}_curve_rear;
+    1: switch_{{.pantograph_unit}}_pantograph_state_rear;
+
+    // This should never be executed
+    return spriteset_invisible;
+}
+{{end}}
 {{end}}

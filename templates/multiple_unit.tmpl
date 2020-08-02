@@ -3,7 +3,7 @@
 
 {{- $layout := slice .layout -}}
 {{- $newsprites := slice .new_sprites -}}
-{{- $len := .ttd_len -}}{{- $bpp := .globals.bpp -}}
+{{- $len := .ttd_len -}}{{- $plen := parseint .ttd_len -}}{{- $bpp := .globals.bpp -}}
 
 {{- range $index, $element := $layout -}}
 {{- $newsprite := index $newsprites $index -}}
@@ -22,6 +22,16 @@
 
 {{$template_turn := concat "template_auto_down_" $len -}}{{$hill = concat $element "_down" }}
 {{if eq $bpp "32"}}{{ altspritesn $hill $template_turn $zoom "_down" }}{{else}}{{ altsprites8n $hill $template_turn $zoom "_down" }}{{end}}
+
+{{ if gt $plen 8}}
+{{$sections := concat $element "_sections" -}}
+{{$template_turn = concat "template_auto_front_" $len -}}
+{{if eq $bpp "32"}}{{ altspritesn $sections $template_turn $zoom "_front" }}{{else}}{{ altsprites8n $sections $template_turn $zoom "_front" }}{{end}}
+{{$template_turn = concat "template_auto_mid_" $len -}}
+{{if eq $bpp "32"}}{{ altspritesn $sections $template_turn $zoom "_mid" }}{{else}}{{ altsprites8n $sections $template_turn $zoom "_mid" }}{{end}}
+{{$template_turn = concat "template_auto_rear_" $len -}}
+{{if eq $bpp "32"}}{{ altspritesn $sections $template_turn $zoom "_rear" }}{{else}}{{ altsprites8n $sections $template_turn $zoom "_rear" }}{{end}}
+{{end}}
 
 {{end -}}
 {{end}}
@@ -57,7 +67,7 @@ switch (FEAT_TRAINS, SELF, switch_{{.id}}_length, position_in_articulated_veh % 
 {{range $index, $element := $layout -}}
 {{- $newsprite := index $newsprites $index -}}
 {{- if eq $newsprite "1" -}}
-{{if ne $len "4"}}{{template "curve_switch" $element }}{{else}}{{template "curve_switch_short" $element }}{{end}}
+{{if gt $plen 8}}{{template "curve_switch_long" $element }}{{else if gt $plen 4 }}{{template "curve_switch_medium" $element }}{{else}}{{template "curve_switch_short" $element }}{{end}}
 {{end}}
 {{end}}
 
@@ -71,9 +81,26 @@ switch (FEAT_TRAINS, SELF, switch_{{.id}}_graphics, position_in_articulated_veh 
 {
     {{range $index, $element := $layout -}}
     {{- if eq $type "dual_electric"}}
-    ({{$index}} * 3) + 1: {{if eq $element $pantograph_unit }}return switch_{{$id}}_pantograph{{else}}return switch_{{$element}}_curve{{end}};
+    {{if eq $element $pantograph_unit }}
+    ({{$index}} * 3) + 1: return switch_{{$id}}_pantograph;
+    {{ if gt $plen 8}}
+    ({{$index}} * 3) + 0: return switch_{{$id}}_pantograph_front;
+    ({{$index}} * 3) + 2: return switch_{{$id}}_pantograph_rear;
+    {{ end }}
+
+    {{else}} 
+    ({{$index}} * 3) + 1: return switch_{{$element}}_curve;
+    {{ if gt $plen 8}}
+    ({{$index}} * 3) + 0: return switch_{{$element}}_curve_front;
+    ({{$index}} * 3) + 2: return switch_{{$element}}_curve_rear;
+    {{ end }}
+    {{end}}
     {{- else }}
     ({{$index}} * 3) + 1: return switch_{{$element}}_curve;
+    {{ if gt $plen 8}}
+    ({{$index}} * 3) + 0: return switch_{{$element}}_curve_front;
+    ({{$index}} * 3) + 2: return switch_{{$element}}_curve_rear;
+    {{ end }}
     {{- end}}
     {{end}}
     return spriteset_invisible;

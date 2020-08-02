@@ -60,8 +60,10 @@
             "bpp": "8"
         },
         "nestable_templates": [ 
-            "nested/cargo_curve_switch",
-            "nested/curve_switch",
+            "nested/cargo_curve_switch_long",
+            "nested/curve_switch_long",
+            "nested/cargo_curve_switch_medium",
+            "nested/curve_switch_medium",
             "nested/cargo_curve_switch_short",
             "nested/curve_switch_short",
             "nested/pantograph_switch",

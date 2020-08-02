@@ -1,0 +1,156 @@
+{
+    "lighting_angle": 60,
+    "lighting_elevation": 65,
+    "depth_influence": 0,
+    "soften_edges": 1.5,
+    "alpha_edge_threshold": 0.75,
+    "sampler": "disc",
+    "accuracy": 11,
+    "overlap": -0.15,
+    "brightness": -0.025,
+    "contrast": 0.025,
+    "pad_to_full_length": false,
+    "slice_threshold": 136,
+    "slice_length": 88,
+    "slice_overlap": 2,
+    "size": {
+        "x": 256,
+        "y": 42,
+        "z": 72
+    },
+    "render_elevation": 30,
+    "sprites": [
+        { 
+            "angle": 0,
+            "width": 8,
+            "height": 42,
+            "slice": -1
+        },
+        { 
+            "angle": 45,
+            "width": 36,
+            "slice": -1
+        },
+        { 
+            "angle": 90,
+            "width": 62,
+            "height": 17,
+            "slice": -1
+        },
+        { 
+            "angle": 135,
+            "width": 36,
+            "slice": -1
+        },
+        { 
+            "angle": 180,
+            "width": 8,
+            "height": 42,
+            "slice": -1
+        },
+        { 
+            "angle": 225,
+            "width": 36,
+            "slice": -1
+        },
+        { 
+            "angle": 270,
+            "width": 62,
+            "height": 17,
+            "slice": -1
+        },
+        { 
+            "angle": 315,
+            "width": 36,
+            "slice": -1
+        },
+        { 
+            "angle": 0,
+            "width": 8,
+            "height": 42,
+            "slice": 0
+        },
+        { 
+            "angle": 45,
+            "width": 36,
+            "slice": 0
+        },
+        { 
+            "angle": 90,
+            "width": 62,
+            "height": 17,
+            "slice": 0
+        },
+        { 
+            "angle": 135,
+            "width": 36,
+            "slice": 0
+        },
+        { 
+            "angle": 180,
+            "width": 8,
+            "height": 42,
+            "slice": 0
+        },
+        { 
+            "angle": 225,
+            "width": 36,
+            "slice": 0
+        },
+        { 
+            "angle": 270,
+            "width": 62,
+            "height": 17,
+            "slice": 0
+        },
+        { 
+            "angle": 315,
+            "width": 36,
+            "slice": 0
+        },
+        { 
+            "angle": 0,
+            "width": 8,
+            "height": 42,
+            "slice": 1
+        },
+        { 
+            "angle": 45,
+            "width": 36,
+            "slice": 1
+        },
+        { 
+            "angle": 90,
+            "width": 62,
+            "height": 17,
+            "slice": 1
+        },
+        { 
+            "angle": 135,
+            "width": 36,
+            "slice": 1
+        },
+        { 
+            "angle": 180,
+            "width": 8,
+            "height": 42,
+            "slice": 1
+        },
+        { 
+            "angle": 225,
+            "width": 36,
+            "slice": 1
+        },
+        { 
+            "angle": 270,
+            "width": 62,
+            "height": 17,
+            "slice": 1
+        },
+        { 
+            "angle": 315,
+            "width": 36,
+            "slice": 1
+        }
+    ]
+}

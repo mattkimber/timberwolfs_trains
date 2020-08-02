@@ -1,6 +1,6 @@
 {{ $zoom := parseint .globals.zoom }}
 
-{{$lenint := parseint .ttd_len}}
+{{$len := .ttd_len}}{{$plen := parseint .ttd_len}}
 {{$template := concat "template_auto_" .ttd_len -}}
 {{$template_turn_1 := concat "template_auto_turn_1_" .ttd_len -}}
 {{$template_turn_2 := concat "template_auto_turn_2_" .ttd_len -}}
@@ -14,6 +14,15 @@
 {{$hill := concat .id "_up"}}{{if eq .globals.bpp "32"}}{{ altspritesn $hill $template_up $zoom "_up" }}{{else}}{{ altsprites8n $hill $template_up $zoom "_up" }}{{end}}
 {{$hill = concat .id "_down"}}{{if eq .globals.bpp "32"}}{{ altspritesn $hill $template_down $zoom "_down" }}{{else}}{{ altsprites8n $hill $template_down $zoom "_down" }}{{end}}
 
+{{ if gt $plen 8}}
+{{$sections := concat .id "_sections" -}}
+{{$template_turn := concat "template_auto_front_" .ttd_len -}}
+{{if eq .globals.bpp "32"}}{{ altspritesn $sections $template_turn $zoom "_front" }}{{else}}{{ altsprites8n $sections $template_turn $zoom "_front" }}{{end}}
+{{$template_turn = concat "template_auto_mid_" .ttd_len -}}
+{{if eq .globals.bpp "32"}}{{ altspritesn $sections $template_turn $zoom "_mid" }}{{else}}{{ altsprites8n $sections $template_turn $zoom "_mid" }}{{end}}
+{{$template_turn = concat "template_auto_rear_" .ttd_len -}}
+{{if eq .globals.bpp "32"}}{{ altspritesn $sections $template_turn $zoom "_rear" }}{{else}}{{ altsprites8n $sections $template_turn $zoom "_rear" }}{{end}}
+{{end}}
 
 {{if .replace_last_wagon}}
 // Last wagon replacement sprite
@@ -23,9 +32,21 @@
 
 {{$hill := concat .replace_last_wagon "_up"}}{{if eq .globals.bpp "32"}}{{ altspritesn $hill $template_up $zoom "_up" }}{{else}}{{ altsprites8n $hill $template_up $zoom "_up" }}{{end}}
 {{$hill = concat .replace_last_wagon "_down"}}{{if eq .globals.bpp "32"}}{{ altspritesn $hill $template_down $zoom "_down" }}{{else}}{{ altsprites8n $hill $template_down $zoom "_down" }}{{end}}
+
+{{ if gt $plen 8}}
+{{$sections := concat .replace_last_wagon "_sections" -}}
+{{$template_turn := concat "template_auto_front_" .ttd_len -}}
+{{if eq .globals.bpp "32"}}{{ altspritesn $sections $template_turn $zoom "_front" }}{{else}}{{ altsprites8n $sections $template_turn $zoom "_front" }}{{end}}
+{{$template_turn = concat "template_auto_mid_" .ttd_len -}}
+{{if eq .globals.bpp "32"}}{{ altspritesn $sections $template_turn $zoom "_mid" }}{{else}}{{ altsprites8n $sections $template_turn $zoom "_mid" }}{{end}}
+{{$template_turn = concat "template_auto_rear_" .ttd_len -}}
+{{if eq .globals.bpp "32"}}{{ altspritesn $sections $template_turn $zoom "_rear" }}{{else}}{{ altsprites8n $sections $template_turn $zoom "_rear" }}{{end}}
 {{end}}
 
-{{if ne .ttd_len "4"}}{{template "curve_switch" .id }}{{else}}{{template "curve_switch_short" .id }}{{end}}
+{{end}}
+
+
+{{if gt $plen 8}}{{template "curve_switch_long" .id }}{{else if gt $plen 4 }}{{template "curve_switch_medium" .id }}{{else}}{{template "curve_switch_short" .id }}{{end}}
 
 // Cargo sprites
 {{ $cargo_list := "" -}}{{ $id := .id -}}
@@ -36,7 +57,7 @@
 {{else if eq .cargo_handling "Bolster" -}}
 {{ $cargo_list = "bdmt,wood,crate,metal,timber,fmsp_old,fmsp_modern,ensp_old,ensp_modern,tyre,pipe,stsh,stwr,rbar" -}}
 
-{{if gt $lenint 4 }}
+{{if gt $plen 4 }}
 {{ $cargo_list = concat $cargo_list ",vehicle_1800,vehicle_1910,vehicle_1970,vehicle_2010,vehicle_body_1800,vehicle_body_1910,vehicle_body_1970,vehicle_body_2010" }}
 {{else}}
 {{ $cargo_list = concat $cargo_list ",vehicle,vehicle_body" }}
@@ -52,6 +73,16 @@
 {{$hill := concat $fullid "_up"}}{{ altsprites8n $hill $template_up $zoom "_up" }}
 {{$hill = concat $fullid "_down"}}{{ altsprites8n $hill $template_down $zoom "_down" }}
 
+{{if gt $plen 8}}
+{{$sections := concat $fullid "_sections" -}}
+{{$template_turn := concat "template_auto_front_" $len -}}
+{{ altsprites8n $sections $template_turn $zoom "_front" }}
+{{$template_turn = concat "template_auto_mid_" $len -}}
+{{ altsprites8n $sections $template_turn $zoom "_mid" }}
+{{$template_turn = concat "template_auto_rear_" $len -}}
+{{ altsprites8n $sections $template_turn $zoom "_rear" }}
+{{end}}
+
 {{end}}
 
 {{ range $index, $element := slice $cargo_list -}}{{ if $element -}}
@@ -64,6 +95,17 @@
 {{ altsprites8n $fullid $template_turn_2 $zoom "_turn_2" }}
 {{$hill := concat $fullid "_up"}}{{ altsprites8n $hill $template_up $zoom "_up" }}
 {{$hill = concat $fullid "_down"}}{{ altsprites8n $hill $template_down $zoom "_down" }}
+
+{{if gt $plen 8}}
+{{$sections := concat $fullid "_sections" -}}
+{{$template_turn := concat "template_auto_front_" $len -}}
+{{ altsprites8n $sections $template_turn $zoom "_front" }}
+{{$template_turn = concat "template_auto_mid_" $len -}}
+{{ altsprites8n $sections $template_turn $zoom "_mid" }}
+{{$template_turn = concat "template_auto_rear_" $len -}}
+{{ altsprites8n $sections $template_turn $zoom "_rear" }}
+{{end}}
+
 {{end -}}
 {{$cargoid := concat $id $elus }}
 spritegroup spritegroup_{{$cargoid}} {
@@ -91,9 +133,24 @@ spritegroup spritegroup_{{$cargoid}}_down {
 	loaded: [spriteset_{{$id}}_none_down_down,spriteset_{{$id}}_{{$element}}_half_down_down, spriteset_{{$id}}_{{$element}}_half_down_down, spriteset_{{$id}}_{{$element}}_full_down_down ];
 }
 
+{{if gt $plen 8}}
+spritegroup spritegroup_{{$cargoid}}_sections_front {
+	loading: [spriteset_{{$id}}_none_sections_front,spriteset_{{$id}}_{{$element}}_half_sections_front, spriteset_{{$id}}_{{$element}}_half_sections_front, spriteset_{{$id}}_{{$element}}_full_sections_front ];
+	loaded: [spriteset_{{$id}}_none_sections_front,spriteset_{{$id}}_{{$element}}_half_sections_front, spriteset_{{$id}}_{{$element}}_half_sections_front, spriteset_{{$id}}_{{$element}}_full_sections_front ];
+}
 
+spritegroup spritegroup_{{$cargoid}}_sections_mid {
+	loading: [spriteset_{{$id}}_none_sections_mid,spriteset_{{$id}}_{{$element}}_half_sections_mid, spriteset_{{$id}}_{{$element}}_half_sections_mid, spriteset_{{$id}}_{{$element}}_full_sections_mid ];
+	loaded: [spriteset_{{$id}}_none_sections_mid,spriteset_{{$id}}_{{$element}}_half_sections_mid, spriteset_{{$id}}_{{$element}}_half_sections_mid, spriteset_{{$id}}_{{$element}}_full_sections_mid ];
+}
 
-{{if gt $lenint 4}}{{template "cargo_curve_switch" $cargoid }}{{else}}{{template "cargo_curve_switch_short" $cargoid }}{{end}}
+spritegroup spritegroup_{{$cargoid}}_sections_rear {
+	loading: [spriteset_{{$id}}_none_sections_rear,spriteset_{{$id}}_{{$element}}_half_sections_rear, spriteset_{{$id}}_{{$element}}_half_sections_rear, spriteset_{{$id}}_{{$element}}_full_sections_rear ];
+	loaded: [spriteset_{{$id}}_none_sections_rear,spriteset_{{$id}}_{{$element}}_half_sections_rear, spriteset_{{$id}}_{{$element}}_half_sections_rear, spriteset_{{$id}}_{{$element}}_full_sections_rear ];
+}
+{{end}}
+
+{{if gt $plen 8}}{{template "cargo_curve_switch_long" $cargoid }}{{else if gt $plen 4 }}{{template "cargo_curve_switch_medium" $cargoid }}{{else}}{{template "cargo_curve_switch_short" $cargoid }}{{end}}
 
 {{end -}}{{ end }}
 // End cargo sprites
@@ -116,9 +173,39 @@ switch(FEAT_TRAINS, SELF, switch_{{$id}}_cargo_{{$element}}, [
     return spriteset_invisible;
 }
 
+{{ if gt $plen 8}}
+switch(FEAT_TRAINS, SELF, switch_{{$id}}_cargo_{{$element}}_front, [
+    STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 1 ? CB_FLAG_MORE_SPRITES : 0) | PALETTE_USE_DEFAULT, 0x100),
+    getbits(extra_callback_info1, 8, 8)
+    ]) {
+    0: switch_{{$id}}_curve_front;
+    1: switch_{{$id}}_bulk_curve_front;
+
+    // This should never be executed
+    return spriteset_invisible;
+}
+
+switch(FEAT_TRAINS, SELF, switch_{{$id}}_cargo_{{$element}}_rear, [
+    STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 1 ? CB_FLAG_MORE_SPRITES : 0) | PALETTE_USE_DEFAULT, 0x100),
+    getbits(extra_callback_info1, 8, 8)
+    ]) {
+    0: switch_{{$id}}_curve_rear;
+    1: switch_{{$id}}_bulk_curve_rear;
+
+    // This should never be executed
+    return spriteset_invisible;
+}
+{{ end }}
+
+
+
 switch (FEAT_TRAINS, SELF, switch_{{$id}}_graphics_{{$element}}, position_in_articulated_veh % 3) 
 {
     1: return switch_{{$id}}_cargo_{{$element}};
+    {{ if gt $plen 8}}
+    0: return switch_{{$id}}_cargo_{{$element}}_front;
+    2: return switch_{{$id}}_cargo_{{$element}}_rear;
+    {{ end }}
     return spriteset_invisible;
 }
 {{ end }}
@@ -139,9 +226,37 @@ switch(FEAT_TRAINS, SELF, switch_{{$id}}_cargo_{{$element}}, [
     return spriteset_invisible;
 }
 
+{{ if gt $plen 8}}
+switch(FEAT_TRAINS, SELF, switch_{{$id}}_cargo_{{$element}}_front, [
+    STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 1 ? CB_FLAG_MORE_SPRITES : 0) | PALETTE_USE_DEFAULT, 0x100),
+    getbits(extra_callback_info1, 8, 8)
+    ]) {
+    0: switch_{{$id}}_curve_front;
+    1: switch_{{$id}}_metal_curve_front;
+
+    // This should never be executed
+    return spriteset_invisible;
+}
+
+switch(FEAT_TRAINS, SELF, switch_{{$id}}_cargo_{{$element}}_rear, [
+    STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 1 ? CB_FLAG_MORE_SPRITES : 0) | PALETTE_USE_DEFAULT, 0x100),
+    getbits(extra_callback_info1, 8, 8)
+    ]) {
+    0: switch_{{$id}}_curve_rear;
+    1: switch_{{$id}}_metal_curve_rear;
+
+    // This should never be executed
+    return spriteset_invisible;
+}
+{{ end }}
+
 switch (FEAT_TRAINS, SELF, switch_{{$id}}_graphics_{{$element}}, position_in_articulated_veh % 3) 
 {
     1: return switch_{{$id}}_cargo_{{$element}};
+    {{ if gt $plen 8}}
+    0: return switch_{{$id}}_cargo_{{$element}}_front;
+    2: return switch_{{$id}}_cargo_{{$element}}_rear;
+    {{ end }}
     return spriteset_invisible;
 }
 {{ end }}
@@ -164,19 +279,61 @@ switch(FEAT_TRAINS, SELF, switch_{{$id}}_age_dependent_cargo_{{$element}}, curre
     0..1920: switch_{{$id}}_{{$cargosprite}}_old_curve;
     switch_{{$id}}_{{$cargosprite}}_modern_curve;
 }
+
+{{ if gt $plen 8}}
+switch(FEAT_TRAINS, SELF, switch_{{$id}}_age_dependent_cargo_{{$element}}_front, current_year) {
+    0..1920: switch_{{$id}}_{{$cargosprite}}_old_curve_front;
+    switch_{{$id}}_{{$cargosprite}}_modern_curve_front;
+}
+
+switch(FEAT_TRAINS, SELF, switch_{{$id}}_age_dependent_cargo_{{$element}}_rear, current_year) {
+    0..1920: switch_{{$id}}_{{$cargosprite}}_old_curve_rear;
+    switch_{{$id}}_{{$cargosprite}}_modern_curve_rear;
+}
+{{ end }}
+
 {{ else if eq $element "ensp" }}
 switch(FEAT_TRAINS, SELF, switch_{{$id}}_age_dependent_cargo_{{$element}}, current_year) {
     0..1945: switch_{{$id}}_{{$cargosprite}}_old_curve;
     switch_{{$id}}_{{$cargosprite}}_modern_curve;
 }
+
+{{ if gt $plen 8}}
+switch(FEAT_TRAINS, SELF, switch_{{$id}}_age_dependent_cargo_{{$element}}_front, current_year) {
+    0..1945: switch_{{$id}}_{{$cargosprite}}_old_curve_front;
+    switch_{{$id}}_{{$cargosprite}}_modern_curve_front;
+}
+
+switch(FEAT_TRAINS, SELF, switch_{{$id}}_age_dependent_cargo_{{$element}}_rear, current_year) {
+    0..1945: switch_{{$id}}_{{$cargosprite}}_old_curve_rear;
+    switch_{{$id}}_{{$cargosprite}}_modern_curve_rear;
+}
+{{ end }}
+
 {{ else if eq $element "vbod" "vehi" }}
-{{if gt $lenint 4 }}
+{{if gt $plen 4 }}
 switch(FEAT_TRAINS, SELF, switch_{{$id}}_age_dependent_cargo_{{$element}}, current_year) {
     0..1909: switch_{{$id}}_{{$cargosprite}}_1800_curve;
     1909..1960: switch_{{$id}}_{{$cargosprite}}_1910_curve;
     1961..2010: switch_{{$id}}_{{$cargosprite}}_1970_curve;
     switch_{{$id}}_{{$cargosprite}}_2010_curve;
 }
+
+{{ if gt $plen 8}}
+switch(FEAT_TRAINS, SELF, switch_{{$id}}_age_dependent_cargo_{{$element}}_front, current_year) {
+    0..1909: switch_{{$id}}_{{$cargosprite}}_1800_curve_front;
+    1909..1960: switch_{{$id}}_{{$cargosprite}}_1910_curve_front;
+    1961..2010: switch_{{$id}}_{{$cargosprite}}_1970_curve_front;
+    switch_{{$id}}_{{$cargosprite}}_2010_curve_front;
+}
+
+switch(FEAT_TRAINS, SELF, switch_{{$id}}_age_dependent_cargo_{{$element}}_rear, current_year) {
+    0..1909: switch_{{$id}}_{{$cargosprite}}_1800_curve_rear;
+    1909..1960: switch_{{$id}}_{{$cargosprite}}_1910_curve_rear;
+    1961..2010: switch_{{$id}}_{{$cargosprite}}_1970_curve_rear;
+    switch_{{$id}}_{{$cargosprite}}_2010_curve_rear;
+}
+{{ end }}
 {{end}}
 
 {{ end}}
@@ -189,11 +346,12 @@ switch(FEAT_TRAINS, SELF, switch_{{$id}}_cargo_{{$element}}, [
     {{ if eq $element "fmsp" "ensp" }}
     1: switch_{{$id}}_age_dependent_cargo_{{$element}};
     {{ else if eq $element "vbod" "vehi" }}
-    {{ if gt $lenint 4 }}
+    {{ if gt $plen 4 }}
     1: switch_{{$id}}_age_dependent_cargo_{{$element}};
     {{else}}
     1: switch_{{$id}}_{{$cargosprite}}_curve;
     {{end}}
+
     {{else }}
     1: switch_{{$id}}_{{$cargosprite}}_curve;
     {{end}}
@@ -202,9 +360,49 @@ switch(FEAT_TRAINS, SELF, switch_{{$id}}_cargo_{{$element}}, [
     return spriteset_invisible;
 }
 
+{{ if gt $plen 8}}
+switch(FEAT_TRAINS, SELF, switch_{{$id}}_cargo_{{$element}}_front, [
+    STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 1 ? CB_FLAG_MORE_SPRITES : 0) | (getbits(extra_callback_info1, 8, 8) == 1 ? {{$palette}} : PALETTE_USE_DEFAULT), 0x100),
+    getbits(extra_callback_info1, 8, 8)
+    ]) {
+    0: switch_{{$id}}_curve_front;
+    {{ if eq $element "fmsp" "ensp" }}
+    1: switch_{{$id}}_age_dependent_cargo_{{$element}}_front;
+    {{ else if eq $element "vbod" "vehi" }}
+    1: switch_{{$id}}_age_dependent_cargo_{{$element}}_front;
+    {{else }}
+    1: switch_{{$id}}_{{$cargosprite}}_curve_front;
+    {{end}}
+
+    // This should never be executed
+    return spriteset_invisible;
+}
+
+switch(FEAT_TRAINS, SELF, switch_{{$id}}_cargo_{{$element}}_rear, [
+    STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 1 ? CB_FLAG_MORE_SPRITES : 0) | (getbits(extra_callback_info1, 8, 8) == 1 ? {{$palette}} : PALETTE_USE_DEFAULT), 0x100),
+    getbits(extra_callback_info1, 8, 8)
+    ]) {
+    0: switch_{{$id}}_curve_rear;
+    {{ if eq $element "fmsp" "ensp" }}
+    1: switch_{{$id}}_age_dependent_cargo_{{$element}}_rear;
+    {{ else if eq $element "vbod" "vehi" }}
+    1: switch_{{$id}}_age_dependent_cargo_{{$element}}_rear;
+    {{else }}
+    1: switch_{{$id}}_{{$cargosprite}}_curve_rear;
+    {{end}}
+
+    // This should never be executed
+    return spriteset_invisible;
+}
+{{end}}
+
 switch (FEAT_TRAINS, SELF, switch_{{$id}}_graphics_{{$element}}, position_in_articulated_veh % 3) 
 {
     1: return switch_{{$id}}_cargo_{{$element}};
+    {{ if gt $plen 8}}
+    0: return switch_{{$id}}_cargo_{{$element}}_front;
+    2: return switch_{{$id}}_cargo_{{$element}}_rear;
+    {{ end }}
     return spriteset_invisible;
 }
 {{ end }}
@@ -221,9 +419,38 @@ switch(FEAT_TRAINS, SELF, switch_{{$id}}_cargo_container, [
     return spriteset_invisible;
 }
 
+{{ if gt $plen 8}}
+switch(FEAT_TRAINS, SELF, switch_{{$id}}_cargo_container_front, [
+    STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 1 ? CB_FLAG_MORE_SPRITES : 0) | PALETTE_USE_DEFAULT, 0x100),
+    getbits(extra_callback_info1, 8, 8)
+    ]) {
+    0: switch_{{$id}}_curve_front;
+    1: switch_{{$id}}_container_curve_front;
+
+    // This should never be executed
+    return spriteset_invisible;
+}
+
+switch(FEAT_TRAINS, SELF, switch_{{$id}}_cargo_container_rear, [
+    STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 1 ? CB_FLAG_MORE_SPRITES : 0) | PALETTE_USE_DEFAULT, 0x100),
+    getbits(extra_callback_info1, 8, 8)
+    ]) {
+    0: switch_{{$id}}_curve_rear;
+    1: switch_{{$id}}_container_curve_rear;
+
+    // This should never be executed
+    return spriteset_invisible;
+}
+{{ end }}
+
 switch (FEAT_TRAINS, SELF, switch_{{$id}}_graphics_container, position_in_articulated_veh % 3) 
 {
     1: return switch_{{$id}}_cargo_container;
+    {{ if gt $plen 8}}
+    0: return switch_{{$id}}_cargo_container_front;
+    2: return switch_{{$id}}_cargo_container_rear;
+    {{ end }}
+
     return spriteset_invisible;
 }
 {{ end }}
@@ -240,31 +467,43 @@ switch (FEAT_TRAINS, SELF, switch_{{.id}}_length, position_in_articulated_veh % 
     {{end}}    
 }
 
-{{ if ne  .cargo_handling "Container" }}
+{{ if ne .cargo_handling "Container" }}
 {{if .replace_last_wagon}}
-{{template "curve_switch" .replace_last_wagon }}
+{{if gt $plen 8}}{{template "curve_switch_long" .replace_last_wagon }}{{else if gt $plen 4 }}{{template "curve_switch_medium" .replace_last_wagon }}{{else}}{{template "curve_switch_short" .replace_last_wagon }}{{end}}
 
 switch (FEAT_TRAINS, SELF, switch_{{.id}}_graphics_normal, position_in_articulated_veh % 3) 
 {
     1: return switch_{{.id}}_curve;
+    {{ if gt $plen 8}}
+    0: return switch_{{.id}}_curve_front;
+    2: return switch_{{.id}}_curve_rear;
+    {{ end }}
     return spriteset_invisible;
 }
 
 switch (FEAT_TRAINS, SELF, switch_{{.id}}_graphics_last, position_in_articulated_veh % 3) 
 {
     1: return switch_{{.replace_last_wagon}}_curve;
+    {{ if gt $plen 8}}
+    0: return switch_{{.replace_last_wagon}}_curve_front;
+    2: return switch_{{.replace_last_wagon}}_curve_rear;
+    {{ end }}
     return spriteset_invisible;
 }
 
 switch (FEAT_TRAINS, SELF, switch_{{.id}}_graphics, position_in_consist_from_end) 
 {
-    1: return switch_{{.id}}_graphics_last;
+    0..2: return switch_{{.id}}_graphics_last;
     return switch_{{.id}}_graphics_normal;
 }
 {{else}}
 switch (FEAT_TRAINS, SELF, switch_{{.id}}_graphics, position_in_articulated_veh % 3) 
 {
     1: return switch_{{.id}}_curve;
+    {{ if gt $plen 8}}
+    0: return switch_{{.id}}_curve_front;
+    2: return switch_{{.id}}_curve_rear;
+    {{ end }}
     return spriteset_invisible;
 }
 {{end}}
