@@ -297,11 +297,11 @@ item(FEAT_TRAINS, vehicle_{{.id}}, {{.numeric_id}}) {
         refittable_cargo_classes: bitmask(CC_BULK);
         cargo_allow_refit: [FRUT];
         {{else if eq .cargo_handling "Van" }}
-        refittable_cargo_classes: bitmask(CC_COVERED, CC_EXPRESS);
+        refittable_cargo_classes: bitmask(CC_COVERED, CC_EXPRESS, CC_ARMOURED, CC_REFRIGERATED);
         {{else if eq .cargo_handling "Parcel" }}
-        refittable_cargo_classes: bitmask(CC_MAIL);        
+        refittable_cargo_classes: bitmask(CC_MAIL, CC_ARMOURED);        
         {{else if eq .cargo_handling "Siphon" }}
-        refittable_cargo_classes: bitmask(CC_MAIL);
+        refittable_cargo_classes: bitmask(CC_MAIL, CC_ARMOURED, CC_REFRIGERATED);
         cargo_allow_refit: [MILK];
         {{else if eq .cargo_handling "Steel" }}
         cargo_allow_refit: [STEL, METL, COPR, CSTI, IRON, PIPE, STAL, STCB, STST, ZINC];
