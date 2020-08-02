@@ -1,6 +1,6 @@
 # Timberwolf's Trains
 
-A set of UK trains.
+A set of UK trains. (Very much an alpha version with many glitches)
 
 ## Running Costs
 
@@ -15,10 +15,6 @@ There are two features with running costs.
 
 Types that were unreliable or unsuccessful in real life are given a shorter design life to tie in
 with this behaviour.
-
-## Tare speeds
-
-As per prototype, most goods wagons can run faster empty than when loaded.
 
 ## Scale
 
