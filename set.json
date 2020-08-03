@@ -2,7 +2,7 @@
     "grf": {
         "author_id": "TWF",
         "grf_id": 7,
-        "name": "Timberwolf's UK Trains (0.1.1-alpha)",
+        "name": "Timberwolf's UK Trains (0.1.2-alpha)",
         "description": "Work in progress UK train set featuring 2x zoom and extra rotation sprites. Alpha version featuring trains from 1900 to 2020, along with many clipping bugs and alignment issues.",
         "min_compat_version": 1,
         "filename": "timberwolfs_trains.nml",

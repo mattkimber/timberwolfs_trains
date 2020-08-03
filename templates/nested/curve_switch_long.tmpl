@@ -14,7 +14,7 @@ switch (FEAT_TRAINS, SELF, switch_{{.}}_height, getbits(extra_callback_info1, 0,
     return switch_{{.}}_crest_check;
 }
 
-switch (FEAT_TRAINS, SELF, switch_{{.}}_curve, getbits(extra_callback_info1, 0, 8) == 0 ? curv_info : 0)  {
+switch (FEAT_TRAINS, SELF, switch_{{.}}_curve, getbits(extra_callback_info1, 0, 8) == 0 && other_veh_is_hidden(-1) != 1 ? curv_info : 0)  {
     vehicle_curv_info(1, 0): return spriteset_{{.}}_turn_1;
     vehicle_curv_info(0, 1): return spriteset_{{.}}_turn_2;
 
@@ -26,7 +26,7 @@ switch (FEAT_TRAINS, SELF, switch_{{.}}_curve, getbits(extra_callback_info1, 0, 
 }
 
 // Switches for front
-switch (FEAT_TRAINS, SELF, switch_{{.}}_height_front, getbits(extra_callback_info1, 0, 8) == 0 ? other_veh_z_offset(1) : 0) {
+switch (FEAT_TRAINS, SELF, switch_{{.}}_height_front, getbits(extra_callback_info1, 0, 8) == 0 ?  abs(other_veh_z_offset(1)) + abs(other_veh_z_offset(2))  : 0) {
     0: return spriteset_{{.}}_sections_front;
     return spriteset_invisible;
 }
@@ -37,12 +37,12 @@ switch (FEAT_TRAINS, SELF, switch_{{.}}_curve_front, getbits(extra_callback_info
 }
 
 // Switches for rear
-switch (FEAT_TRAINS, SELF, switch_{{.}}_height_rear, getbits(extra_callback_info1, 0, 8) == 0 ? other_veh_z_offset(-1) +  other_veh_z_offset(-2): 0) {
+switch (FEAT_TRAINS, SELF, switch_{{.}}_height_rear, getbits(extra_callback_info1, 0, 8) == 0 ? abs(other_veh_z_offset(-1)) + abs(other_veh_z_offset(-2)): 0) {
     0: return spriteset_{{.}}_sections_rear;
     return spriteset_invisible;
 }
 
-switch (FEAT_TRAINS, SELF, switch_{{.}}_curve_rear, getbits(extra_callback_info1, 0, 8) == 0 ? abs(other_veh_curv_info(-1)) + abs(other_veh_curv_info(-2)) : 0)  {
+switch (FEAT_TRAINS, SELF, switch_{{.}}_curve_rear, getbits(extra_callback_info1, 0, 8) == 0 && other_veh_is_hidden(-2) != 1 ? abs(other_veh_curv_info(-1)) + abs(other_veh_curv_info(-2)) : 0)  {
     0: return switch_{{.}}_height_rear;
     return spriteset_invisible;
 }
