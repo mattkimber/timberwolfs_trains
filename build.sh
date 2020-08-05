@@ -28,7 +28,7 @@ for i in `ls intermediate`; do
 
     if [ ! -e $fn ]; then 
         echo "$i [new]"
-	    ../gorender/renderobject.exe -i intermediate/$i -o $i -s 2,1 -u
+	    ../gorender/renderobject.exe -8 -i intermediate/$i -o $i -s 2,1 -u
     fi
 done
 
@@ -40,7 +40,7 @@ for i in `ls intermediate`; do
     if [ ! -e $fn ]; then 
         f=`echo $i | sed -e s/.vox//`
         echo "$f [new]"
-        ../gorender/renderobject.exe -m files/manifest_sections.json  -i intermediate/$i -o ${f}_sections -s 2,1 -u
+        ../gorender/renderobject.exe -8 -m files/manifest_sections.json  -i intermediate/$i -o ${f}_sections -s 2,1 -u
     fi
 done
 
@@ -52,9 +52,12 @@ for i in `ls intermediate/hills`; do
 
     if [ ! -e $fn ]; then 
         echo "$i [new]"
-	    ../gorender/renderobject.exe -i intermediate/hills/$i -m files/manifest_hill.json -o $i -s 2,1 -u
+	    ../gorender/renderobject.exe -8 -i intermediate/hills/$i -m files/manifest_hill.json -o $i -s 2,1 -u
     fi
 done
+
+echo "Rendering purchase sprites"
+../purchaser/purchaser.exe table.csv
 
 echo "Compiling set"
 ../roadie/roadie.exe set.json

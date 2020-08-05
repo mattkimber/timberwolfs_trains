@@ -86,6 +86,9 @@
             "template":  "templates/static/sprite_templates.nml"
         },
         {
+            "template": "templates/static/purchase_template.nml"
+        },
+        {
             "template":  "templates/static/recolour.nml"
         },
         {

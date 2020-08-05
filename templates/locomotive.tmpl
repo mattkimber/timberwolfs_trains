@@ -2,6 +2,9 @@
 {{$template := concat "template_auto_" .ttd_len -}}
 {{$plen := parseint .ttd_len -}}
 
+spriteset(spriteset_{{.id}}_purchase, "1x/{{.id}}_purchase.png")
+{ template_purchase_1x() }
+
 {{ if not .reuse_sprites -}}
 {{if eq .globals.bpp "32"}}{{ altsprites .id $template $zoom }}{{else}}{{ altsprites8 .id $template $zoom }}{{end}}
 
@@ -357,7 +360,7 @@ item(FEAT_TRAINS, vehicle_{{.id}}, {{.numeric_id}}) {
 
     graphics {
         default:  switch_{{.id}}_graphics;
-        purchase:  spriteset_{{$sprite}};
+        purchase:  spriteset_{{.id}}_purchase;
         additional_text: return {{.additional_text_string}};
         articulated_part: switch_{{.id}}_articulation;
         length: switch_{{.id}}_length;

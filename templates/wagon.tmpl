@@ -7,6 +7,11 @@
 {{$template_up := concat "template_auto_up_" .ttd_len -}}
 {{$template_down := concat "template_auto_down_" .ttd_len -}}
 
+
+spriteset(spriteset_{{.id}}_purchase, "1x/{{.id}}_purchase.png")
+{ template_purchase_1x() }
+
+
 {{if eq .globals.bpp "32"}}{{ altsprites .id $template $zoom }}{{else}}{{ altsprites8 .id $template $zoom }}{{end}}
 {{if eq .globals.bpp "32"}}{{ altspritesn .id $template_turn_1 $zoom "_turn_1" }}{{else}}{{ altsprites8n .id $template_turn_1 $zoom "_turn_1" }}{{end}}
 {{if eq .globals.bpp "32"}}{{ altspritesn .id $template_turn_2 $zoom "_turn_2" }}{{else}}{{ altsprites8n .id $template_turn_2 $zoom "_turn_2" }}{{end}}
@@ -598,7 +603,7 @@ item(FEAT_TRAINS, vehicle_{{.id}}, {{.numeric_id}}) {
         additional_text: {{ if .tare_speed -}}{{.id}}_extra_text_switch{{else}}return {{.additional_text_string}}{{end}};
         articulated_part: switch_{{.id}}_articulation;
         length: switch_{{.id}}_length;
-        purchase: spriteset_{{.id}};
+        purchase:  spriteset_{{.id}}_purchase;
         purchase_cargo_capacity: spriteset_{{.id}};
         {{if .speed}}purchase_speed: return ({{.speed}} * 8) / 5;{{end}}
     }

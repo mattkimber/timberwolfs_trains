@@ -5,6 +5,11 @@
 {{- $newsprites := slice .new_sprites -}}
 {{- $len := .ttd_len -}}{{- $plen := parseint .ttd_len -}}{{- $bpp := .globals.bpp -}}
 
+
+spriteset(spriteset_{{.id}}_purchase, "1x/{{.id}}_purchase.png")
+{ template_purchase_1x() }
+
+
 {{- range $index, $element := $layout -}}
 {{- $newsprite := index $newsprites $index -}}
 {{- if eq $newsprite "1" -}}
@@ -177,7 +182,7 @@ item(FEAT_TRAINS, vehicle_{{.id}}, {{.numeric_id}}) {
 
     graphics {
         default:  switch_{{.id}}_graphics;
-        purchase:  {{if .reuse_sprites}}spriteset_{{.reuse_sprites}}{{else}}spriteset_{{.id}}{{end}};
+        purchase:  spriteset_{{.id}}_purchase;
         additional_text: return {{.additional_text_string}};
         articulated_part: switch_{{.id}}_articulation;
         length: switch_{{.id}}_length;
