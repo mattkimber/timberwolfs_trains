@@ -241,10 +241,17 @@ switch (FEAT_TRAINS, SELF, switch_{{.id}}_rev_graphics, position_in_articulated_
     return spriteset_invisible;
 }
 
+{{if eq .double_headed "2"}}
+switch (FEAT_TRAINS, SELF, {{if le $plen 8 }}switch_{{.id}}_reverse{{else}}switch_{{.id}}_graphics{{end}}, position_in_consist % 6) {
+    0..2: return switch_{{.id}}_fwd_graphics;
+    return switch_{{.id}}_rev_graphics;
+}
+{{else}}
 switch (FEAT_TRAINS, SELF, {{if le $plen 8 }}switch_{{.id}}_reverse{{else}}switch_{{.id}}_graphics{{end}}, position_in_consist_from_end) {
     0..2: return switch_{{.id}}_rev_graphics;
     return switch_{{.id}}_fwd_graphics;
 }
+{{end}}
 
 {{if le $plen 8 }}
 switch (FEAT_TRAINS, SELF, switch_{{.id}}_graphics, position_in_articulated_veh % 3) 

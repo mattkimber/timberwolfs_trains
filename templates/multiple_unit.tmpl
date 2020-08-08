@@ -3,6 +3,8 @@
 
 {{- $layout := slice .layout -}}
 {{- $newsprites := slice .new_sprites -}}
+{{- $manual_ttd_len := .manual_ttd_len -}}
+{{- $man_ttd_len := slice .manual_ttd_len -}}
 {{- $len := .ttd_len -}}{{- $plen := parseint .ttd_len -}}{{- $bpp := .globals.bpp -}}
 
 
@@ -14,6 +16,7 @@ spriteset(spriteset_{{.id}}_purchase, "1x/{{.id}}_purchase.png")
 {{- $newsprite := index $newsprites $index -}}
 {{- if eq $newsprite "1" -}}
 {{$template := concat "template_auto_" $len -}}
+{{if $manual_ttd_len }}{{$len = index $man_ttd_len $index }}{{end}}
 {{if eq $bpp "32"}}{{ altsprites $element $template $zoom }}{{else}}{{ altsprites8 $element $template $zoom }}{{end}}
 
 {{$template_turn := concat "template_auto_turn_1_" $len -}}

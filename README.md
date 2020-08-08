@@ -1,101 +1,156 @@
-# Timberwolf's Trains
+# Timberwolf's UK Trains
 
-A set of UK trains. (Very much an alpha version with many glitches)
+A maximalist British train set featuring over 200 trains with:
+
+- Long vehicle scale
+- 2x sprites for all vehicles
+- Smooth curve and hill animations
+- 2CC selectable company colours
+- Support for FIRS, ECS and YETI cargo types
+
+It's recommended (although not necessary) to use this set with
+Timberwolf's Tracks. You may also be interested in Timberwolf's
+UK Road Vehicles for a consistent visual style and gameplay
+balance.
+
+## Getting Started
+
+Trains are much more expensive to purchase (and rather more 
+expensive to run) than the standard OpenTTD vehicles. Start
+small and don't over-extend at first; buy small tank engines
+for your first route and upgrade when you have a profitable
+network.
+
+Some options for starting out:
+
+- 1 or 2 small tank engines running short (2-3 tile) coal,
+  iron or wood services.
+- 1 medium locomotive with 2-3 carriages and a mail van
+  running between two mid-sized towns. 
+- A short passenger line between 3 or 4 close together
+  towns using railcars or low end multiple units.
+
+When starting a game after 1980, it may be easier to build
+up some profitable road vehicle routes rather than gambling
+most of your loan on a single train.
+
+Costs can be adjusted in parameters if you prefer an easier
+(or harder) game.
 
 ## Running Costs
 
-There are two features with running costs.
+You will need to replace your trains even with breakdowns
+set to "off"! As trains reach the end of their useful life
+their running costs will increase, leaving you facing a
+trade-off between decreasing profits and a large bill for
+new locomotives.
 
-1. Vehicles that are not moving (e.g. loading/unloading cargo or waiting at a signal) will incur
-   only a third of their usual running costs.
-2. As locomotives get older, their running costs will start to increase. The increase will start when
-   the engine is within 5 years of its maximum age, eventually increasing to 3x the original running
-   cost. This is to provide an interesting trade-off between getting more life out of engines by using
-   them beyond their design life, and spending money on replacements.
+The default "spicy" setting is balanced to make keeping
+a particularly good class of locomotive running for a few
+extra years a viable option if the route it serves is
+highly profitable. You might find yourself envisaging an
+alternate history where the 1930s streamliners were eked
+out until the HST came along, or the APT-P plied modern
+mainline services alongside Voyagers and Pendolinos.
 
-Types that were unreliable or unsuccessful in real life are given a shorter design life to tie in
-with this behaviour.
+Vehicles that were unsuccessful, unreliable or only built
+as experimental prototypes tend to have shorter usable
+life in game; be warned that if you use them, you will
+spend a lot more on replacement or running costs than
+the more proven options.
 
-## Scale
+Tip: If you're playing Villages Is Villages with economic
+settings enabled, increasing your operating expenses with
+some older vehicles will make it easier to save up cash
+for a megaproject, without losing it all to dividend
+payouts.
 
-This set takes advantage of the larger canvas in MagicaVoxel to have larger, more detailed objects.
+## Multiple Units
 
-The scale is based on a "typical" vehicle such as a Mark Two coach being roughly 192x40x60, a slightly exaggerated size
-designed to fit with the OpenTTD scale.
+Unlike many sets, you will only be able to purchase
+multiple units in their prototypical consists. These
+can however be coupled together to form longer trains.
 
-This gives a scale as follows:
+Working between multiple classes is supported with 
+realistic rules, so you can couple a Class 455 to a 
+Class 456 but not to a Sprinter.
 
-Length: 10 voxels/m
-Width:  15 voxels/m
-Height: 15 voxels/m
+As units with 8+ car consists and long carriages would
+be excessively long, by default consists are truncated
+to a maximum 6 tiles. This can be disabled (or reduced
+to 4 tiles) with a parameter, but beware you will need
+some very large stations to handle a full 20-car
+Eurostar consist.
 
-In this scale a Mark Two coach is 196x42x58.
+## Unit Bonuses
 
-Wheels should be scaled according to the length (10 voxels/m) rather than other dimensions.
+Some vehicles have bonuses or penalties which apply to
+either that unit or the whole train which contains them.
+These are displayed in the purchase menu. The most common
+types of bonus:
 
-Some useful properties:
+* Passengers pay more for long distance journeys.
+  (Typically express vehicles with slow loading speeds)
+* Passengers pay less for long distance journeys.
+  (Typically urban vehicles with high loading speeds)
+* Slow trains travel faster with this wagon attached.
+  (Brake vans)
 
-"Realistic" track gauge would be 21 voxels (round up to 22). OpenTTD's standard is to be somewhat broad gauge compared to
-UK prototypes, so for models to sit right on tracks this should be at least 26 voxels with 4 voxel wide wheels. This 
-"broad gauge" effect can be compensated for by moving vehicle bodies down 4 voxels, giving the appearance of a narrower
-track gauge.
+The brake van bonus can be useful early game when wagons
+are slow.
 
-Note that for most vehicles it will be useful to round them to the nearest size for their in-game length. The tracking
-table formula handles this, although the voxel object may need padding to correctly align when coupled.
+## Symbols
 
-The tracking table contains suitable voxel sizes for each size. These sizes assume vehicles have buffers!
+There are certain symbols used in the purchase menu to
+indicate certain vehicle behaviours:
 
-### Making it work
+* ![x1.](purchase_sprites/x1.png) ... ![x20.](purchase_sprites/x20.png): this is a multiple unit, with the specified
+            number of cars.
+* ![green angle brackets.](purchase_sprites/double_headed.png): this vehicle will reverse when placed at
+              the end of a train, or can be coupled
+              nose to nose when doubled headed. A
+              second power car is not required.
+* ![orange angle brackets.](purchase_sprites/second_power_car.png): this vehicle will reverse when placed at
+               the end of a train. A second power car is
+               required. (i.e. you must purchase at
+               least two and place them in the same
+               consist)
 
-Documentation on the sprite composition is a little thin on the ground, to make the feature work in NML the 
-following is needed:
+## Building from source
 
-In the `item` declaration add the relevant `{veh_type}_FLAG_SPRITE_STACK` flags to `misc_flags`. e.g. for a
-train which also supports 2CC recolouring, you will need the following:
+Building from source is unfortunately not user-friendly. You will need to build a lot of prerequisites and
+have access to the GNU tools, either via a Linux or Mac environment or Windows via Git Bash or WSL.
 
-```
-misc_flags: bitmask(TRAIN_FLAG_2CC, TRAIN_FLAG_SPRITE_STACK);
-```
+(Note that the executables are expected to have Windows-style names, take note if you are building the
+Go projects on a different platform)
 
-Graphics will need to use a switch, this should be relatively straightforward but for completeness you
-should have a `graphics` block looking something like this:
+### Prerequisites
 
-```
-graphics {
-    default:  switch_vehicle_graphics;
-    // other switches
-}
-```
+You will need to obtain and build the following:
 
-The graphics switch is where things get more complicated. This works a little bit like the articulation
-callback in that it will be called up to 4 times, until it stores 0 in a specific temporary variable `0x100`. 
-The lower bits of `extra_callback_info1` will contain the current iteration of the sprite loop.
+* [GoRender](https://github.com/mattkimber/gorender) - used for rendering voxel objects.
+* [Purchaser](https://github.com/mattkimber/purchaser) - used for creating purchase menu sprites.
+* [Cargopositor](https://github.com/mattkimber/cargopositor) - used for compositiing cargo and animation objects.
+* [Roadie](https://github.com/mattkimber/roadie) - used for templating and creating NML files.
 
-It's clearest with an example:
+If you want to play around with the sprite templates and offsets (xrels/yrels) these are generated using
+[Temporarily Late](https://github.com/mattkimber/temporarily_late), but it is not necessary if you're
+happy using the existing templates. 
 
-```
-switch(FEAT_TRAINS, SELF, switch_vehicle_graphics, [
-    STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 1 ? CB_FLAG_MORE_SPRITES : 0) | PALETTE_USE_DEFAULT, 0x100),
-    getbits(extra_callback_info1, 8, 8)
-    ]) {
-    0: return spriteset_vehicle;    // Return the base sprite
-    1: return spriteset_overlay;    // Return the overlay
+The build expects to find prerequisites in the following relative folder structure (note `.exe` extension):
 
-    // The following should never be executed as the switch cases are exhaustiv
-    return spriteset_invisible;
-}
-```
+* Roadie: `../roadie/roadie.exe`
+* GoRender: `../gorender/renderobject.exe`
+* Cargopositor: `../cargopositor/cargopositor.exe`
+* Purchaser: `../purchaser/purchaser.exe`
 
-This example has a single static overlay to keep things simple, but `spriteset_overlay` could easily be a switch
-or spritegroup for something more complex. Similarly,  the `getbits(extra_callback_info1, 8, 8) < 1` check could
-be extended to `2` or `3` for more overlay sprites.
+### Building
 
-`PALETTE_USE_DEFAULT` can be replaced with `PALETTE_IDENTITY` if you do not want the composited sprites to be
-recoloured. (This can also have a default or custom recolouring sprite specified.)
+To build the full set, run `./build.sh`. This will take a long time as it needs to render every vehicle.
+Future runs will not overwrite files, to re-render something you will need to delete its PNG file from
+the `2x` directory.
 
-## Colours
+If you are iterating something in NML and don't need to go through the sprite build process, you can
+use `./roadie.sh` instead for a quicker build.
 
-Base 2cc primary colour = 204
-Base 2cc secondary colour = 86
-
-End plate yellow = 69
+`./produce_templates.sh` rebuilds templates using Temporarily Late, if necessary.
