@@ -6,3 +6,5 @@ lang
 *.grf
 timberwolfs_trains.nml
 intermediate
+*.tar
+timberwolfs_trains

@@ -22,9 +22,10 @@
     "sprites": [
         { 
             "angle": 0,
-            "width": 8,
-            "height": 42,
-            "slice": -1
+            "width": 7,
+            "height": 45,
+            "slice": -1,
+            "render_elevation": 33
         },
         { 
             "angle": 45,
@@ -44,9 +45,10 @@
         },
         { 
             "angle": 180,
-            "width": 8,
-            "height": 42,
-            "slice": -1
+            "width": 7,
+            "height": 45,
+            "slice": -1,
+            "render_elevation": 33
         },
         { 
             "angle": 225,
@@ -66,9 +68,10 @@
         },
         { 
             "angle": 0,
-            "width": 8,
-            "height": 42,
-            "slice": 0
+            "width": 7,
+            "height": 45,
+            "slice": 0,
+            "render_elevation": 33
         },
         { 
             "angle": 45,
@@ -88,9 +91,10 @@
         },
         { 
             "angle": 180,
-            "width": 8,
-            "height": 42,
-            "slice": 0
+            "width": 7,
+            "height": 45,
+            "slice": 0,
+            "render_elevation": 33
         },
         { 
             "angle": 225,
@@ -110,9 +114,10 @@
         },
         { 
             "angle": 0,
-            "width": 8,
-            "height": 42,
-            "slice": 1
+            "width": 7,
+            "height": 45,
+            "slice": 1,
+            "render_elevation": 33
         },
         { 
             "angle": 45,
@@ -132,9 +137,10 @@
         },
         { 
             "angle": 180,
-            "width": 8,
-            "height": 42,
-            "slice": 1
+            "width": 7,
+            "height": 45,
+            "slice": 1,
+            "render_elevation": 33
         },
         { 
             "angle": 225,
