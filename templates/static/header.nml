@@ -5,7 +5,7 @@ traininfo_y_offset=3;
  disable_item(FEAT_TRAINS, 0, 115);
 
  railtypetable {
-    RAIL, ELRL, SAAZ,
+    RAIL, ELRL, SAAZ, SAA3, TDRL,
     PLATEWAY: [PTWY,RAIL], 
     THIRD_RAIL: [TDRL,SAA3,ELRL],
     DUAL_POWER: [SAAZ,DUAL,SAA3,ELRL]

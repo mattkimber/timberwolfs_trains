@@ -7,7 +7,8 @@ switch (FEAT_TRAINS, SELF, switch_{{.id}}_power, current_railtype) {
     {{ if eq .railtype "ELRL" }}
     ELRL: return {{.power}};
     {{ else }}
-    THIRD_RAIL: return {{.power}};
+    SAA3: return {{.power}};
+    TDRL: return {{.power}};
     {{ end }}
     return {{.secondary_power}};
 }
