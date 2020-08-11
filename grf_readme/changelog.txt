@@ -1,3 +1,14 @@
+v1.0.2
+------
+
+Fix dual electric locomotives using diesel visual effect.
+Fix v1.0.1 white bars on purchase sprites.
+
+v1.0.1
+------
+
+More TTD-like sprite sizes on NS direction tracks.
+
 v1.0.0
 ------
 

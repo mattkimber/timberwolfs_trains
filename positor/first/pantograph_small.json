@@ -1,0 +1,27 @@
+{
+    "files": [
+      "dual_power/stadler_class_755_mid_rev.vox"
+    ],
+    "operations": [
+      {
+        "name": "_pan_up",
+        "type": "repeat",
+        "truncate": true,
+        "mask_original": true,
+        "n": 0,        
+        "file": "dual_power/pantograph/small_pan_up.vox"
+      },      
+      {
+        "name": "_pan_down",
+        "type": "repeat",
+        "truncate": true,
+        "mask_original": true,
+        "n": 0,        
+        "file": "dual_power/pantograph/small_pan_down.vox"
+      },      
+      {
+        "name": "",
+        "type": "produce_empty"
+      }
+    ]
+}
