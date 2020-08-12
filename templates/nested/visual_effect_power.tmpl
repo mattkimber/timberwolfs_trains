@@ -14,7 +14,11 @@ switch (FEAT_TRAINS, SELF, switch_{{.id}}_power, current_railtype) {
 }
 
 switch (FEAT_TRAINS, SELF, switch_{{.id}}_visual_effect_railtype, current_railtype) {
+    {{ if eq .railtype "ELRL" }}
+    TDRL: return visual_effect(VISUAL_EFFECT_DIESEL, 0);
+    {{ else }}
     ELRL: return visual_effect(VISUAL_EFFECT_DIESEL, 0);
+    {{end}}
     RAIL: return visual_effect(VISUAL_EFFECT_DIESEL, 0);
     return visual_effect(VISUAL_EFFECT_ELECTRIC, 0);
 }
