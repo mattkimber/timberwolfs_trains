@@ -1,3 +1,11 @@
+v1.0.4
+------
+
+More modern MUs including Azuma, Aventra, Coradia and Desiro City
+MaK Class 21/9 introduced as a low-cost late game locomotive
+Purchase and running cost tweaks
+GWR railcar loading speeds fixed
+
 v1.0.3
 ------
 
