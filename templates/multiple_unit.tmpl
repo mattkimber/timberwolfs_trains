@@ -173,7 +173,7 @@ item(FEAT_TRAINS, vehicle_{{.id}}, {{.numeric_id}}) {
         running_cost_factor: switch_{{.id}}_running_cost;
         purchase_running_cost_factor: return {{.running_cost}};
         visual_effect_and_powered: switch_{{.id}}_visual_effect;
-        {{ if eq .type "dual_power" -}}power: switch_{{.id}}_power;{{end}}{{ if eq .type "dual_electric" -}}power: switch_{{.id}}_power;{{end}}
+        {{if .secondary_power}}{{ if eq .type "dual_power" -}}power: switch_{{.id}}_power;{{end}}{{ if eq .type "dual_electric" -}}power: switch_{{.id}}_power;{{end}}{{end}}
         {{if .capacity}}purchase_cargo_capacity:  {{if .reuse_sprites}}spriteset_{{.reuse_sprites}}{{else}}spriteset_{{.id}}{{end}};{{end}}
         can_attach_wagon: switch_{{.id}}_attach_wagons;
     }

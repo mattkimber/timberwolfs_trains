@@ -1,7 +1,7 @@
 {{define "visual_effect_power" -}}
 
 
-{{ if eq .type "dual_power" -}}
+{{ if eq .type "dual_power" -}}{{if .secondary_power}}
 switch (FEAT_TRAINS, SELF, switch_{{.id}}_power, current_railtype) {
     SAAZ: return {{.power}};
     {{ if eq .railtype "ELRL" }}
@@ -11,7 +11,7 @@ switch (FEAT_TRAINS, SELF, switch_{{.id}}_power, current_railtype) {
     TDRL: return {{.power}};
     {{ end }}
     return {{.secondary_power}};
-}
+}{{end}}
 
 switch (FEAT_TRAINS, SELF, switch_{{.id}}_visual_effect_railtype, current_railtype) {
     {{ if eq .railtype "ELRL" }}
@@ -23,13 +23,13 @@ switch (FEAT_TRAINS, SELF, switch_{{.id}}_visual_effect_railtype, current_railty
     return visual_effect(VISUAL_EFFECT_ELECTRIC, 0);
 }
 {{end}}
-{{ if eq .type "dual_electric" -}}
+{{if .secondary_power}}{{ if eq .type "dual_electric" -}}
 switch (FEAT_TRAINS, SELF, switch_{{.id}}_power, current_railtype) {
     ELRL: return {{.power}};
     SAAZ: return {{.power}};
     return {{.secondary_power}};
 }
-{{ end }}
+{{ end }}{{end}}
 
 // Visual effect
 switch (FEAT_TRAINS, SELF, switch_{{.id}}_visual_effect, position_in_articulated_veh ) 

@@ -1,3 +1,10 @@
+v1.0.5
+------
+
+Fix dual voltage EMUs having 3hp on third rail
+Fix Class 101 loading speed
+Add Parry Class 139
+
 v1.0.4
 ------
 
