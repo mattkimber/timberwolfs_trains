@@ -1,3 +1,9 @@
+v1.0.6
+------
+
+Added more Victorian locomotives and carriages
+Fixed Schools class ID conflict
+
 v1.0.5
 ------
 

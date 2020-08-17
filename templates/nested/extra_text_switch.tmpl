@@ -1,8 +1,0 @@
-{{define "extra_text_switch" -}}
-{{ if .tare_speed -}}
-// Text strings for vehicles
-switch(FEAT_TRAINS, SELF, {{.id}}_extra_text_switch, [
-			STORE_TEMP(({{.tare_speed}} * 8) / 5, 256) ] )  {
-	return {{.additional_text_string}};
-}
-{{end}}{{end}}

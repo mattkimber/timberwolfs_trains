@@ -516,7 +516,6 @@ switch (FEAT_TRAINS, SELF, switch_{{.id}}_graphics, position_in_articulated_veh 
 
 
 {{template "tare_speed_switch" . }}
-{{template "extra_text_switch" . }}
 
 
 item(FEAT_TRAINS, vehicle_{{.id}}, {{.numeric_id}}) {
@@ -599,8 +598,8 @@ item(FEAT_TRAINS, vehicle_{{.id}}, {{.numeric_id}}) {
         {{end}}
 
 
-        {{if .tare_speed}}speed: switch_{{.id}}_speed;{{end}}
-        additional_text: {{ if .tare_speed -}}{{.id}}_extra_text_switch{{else}}return {{.additional_text_string}}{{end}};
+        {{ $speed := parseint .speed }}{{if lt $speed 60 }}{{if ne .default_cargo "BRAKE"}}speed: switch_{{.id}}_speed_brakevan;{{end}}{{end}}
+        additional_text: return {{.additional_text_string}};
         articulated_part: switch_{{.id}}_articulation;
         length: switch_{{.id}}_length;
         purchase:  spriteset_{{.id}}_purchase;
