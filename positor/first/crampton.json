@@ -1,6 +1,6 @@
 {
     "files": [
-      "secr_h_class.vox"
+      "crampton_locomotive.vox"
     ],
     "operations": [
       {
@@ -9,7 +9,7 @@
         "truncate": true,
         "mask_original": true,
         "n": 0,        
-        "file": "valvegear/0-4-4_1.vox"
+        "file": "valvegear/crampton_1.vox"
       },      
       {
         "name": "_anim_2",
@@ -17,7 +17,7 @@
         "truncate": true,
         "mask_original": true,
         "n": 0,        
-        "file": "valvegear/0-4-4_2.vox"
+        "file": "valvegear/crampton_2.vox"
       },      
       {
         "name": "_anim_3",
@@ -25,7 +25,7 @@
         "truncate": true,
         "mask_original": true,
         "n": 0,        
-        "file": "valvegear/0-4-4_3.vox"
+        "file": "valvegear/crampton_3.vox"
       },      
       {
         "name": "_anim_4",
@@ -33,7 +33,7 @@
         "truncate": true,
         "mask_original": true,
         "n": 0,        
-        "file": "valvegear/0-4-4_4.vox"
+        "file": "valvegear/crampton_4.vox"
       }
     ]
 }

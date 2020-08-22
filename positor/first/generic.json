@@ -1,0 +1,51 @@
+{
+    "files": [
+      "ner_1001_class.vox",
+      "fowler_3f_jinty.vox",
+      "midland_2441_class.vox",
+      "gwr_5600_class.vox",
+      "gcr_class_9n.vox",
+      "fowler_4f.vox",
+      "gwr_5700_class.vox",
+      "bulleid_q1.vox",
+      "hunslet_austerity.vox",
+      "br_class_14.vox",
+      "ee_gt3.vox",
+      "ger_d81_class.vox",
+      "drummond_class_c.vox",
+      "nbr_class_c.vox",
+      "stroudley_a1.vox",
+      "ger_class_y14.vox",
+      "gwr_dean_goods.vox",
+      "drummond_m7.vox",
+      "gwr_517_class.vox",
+      "bury_coppernob.vox",
+      "lmr_lion.vox"
+    ],
+    "operations": [
+      {
+        "name": "_anim_1",
+        "type": "scale",
+        "mask_original": true,
+        "file": "valvegear/generic_1.vox"
+      },      
+      {
+        "name": "_anim_2",
+        "type": "scale",
+        "mask_original": true,
+        "file": "valvegear/generic_2.vox"
+      },      
+      {
+        "name": "_anim_3",
+        "type": "scale",
+        "mask_original": true,
+        "file": "valvegear/generic_3.vox"
+      },      
+      {
+        "name": "_anim_4",
+        "type": "scale",
+        "mask_original": true,
+        "file": "valvegear/generic_4.vox"
+      }
+    ]
+}
