@@ -93,6 +93,9 @@
         },
         {
             "template": "templates/static/sprite_templates_hills.nml"
+        },
+        {
+            "template": "templates/static/horse_sounds.nml"
         }
     ],
     "fixed_strings": {

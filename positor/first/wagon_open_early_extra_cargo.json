@@ -1,0 +1,44 @@
+{
+    "files": [
+      "cargo/wagon/open_wagon.vox",      
+      "cargo/wagon/open_wagon_3pl.vox"
+    ],
+    "operations": [
+        {
+            "name": "",
+            "type": "produce_empty"
+        },
+        {
+            "name": "_lvst_half",
+            "type": "repeat",
+            "mask_original": true,
+            "n": 1,            
+            "truncate": true,
+            "file": "cargo/half/livestock.vox"
+        },
+        {
+            "name": "_lvst_full",
+            "type": "repeat",
+            "mask_original": true,
+            "n": 1,            
+            "truncate": true,
+            "file": "cargo/full/livestock.vox"
+        },
+        {
+            "name": "_barrels_half",
+            "type": "scale",
+            "mask_original": true,
+            "n": 1,            
+            "truncate": true,
+            "file": "cargo/half/barrels.vox"
+        },
+        {
+            "name": "_barrels_full",
+            "type": "scale",
+            "mask_original": true,
+            "n": 1,            
+            "truncate": true,
+            "file": "cargo/full/barrels.vox"
+        }
+    ]
+}

@@ -16,6 +16,7 @@ cp voxels/static/carriage/* intermediate
 cp voxels/static/loco/* intermediate
 cp voxels/static/tender/* intermediate
 cp voxels/static/wagon/* intermediate
+cp voxels/horse/* intermediate
 
 # Do sprite creation
 echo "Compositing hill sprites"

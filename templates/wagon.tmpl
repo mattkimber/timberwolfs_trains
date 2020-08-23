@@ -57,6 +57,8 @@ spriteset(spriteset_{{.id}}_purchase, "1x/{{.id}}_purchase.png")
 {{ $cargo_list := "" -}}{{ $id := .id -}}
 {{if eq .cargo_handling "Bulk" -}}
 {{ $cargo_list = "bulk" -}}
+{{else if eq .cargo_handling "EarlyOpen" -}}
+{{ $cargo_list = "bulk,lvst,barrels" -}}
 {{else if eq .cargo_handling "Steel" -}}
 {{ $cargo_list = "metal" -}}
 {{else if eq .cargo_handling "Bolster" -}}
@@ -164,7 +166,61 @@ spritegroup spritegroup_{{$cargoid}}_sections_rear {
 {{ $bulk_cargos := "aore,bdmt,bean,cass,cblk,cmnt,cere,clay,coal,coke,core,ctcd,fecr,ficr,frut,grai,grvl,iore,lime,kaol,maiz,mno2,nitr,olsd,peat,phos,pota,pore,qlme,rcyc,salt,sand,sash,scmt,sgbt,sgcn,slag,sugr,sulp,toff,uran,whea" }}
 {{ $bolster_cargos := "bdmt,wood,batt,beer,boom,bubl,cera,fzdr,java,nuts,papr,powr,toys,veng,vpts,plas,dyes,mnsp,ficr,soap,coat,copr,csti,iron,metl,stal,stcb,stel,stst,zinc,wdpr,fmsp,ensp,tyre,pipe,vbod,vehi,stsh,stwr,rbar" }}
 {{ $metal_cargos := "copr,csti,iron,metl,stal,stcb,stel,stst,zinc" }}
-{{ if eq .cargo_handling "Bulk" }}
+{{ $early_liquids := "acid,beer,chlo,cola,ctar,dyes,eoil,fzdr,milk,nh3_,o2__,oil_,petr,plst,rfpr,rubr,soap,watr" }}
+{{ $early_cargos := "lvst,barrels" }}
+
+{{ if eq .cargo_handling "EarlyOpen" }}
+{{ $has_cargo_switch = "1" }}
+{{ range $index, $element := slice $early_cargos }}
+switch(FEAT_TRAINS, SELF, switch_{{$id}}_cargo_{{$element}}, [
+    STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 1 ? CB_FLAG_MORE_SPRITES : 0) | PALETTE_USE_DEFAULT, 0x100),
+    getbits(extra_callback_info1, 8, 8)
+    ]) {
+    0: switch_{{$id}}_curve;
+    1: switch_{{$id}}_{{$element}}_curve;
+
+    // This should never be executed
+    return spriteset_invisible;
+}
+
+{{ if gt $plen 8}}
+switch(FEAT_TRAINS, SELF, switch_{{$id}}_cargo_{{$element}}_front, [
+    STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 1 ? CB_FLAG_MORE_SPRITES : 0) | PALETTE_USE_DEFAULT, 0x100),
+    getbits(extra_callback_info1, 8, 8)
+    ]) {
+    0: switch_{{$id}}_curve_front;
+    1: switch_{{$id}}_{{$element}}_curve_front;
+
+    // This should never be executed
+    return spriteset_invisible;
+}
+
+switch(FEAT_TRAINS, SELF, switch_{{$id}}_cargo_{{$element}}_rear, [
+    STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 1 ? CB_FLAG_MORE_SPRITES : 0) | PALETTE_USE_DEFAULT, 0x100),
+    getbits(extra_callback_info1, 8, 8)
+    ]) {
+    0: switch_{{$id}}_curve_rear;
+    1: switch_{{$id}}_{{$element}}_curve_rear;
+
+    // This should never be executed
+    return spriteset_invisible;
+}
+{{end}}
+
+switch (FEAT_TRAINS, SELF, switch_{{$id}}_graphics_{{$element}}, position_in_articulated_veh % 3) 
+{
+    1: return switch_{{$id}}_cargo_{{$element}};
+    {{ if gt $plen 8}}
+    0: return switch_{{$id}}_cargo_{{$element}}_front;
+    2: return switch_{{$id}}_cargo_{{$element}}_rear;
+    {{ end }}
+    return spriteset_invisible;
+}
+{{end}}
+{{end}}
+
+
+{{ if eq .cargo_handling "Bulk" "EarlyOpen" }}
 {{ $has_cargo_switch = "1" }}
 {{ range $index, $element := slice $bulk_cargos }}
 switch(FEAT_TRAINS, SELF, switch_{{$id}}_cargo_{{$element}}, [
@@ -200,6 +256,7 @@ switch(FEAT_TRAINS, SELF, switch_{{$id}}_cargo_{{$element}}_rear, [
     // This should never be executed
     return spriteset_invisible;
 }
+
 {{ end }}
 
 
@@ -539,6 +596,9 @@ item(FEAT_TRAINS, vehicle_{{.id}}, {{.numeric_id}}) {
         {{else if eq .cargo_handling "Bulk" }}
         refittable_cargo_classes: bitmask(CC_BULK);
         cargo_allow_refit: [FRUT];
+        {{else if eq .cargo_handling "EarlyOpen" }}
+        refittable_cargo_classes: bitmask(CC_BULK, CC_LIQUID);
+        cargo_allow_refit: [FRUT, LVST];
         {{else if eq .cargo_handling "Van" }}
         refittable_cargo_classes: bitmask(CC_COVERED, CC_EXPRESS, CC_ARMOURED, CC_REFRIGERATED);
         {{else if eq .cargo_handling "Parcel" }}
@@ -568,7 +628,7 @@ item(FEAT_TRAINS, vehicle_{{.id}}, {{.numeric_id}}) {
         sprite_id:                    SPRITE_ID_NEW_TRAIN;
         misc_flags:                   bitmask(TRAIN_FLAG_2CC {{if $has_cargo_switch}}, TRAIN_FLAG_SPRITE_STACK{{end}});
         refit_cost:                   0;
-        track_type:                   RAIL;
+        track_type:                   {{.railtype}};
         running_cost_base:            RUNNING_COST_STEAM;
         cargo_capacity:               {{.capacity}} / 3;
         weight:                       {{.weight}} ton;        
@@ -584,7 +644,12 @@ item(FEAT_TRAINS, vehicle_{{.id}}, {{.numeric_id}}) {
         {{else}}
         default:  switch_{{.id}}_graphics;
         {{end}}
-        {{ if eq .cargo_handling "Bulk" }}
+        {{ if eq .cargo_handling "EarlyOpen" }}
+        {{ range $index, $element := slice $early_liquids }}
+        {{ toupper $element }}: switch_{{$id}}_graphics_barrels;{{end}}
+        LVST: switch_{{$id}}_graphics_lvst;
+        {{ end }}
+        {{ if eq .cargo_handling "Bulk" "EarlyOpen"  }}
         {{ range $index, $element := slice $bulk_cargos }}
         {{ toupper $element }}: switch_{{$id}}_graphics_{{$element}};{{end}}
         {{ else if eq .cargo_handling "Bolster" }}
