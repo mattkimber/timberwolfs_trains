@@ -1,7 +1,6 @@
 {
     "files": [
-      "crampton_locomotive.vox",
-      "lnwr_lady.vox"
+      "cycloped.vox"
     ],
     "operations": [
       {
@@ -10,7 +9,7 @@
         "truncate": true,
         "mask_original": true,
         "n": 0,        
-        "file": "valvegear/crampton_1.vox"
+        "file": "horse/horse_1.vox"
       },      
       {
         "name": "_anim_2",
@@ -18,7 +17,7 @@
         "truncate": true,
         "mask_original": true,
         "n": 0,        
-        "file": "valvegear/crampton_2.vox"
+        "file": "horse/horse_2.vox"
       },      
       {
         "name": "_anim_3",
@@ -26,7 +25,7 @@
         "truncate": true,
         "mask_original": true,
         "n": 0,        
-        "file": "valvegear/crampton_3.vox"
+        "file": "horse/horse_3.vox"
       },      
       {
         "name": "_anim_4",
@@ -34,7 +33,7 @@
         "truncate": true,
         "mask_original": true,
         "n": 0,        
-        "file": "valvegear/crampton_4.vox"
+        "file": "horse/horse_4.vox"
       }
     ]
 }

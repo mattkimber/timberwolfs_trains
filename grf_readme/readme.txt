@@ -37,6 +37,11 @@ useful to use timetables to increase the time a train spends
 at each station to improve station ratings without the long
 delays a "full load" order might incur.
 
+As you will often be using low powered vehicles at the start
+of a game, especially when starting in the 1800s or earlier,
+it's best to stick to flat routes or ones where the train
+only has to climb hills when empty.
+
 When starting a game after 1980, it may be easier to build
 up some profitable road vehicle routes rather than gambling
 most of your loan on a single train.

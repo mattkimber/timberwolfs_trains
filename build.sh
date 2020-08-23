@@ -11,52 +11,39 @@ echo "Compositing sprites"
 # Copy static files
 echo "Copying static files"
 
-cp voxels/static/mu/* intermediate
-cp voxels/static/carriage/* intermediate
-cp voxels/static/loco/* intermediate
-cp voxels/static/tender/* intermediate
-cp voxels/static/wagon/* intermediate
-cp voxels/horse/* intermediate
+cp -p voxels/static/mu/* intermediate
+cp -p voxels/static/carriage/* intermediate
+cp -p voxels/static/loco/* intermediate
+cp -p voxels/static/tender/* intermediate
+cp -p voxels/static/wagon/* intermediate
+cp -p voxels/horse/* intermediate
 
 # Do sprite creation
 echo "Compositing hill sprites"
 ../cargopositor/cargopositor.exe -o intermediate/hills -v intermediate -t positor/second/*
 
+echo ""
 echo "Rendering regular sprites"
 
 for i in `ls intermediate`; do 
-    fn=`echo 2x/${i}_8bpp.png | sed -e s/.vox//`
-
-    if [ ! -e $fn ]; then 
-        echo "$i [new]"
-	    ../gorender/renderobject.exe -8 -i intermediate/$i -o $i -s 2,1 -u
-    fi
+    ../gorender/renderobject.exe -8 -i intermediate/$i -r -s 2,1 -u -p
 done
 
+echo ""
 echo "Rendering section sprites"
 
 for i in `ls intermediate`; do 
-    fn=`echo 2x/${i}_sections_8bpp.png | sed -e s/.vox//`
-
-    if [ ! -e $fn ]; then 
-        f=`echo $i | sed -e s/.vox//`
-        echo "$f [new]"
-        ../gorender/renderobject.exe -8 -m files/manifest_sections.json  -i intermediate/$i -o ${f}_sections -s 2,1 -u
-    fi
+    ../gorender/renderobject.exe -8 -m files/manifest_sections.json -i intermediate/$i -p -r -x _sections -s 2,1 -u
 done
 
-
+echo ""
 echo "Rendering hill sprites"
 
 for i in `ls intermediate/hills`; do 
-    fn=`echo 2x/${i}_8bpp.png | sed -e s/.vox//`
-
-    if [ ! -e $fn ]; then 
-        echo "$i [new]"
-	    ../gorender/renderobject.exe -8 -i intermediate/hills/$i -m files/manifest_hill.json -o $i -s 2,1 -u
-    fi
+    ../gorender/renderobject.exe -8 -i intermediate/hills/$i -m files/manifest_hill.json -p -r -s 2,1 -u
 done
 
+echo ""
 echo "Rendering purchase sprites"
 ../purchaser/purchaser.exe table.csv
 

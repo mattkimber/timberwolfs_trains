@@ -1,0 +1,146 @@
+{{ $zoom := parseint .globals.zoom }}
+{{$template := concat "template_auto_" .ttd_len -}}
+{{$plen := parseint .ttd_len -}}
+
+spriteset(spriteset_{{.id}}_purchase, "1x/{{.id}}_purchase.png")
+{ template_purchase_1x() }
+
+{{if eq .globals.bpp "32"}}{{ altsprites .id $template $zoom }}{{else}}{{ altsprites8 .id $template $zoom }}{{end}}
+
+{{$template_turn := concat "template_auto_turn_1_" .ttd_len -}}
+{{if eq .globals.bpp "32"}}{{ altspritesn .id $template_turn $zoom "_turn_1" }}{{else}}{{ altsprites8n .id $template_turn $zoom "_turn_1" }}{{end}}
+
+{{$template_turn = concat "template_auto_turn_2_" .ttd_len -}}
+{{if eq .globals.bpp "32"}}{{ altspritesn .id $template_turn $zoom "_turn_2" }}{{else}}{{ altsprites8n .id $template_turn $zoom "_turn_2" }}{{end}}
+
+{{$template_turn := concat "template_auto_up_" .ttd_len -}}{{$hill := concat .id "_up" }}
+{{if eq .globals.bpp "32"}}{{ altspritesn $hill $template_turn $zoom "_up" }}{{else}}{{ altsprites8n $hill $template_turn $zoom "_up" }}{{end}}
+
+{{$template_turn := concat "template_auto_down_" .ttd_len -}}{{$hill = concat .id "_down" }}
+{{if eq .globals.bpp "32"}}{{ altspritesn $hill $template_turn $zoom "_down" }}{{else}}{{ altsprites8n $hill $template_turn $zoom "_down" }}{{end}}
+
+// Graphics - animated
+{{ $ani := concat .id "_anim_1" }}{{ altsprites8 $ani $template $zoom }}
+{{$template_turn := concat "template_auto_turn_1_" .ttd_len -}}{{ altsprites8n $ani $template_turn $zoom "_turn_1" }}
+{{$template_turn := concat "template_auto_turn_2_" .ttd_len -}}{{ altsprites8n $ani $template_turn $zoom "_turn_2" }}
+{{$template_turn := concat "template_auto_up_" .ttd_len -}}{{$hill := concat $ani "_up" }}{{ altsprites8n $hill $template_turn $zoom "_up" }}
+{{$template_turn := concat "template_auto_down_" .ttd_len -}}{{$hill = concat $ani "_down" }}{{ altsprites8n $hill $template_turn $zoom "_down" }}
+
+{{ $ani := concat .id "_anim_2" }}{{ altsprites8 $ani $template $zoom }}
+{{$template_turn := concat "template_auto_turn_1_" .ttd_len -}}{{ altsprites8n $ani $template_turn $zoom "_turn_1" }}
+{{$template_turn := concat "template_auto_turn_2_" .ttd_len -}}{{ altsprites8n $ani $template_turn $zoom "_turn_2" }}
+{{$template_turn := concat "template_auto_up_" .ttd_len -}}{{$hill = concat $ani "_up" }}{{ altsprites8n $hill $template_turn $zoom "_up" }}
+{{$template_turn := concat "template_auto_down_" .ttd_len -}}{{$hill = concat $ani "_down" }}{{ altsprites8n $hill $template_turn $zoom "_down" }}
+
+{{ $ani := concat .id "_anim_3" }}{{ altsprites8 $ani $template $zoom }}
+{{$template_turn := concat "template_auto_turn_1_" .ttd_len -}}{{ altsprites8n $ani $template_turn $zoom "_turn_1" }}
+{{$template_turn := concat "template_auto_turn_2_" .ttd_len -}}{{ altsprites8n $ani $template_turn $zoom "_turn_2" }}
+{{$template_turn := concat "template_auto_up_" .ttd_len -}}{{$hill = concat $ani "_up" }}{{ altsprites8n $hill $template_turn $zoom "_up" }}
+{{$template_turn := concat "template_auto_down_" .ttd_len -}}{{$hill = concat $ani "_down" }}{{ altsprites8n $hill $template_turn $zoom "_down" }}
+
+{{ $ani := concat .id "_anim_4" }}{{ altsprites8 $ani $template $zoom }}
+{{$template_turn := concat "template_auto_turn_1_" .ttd_len -}}{{ altsprites8n $ani $template_turn $zoom "_turn_1" }}
+{{$template_turn := concat "template_auto_turn_2_" .ttd_len -}}{{ altsprites8n $ani $template_turn $zoom "_turn_2" }}
+{{$template_turn := concat "template_auto_up_" .ttd_len -}}{{$hill = concat $ani "_up" }}{{ altsprites8n $hill $template_turn $zoom "_up" }}
+{{$template_turn := concat "template_auto_down_" .ttd_len -}}{{$hill = concat $ani "_down" }}{{ altsprites8n $hill $template_turn $zoom "_down" }}
+
+{{- $type := .type }}{{ $id := .id}}
+{{template "curve_switch_medium" .id }}
+
+// Articulation
+switch(FEAT_TRAINS, SELF, switch_{{.id}}_articulation, extra_callback_info1) {
+    0 .. 2: vehicle_{{.id}};
+    return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+}
+
+switch (FEAT_TRAINS, SELF, switch_{{.id}}_length, position_in_articulated_veh % 3) 
+{
+    {{range $index, $element := slice .articulated_lengths -}}
+    {{$index }}: return {{ $element }};
+    {{end}}    
+}
+
+
+{{ $sprite := .id}}
+
+{{$anim := concat $sprite "_anim_1" }}
+{{template "curve_switch_medium" $anim }}
+{{$anim := concat $sprite "_anim_2" }}
+{{template "curve_switch_medium" $anim }}
+{{$anim := concat $sprite "_anim_3" }}
+{{template "curve_switch_medium" $anim }}
+{{$anim := concat $sprite "_anim_4" }}
+{{template "curve_switch_medium" $anim }}
+
+switch (FEAT_TRAINS, SELF, switch_{{.id}}_animation, motion_counter % 4) 
+{
+    0: return switch_{{$sprite}}_anim_1_curve;
+    1: return switch_{{$sprite}}_anim_2_curve;
+    2: return switch_{{$sprite}}_anim_3_curve;
+    3: return switch_{{$sprite}}_anim_4_curve;
+}
+
+switch(FEAT_TRAINS, SELF, switch_{{.id}}_animation_overlay, [
+    STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 1 ? CB_FLAG_MORE_SPRITES : 0) | 
+        (getbits(extra_callback_info1, 8, 8) == 1 ? recolour_horses + (random_bits % 25) : PALETTE_USE_DEFAULT), 0x100),
+    getbits(extra_callback_info1, 8, 8)
+    ]) {
+    0: switch_{{$sprite}}_curve;
+    1: switch_{{.id}}_animation;
+
+    // This should never be executed
+    return spriteset_invisible;
+}
+
+switch (FEAT_TRAINS, SELF, switch_{{.id}}_graphics, position_in_articulated_veh % {{if .tender}}6{{else}}3{{end}}) 
+{
+    1: switch_{{.id}}_animation_overlay;
+    return spriteset_invisible;
+}
+
+
+{{template "running_cost_switch" . }}
+{{ if .requires_second_power_car }}{{template "power_car_check" . }}{{end}}
+
+item(FEAT_TRAINS, vehicle_{{.id}}, {{.numeric_id}}) {
+    property {
+        name:                         {{.name_string}};
+        climates_available:           {{ if .enable_param }} {{.enable_param}} ? {{end}} ALL_CLIMATES {{ if .enable_param }} : NO_CLIMATE {{end}};        
+        introduction_date:            date({{.year}}, {{.intro_month}}, 5);
+        model_life:                   {{if .service}}{{.lifespan}};{{else}}VEHICLE_NEVER_EXPIRES;{{end}}
+        retire_early:                 -4;
+        vehicle_life:                 {{.vehicle_life}};
+
+        engine_class:                 ENGINE_CLASS_DIESEL;
+        visual_effect_and_powered:    VISUAL_EFFECT_DISABLE;
+        running_cost_base:            RUNNING_COST_DIESEL;
+
+        tractive_effort_coefficient:  {{.te_coeff}};
+        power:                        {{.power}} hp;
+        speed:                        {{.speed}} mph;
+        reliability_decay:            20;
+
+        cost_factor:                  {{.cost}};
+        running_cost_factor:          {{.running_cost}};
+        sprite_id:                    SPRITE_ID_NEW_TRAIN;
+        misc_flags:                   bitmask(TRAIN_FLAG_2CC, TRAIN_FLAG_SPRITE_STACK);
+        refit_cost:                   0;
+        track_type:                   {{.railtype}};
+        dual_headed:                  0;
+
+        weight:                       {{.weight}} ton;
+        
+    }
+
+    graphics {
+        default:  switch_{{.id}}_graphics;
+        purchase:  spriteset_{{.id}}_purchase;
+        additional_text: return {{.additional_text_string}};
+        articulated_part: switch_{{.id}}_articulation;
+        length: switch_{{.id}}_length;
+        running_cost_factor: switch_{{.id}}_running_cost;
+        purchase_running_cost_factor: return {{.running_cost}};
+        sound_effect: switch_horse_sound_fx;
+    }
+}
+
