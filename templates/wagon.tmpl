@@ -141,9 +141,15 @@ spritegroup spritegroup_{{$cargoid}}_down {
 }
 
 {{if gt $plen 8}}
-spritegroup spritegroup_{{$cargoid}}_sections_front {
-	loading: [spriteset_{{$id}}_none_sections_front,spriteset_{{$id}}_{{$element}}_half_sections_front, spriteset_{{$id}}_{{$element}}_half_sections_front, spriteset_{{$id}}_{{$element}}_full_sections_front ];
-	loaded: [spriteset_{{$id}}_none_sections_front,spriteset_{{$id}}_{{$element}}_half_sections_front, spriteset_{{$id}}_{{$element}}_half_sections_front, spriteset_{{$id}}_{{$element}}_full_sections_front ];
+// We don't have the same spritegroups for front/mid/rear as they are emulated using switches, to avoid different sections
+// of the vehicle having different loading states
+//
+// The only spritegroup for front/rear is the "empty" one, so we can reuse the "none" spriteset easily without having 
+// to pass multiple variables to the cargo curve switch
+
+spritegroup spritegroup_{{$cargoid}}_none_sections_front {
+	loading: [spriteset_{{$id}}_none_sections_front ];
+	loaded: [spriteset_{{$id}}_none_sections_front ];
 }
 
 spritegroup spritegroup_{{$cargoid}}_sections_mid {
@@ -151,9 +157,9 @@ spritegroup spritegroup_{{$cargoid}}_sections_mid {
 	loaded: [spriteset_{{$id}}_none_sections_mid,spriteset_{{$id}}_{{$element}}_half_sections_mid, spriteset_{{$id}}_{{$element}}_half_sections_mid, spriteset_{{$id}}_{{$element}}_full_sections_mid ];
 }
 
-spritegroup spritegroup_{{$cargoid}}_sections_rear {
-	loading: [spriteset_{{$id}}_none_sections_rear,spriteset_{{$id}}_{{$element}}_half_sections_rear, spriteset_{{$id}}_{{$element}}_half_sections_rear, spriteset_{{$id}}_{{$element}}_full_sections_rear ];
-	loaded: [spriteset_{{$id}}_none_sections_rear,spriteset_{{$id}}_{{$element}}_half_sections_rear, spriteset_{{$id}}_{{$element}}_half_sections_rear, spriteset_{{$id}}_{{$element}}_full_sections_rear ];
+spritegroup spritegroup_{{$cargoid}}_none_sections_rear {
+	loading: [spriteset_{{$id}}_none_sections_rear ];
+	loaded: [spriteset_{{$id}}_none_sections_rear ];
 }
 {{end}}
 
@@ -626,7 +632,7 @@ item(FEAT_TRAINS, vehicle_{{.id}}, {{.numeric_id}}) {
         cost_factor:                  {{.cost}};
         running_cost_factor:          {{.running_cost}};
         sprite_id:                    SPRITE_ID_NEW_TRAIN;
-        misc_flags:                   bitmask(TRAIN_FLAG_2CC {{if $has_cargo_switch}}, TRAIN_FLAG_SPRITE_STACK{{end}});
+        misc_flags:                   bitmask(TRAIN_FLAG_2CC, TRAIN_FLAG_AUTOREFIT {{if $has_cargo_switch}}, TRAIN_FLAG_SPRITE_STACK{{end}});
         refit_cost:                   0;
         track_type:                   {{.railtype}};
         running_cost_base:            RUNNING_COST_STEAM;

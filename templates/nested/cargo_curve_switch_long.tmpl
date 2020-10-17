@@ -1,4 +1,28 @@
 {{define "cargo_curve_switch_long"}}
+
+// Cargo switch for front flat&straight
+switch(FEAT_TRAINS, SELF, switch_cargo_{{.}}_sections_front, [
+        STORE_TEMP(1, 0x10F), // use variable of next vehicle
+        (var[0x61, 0, 0x0000FFF, 0xBC] * 4) / cargo_capacity
+    ])
+{
+    1..2: return spriteset_{{.}}_half_sections_front;
+    3..4: return spriteset_{{.}}_full_sections_front;
+    return spritegroup_{{.}}_none_sections_front;
+}
+
+// Cargo switch for rear flat&straight
+switch(FEAT_TRAINS, SELF, switch_cargo_{{.}}_sections_rear,  [
+        STORE_TEMP(-1, 0x10F), // use variable of previous vehicle
+        (var[0x61, 0, 0x0000FFF, 0xBC] * 4) / cargo_capacity
+    ])
+{
+    1..2: return spriteset_{{.}}_half_sections_rear;
+    3..4: return spriteset_{{.}}_full_sections_rear;
+    return spritegroup_{{.}}_none_sections_rear;
+}
+
+
 // Cresting hills is a special case where the full flat sprite should be used, and
 // not the 3-part set
 switch (FEAT_TRAINS, SELF, switch_{{.}}_crest_check, getbits(extra_callback_info1, 0, 8) == 0 ? other_veh_z_offset(1) : 0) {
@@ -27,7 +51,7 @@ switch (FEAT_TRAINS, SELF, switch_{{.}}_curve, getbits(extra_callback_info1, 0, 
 
 // Switches for front
 switch (FEAT_TRAINS, SELF, switch_{{.}}_height_front, getbits(extra_callback_info1, 0, 8) == 0 ? abs(other_veh_z_offset(1)) + abs(other_veh_z_offset(2)) : 0) {
-    0: return spritegroup_{{.}}_sections_front;
+    0: return switch_cargo_{{.}}_sections_front;
     return spriteset_invisible;
 }
 
@@ -38,7 +62,7 @@ switch (FEAT_TRAINS, SELF, switch_{{.}}_curve_front, getbits(extra_callback_info
 
 // Switches for rear
 switch (FEAT_TRAINS, SELF, switch_{{.}}_height_rear, getbits(extra_callback_info1, 0, 8) == 0 ? abs(other_veh_z_offset(-1)) + abs(other_veh_z_offset(-2)): 0) {
-    0: return spritegroup_{{.}}_sections_rear;
+    0: return switch_cargo_{{.}}_sections_rear;
     return spriteset_invisible;
 }
 
