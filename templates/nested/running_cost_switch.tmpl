@@ -1,8 +1,49 @@
 {{define "running_cost_switch" -}}
 
+{{$runCost := parseint .running_cost }}
+{{if le $runCost 20 }}
+// Lower running cost ramp up for early vehicles
  switch(FEAT_TRAINS, SELF, switch_{{.id}}_running_cost, current_speed) {
-     0: return min(({{.running_cost}} + max(((age_in_days - (max_age_in_days - 1825)) / 75) * (1 + (param_run_cost_penalty*4)), 0)) / 3, ({{.running_cost}} * 3 * (1 + (param_run_cost_penalty*3))) / 3);
-     return min({{.running_cost}} + max(((age_in_days - (max_age_in_days - 1825)) / 75) * (1 + (param_run_cost_penalty*4)), 0), {{.running_cost}} * 3 * (1 + (param_run_cost_penalty*3)));
+     0: return min(
+         ({{.running_cost}} + 
+                max(
+                    ((age_in_days - (max_age_in_days - 1025)) / 250) * 
+                    (1 + (param_run_cost_penalty*4)), 0
+                )
+            ) / 3, 
+         ({{.running_cost}} * 3 * (1 + (param_run_cost_penalty*3))) / 3
+        );
+
+     return min({{.running_cost}} + 
+            max(
+                ((age_in_days - (max_age_in_days - 1025)) / 250) * 
+                (1 + (param_run_cost_penalty*4)), 0
+            )
+            , 
+        {{.running_cost}} * 3 * (1 + (param_run_cost_penalty*3))
+    );
  }
+{{else}}
+ switch(FEAT_TRAINS, SELF, switch_{{.id}}_running_cost, current_speed) {
+     0: return min(
+         ({{.running_cost}} + 
+                max(
+                    ((age_in_days - (max_age_in_days - 1825)) / 75) * 
+                    (1 + (param_run_cost_penalty*4)), 0
+                )
+            ) / 3, 
+         ({{.running_cost}} * 3 * (1 + (param_run_cost_penalty*3))) / 3
+        );
+
+     return min({{.running_cost}} + 
+            max(
+                ((age_in_days - (max_age_in_days - 1825)) / 75) * 
+                (1 + (param_run_cost_penalty*4)), 0
+            )
+            , 
+        {{.running_cost}} * 3 * (1 + (param_run_cost_penalty*3))
+    );
+ }
+{{end}}
 
 {{- end}}

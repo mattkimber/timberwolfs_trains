@@ -1,3 +1,8 @@
+v1.2.0
+------
+
+Fix spelling mistakes in vehicle bios.
+
 v1.1.3
 ------
 

@@ -16,6 +16,7 @@ cp -p voxels/static/carriage/* intermediate
 cp -p voxels/static/loco/* intermediate
 cp -p voxels/static/tender/* intermediate
 cp -p voxels/static/wagon/* intermediate
+cp -p voxels/static/tube/* intermediate
 cp -p voxels/horse/* intermediate
 
 # Do sprite creation
@@ -25,23 +26,19 @@ echo "Compositing hill sprites"
 echo ""
 echo "Rendering regular sprites"
 
-for i in `ls intermediate`; do 
-    ../gorender/renderobject.exe -8 -i intermediate/$i -r -s 2,1 -u -p
-done
+ls intermediate/*.vox | xargs ../gorender/renderobject.exe -8 -r -s 2,1 -u -p 
 
 echo ""
 echo "Rendering section sprites"
 
-for i in `ls intermediate`; do 
-    ../gorender/renderobject.exe -8 -m files/manifest_sections.json -i intermediate/$i -p -r -x _sections -s 2,1 -u
-done
+ls intermediate/*.vox | xargs ../gorender/renderobject.exe -8 -m files/manifest_sections.json -p -r -x _sections -s 2,1 -u
+
 
 echo ""
 echo "Rendering hill sprites"
 
-for i in `ls intermediate/hills`; do 
-    ../gorender/renderobject.exe -8 -i intermediate/hills/$i -m files/manifest_hill.json -p -r -s 2,1 -u
-done
+ls intermediate/hills/* .vox | xargs ../gorender/renderobject.exe -8 -m files/manifest_hill.json -p -r -s 2,1 -u 
+
 
 echo ""
 echo "Rendering purchase sprites"

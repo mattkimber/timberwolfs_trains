@@ -8,7 +8,8 @@ traininfo_y_offset=3;
     RAIL, ELRL, SAAZ, SAA3, TDRL,
     PLATEWAY: [PTWY,RAIL], 
     THIRD_RAIL: [TDRL,SAA3,ELRL],
-    DUAL_POWER: [SAAZ,DUAL,SAA3,ELRL]
+    DUAL_POWER: [SAAZ,DUAL,SAA3,ELRL],
+    FOURTH_RAIL: [SAA4,MTRO,ELRL],
 }
 
  basecost {
