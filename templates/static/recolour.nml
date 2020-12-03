@@ -521,72 +521,100 @@ replace(recolour_crate + 18) {
 // METAL
 //
 
-// Copper
-recolour_metal = reserve_sprites(9);
 
+recolour_metal = reserve_sprites(11);
+
+// Aluminium
 replace(recolour_metal) {
     recolour_sprite {
+        0xc6..0xcd: 0x06..0x0d;
+        0x50..0x57: 0x92..0x99;
+    }
+}
+
+// Copper
+replace(recolour_metal + 1) {
+    recolour_sprite {
         0xc6..0xcd: 0x48..0x4f;
+        0x50..0x57: 0x58..0x5f;
     }
 }
 
 // Cast Iron
-replace(recolour_metal + 1) {
+replace(recolour_metal + 2) {
     recolour_sprite {
         0xc6..0xcd: 0x03..0x0a;
+        0x50..0x57: 0xb2..0xb9;
     }
 }
 
 // Iron
-replace(recolour_metal + 2) {
+replace(recolour_metal + 3) {
     recolour_sprite {
         0xc6..0xcd: 0x04..0x0b;
+        0x50..0x57: 0x88..0x8f;        
     }
 }
 
 // Generic Metal
-replace(recolour_metal + 3) {
+replace(recolour_metal + 4) {
     recolour_sprite {
         0xc6..0xcd: 0x10..0x17;
+        0x50..0x57: 0xb2..0xb9;
     }
 }
 
 // Steel Alloy
-replace(recolour_metal + 4) {
+replace(recolour_metal + 5) {
     recolour_sprite {
         0xc6..0xcd: 0x20..0x27;
+        0x50..0x57: 0x28..0x2f;        
     }
 }
 
 
 // Carbon Steel
-replace(recolour_metal + 5) {
+replace(recolour_metal + 6) {
     recolour_sprite {
         0xc6..0xcd: 0x72..0x79;
+        0x50..0x57: 0x90..0x97;        
     }
 }
 
 
 // Generic Steel
-replace(recolour_metal + 6) {
+replace(recolour_metal + 7) {
     recolour_sprite {
         0xc6..0xcd: 0x10..0x17;
+        0x50..0x57: 0xb2..0xb9;        
+    }
+}
+
+
+// Steel Sections
+replace(recolour_metal + 8) {
+    recolour_sprite {
+        0xc6..0xcc: 0x11..0x17;
+        0xcd: 0x0e;
+        0x50..0x57: 0x80..0x87;
     }
 }
 
 // Stainless Steel
-replace(recolour_metal + 7) {
+replace(recolour_metal + 9) {
     recolour_sprite {
         0xc6..0xcb: 0x12..0x17;
         0xcc..0xcd: 0x98..0x99;
+        0x50..0x57: 0x60..0x67;        
     }
 }
 
 // Zinc
-replace(recolour_metal + 8) {
+replace(recolour_metal + 10) {
     recolour_sprite {
         0xc6..0xcb: 0x10..0x15;
         0xcc..0xcd: 0x76..0x77;
+        0x50..0x57: 0xb2..0xb9;        
     }
 }
 
