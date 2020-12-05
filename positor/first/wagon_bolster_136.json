@@ -169,6 +169,8 @@
             "type": "repeat",
             "n": 1,
             "mask_original": true,
+            "input_ramps": ["200-207,82-89", "200-207,82-89"],
+            "output_ramps": ["200-207,82-89", "82-89,200-207"],
             "file": "cargo/full/vehicle_1800.vox"
         },
         {
@@ -176,6 +178,8 @@
             "type": "repeat",
             "n": 2,
             "mask_original": true,
+            "input_ramps": ["200-207,82-89", "200-207,82-89"],
+            "output_ramps": ["200-207,82-89", "82-89,200-207"],
             "file": "cargo/full/vehicle_1800.vox"
         },
         {
@@ -183,6 +187,8 @@
             "type": "repeat",
             "n": 1,
             "mask_original": true,
+            "input_ramps": ["200-207,82-89", "200-207,82-89"],
+            "output_ramps": ["200-207,82-89", "82-89,200-207"],
             "file": "cargo/full/vehicle_1910.vox"
         },
         {
@@ -190,6 +196,8 @@
             "type": "repeat",
             "n": 2,
             "mask_original": true,
+            "input_ramps": ["200-207,82-89", "200-207,82-89"],
+            "output_ramps": ["200-207,82-89", "82-89,200-207"],
             "file": "cargo/full/vehicle_1910.vox"
         },
         {
@@ -197,6 +205,8 @@
             "type": "repeat",
             "n": 1,
             "mask_original": true,
+            "input_ramps": ["200-207,82-89", "200-207,82-89"],
+            "output_ramps": ["200-207,82-89", "82-89,200-207"],
             "file": "cargo/full/vehicle_1970.vox"
         },
         {
@@ -204,6 +214,8 @@
             "type": "repeat",
             "n": 2,
             "mask_original": true,
+            "input_ramps": ["200-207,82-89", "200-207,82-89"],
+            "output_ramps": ["200-207,82-89", "82-89,200-207"],
             "file": "cargo/full/vehicle_1970.vox"
         },
         {
@@ -211,6 +223,8 @@
             "type": "repeat",
             "n": 1,
             "mask_original": true,
+            "input_ramps": ["200-207,82-89", "200-207,82-89"],
+            "output_ramps": ["200-207,82-89", "82-89,200-207"],
             "file": "cargo/full/vehicle_2010.vox"
         },
         {
@@ -218,6 +232,8 @@
             "type": "repeat",
             "n": 2,
             "mask_original": true,
+            "input_ramps": ["200-207,82-89", "200-207,82-89"],
+            "output_ramps": ["200-207,82-89", "82-89,200-207"],
             "file": "cargo/full/vehicle_2010.vox"
         },
         {
