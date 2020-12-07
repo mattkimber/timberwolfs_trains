@@ -302,6 +302,8 @@ item(FEAT_TRAINS, vehicle_{{.id}}, {{.numeric_id}}) {
         engine_class:                 ENGINE_CLASS_STEAM;
         {{ else if eq .type "electric" -}}
         engine_class:                 ENGINE_CLASS_ELECTRIC;
+        {{ else if eq .type "tube" -}}
+        engine_class:                 ENGINE_CLASS_ELECTRIC;
         {{else -}}
         engine_class:                 ENGINE_CLASS_DIESEL;
         {{- end}}
