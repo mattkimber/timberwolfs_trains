@@ -1,6 +1,6 @@
 {
-    "lighting_angle": 60,
-    "lighting_elevation": 65,
+    "lighting_angle": 50,
+    "lighting_elevation": 45,
     "depth_influence": 0,
     "soften_edges": 1.5,
     "alpha_edge_threshold": 0.75,
