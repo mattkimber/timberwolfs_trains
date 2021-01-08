@@ -1,7 +1,44 @@
+v1.2.8
+------
+
+Fix piece goods FRUT cargo not showing on bolster wagons
+
+v1.2.7
+------
+
+Fix piece goods RFPR cargo not showing on bolster wagons
+Improve class 37 model
+Improve cargo crate sprites
+
+v1.2.6
+------
+
+Capacity fix for 1973 stock
+Fix headlight transparency error on Desiro sprites
+
+v1.2.4
+------
+
+Rendering updates
+
+v1.2.3
+------
+
+Early Tube units
+2cc colours for vehicle cargo
+
+v1.2.1
+------
+
+Fix empty sodium hydroxide sprites.
+Improvements to distinguishability of metal cargo.
+Glasgow Subway unit.
+
 v1.2.0
 ------
 
 Fix spelling mistakes in vehicle bios.
+Added London Underground units.
 
 v1.1.3
 ------

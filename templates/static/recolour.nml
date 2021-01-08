@@ -367,7 +367,7 @@ replace(recolour_bulk + 41) {
 // Crate recolours
 
 // -> Batteries (yellow)
-recolour_crate = reserve_sprites(20);
+recolour_crate = reserve_sprites(21);
 
 replace(recolour_crate) {
     recolour_sprite {
@@ -531,6 +531,14 @@ replace(recolour_crate + 19) {
         0x57: 0x45;
     }
 }
+
+// -> Fruit (blue)
+replace(recolour_crate + 20) {
+    recolour_sprite {
+        0x50..0x57: 0xc6..0xcd;
+    }
+}
+
 
 //
 // METAL
