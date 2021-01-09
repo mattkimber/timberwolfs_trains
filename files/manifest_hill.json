@@ -1,6 +1,6 @@
 {
-    "lighting_angle": 50,
-    "lighting_elevation": 45,
+  "lighting_angle": 50,
+  "lighting_elevation": 45,
   "depth_influence": 0,
   "soften_edges": 1.5,
   "alpha_edge_threshold": 0.75,
@@ -10,6 +10,7 @@
   "brightness": -0.025,
   "contrast": 0.025,
   "pad_to_full_length": false,
+  "detail_boost": 15.0,
   "is_hill": true,
   "size": {
     "x": 256,

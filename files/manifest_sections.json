@@ -10,6 +10,7 @@
     "brightness": -0.025,
     "contrast": 0.025,
     "pad_to_full_length": false,
+    "detail_boost": 15.0,
     "slice_threshold": 136,
     "slice_length": 88,
     "slice_overlap": 2,
