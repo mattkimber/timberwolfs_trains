@@ -11,6 +11,8 @@
   "contrast": 0.025,
   "pad_to_full_length": false,
   "detail_boost": 15.0,
+  "falloff_adjustment": 0.25,
+  "joggle": 0.5,
   "is_hill": true,
   "size": {
     "x": 256,
