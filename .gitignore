@@ -2,9 +2,11 @@
 1x
 2x
 lang
-~$Tracking Table.xlsm
+~$*.xlsm
 *.grf
 timberwolfs_trains.nml
+timberwolfs_community_addon.nml
 intermediate
 *.tar
 timberwolfs_trains
+timberwolfs_community_addon

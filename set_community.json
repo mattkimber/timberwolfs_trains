@@ -1,11 +1,11 @@
 {
     "grf": {
         "author_id": "TWF",
-        "grf_id": 7,
-        "name": "Timberwolf's UK Trains 1.3.3",
-        "description": "A maximalist UK train set including vehicles from 1800-2020. Features 2cc colours, long vehicle scale, 2x zoom and extra rotation sprites.",
+        "grf_id": 12,
+        "name": "Timberwolf's UK Trains (Community Addon) 1.0.0",
+        "description": "Community addon for Timberwolf's UK Trains, including trains and wagons requested by the community. Features 2cc colours, long vehicle scale, 2x zoom and extra rotation sprites.",
         "min_compat_version": 1,
-        "filename": "timberwolfs_trains.nml",
+        "filename": "timberwolfs_community_addon.nml",
         "language": "english", 
         "parameters": [
             {
@@ -51,7 +51,7 @@
         ]
     },
     "sprites": {
-        "table": "table.csv",
+        "table": "table_community.csv",
         "template_directory": "templates",
         "additional_text_field": "additional_text",
         "additional_text_format": "%s",

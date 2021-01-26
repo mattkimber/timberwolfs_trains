@@ -367,7 +367,7 @@ replace(recolour_bulk + 41) {
 // Crate recolours
 
 // -> Batteries (yellow)
-recolour_crate = reserve_sprites(21);
+recolour_crate = reserve_sprites(22);
 
 replace(recolour_crate) {
     recolour_sprite {
@@ -538,6 +538,14 @@ replace(recolour_crate + 20) {
         0x50..0x57: 0xc6..0xcd;
     }
 }
+
+// -> Wool (grey/white)
+replace(recolour_crate + 21) {
+    recolour_sprite {
+        0x50..0x57: 0x04..0x0b;
+    }
+}
+
 
 
 //

@@ -1,3 +1,19 @@
+v1.3.3
+------
+
+Fix piece goods WOOL cargo not showing
+Add GER F48 class in 1900
+
+v1.3.2
+------
+
+Additional pre-1900 freight engines
+
+v1.3.0
+------
+
+Re-render with new GoRender settings
+
 v1.2.8
 ------
 

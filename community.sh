@@ -42,15 +42,15 @@ ls intermediate/hills/* .vox | xargs ../gorender/renderobject.exe -8 -m files/ma
 
 echo ""
 echo "Rendering purchase sprites"
-../purchaser/purchaser.exe table.csv
+../purchaser/purchaser.exe table_community.csv
 
 echo "Compiling set"
-../roadie/roadie.exe set.json
+../roadie/roadie.exe set_community.json
 echo "Compiling NML"
-../nml/nmlc.exe -c timberwolfs_trains.nml
+../nml/nmlc.exe -c timberwolfs_community_addon.nml
 
 echo "Building TAR"
-mkdir -p timberwolfs_trains
-mv *.grf timberwolfs_trains
-cp grf_readme/regular/* timberwolfs_trains
-tar -c timberwolfs_trains > timberwolfs_trains.tar
+mkdir -p timberwolfs_community_addon
+mv *.grf timberwolfs_community_addon
+cp grf_readme/community/* timberwolfs_community_addon
+tar -c timberwolfs_community_addon > timberwolfs_community_addon.tar
