@@ -7,48 +7,7 @@
         "min_compat_version": 1,
         "filename": "timberwolfs_community_addon.nml",
         "language": "english", 
-        "parameters": [
-            {
-                "id": "build_costs",
-                "name": "Purchase cost modifier",
-                "desc": "Increase or decrease build costs to change difficulty, or balance with other GRF sets. Higher values may be difficult, especially in the early game",
-                "type": "int",
-                "min_value": 0,
-                "max_value": 7,
-                "default_value": 2,
-                "value_names": [ "0.25x", "0.5x", "1x", "2x", "4x", "8x", "16x", "32x" ]
-            },
-            {
-                "id": "running_costs",
-                "name": "Running cost modifier",
-                "desc": "Increase or decrease running costs to change difficulty, or balance with other GRF sets.  Higher values may be difficult, especially in the early game.",
-                "type": "int",
-                "min_value": 0,
-                "max_value": 7,
-                "default_value": 2,
-                "value_names": [ "0.25x", "0.5x", "1x", "2x", "4x", "8x", "16x", "32x" ]
-            },
-            {
-                "id": "max_mu_length",
-                "name": "Maximum multiple unit length",
-                "desc": "Some multiple units included in this set have very long consists in prototypical usage (e.g. Eurostar). Alter this parameter to set the maximum length in tiles for these longer units.",
-                "type": "int",
-                "min_value": 0,
-                "max_value": 2,
-                "default_value": 1,
-                "value_names": [ "Unlimited (realistic)", "6 tiles (default)", "4 tiles (short)" ]
-            },
-            {
-                "id": "run_cost_penalty",
-                "name": "Running cost penalty for old trains",
-                "desc": "When trains reach the end of their working life they will become more expensive to run. Higher settings cause this this to happen faster and the increase in costs to be larger. For casual network games and other situations where players may not be able to replace expired vehicles for several decades, 'mild' is recommended as it will still allow most well-designed networks to break even or return a small profit.",
-                "type": "int",
-                "min_value": 0,
-                "max_value": 2,
-                "default_value": 1,
-                "value_names": [ "Mild", "Spicy", "Painful" ]
-            }
-        ]
+        "parameters": []
     },
     "sprites": {
         "table": "table_community.csv",
@@ -76,6 +35,9 @@
         ]
     },
     "static_templates": [
+        {
+            "template":  "templates/static/community_parameters.nml"
+        },
         {
             "template":  "templates/static/invisible.nml"
         },

@@ -1,0 +1,11 @@
+if (grf_future_status("TWF\07") == 0) {
+    error(FATAL, MUST_LOAD_AFTER, "Timberwolf's UK Trains");
+}
+
+param_build_costs = param["TWF\07",0];
+param_running_costs = param["TWF\07",1];
+
+// Max MU length currently unused
+// param_max_mu_length = param["TWF\07",2];
+
+param_run_cost_penalty = param["TWF\07",3];
