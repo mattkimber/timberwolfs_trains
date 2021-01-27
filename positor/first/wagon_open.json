@@ -7,7 +7,8 @@
       "cargo/wagon/open_wagon.vox",      
       "cargo/wagon/open_wagon_3pl.vox",
       "cargo/wagon/open_wagon_5pl.vox",
-      "cargo/wagon/steel_open_wagon.vox"
+      "cargo/wagon/steel_open_wagon.vox",
+      "cargo/wagon/open_wagon_ng.vox"    
     ],
     "operations": [
         {
