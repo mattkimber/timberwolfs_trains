@@ -298,6 +298,11 @@ item(FEAT_TRAINS, vehicle_{{.id}}, {{.numeric_id}}) {
         retire_early:                 -4;
         vehicle_life:                 {{.vehicle_life}};
 
+        {{if eq .default_cargo "PASS" }}
+        refittable_cargo_classes: bitmask(CC_PASSENGERS);
+        cargo_allow_refit: [ YETI, YETY ]; 
+        {{end}}
+
         {{ if eq .type "steam" -}}
         engine_class:                 ENGINE_CLASS_STEAM;
         {{ else if eq .type "electric" -}}

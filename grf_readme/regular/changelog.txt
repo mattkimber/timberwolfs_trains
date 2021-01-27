@@ -3,6 +3,7 @@ v1.3.3
 
 Fix piece goods WOOL cargo not showing
 Add GER F48 class in 1900
+Make DVT buildable on RAIL for use with diesel locos
 
 v1.3.2
 ------

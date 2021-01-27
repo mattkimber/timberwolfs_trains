@@ -1,0 +1,39 @@
+{
+    "files": [
+      "lswr_f9.vox"
+    ],
+    "operations": [
+      {
+        "name": "_anim_1",
+        "type": "repeat",
+        "truncate": true,
+        "mask_original": true,
+        "n": 0,        
+        "file": "valvegear/lswr_f9_1.vox"
+      },      
+      {
+        "name": "_anim_2",
+        "type": "repeat",
+        "truncate": true,
+        "mask_original": true,
+        "n": 0,        
+        "file": "valvegear/lswr_f9_2.vox"
+      },      
+      {
+        "name": "_anim_3",
+        "type": "repeat",
+        "truncate": true,
+        "mask_original": true,
+        "n": 0,        
+        "file": "valvegear/lswr_f9_3.vox"
+      },      
+      {
+        "name": "_anim_4",
+        "type": "repeat",
+        "truncate": true,
+        "mask_original": true,
+        "n": 0,        
+        "file": "valvegear/lswr_f9_4.vox"
+      }
+    ]
+}
