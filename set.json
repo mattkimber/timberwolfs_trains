@@ -72,7 +72,8 @@
             "nested/attach_mu_switch",
             "nested/power_car_check",
             "nested/tare_speed_switch",
-            "nested/visual_effect_power"
+            "nested/visual_effect_power",
+            "nested/preserved_cargo_age_switch"
         ]
     },
     "static_templates": [

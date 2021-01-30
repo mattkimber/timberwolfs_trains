@@ -580,6 +580,10 @@ switch (FEAT_TRAINS, SELF, switch_{{.id}}_graphics, position_in_articulated_veh 
 
 {{template "tare_speed_switch" . }}
 
+{{ if eq .cargo_handling "NGPassengers" -}}
+{{template "preserved_cargo_age_switch" . }}        
+{{- end }}
+
 
 item(FEAT_TRAINS, vehicle_{{.id}}, {{.numeric_id}}) {
     property {
@@ -597,6 +601,9 @@ item(FEAT_TRAINS, vehicle_{{.id}}, {{.numeric_id}}) {
         {{end}}
         engine_class:                 ENGINE_CLASS_DIESEL; // needed for all wagons to show up in purchase menu
         {{if eq .cargo_handling "Passengers" }}
+        refittable_cargo_classes: bitmask(CC_PASSENGERS);
+        cargo_allow_refit: [ YETI, YETY ];
+        {{else if eq .cargo_handling "NGPassengers" }}
         refittable_cargo_classes: bitmask(CC_PASSENGERS);
         cargo_allow_refit: [ YETI, YETY ];
         {{else if eq .cargo_handling "Bulk" }}
@@ -641,6 +648,9 @@ item(FEAT_TRAINS, vehicle_{{.id}}, {{.numeric_id}}) {
     }
 
     graphics {
+        {{ if eq .cargo_handling "NGPassengers" -}}
+        cargo_age_period: switch_{{.id}}_preserved_cargo_age;
+        {{- end }}
         {{ if eq .cargo_handling "Container" }}
         cargo_capacity: return {{.capacity}} / 3;
         default:  switch_{{$id}}_graphics_container;
