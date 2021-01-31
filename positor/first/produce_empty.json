@@ -1,6 +1,7 @@
 {
     "files": [
-      "*.vox"
+      "*.vox",
+      "ng/*.vox"
     ],
     "operations": [
       {
