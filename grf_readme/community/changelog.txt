@@ -1,3 +1,13 @@
+v1.0.2
+------
+
+Fixed missing sections of README file
+
+v1.0.1
+------
+
+Added narrow gauge
+
 v1.0.0
 ------
 

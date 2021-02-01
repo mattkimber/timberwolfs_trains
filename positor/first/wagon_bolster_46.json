@@ -1,7 +1,8 @@
 {
     "files": [
       "cargo/wagon/bolster_wagon.vox",
-      "cargo/wagon/flat_wagon_early.vox"
+      "cargo/wagon/flat_wagon_early.vox",
+      "cargo/wagon/flat_wagon_ng.vox"
     ],
     "operations": [
         {
