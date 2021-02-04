@@ -10,7 +10,7 @@ traininfo_y_offset=3;
     THIRD_RAIL: [TDRL,SAA3,ELRL],
     DUAL_POWER: [SAAZ,DUAL,SAA3,ELRL],
     FOURTH_RAIL: [SAA4,MTRO,ELRL],
-    NGRL,
+    NARROW_GAUGE: [NGRL,NAAN],
 }
 
  basecost {

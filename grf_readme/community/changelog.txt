@@ -1,3 +1,9 @@
+v1.0.3
+------
+
+Support standardised railtype for narrow gauge.
+Various BR diesel prototypes.
+
 v1.0.2
 ------
 
