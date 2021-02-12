@@ -1,8 +1,14 @@
+v1.0.4
+------
+
+Fix missing narrow gauge descriptions.
+
 v1.0.3
 ------
 
 Support standardised railtype for narrow gauge.
 Various BR diesel prototypes.
+DBSO, Mk2F and SR 4DD.
 
 v1.0.2
 ------
