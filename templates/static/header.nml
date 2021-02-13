@@ -6,13 +6,13 @@ traininfo_y_offset=3;
 
  railtypetable {
     //3RDR is generic 3rd rail
-    //3RDC is some other kind of 3rd rail
-    //3ORC is dual power rails, at least in UK Finescale Tracks.
+    //3RDC is 3rd rail with catenary
+    //3ORC is a definition for vehicles - 3rd rail 'or' Catenary
     RAIL, ELRL, SAAZ, SAA3, TDRL, "3RDR", "3ORC", "3RDC",
     PLATEWAY: [PTWY,RAIL], 
     THIRD_RAIL: [TDRL,SAA3,"3RDR",ELRL],
     DUAL_POWER: [SAAZ,DUAL,SAA3,"3ORC",ELRL],
-    FOURTH_RAIL: [SAA4,MTRO,"3RDR","3RDC",ELRL],
+    FOURTH_RAIL: [SAA4,MTRO,"3RDR",ELRL],
     NARROW_GAUGE: [NGRL,NAAN],
 }
 

@@ -4,7 +4,7 @@
 {{ if eq .type "dual_power" -}}{{if .secondary_power}}
 switch (FEAT_TRAINS, SELF, switch_{{.id}}_power, current_railtype) {
     SAAZ: return {{.power}};
-    railtype("3ORC"): return {{.power}};
+    railtype("3RDC"): return {{.power}};
     {{ if eq .railtype "ELRL" }}
     ELRL: return {{.power}};
     {{ else }}
@@ -30,7 +30,7 @@ switch (FEAT_TRAINS, SELF, switch_{{.id}}_visual_effect_railtype, current_railty
 switch (FEAT_TRAINS, SELF, switch_{{.id}}_power, current_railtype) {
     ELRL: return {{.power}};
     SAAZ: return {{.power}};
-    railtype("3ORC"): return {{.power}};
+    railtype("3RDC"): return {{.power}};
     return {{.secondary_power}};
 }
 {{ end }}{{end}}
