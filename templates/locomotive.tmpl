@@ -298,7 +298,10 @@ item(FEAT_TRAINS, vehicle_{{.id}}, {{.numeric_id}}) {
         retire_early:                 -4;
         vehicle_life:                 {{.vehicle_life}};
 
-        {{if eq .default_cargo "PASS" }}
+        {{ if .dvt }}
+        refittable_cargo_classes: bitmask(CC_PASSENGERS, CC_MAIL);
+        cargo_allow_refit: [ YETI, YETY ]; 
+        {{ else if eq .default_cargo "PASS" }}
         refittable_cargo_classes: bitmask(CC_PASSENGERS);
         cargo_allow_refit: [ YETI, YETY ]; 
         {{end}}

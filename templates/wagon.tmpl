@@ -59,7 +59,7 @@ spriteset(spriteset_{{.id}}_purchase, "1x/{{.id}}_purchase.png")
 {{ $cargo_list = "bulk" -}}
 {{else if eq .cargo_handling "EarlyOpen" -}}
 {{ $cargo_list = "bulk,lvst,barrels" -}}
-{{else if eq .cargo_handling "Steel" -}}
+{{else if eq .cargo_handling "Steel" "Torpedo" -}}
 {{ $cargo_list = "metal" -}}
 {{else if eq .cargo_handling "Bolster" -}}
 {{ $cargo_list = "bdmt,wood,crate,metal,timber,fmsp_old,fmsp_modern,ensp_old,ensp_modern,tyre,pipe,stsh,stwr,rbar" -}}
@@ -277,7 +277,7 @@ switch (FEAT_TRAINS, SELF, switch_{{$id}}_graphics_{{$element}}, position_in_art
     return spriteset_invisible;
 }
 {{ end }}
-{{else if eq .cargo_handling "Steel" }}
+{{else if eq .cargo_handling "Steel" "Torpedo" }}
 {{ $has_cargo_switch = "1" }}
 {{ range $index, $element := slice $metal_cargos }}
 {{ $palette := printf "recolour_metal + %d" $index }}
@@ -621,7 +621,9 @@ item(FEAT_TRAINS, vehicle_{{.id}}, {{.numeric_id}}) {
         cargo_allow_refit: [MILK];
         {{else if eq .cargo_handling "Steel" }}
         cargo_allow_refit: [ALUM, STEL, METL, COPR, CSTI, IRON, PIPE, STAL, STCB, STSE, STST, ZINC];
-         {{else if eq .cargo_handling "Container" }}
+        {{else if eq .cargo_handling "Torpedo" }}
+        cargo_allow_refit: [ALUM, STEL, METL, COPR, IRON, STAL, STCB, STST, ZINC];
+        {{else if eq .cargo_handling "Container" }}
         refittable_cargo_classes: bitmask(CC_EXPRESS);     
         {{else if eq .cargo_handling "Bolster" }}
         refittable_cargo_classes: bitmask(CC_PIECE_GOODS);
@@ -673,7 +675,7 @@ item(FEAT_TRAINS, vehicle_{{.id}}, {{.numeric_id}}) {
         {{ toupper $element }}: switch_{{$id}}_graphics_{{$element}};{{end}}
         // Manual re-used bolster cargo
         BRCK: switch_{{$id}}_graphics_bdmt;
-        {{ else if eq .cargo_handling "Steel" }}
+        {{ else if eq .cargo_handling "Steel" "Torpedo" }}
         {{ range $index, $element := slice $metal_cargos }}
         {{ toupper $element }}: switch_{{$id}}_graphics_{{$element}};{{end}}
         {{end}}

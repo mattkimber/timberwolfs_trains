@@ -1,0 +1,39 @@
+{
+    "files": [
+      "stirling_single.vox"
+    ],
+    "operations": [
+      {
+        "name": "_anim_1",
+        "type": "scale",
+        "truncate": true,
+        "mask_original": true,
+        "n": 0,        
+        "file": "valvegear/crampton_1.vox"
+      },      
+      {
+        "name": "_anim_2",
+        "type": "scale",
+        "truncate": true,
+        "mask_original": true,
+        "n": 0,        
+        "file": "valvegear/crampton_2.vox"
+      },      
+      {
+        "name": "_anim_3",
+        "type": "scale",
+        "truncate": true,
+        "mask_original": true,
+        "n": 0,        
+        "file": "valvegear/crampton_3.vox"
+      },      
+      {
+        "name": "_anim_4",
+        "type": "scale",
+        "truncate": true,
+        "mask_original": true,
+        "n": 0,        
+        "file": "valvegear/crampton_4.vox"
+      }
+    ]
+}
