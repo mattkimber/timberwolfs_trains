@@ -5,9 +5,9 @@ traininfo_y_offset=3;
  disable_item(FEAT_TRAINS, 0, 115);
 
  railtypetable {
-	//3RDR is generic 3rd rail
-	//3RDC is some other kind of 3rd rail
-	//3ORC is dual power rails, at least in UK Finescale Tracks.
+    //3RDR is generic 3rd rail
+    //3RDC is some other kind of 3rd rail
+    //3ORC is dual power rails, at least in UK Finescale Tracks.
     RAIL, ELRL, SAAZ, SAA3, TDRL, "3RDR", "3ORC", "3RDC",
     PLATEWAY: [PTWY,RAIL], 
     THIRD_RAIL: [TDRL,SAA3,"3RDR",ELRL],

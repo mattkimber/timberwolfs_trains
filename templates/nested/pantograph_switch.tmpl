@@ -10,7 +10,7 @@ switch (FEAT_TRAINS, SELF, switch_{{.pantograph_unit}}_pantograph_state, current
 {
     ELRL: return switch_{{.pantograph_unit}}_pan_up_curve;
     SAAZ: return switch_{{.pantograph_unit}}_pan_up_curve;
-	railtype("3ORC"): return switch_{{.pantograph_unit}}_pan_up_curve;
+    railtype("3ORC"): return switch_{{.pantograph_unit}}_pan_up_curve;
     return switch_{{.pantograph_unit}}_pan_down_curve;
 }
 
@@ -19,7 +19,7 @@ switch (FEAT_TRAINS, SELF, switch_{{.pantograph_unit}}_pantograph_state_front, c
 {
     ELRL: return switch_{{.pantograph_unit}}_pan_up_curve_front;
     SAAZ: return switch_{{.pantograph_unit}}_pan_up_curve_front;
-	railtype("3ORC"): return switch_{{.pantograph_unit}}_pan_up_curve_front;
+    railtype("3ORC"): return switch_{{.pantograph_unit}}_pan_up_curve_front;
     return switch_{{.pantograph_unit}}_pan_down_curve_front;
 }
 
@@ -27,7 +27,7 @@ switch (FEAT_TRAINS, SELF, switch_{{.pantograph_unit}}_pantograph_state_rear, cu
 {
     ELRL: return switch_{{.pantograph_unit}}_pan_up_curve_rear;
     SAAZ: return switch_{{.pantograph_unit}}_pan_up_curve_rear;
-	railtype("3ORC"): return switch_{{.pantograph_unit}}_pan_up_curve_rear;
+    railtype("3ORC"): return switch_{{.pantograph_unit}}_pan_up_curve_rear;
     return switch_{{.pantograph_unit}}_pan_down_curve_rear;
 }
 {{end}}
