@@ -5,11 +5,13 @@ traininfo_y_offset=3;
  disable_item(FEAT_TRAINS, 0, 115);
 
  railtypetable {
-    RAIL, ELRL, SAAZ, SAA3, TDRL,
+    //3RDR is generic 3rd rail, from old-school pb_trax.grf and friends
+    //3RDC is 3rd rail with catenary, from same
+    RAIL, ELRL, SAAZ, SAA3, TDRL, "3RDR", "3RDC",
     PLATEWAY: [PTWY,RAIL], 
-    THIRD_RAIL: [TDRL,SAA3,ELRL],
+    THIRD_RAIL: [TDRL,SAA3,"3RDR",ELRL],
     DUAL_POWER: [SAAZ,DUAL,SAA3,ELRL],
-    FOURTH_RAIL: [SAA4,MTRO,ELRL],
+    FOURTH_RAIL: [SAA4,MTRO,"3RDR",ELRL],
     NARROW_GAUGE: [NGRL,NAAN],
 }
 
