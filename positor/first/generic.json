@@ -25,7 +25,10 @@
       "midland_700_class.vox",
       "lnwr_dx_goods.vox",
       "gnr_c1.vox",
-      "ger_decapod.vox"
+      "ger_decapod.vox",
+      "lnwr_claughton.vox",
+      "gcr_9p.vox",
+      "gcr_9q.vox"
     ],
     "operations": [
       {

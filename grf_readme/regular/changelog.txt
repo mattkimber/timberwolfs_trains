@@ -1,3 +1,9 @@
+v1.3.4
+------
+
+More rail sets supported
+Fixes for mail capacity and expiry dates
+
 v1.3.3
 ------
 

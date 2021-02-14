@@ -1,3 +1,9 @@
+v1.0.6
+------
+
+Fixes for rail set support and expiry dates
+Decapod, Claughton class and others
+
 v1.0.5
 ------
 

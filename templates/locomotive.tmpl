@@ -295,12 +295,13 @@ item(FEAT_TRAINS, vehicle_{{.id}}, {{.numeric_id}}) {
         climates_available:           {{ if .enable_param }} {{.enable_param}} ? {{end}} ALL_CLIMATES {{ if .enable_param }} : NO_CLIMATE {{end}};        
         introduction_date:            date({{.year}}, {{.intro_month}}, 5);
         model_life:                   {{if .service}}{{.lifespan}};{{else}}VEHICLE_NEVER_EXPIRES;{{end}}
-        retire_early:                 -4;
+        retire_early:                 4;
         vehicle_life:                 {{.vehicle_life}};
 
-        {{ if .dvt }}
+        {{ if .dvt }}{{if eq .default_cargo "PASS" }}
         refittable_cargo_classes: bitmask(CC_PASSENGERS, CC_MAIL);
-        cargo_allow_refit: [ YETI, YETY ]; 
+        cargo_allow_refit: [ YETI, YETY ];{{else}}
+        refittable_cargo_classes: bitmask(CC_MAIL);{{end}}
         {{ else if eq .default_cargo "PASS" }}
         refittable_cargo_classes: bitmask(CC_PASSENGERS);
         cargo_allow_refit: [ YETI, YETY ]; 
