@@ -6,11 +6,11 @@
 {{$template_turn_2 := concat "template_auto_turn_2_" .ttd_len -}}
 {{$template_up := concat "template_auto_up_" .ttd_len -}}
 {{$template_down := concat "template_auto_down_" .ttd_len -}}
+{{$cargo_handling := .cargo_handling -}}
 
 
 spriteset(spriteset_{{.id}}_purchase, "1x/{{.id}}_purchase.png")
 { template_purchase_1x() }
-
 
 {{if eq .globals.bpp "32"}}{{ altsprites .id $template $zoom }}{{else}}{{ altsprites8 .id $template $zoom }}{{end}}
 {{if eq .globals.bpp "32"}}{{ altspritesn .id $template_turn_1 $zoom "_turn_1" }}{{else}}{{ altsprites8n .id $template_turn_1 $zoom "_turn_1" }}{{end}}
@@ -74,6 +74,7 @@ spriteset(spriteset_{{.id}}_purchase, "1x/{{.id}}_purchase.png")
 {{end -}}
 
 {{ if $cargo_list}}
+
 {{$fullid := concat $id "_none"}}{{ altsprites8 $fullid $template $zoom }}
 {{ altsprites8n $fullid $template_turn_1 $zoom "_turn_1" }}
 {{ altsprites8n $fullid $template_turn_2 $zoom "_turn_2" }}
@@ -92,6 +93,15 @@ spriteset(spriteset_{{.id}}_purchase, "1x/{{.id}}_purchase.png")
 
 {{end}}
 
+{{if eq $cargo_handling "Torpedo" }}
+// Torpedo cars have custom templates for animated pixels
+{{$template = concat $template "_anim" -}}
+{{$template_turn_1 = concat $template_turn_1 "_anim" -}}
+{{$template_turn_2 = concat $template_turn_2 "_anim" -}}
+{{$template_up = concat $template_up "_anim" -}}
+{{$template_down = concat $template_down "_anim" -}}
+{{end}}
+
 {{ range $index, $element := slice $cargo_list -}}{{ if $element -}}
 // Cargo: {{$element}}
 // cargo sprites are always 8 bit
@@ -103,13 +113,17 @@ spriteset(spriteset_{{.id}}_purchase, "1x/{{.id}}_purchase.png")
 {{$hill := concat $fullid "_up"}}{{ altsprites8n $hill $template_up $zoom "_up" }}
 {{$hill = concat $fullid "_down"}}{{ altsprites8n $hill $template_down $zoom "_down" }}
 
+
 {{if gt $plen 8}}
 {{$sections := concat $fullid "_sections" -}}
 {{$template_turn := concat "template_auto_front_" $len -}}
+{{if eq $cargo_handling "Torpedo" }}{{$template_turn = concat $template_turn "_anim" -}}{{end}}
 {{ altsprites8n $sections $template_turn $zoom "_front" }}
 {{$template_turn = concat "template_auto_mid_" $len -}}
+{{if eq $cargo_handling "Torpedo" }}{{$template_turn = concat $template_turn "_anim" -}}{{end}}
 {{ altsprites8n $sections $template_turn $zoom "_mid" }}
 {{$template_turn = concat "template_auto_rear_" $len -}}
+{{if eq $cargo_handling "Torpedo" }}{{$template_turn = concat $template_turn "_anim" -}}{{end}}
 {{ altsprites8n $sections $template_turn $zoom "_rear" }}
 {{end}}
 

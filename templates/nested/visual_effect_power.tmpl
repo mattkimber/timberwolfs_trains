@@ -11,7 +11,6 @@ switch (FEAT_TRAINS, SELF, switch_{{.id}}_power, current_railtype) {
     SAA3: return {{.power}};
     TDRL: return {{.power}};
     railtype("3RDR"): return {{.power}};
-    railtype("3RDC"): return {{.power}};
     {{ end }}
     return {{.secondary_power}};
 }{{end}}
