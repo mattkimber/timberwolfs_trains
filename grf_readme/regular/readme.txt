@@ -137,6 +137,7 @@ CC/Attributions
 ---------------
 
 Voxel models and tooling: Matt Kimber / Timberwolf
+Pikka's finescale tracks compatibility: Will Marshall
 
 
 And Finally...
