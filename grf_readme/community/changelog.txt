@@ -1,3 +1,9 @@
+v1.0.7
+------
+
+Fix paints and coatings not appearing in early wagons
+Midland 156 class
+
 v1.0.6
 ------
 
