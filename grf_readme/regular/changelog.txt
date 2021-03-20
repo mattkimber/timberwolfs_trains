@@ -1,9 +1,14 @@
-v1.3.7
+v1.3.8
 ------
 
 Fertiliser sprites for crates and bulk cargo wagons
 Stadler Class 88 dual mode locomotive
 Fix incorrect bulk cargo colour at front and rear of long wagons
+
+v1.3.7
+------
+
+Better double-headed unit handling
 
 v1.3.6
 ------

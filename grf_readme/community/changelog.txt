@@ -1,8 +1,13 @@
-v1.0.9
-------
+v1.0.10
+-------
 
 Fertiliser sprites for crates and bulk cargo wagons
 Fix incorrect bulk cargo colour at front and rear of long wagons
+
+v1.0.9
+------
+
+Better double-headed unit handling
 
 v1.0.8
 ------
