@@ -1,3 +1,9 @@
+v1.3.9
+-------
+
+Lighten fertiliser slightly to differentiate from peat
+Fix missing cargo sprites for glass
+
 v1.3.8
 ------
 

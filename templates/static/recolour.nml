@@ -112,7 +112,7 @@ replace(recolour_bulk + 12) {
 // -> Fertiliser
 replace(recolour_bulk + 13) {
     recolour_sprite {
-        0x01..0x06: 0x68..0x6d;
+        0x01..0x06: 0x69..0x6e;
     }
 }
 
@@ -373,9 +373,9 @@ replace(recolour_bulk + 42) {
 
 // Crate recolours
 
-// -> Batteries (yellow)
-recolour_crate = reserve_sprites(23);
+recolour_crate = reserve_sprites(24);
 
+// -> Batteries (yellow)
 replace(recolour_crate) {
     recolour_sprite {
         0x50..0x57: 0x3e..0x45;
@@ -561,6 +561,13 @@ replace(recolour_crate + 22) {
     }
 }
 
+
+// -> Glass (mauve)
+replace(recolour_crate + 23) {
+    recolour_sprite {
+        0x50..0x57: 0x80..0x87;
+    }
+}
 
 
 
