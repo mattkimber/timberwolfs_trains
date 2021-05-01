@@ -242,12 +242,17 @@ switch (FEAT_TRAINS, SELF, switch_{{.id}}_rev_graphics, position_in_articulated_
 }
 
 {{if eq .double_headed "2"}}
+switch (FEAT_TRAINS, SELF, switch_{{.id}}_graphics_inner, num_vehs_in_consist > 6 ? position_in_consist_from_end : -1) {
+    0..2: return switch_{{.id}}_rev_graphics;
+    return switch_{{.id}}_fwd_graphics;
+}
+
 switch (FEAT_TRAINS, SELF, {{if le $plen 8 }}switch_{{.id}}_reverse{{else}}switch_{{.id}}_graphics{{end}}, position_in_consist % 6) {
-    0..2: return switch_{{.id}}_fwd_graphics;
+    0..2: return switch_{{.id}}_graphics_inner;
     return switch_{{.id}}_rev_graphics;
 }
 {{else}}
-switch (FEAT_TRAINS, SELF, {{if le $plen 8 }}switch_{{.id}}_reverse{{else}}switch_{{.id}}_graphics{{end}}, position_in_consist_from_end) {
+switch (FEAT_TRAINS, SELF, {{if le $plen 8 }}switch_{{.id}}_reverse{{else}}switch_{{.id}}_graphics{{end}},  num_vehs_in_consist > 3 ? position_in_consist_from_end : -1) {
     0..2: return switch_{{.id}}_rev_graphics;
     return switch_{{.id}}_fwd_graphics;
 }

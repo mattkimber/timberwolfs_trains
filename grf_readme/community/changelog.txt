@@ -1,3 +1,8 @@
+v1.0.9
+------
+
+Better double-headed unit handling
+
 v1.0.8
 ------
 
