@@ -4,6 +4,7 @@
     "depth_influence": 0,
     "soften_edges": 1.5,
     "alpha_edge_threshold": 0.75,
+    "hard_edge_threshold": 0.25,
     "sampler": "square",
     "accuracy": 7,
     "overlap": 0.1,
