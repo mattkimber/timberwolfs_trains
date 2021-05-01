@@ -1,3 +1,15 @@
+v1.0.11
+-------
+
+Lighten fertiliser slightly to differentiate from peat
+Fix missing cargo sprites for glass
+
+v1.0.10
+-------
+
+Fertiliser sprites for crates and bulk cargo wagons
+Fix incorrect bulk cargo colour at front and rear of long wagons
+
 v1.0.9
 ------
 

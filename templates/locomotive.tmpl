@@ -106,7 +106,7 @@ spriteset(spriteset_{{.id}}_purchase, "1x/{{.id}}_purchase.png")
 {{- end }}
 
 {{- $type := .type }}{{ $id := .id}}
-{{ if eq .type "dual_electric" -}}{{template "pantograph_graphics" . }}{{end}}
+{{if or (eq $type "dual_electric") (and (eq $type "dual_power") (eq .railtype "ELRL"))}}{{template "pantograph_graphics" . }}{{end}}
 
 {{ if not .reuse_sprites }}
 {{if gt $plen 8}}{{template "curve_switch_long" .id }}{{else if gt $plen 4 }}{{template "curve_switch_medium" .id }}{{else}}{{template "curve_switch_short" .id }}{{end}}
@@ -128,7 +128,7 @@ switch (FEAT_TRAINS, SELF, switch_{{.id}}_length, position_in_articulated_veh % 
     {{end}}    
 }
 
-{{ if eq .type "dual_electric" -}}
+{{if or (eq $type "dual_electric") (and (eq $type "dual_power") (eq .railtype "ELRL"))}}
 {{template "pantograph_switch" . }}
 {{end}}
 
@@ -269,7 +269,7 @@ switch (FEAT_TRAINS, SELF, switch_{{.id}}_graphics, position_in_articulated_veh 
 {{else -}}
 switch (FEAT_TRAINS, SELF, switch_{{.id}}_graphics, position_in_articulated_veh % {{if .tender}}6{{else}}3{{end}}) 
 {
-    {{if eq $type "dual_electric"}}
+    {{if or (eq $type "dual_electric") (and (eq $type "dual_power") (eq .railtype "ELRL"))}}
     1: return switch_{{$id}}_pantograph;
     {{ if gt $plen 8}}
     0: return switch_{{$id}}_pantograph_front;
@@ -332,7 +332,7 @@ item(FEAT_TRAINS, vehicle_{{.id}}, {{.numeric_id}}) {
         cost_factor:                  {{.cost}};
         running_cost_factor:          {{.running_cost}};
         sprite_id:                    SPRITE_ID_NEW_TRAIN;
-        misc_flags:                   bitmask(TRAIN_FLAG_2CC {{if .animated}}, TRAIN_FLAG_SPRITE_STACK{{end}}{{if eq .type "dual_electric"}}, TRAIN_FLAG_SPRITE_STACK{{end}});
+        misc_flags:                   bitmask(TRAIN_FLAG_2CC {{if .animated}}, TRAIN_FLAG_SPRITE_STACK{{end}}{{if or (eq $type "dual_electric") (and (eq $type "dual_power") (eq .railtype "ELRL"))}}, TRAIN_FLAG_SPRITE_STACK{{end}});
         refit_cost:                   0;
         track_type:                   {{ if eq .type "dual_power" -}}RAIL{{else}}{{.railtype}}{{end}};
          dual_headed:                0;
@@ -355,7 +355,7 @@ item(FEAT_TRAINS, vehicle_{{.id}}, {{.numeric_id}}) {
         running_cost_factor: switch_{{.id}}_running_cost;
         purchase_running_cost_factor: return {{.running_cost}};
         visual_effect_and_powered: switch_{{.id}}_visual_effect;
-        {{if .secondary_power}}{{ if eq .type "dual_power" -}}power: switch_{{.id}}_power;{{end}}{{ if eq .type "dual_electric" -}}power: switch_{{.id}}_power;{{end}}{{end}}
+        {{if .secondary_power}}{{ if eq .type "dual_power" "dual_electric" -}}power: switch_{{.id}}_power;{{end}}{{end}}
         {{if ne .capacity "0"}}purchase_cargo_capacity:  {{if .reuse_sprites}}spriteset_{{.reuse_sprites}}{{else}}spriteset_{{.id}}{{end}};{{end}}
         {{ if .requires_second_power_car }}start_stop: switch_{{.id}}_power_car_check;{{end}}
     }

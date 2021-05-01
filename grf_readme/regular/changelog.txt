@@ -1,3 +1,16 @@
+v1.3.9
+-------
+
+Lighten fertiliser slightly to differentiate from peat
+Fix missing cargo sprites for glass
+
+v1.3.8
+------
+
+Fertiliser sprites for crates and bulk cargo wagons
+Stadler Class 88 dual mode locomotive
+Fix incorrect bulk cargo colour at front and rear of long wagons
+
 v1.3.7
 ------
 

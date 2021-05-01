@@ -1,7 +1,7 @@
 // Bulk cargo
 
 // -> Aluminium Ore
-recolour_bulk = reserve_sprites(42);
+recolour_bulk = reserve_sprites(43);
 
 replace(recolour_bulk + 0) {
     recolour_sprite {
@@ -109,15 +109,22 @@ replace(recolour_bulk + 12) {
     }
 }
 
-// -> Plant fibres
+// -> Fertiliser
 replace(recolour_bulk + 13) {
+    recolour_sprite {
+        0x01..0x06: 0x69..0x6e;
+    }
+}
+
+// -> Plant fibres
+replace(recolour_bulk + 14) {
     recolour_sprite {
         0x01..0x06: 0x58..0x5d;
     }
 }
 
 // -> Fruit
-replace(recolour_bulk + 14) {
+replace(recolour_bulk + 15) {
     recolour_sprite {
         0x01: 0x58;
         0x02: 0x59;
@@ -129,14 +136,14 @@ replace(recolour_bulk + 14) {
 }
 
 // -> Grain
-replace(recolour_bulk + 15) {
+replace(recolour_bulk + 16) {
     recolour_sprite {
         0x01..0x06: 0x22..0x27;
     }
 }
 
 // -> Gravel
-replace(recolour_bulk + 16) {
+replace(recolour_bulk + 17) {
     recolour_sprite {
         0x01..0x06: 0x10..0x15;
         0x02: 0x37;
@@ -146,7 +153,7 @@ replace(recolour_bulk + 16) {
 
 
 // -> Iron Ore
-replace(recolour_bulk + 17) {
+replace(recolour_bulk + 18) {
     recolour_sprite {
         0x01..0x06: 0x49..0x4e;
     }
@@ -154,7 +161,7 @@ replace(recolour_bulk + 17) {
 
 
 // -> Lime
-replace(recolour_bulk + 18) {
+replace(recolour_bulk + 19) {
     recolour_sprite {
         0x01..0x06: 0x09..0x0e;
         0x05..0x06: 0x66..0x67;
@@ -162,7 +169,7 @@ replace(recolour_bulk + 18) {
 }
 
 // -> Kaolin
-replace(recolour_bulk + 19) {
+replace(recolour_bulk + 20) {
     recolour_sprite {
         0x01: 0x77;
         0x02: 0x77;
@@ -175,7 +182,7 @@ replace(recolour_bulk + 19) {
 }
 
 // -> Maiz
-replace(recolour_bulk + 20) {
+replace(recolour_bulk + 21) {
     recolour_sprite {
         0x01..0x06: 0x74..0x79;
         0x01: 0x75;
@@ -183,7 +190,7 @@ replace(recolour_bulk + 20) {
 }
 
 // -> Manganese Oxide
-replace(recolour_bulk + 21) {
+replace(recolour_bulk + 22) {
     recolour_sprite {
         0x01: 0x10;
         0x02: 0x10;
@@ -195,7 +202,7 @@ replace(recolour_bulk + 21) {
 }
 
 // -> Nitrate
-replace(recolour_bulk + 22) {
+replace(recolour_bulk + 23) {
     recolour_sprite {
         0x01..0x02: 0xa6..0xa7;
         0x03..0x06: 0xa6..0xa9;
@@ -203,7 +210,7 @@ replace(recolour_bulk + 22) {
 }
 
 // -> Oilseed
-replace(recolour_bulk + 23) {
+replace(recolour_bulk + 24) {
     recolour_sprite {
         0x01..0x06: 0x3e..0x43;
     }
@@ -211,21 +218,21 @@ replace(recolour_bulk + 23) {
 
 
 // -> Peat
-replace(recolour_bulk + 24) {
+replace(recolour_bulk + 25) {
     recolour_sprite {
         0x01..0x06: 0x68..0x6d;
     }
 }
 
 // -> Phosphate
-replace(recolour_bulk + 25) {
+replace(recolour_bulk + 26) {
     recolour_sprite {
         0x01..0x06: 0xc0..0xc5;
     }
 }
 
 // -> Potash
-replace(recolour_bulk + 26) {
+replace(recolour_bulk + 27) {
     recolour_sprite {
         0x01..0x06: 0x2b..0x30;
     }
@@ -233,7 +240,7 @@ replace(recolour_bulk + 26) {
 
 
 // -> Pyrite Ore
-replace(recolour_bulk + 27) {
+replace(recolour_bulk + 28) {
     recolour_sprite {
         0x02: 0x24;
         0x04: 0x35;
@@ -243,7 +250,7 @@ replace(recolour_bulk + 27) {
 
 
 // -> Quicklime
-replace(recolour_bulk + 28) {
+replace(recolour_bulk + 29) {
     recolour_sprite {
         0x01..0x06: 0x09..0x0e;
         0x05..0x06: 0x66..0x67;
@@ -251,7 +258,7 @@ replace(recolour_bulk + 28) {
 }
 
 // -> Recyclables
-replace(recolour_bulk + 29) {
+replace(recolour_bulk + 30) {
     recolour_sprite {
         0x01..0x06: 0x08..0x0d;
         0x02: 0x93;
@@ -260,7 +267,7 @@ replace(recolour_bulk + 29) {
 }
 
 // -> Salt
-replace(recolour_bulk + 30) {
+replace(recolour_bulk + 31) {
     recolour_sprite {
         0x01..0x06: 0x09..0x0e;
         0x02: 0x85;
@@ -269,7 +276,7 @@ replace(recolour_bulk + 30) {
 }
 
 // -> Sand
-replace(recolour_bulk + 31) {
+replace(recolour_bulk + 32) {
     recolour_sprite {
         0x01..0x06: 0x35..0x3a;
     }
@@ -277,7 +284,7 @@ replace(recolour_bulk + 31) {
 
 
 // -> Soda ash
-replace(recolour_bulk + 32) {
+replace(recolour_bulk + 33) {
     recolour_sprite {
         0x01..0x06: 0x0a..0x0f;
     }
@@ -285,7 +292,7 @@ replace(recolour_bulk + 32) {
 
 
 // -> Scrap Metal
-replace(recolour_bulk + 33) {
+replace(recolour_bulk + 34) {
     recolour_sprite {
         0x01: 0x02;
         0x02: 0x01;
@@ -295,21 +302,21 @@ replace(recolour_bulk + 33) {
 }
 
 // -> Sugar Beet
-replace(recolour_bulk + 34) {
+replace(recolour_bulk + 35) {
     recolour_sprite {
         0x01..0x06: 0x29..0x2e;
     }
 }
 
 // -> Sugar Cane
-replace(recolour_bulk + 35) {
+replace(recolour_bulk + 36) {
     recolour_sprite {
         0x01..0x06: 0x62..0x67;
     }
 }
 
 // -> Slag
-replace(recolour_bulk + 36) {
+replace(recolour_bulk + 37) {
     recolour_sprite {
         0x01..0x04: 0x06..0x09;
         0x05: 0x25;
@@ -319,7 +326,7 @@ replace(recolour_bulk + 36) {
 
 
 // -> Sugar
-replace(recolour_bulk + 37) {
+replace(recolour_bulk + 38) {
     recolour_sprite {
         0x01..0x06: 0x09..0x0e;
         0x02: 0x85;
@@ -328,7 +335,7 @@ replace(recolour_bulk + 37) {
 }
 
 // -> Sulphur
-replace(recolour_bulk + 38) {
+replace(recolour_bulk + 39) {
     recolour_sprite {
         0x01..0x04: 0x40..0x43;
         0x05..0x06: 0xc3..0xc4;
@@ -336,14 +343,14 @@ replace(recolour_bulk + 38) {
 }
 
 // -> Toffee
-replace(recolour_bulk + 39) {
+replace(recolour_bulk + 40) {
     recolour_sprite {
         0x01..0x06: 0x73..0x78;
     }
 }
 
 // -> Uranium
-replace(recolour_bulk + 40) {
+replace(recolour_bulk + 41) {
     recolour_sprite {
         0x01: 0xd0;
         0x02: 0xd0;
@@ -356,7 +363,7 @@ replace(recolour_bulk + 40) {
 
 
 // -> Wheat
-replace(recolour_bulk + 41) {
+replace(recolour_bulk + 42) {
     recolour_sprite {
         0x01..0x06: 0x74..0x79;
     }
@@ -366,9 +373,9 @@ replace(recolour_bulk + 41) {
 
 // Crate recolours
 
-// -> Batteries (yellow)
-recolour_crate = reserve_sprites(22);
+recolour_crate = reserve_sprites(24);
 
+// -> Batteries (yellow)
 replace(recolour_crate) {
     recolour_sprite {
         0x50..0x57: 0x3e..0x45;
@@ -543,6 +550,22 @@ replace(recolour_crate + 20) {
 replace(recolour_crate + 21) {
     recolour_sprite {
         0x50..0x57: 0x04..0x0b;
+    }
+}
+
+
+// -> Fertiliser (brown)
+replace(recolour_crate + 22) {
+    recolour_sprite {
+        0x50..0x57: 0x68..0x6f;
+    }
+}
+
+
+// -> Glass (mauve)
+replace(recolour_crate + 23) {
+    recolour_sprite {
+        0x50..0x57: 0x80..0x87;
     }
 }
 
