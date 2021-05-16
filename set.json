@@ -163,6 +163,8 @@
         "MNSP",
         "NH3_",
         "NITR",
+        "NUKF",
+        "NUKW",
         "NUTS",
         "O2__",
         "OIL_",
@@ -216,6 +218,7 @@
         "WHEA",
         "WOOD",
         "WOOL",
+        "WSTE",
         "YETI",
         "YETY",
         "ZINC"

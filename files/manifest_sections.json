@@ -16,7 +16,7 @@
     "joggle": 0.5,
     "slice_threshold": 136,
     "slice_length": 88,
-    "slice_overlap": 2,
+    "slice_overlap": 0,
     "size": {
         "x": 256,
         "y": 42,

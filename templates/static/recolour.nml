@@ -373,7 +373,7 @@ replace(recolour_bulk + 42) {
 
 // Crate recolours
 
-recolour_crate = reserve_sprites(24);
+recolour_crate = reserve_sprites(29);
 
 // -> Batteries (yellow)
 replace(recolour_crate) {
@@ -524,7 +524,6 @@ replace(recolour_crate + 18) {
     }
 }
 
-
 // -> Chemicals (light yellow)
 replace(recolour_crate + 19) {
     recolour_sprite {
@@ -569,11 +568,62 @@ replace(recolour_crate + 23) {
     }
 }
 
+// -> Recyclables (green)
+replace(recolour_crate + 24) {
+    recolour_sprite {
+        0x50..0x57: 0x50..0x57;
+    }
+}
+
+// -> Waste (copper brown)
+replace(recolour_crate + 25) {
+    recolour_sprite {
+        0x50: 0x7A;
+        0x51: 0x7A;
+        0x52: 0x7B;
+        0x53: 0x7C;
+        0x54: 0x7D;
+        0x55: 0x7E;
+        0x56: 0x7F;
+        0x57: 0x7F;
+    }
+}
+
+// -> Nuclear Fuels (bright orange)
+replace(recolour_crate + 26) {
+    recolour_sprite {
+        0x50: 0xBA;
+        0x51: 0xBA;
+        0x52: 0xBB;
+        0x53: 0xBB;
+        0x54: 0xBC;
+        0x55: 0xBC;
+        0x56: 0xBD;
+        0x57: 0xBD;
+    }
+}
+
+// -> Nuclear Waste (bright green)
+replace(recolour_crate + 27) {
+    recolour_sprite {
+        0x50: 0xCE;
+        0x51: 0xCE;
+        0x52: 0xCF;
+        0x53: 0xCF;
+        0x54: 0xD0;
+        0x55: 0xD0;
+        0x56: 0xD1;
+        0x57: 0xD1;
+    }
+}
 
 
-//
-// METAL
-//
+// -> Uranium (pink)
+replace(recolour_crate + 28) {
+    recolour_sprite {
+        0x50..0x57: 0x58..0x5F;
+    }
+}
 
 
 //
