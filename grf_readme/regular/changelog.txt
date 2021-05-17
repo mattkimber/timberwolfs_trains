@@ -1,7 +1,14 @@
+v1.3.11
+-------
+
+Improvements to rendering
+
 v1.3.10
 -------
 
 Improvements to rendering
+Support for Improved Town Industries nuclear cargo
+Fix A60 stock carriages having incorrect door configuration
 
 v1.3.9
 -------

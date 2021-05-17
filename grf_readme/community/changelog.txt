@@ -1,7 +1,13 @@
+v1.0.13
+-------
+
+Improvements to rendering
+
 v1.0.12
 -------
 
-Rendering improvements
+Improvements to rendering
+Support for Improved Town Industries nuclear cargo
 
 v1.0.11
 -------
