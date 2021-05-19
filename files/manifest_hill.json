@@ -15,6 +15,8 @@
   "falloff_adjustment": 0.25,
   "joggle": 0.5,
   "is_hill": true,
+  "max_colour_push": 2,
+  "fosterise": true,
   "size": {
     "x": 256,
     "y": 42,
