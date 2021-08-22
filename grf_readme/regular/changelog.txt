@@ -1,3 +1,11 @@
+v1.3.13
+-------
+
+Calm down rendering settings
+Minor fixes to class 43 sprites
+Fix Ivatt Class 2 missing a smokestack
+Upgrade to NML 0.6
+
 v1.3.12
 -------
 
