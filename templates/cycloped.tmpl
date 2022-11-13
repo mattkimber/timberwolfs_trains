@@ -1,6 +1,7 @@
 {{ $zoom := parseint .globals.zoom }}
 {{$template := concat "template_auto_" .ttd_len -}}
 {{$plen := parseint .ttd_len -}}
+{{$speed := parseint .speed -}}
 
 spriteset(spriteset_{{.id}}_purchase, "1x/{{.id}}_purchase.png")
 { template_purchase_1x() }
@@ -127,6 +128,8 @@ item(FEAT_TRAINS, vehicle_{{.id}}, {{.numeric_id}}) {
         refit_cost:                   0;
         track_type:                   {{.railtype}};
         dual_headed:                  0;
+
+        {{if lt $speed 40}}air_drag_coefficient:         0.13;{{end}}
 
         weight:                       {{.weight}} ton;
         

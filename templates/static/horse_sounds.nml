@@ -1,6 +1,6 @@
 switch(FEAT_TRAINS, SELF, switch_horse_sound_fx, getbits(extra_callback_info1, 0, 8)) {
-    SOUND_EVENT_START: return SOUND_HORSE;
-    SOUND_EVENT_TUNNEL: return SOUND_HORSE;
-    SOUND_EVENT_BREAKDOWN: return SOUND_COW;
+    SOUND_EVENT_START: return SOUND_FARM_3;
+    SOUND_EVENT_TUNNEL: return SOUND_FARM_3;
+    SOUND_EVENT_BREAKDOWN: return SOUND_FARM_2;
     return CB_RESULT_NO_SOUND;
 }

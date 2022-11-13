@@ -6,7 +6,7 @@
 {{- $manual_ttd_len := .manual_ttd_len -}}
 {{- $man_ttd_len := slice .manual_ttd_len -}}
 {{- $len := .ttd_len -}}{{- $plen := parseint .ttd_len -}}{{- $bpp := .globals.bpp -}}
-
+{{$speed := parseint .speed -}}
 
 spriteset(spriteset_{{.id}}_purchase, "1x/{{.id}}_purchase.png")
 { template_purchase_1x() }
@@ -156,6 +156,8 @@ item(FEAT_TRAINS, vehicle_{{.id}}, {{.numeric_id}}) {
         refit_cost:                   0;
         track_type:                   {{ if eq .type "dual_power" -}}RAIL{{else}}{{.railtype}}{{end}};
         dual_headed:                0;
+
+        {{if lt $speed 40}}air_drag_coefficient:         0.13;{{end}}
 
         {{if .capacity}}
         cargo_capacity:               {{.capacity}} / 3;
