@@ -1,3 +1,8 @@
+v1.0.18
+-------
+
+Two early GWR locomotives added
+
 v1.0.17
 -------
 

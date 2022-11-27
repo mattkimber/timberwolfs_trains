@@ -1,3 +1,9 @@
+v1.3.15
+-------
+
+More accurate Tube power specifications
+Added New Tube for London in 2025
+
 v1.3.14
 -------
 
