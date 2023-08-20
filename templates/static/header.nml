@@ -7,10 +7,10 @@ traininfo_y_offset=4;
  railtypetable {
     //3RDR is generic 3rd rail, from old-school pb_trax.grf and friends
     //3RDC is 3rd rail with catenary, from same
-    RAIL, ELRL, SAAZ, SAA3, TDRL, "3RDR", "3RDC",
+    RAIL, ELRL, SAAE, SAAZ, SAA3, TDRL, "3RDR", "3RDC",
     PLATEWAY: [PTWY,RAIL], 
-    THIRD_RAIL: [TDRL,SAA3,"3RDR",ELRL],
-    DUAL_POWER: [SAAZ,DUAL,SAA3,ELRL],
+    THIRD_RAIL: [TDRL,SAA3,"3RDR","3RDC",ELRL],
+    DUAL_POWER: [SAAZ,DUAL,SAA3,SAAE,TDRL,"3RDR","3RDC",ELRL],
     FOURTH_RAIL: [SAA4,MTRO,"3RDR",ELRL],
     NARROW_GAUGE: [NGRL,NAAN],
 }

@@ -1,3 +1,9 @@
+v1.0.19
+-------
+
+Fixed dual voltage incorrect power on some track types
+Added Class 03 and Class 105
+
 v1.0.18
 -------
 

@@ -1,38 +1,47 @@
 {{define "visual_effect_power" -}}
 
 
-{{ if eq .type "dual_power" -}}{{if .secondary_power}}
-switch (FEAT_TRAINS, SELF, switch_{{.id}}_power, current_railtype) {
-    SAAZ: return {{.power}};
-    railtype("3RDC"): return {{.power}};
-    {{ if eq .railtype "ELRL" }}
-    ELRL: return {{.power}};
-    {{ else }}
-    SAA3: return {{.power}};
-    TDRL: return {{.power}};
-    railtype("3RDR"): return {{.power}};
-    {{ end }}
+{{if and (eq .type "dual_power") (.secondary_power) -}}
+{{ if eq .railtype "ELRL" }}
+switch (FEAT_TRAINS, SELF, switch_{{.id}}_power, tile_powers_railtype("ELRL")) {
+    1: return {{.power}};
     return {{.secondary_power}};
-}{{end}}
-
-switch (FEAT_TRAINS, SELF, switch_{{.id}}_visual_effect_railtype, current_railtype) {
-    {{ if eq .railtype "ELRL" }}
-    TDRL: return visual_effect(VISUAL_EFFECT_DIESEL, 0);
-    {{ else }}
-    ELRL: return visual_effect(VISUAL_EFFECT_DIESEL, 0);
-    {{end}}
-    RAIL: return visual_effect(VISUAL_EFFECT_DIESEL, 0);
-    return visual_effect(VISUAL_EFFECT_ELECTRIC, 0);
+}
+{{else}}
+switch (FEAT_TRAINS, SELF, switch_{{.id}}_power, tile_powers_railtype("THIRD_RAIL")) {
+    1: return {{.power}};
+    return {{.secondary_power}};
 }
 {{end}}
-{{if .secondary_power}}{{ if eq .type "dual_electric" -}}
-switch (FEAT_TRAINS, SELF, switch_{{.id}}_power, current_railtype) {
-    ELRL: return {{.power}};
-    SAAZ: return {{.power}};
-    railtype("3RDC"): return {{.power}};
+
+{{ if eq .railtype "ELRL" }}
+switch (FEAT_TRAINS, SELF, switch_{{.id}}_visual_effect_railtype, tile_powers_railtype("ELRL")) {
+    1: return visual_effect(VISUAL_EFFECT_ELECTRIC, 0);
+    return visual_effect(VISUAL_EFFECT_DIESEL, 0);
+}
+{{else if ne .railtype "BATTERY" }}
+switch (FEAT_TRAINS, SELF, switch_{{.id}}_visual_effect_railtype, tile_powers_railtype("THIRD_RAIL")) {
+    1: return visual_effect(VISUAL_EFFECT_ELECTRIC, 0);
+    return visual_effect(VISUAL_EFFECT_DIESEL, 0);
+}
+{{end -}}
+{{end}}
+
+{{if .secondary_power -}}
+{{ if eq .type "dual_electric" -}}
+switch (FEAT_TRAINS, SELF, switch_{{.id}}_power, tile_powers_railtype("ELRL")) {
+    1: return {{.power}};
     return {{.secondary_power}};
 }
-{{ end }}{{end}}
+{{ end -}}
+{{end}}
+
+{{- if .secondary_speed }}
+switch (FEAT_TRAINS, SELF, switch_{{.id}}_speed, tile_powers_railtype("THIRD_RAIL")) {
+    1: return {{ .kmhish_speed }};
+    return {{ .secondary_speed }};
+}
+{{- end }}
 
 // Visual effect
 switch (FEAT_TRAINS, SELF, switch_{{.id}}_visual_effect, position_in_articulated_veh ) 
@@ -46,6 +55,8 @@ switch (FEAT_TRAINS, SELF, switch_{{.id}}_visual_effect, position_in_articulated
     {{ else if eq .type "tube" -}}
     {{if .effect_unit}}{{.effect_unit}}{{else}}1{{end}}: return visual_effect(VISUAL_EFFECT_ELECTRIC, 0);
     {{ else if eq .type "dual_electric" -}}
+    {{if .effect_unit}}{{.effect_unit}}{{else}}1{{end}}: return visual_effect(VISUAL_EFFECT_ELECTRIC, 0);
+    {{ else if eq .railtype "BATTERY" -}}
     {{if .effect_unit}}{{.effect_unit}}{{else}}1{{end}}: return visual_effect(VISUAL_EFFECT_ELECTRIC, 0);
     {{ else if eq .type "dual_power" -}}
     {{if .effect_unit}}{{.effect_unit}}{{else}}1{{end}}: return switch_{{.id}}_visual_effect_railtype;
