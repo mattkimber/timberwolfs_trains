@@ -2,7 +2,7 @@
     "grf": {
         "author_id": "TWF",
         "grf_id": 12,
-        "name": "Timberwolf's UK Trains Community Addon 1.0.19",
+        "name": "Timberwolf's UK Trains Community Addon 1.0.20",
         "description": "Community addon for Timberwolf's UK Trains, including trains and wagons requested by the community. Features 2cc colours, long vehicle scale, 2x zoom and extra rotation sprites.",
         "min_compat_version": 1,
         "filename": "timberwolfs_community_addon.nml",

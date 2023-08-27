@@ -1,3 +1,13 @@
+v1.3.18
+-------
+
+Better balancing of early game
+
+v1.3.17
+-------
+
+Fix incorrect tender lengths
+
 v1.3.16
 -------
 

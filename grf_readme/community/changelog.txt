@@ -1,3 +1,9 @@
+v1.0.20
+-------
+
+Better balancing of early game and narrow gauge
+Added Forrester Single
+
 v1.0.19
 -------
 
