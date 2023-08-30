@@ -133,6 +133,52 @@ indicate certain vehicle behaviours:
                consist)
 
 
+Station Ratings
+---------------
+
+From v1.4.0, an option to apply an improved station rating
+algorithm is available.
+
+This changes the rating parameters to better suit the set,
+especially games with an early start year.
+
+As early vehicles are slow and cargo wagons are generally
+slower than the default vehicles, the speed of vehicle
+required to get a full ratings boost will increase over time.
+
+Passengers: Starts at 30km/h (19mph) in 1830, rises to 
+            200km/h (125mph) by 2000.
+            
+Food/mail: Starts at 20km/h (12mph) in 1830, rises to
+           130km/h (81mph) by 2000.
+
+Other cargo: Starts at 20km/h (12mph) in 1830, rises to
+             112km/h (70mph) by 2000.
+
+Prior to 1830 the minimum values are used, and after 2000 the
+maximum values are used.
+
+The rating is also adjusted to account for the low capacities
+and likelihood of infrequent service early in the game.
+
+Prior to 1900 the number of days since last service is evaluated
+more leniently, and larger amounts of waiting cargo are allowed 
+before a ratings penalty. This effect is increased for dates
+before 1850; people were clearly impressed just to see a train!
+
+This is balanced by stricter treatment of waiting cargo from 1970
+onward, with increased strictness from 2010. Cargo stations will
+struggle to achieve maximum rating unless you always have a train
+waiting to load cargo. Passenger stations may have a small number
+of passengers waiting to allow interchange, but will suffer heavy
+penalties for overcrowding.
+
+As the default age mechanics make little sense with vehicles having
+20+ year lifespans, there is a small extra bonus for exceptional 
+service compared to the default rating algorithm, to negate the 
+need to constantly replace vehicles and/or advertise to get full 
+station ratings at well-served stations.
+
 CC/Attributions
 ---------------
 

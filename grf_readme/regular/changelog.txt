@@ -1,3 +1,8 @@
+v1.4.0
+------
+
+Add custom station rating calculation
+
 v1.3.18
 -------
 

@@ -1,0 +1,493 @@
+// Passenger speed
+switch(FEAT_CARGOS, SELF, switch_rating_speed_pass, min(max((getbits(extra_callback_info2, 24, 8) * 104) / (200 - max(min(2000 - current_year, 170),0)) - 52, 0), 52)) {
+    return;
+}  
+
+// Mail/food speed
+switch(FEAT_CARGOS, SELF, switch_rating_speed_mail, min(max((getbits(extra_callback_info2, 24, 8) * 104) / (130 - max(min(2000 - current_year, 110),0)) - 52, 0), 52)) {
+    return;
+}  
+
+
+// Other cargo speed
+switch(FEAT_CARGOS, SELF, switch_rating_speed, min(max((getbits(extra_callback_info2, 24, 8) * 104) / (112 - max(min(((2000 - current_year)*3)/5, 102),0)) - 52, 0), 52)) {
+    return;
+}  
+
+switch(FEAT_CARGOS, SELF, switch_rating_1850_waiting, getbits(extra_callback_info2, 8, 16)) {
+    0..50: 51;
+    51..300: 40;
+    301..800: 30;
+    801..1200: 10;
+    1201..1800: 0;
+    1801..2500: -15;
+    2501..3400: -50;
+    3401..3900: -70;
+    -90;
+}
+
+
+switch(FEAT_CARGOS, SELF, switch_rating_1900_waiting, getbits(extra_callback_info2, 8, 16)) {
+    0..50: 51;
+    51..200: 40;
+    201..500: 30;
+    501..800: 10;
+    801..1250: 0;
+    1251..1800: -25;
+    1801..3000: -70;
+    3001..3800: -90;
+    -110;
+}
+
+
+switch(FEAT_CARGOS, SELF, switch_rating_1970_waiting, getbits(extra_callback_info2, 8, 16)) {
+    0..50: 51;
+    51..100: 40;
+    101..300: 30;
+    301..600: 10;
+    601..1000: 0;
+    1001..1500: -35;
+    1501..3000: -90;
+    -110;
+}
+
+switch(FEAT_CARGOS, SELF, switch_rating_2010_waiting, getbits(extra_callback_info2, 8, 16)) {
+    0..25: 51;
+    26..100: 40;
+    101..200: 30;
+    201..300: 10;
+    301..500: 0;
+    501..750: -35;
+    751..1000: -90;
+    1001..2000: -110;
+    -130;
+}
+
+switch(FEAT_CARGOS, SELF, switch_rating_2010_waiting_pass, getbits(extra_callback_info2, 8, 16)) {
+    0..50: 51;
+    51..100: 40;
+    101..250: 30;
+    251..500: 10;
+    501..700: 0;
+    701..1000: -35;
+    1001..1500: -90;
+    1501..2000: -110;
+    2001..3000: -130;
+    -150;
+}
+
+switch(FEAT_CARGOS, SELF, switch_rating_2050_waiting, getbits(extra_callback_info2, 8, 16)) {
+    0..25: 51;
+    26..50: 40;
+    51..100: 30;
+    101..200: 10;
+    201..350: 0;
+    351..500: -35;
+    501..750: -90;
+    751..1500: -110;
+    -130;
+}
+
+switch(FEAT_CARGOS, SELF, switch_rating_2050_waiting_pass, getbits(extra_callback_info2, 8, 16)) {
+    0..50: 51;
+    51..100: 40;
+    101..250: 30;
+    251..400: 10;
+    401..600: 0;
+    601..900: -35;
+    901..1500: -90;
+    1501..2000: -110;
+    2001..3000: -130;
+    3001..3800: -150;
+    -170;
+}
+
+switch(FEAT_CARGOS, SELF, switch_rating_1850_pickup, getbits(extra_callback_info2, 0, 8)) {
+    0..5: 142;
+    6..15: 130;
+    16..30: 95;
+    31..60: 50;
+    61..105: 25;
+    0;
+}
+
+
+switch(FEAT_CARGOS, SELF, switch_rating_1900_pickup, getbits(extra_callback_info2, 0, 8)) {
+    0..3: 142;
+    4..6: 130;
+    7..12: 95;
+    13..24: 50;
+    25..42: 25;
+    0;
+}
+
+switch(FEAT_CARGOS, SELF, switch_rating_1970_pickup, getbits(extra_callback_info2, 0, 8)) {
+    0..1: 142;
+    2..3: 130;
+    4..6: 95;
+    7..12: 50;
+    13..21: 25;
+    0;
+}
+
+switch(FEAT_CARGOS, SELF, switch_rating_1850_pass, switch_rating_1850_pickup() + switch_rating_1850_waiting() + switch_rating_speed_pass()) {
+    return;
+}
+
+switch(FEAT_CARGOS, SELF, switch_rating_1850_mail, switch_rating_1850_pickup() + switch_rating_1850_waiting() + switch_rating_speed_mail()) {
+    return;
+}
+
+switch(FEAT_CARGOS, SELF, switch_rating_1850, switch_rating_1850_pickup() + switch_rating_1850_waiting() + switch_rating_speed()) {
+    return;
+}
+
+switch(FEAT_CARGOS, SELF, switch_rating_1900_pass, switch_rating_1900_pickup() + switch_rating_1900_waiting() + switch_rating_speed_pass()) {
+    return;
+}
+
+switch(FEAT_CARGOS, SELF, switch_rating_1900_mail, switch_rating_1900_pickup() + switch_rating_1900_waiting() + switch_rating_speed_mail()) {
+    return;
+}
+
+switch(FEAT_CARGOS, SELF, switch_rating_1900, switch_rating_1900_pickup() + switch_rating_1900_waiting() + switch_rating_speed()) {
+    return;
+}
+
+switch(FEAT_CARGOS, SELF, switch_rating_1970_pass, switch_rating_1970_pickup() + switch_rating_1970_waiting() + switch_rating_speed_pass()) {
+    return;
+}
+
+switch(FEAT_CARGOS, SELF, switch_rating_1970_mail, switch_rating_1970_pickup() + switch_rating_1970_waiting() + switch_rating_speed_mail()) {
+    return;
+}
+
+switch(FEAT_CARGOS, SELF, switch_rating_1970, switch_rating_1970_pickup() + switch_rating_1970_waiting() + switch_rating_speed()) {
+    return;
+}
+
+switch(FEAT_CARGOS, SELF, switch_rating_2010_pass, switch_rating_1970_pickup() + switch_rating_2010_waiting_pass() + switch_rating_speed_pass()) {
+    return;
+}
+
+switch(FEAT_CARGOS, SELF, switch_rating_2010_mail, switch_rating_1970_pickup() + switch_rating_2010_waiting_pass() + switch_rating_speed_mail()) {
+    return;
+}
+
+switch(FEAT_CARGOS, SELF, switch_rating_2010, switch_rating_1970_pickup() + switch_rating_2010_waiting() + switch_rating_speed()) {
+    return;
+}
+
+switch(FEAT_CARGOS, SELF, switch_rating_2050_pass, switch_rating_1970_pickup() + switch_rating_2050_waiting_pass() + switch_rating_speed_pass()) {
+    return;
+}
+
+switch(FEAT_CARGOS, SELF, switch_rating_2050_mail, switch_rating_1970_pickup() + switch_rating_2050_waiting_pass() + switch_rating_speed_mail()) {
+    return;
+}
+
+switch(FEAT_CARGOS, SELF, switch_rating_2050, switch_rating_1970_pickup() + switch_rating_2050_waiting() + switch_rating_speed()) {
+    return;
+}
+
+
+switch(FEAT_CARGOS, SELF, switch_improved_station_rating_pass, current_year) {
+    0..1850: switch_rating_1850_pass;
+    1851..1900: switch_rating_1900_pass;
+    1901..1970: switch_rating_1970_pass;
+    1970..2010: switch_rating_2010_pass;
+    switch_rating_2050_pass;
+}
+
+switch(FEAT_CARGOS, SELF, switch_improved_station_rating_mail, current_year) {
+    0..1850: switch_rating_1850_mail;
+    1851..1900: switch_rating_1900_mail;
+    1901..1970: switch_rating_1970_mail;
+    1970..2010: switch_rating_2010_mail;
+    switch_rating_2050_mail;
+}
+
+switch(FEAT_CARGOS, SELF, switch_improved_station_rating, current_year) {
+    0..1850: switch_rating_1850;
+    1851..1900: switch_rating_1900;
+    1901..1970: switch_rating_1970;
+    1970..2010: switch_rating_2010;
+    switch_rating_2050;
+}
+
+
+switch (FEAT_CARGOS, SELF, switch_station_rating_pass, param_station_rating_algorithm) {
+ 1: switch_improved_station_rating_pass;
+ CB_FAILED; // use OpenTTD default
+}
+
+switch (FEAT_CARGOS, SELF, switch_station_rating_mail, param_station_rating_algorithm) {
+ 1: switch_improved_station_rating_mail;
+ CB_FAILED; // use OpenTTD default
+}
+
+
+switch (FEAT_CARGOS, SELF, switch_station_rating, param_station_rating_algorithm) {
+ 1: switch_improved_station_rating;
+ CB_FAILED; // use OpenTTD default
+}
+
+
+
+// Switch for each cargo ID
+item(FEAT_CARGOS, C_PASS, 0) {
+    graphics { station_rating: switch_station_rating_pass; }
+}
+
+item(FEAT_CARGOS, C_1, 1) {
+    graphics { station_rating: switch_station_rating; }
+}
+
+item(FEAT_CARGOS, C_MAIL, 2) {
+    graphics { station_rating: switch_station_rating_mail; }
+}
+
+item(FEAT_CARGOS, C_3, 3) {
+    graphics { station_rating: switch_station_rating; }
+}
+
+item(FEAT_CARGOS, C_4, 4) {
+    graphics { station_rating: switch_station_rating; }
+}
+
+item(FEAT_CARGOS, C_5, 5) {
+    graphics { station_rating: switch_station_rating; }
+}
+
+item(FEAT_CARGOS, C_6, 6) {
+    graphics { station_rating: switch_station_rating; }
+}
+
+item(FEAT_CARGOS, C_7, 7) {
+    graphics { station_rating: switch_station_rating; }
+}
+
+item(FEAT_CARGOS, C_8, 8) {
+    graphics { station_rating: switch_station_rating; }
+}
+
+item(FEAT_CARGOS, C_9, 9) {
+    graphics { station_rating: switch_station_rating; }
+}
+
+item(FEAT_CARGOS, C_10, 10) {
+    graphics { station_rating: switch_station_rating; }
+}
+
+item(FEAT_CARGOS, C_FOOD, 11) {
+    graphics { station_rating: switch_station_rating_mail; }
+}
+
+item(FEAT_CARGOS, C_12, 12) {
+    graphics { station_rating: switch_station_rating; }
+}
+
+item(FEAT_CARGOS, C_13, 13) {
+    graphics { station_rating: switch_station_rating; }
+}
+
+item(FEAT_CARGOS, C_14, 14) {
+    graphics { station_rating: switch_station_rating; }
+}
+
+item(FEAT_CARGOS, C_15, 15) {
+    graphics { station_rating: switch_station_rating; }
+}
+
+item(FEAT_CARGOS, C_16, 16) {
+    graphics { station_rating: switch_station_rating; }
+}
+
+item(FEAT_CARGOS, C_17, 17) {
+    graphics { station_rating: switch_station_rating; }
+}
+
+item(FEAT_CARGOS, C_18, 18) {
+    graphics { station_rating: switch_station_rating; }
+}
+
+item(FEAT_CARGOS, C_19, 19) {
+    graphics { station_rating: switch_station_rating; }
+}
+
+item(FEAT_CARGOS, C_20, 20) {
+    graphics { station_rating: switch_station_rating; }
+}
+
+item(FEAT_CARGOS, C_21, 21) {
+    graphics { station_rating: switch_station_rating; }
+}
+
+item(FEAT_CARGOS, C_22, 22) {
+    graphics { station_rating: switch_station_rating; }
+}
+
+item(FEAT_CARGOS, C_23, 23) {
+    graphics { station_rating: switch_station_rating; }
+}
+
+item(FEAT_CARGOS, C_24, 24) {
+    graphics { station_rating: switch_station_rating; }
+}
+
+item(FEAT_CARGOS, C_25, 25) {
+    graphics { station_rating: switch_station_rating; }
+}
+
+item(FEAT_CARGOS, C_26, 26) {
+    graphics { station_rating: switch_station_rating; }
+}
+
+item(FEAT_CARGOS, C_27, 27) {
+    graphics { station_rating: switch_station_rating; }
+}
+
+item(FEAT_CARGOS, C_28, 28) {
+    graphics { station_rating: switch_station_rating; }
+}
+
+item(FEAT_CARGOS, C_29, 29) {
+    graphics { station_rating: switch_station_rating; }
+}
+
+item(FEAT_CARGOS, C_30, 30) {
+    graphics { station_rating: switch_station_rating; }
+}
+
+item(FEAT_CARGOS, C_31, 31) {
+    graphics { station_rating: switch_station_rating; }
+}
+
+item(FEAT_CARGOS, C_32, 32) {
+    graphics { station_rating: switch_station_rating; }
+}
+
+item(FEAT_CARGOS, C_33, 33) {
+    graphics { station_rating: switch_station_rating; }
+}
+
+item(FEAT_CARGOS, C_34, 34) {
+    graphics { station_rating: switch_station_rating; }
+}
+
+item(FEAT_CARGOS, C_35, 35) {
+    graphics { station_rating: switch_station_rating; }
+}
+
+item(FEAT_CARGOS, C_36, 36) {
+    graphics { station_rating: switch_station_rating; }
+}
+
+item(FEAT_CARGOS, C_37, 37) {
+    graphics { station_rating: switch_station_rating; }
+}
+
+item(FEAT_CARGOS, C_38, 38) {
+    graphics { station_rating: switch_station_rating; }
+}
+
+item(FEAT_CARGOS, C_39, 39) {
+    graphics { station_rating: switch_station_rating; }
+}
+
+item(FEAT_CARGOS, C_40, 40) {
+    graphics { station_rating: switch_station_rating; }
+}
+
+item(FEAT_CARGOS, C_41, 41) {
+    graphics { station_rating: switch_station_rating; }
+}
+
+item(FEAT_CARGOS, C_42, 42) {
+    graphics { station_rating: switch_station_rating; }
+}
+
+item(FEAT_CARGOS, C_43, 43) {
+    graphics { station_rating: switch_station_rating; }
+}
+
+item(FEAT_CARGOS, C_44, 44) {
+    graphics { station_rating: switch_station_rating; }
+}
+
+item(FEAT_CARGOS, C_45, 45) {
+    graphics { station_rating: switch_station_rating; }
+}
+
+item(FEAT_CARGOS, C_46, 46) {
+    graphics { station_rating: switch_station_rating; }
+}
+
+item(FEAT_CARGOS, C_47, 47) {
+    graphics { station_rating: switch_station_rating; }
+}
+
+item(FEAT_CARGOS, C_48, 48) {
+    graphics { station_rating: switch_station_rating; }
+}
+
+item(FEAT_CARGOS, C_49, 49) {
+    graphics { station_rating: switch_station_rating; }
+}
+
+item(FEAT_CARGOS, C_50, 50) {
+    graphics { station_rating: switch_station_rating; }
+}
+
+item(FEAT_CARGOS, C_51, 51) {
+    graphics { station_rating: switch_station_rating; }
+}
+
+item(FEAT_CARGOS, C_52, 52) {
+    graphics { station_rating: switch_station_rating; }
+}
+
+item(FEAT_CARGOS, C_53, 53) {
+    graphics { station_rating: switch_station_rating; }
+}
+
+item(FEAT_CARGOS, C_54, 54) {
+    graphics { station_rating: switch_station_rating; }
+}
+
+item(FEAT_CARGOS, C_55, 55) {
+    graphics { station_rating: switch_station_rating; }
+}
+
+item(FEAT_CARGOS, C_56, 56) {
+    graphics { station_rating: switch_station_rating; }
+}
+
+item(FEAT_CARGOS, C_57, 57) {
+    graphics { station_rating: switch_station_rating; }
+}
+
+item(FEAT_CARGOS, C_58, 58) {
+    graphics { station_rating: switch_station_rating; }
+}
+
+item(FEAT_CARGOS, C_59, 59) {
+    graphics { station_rating: switch_station_rating; }
+}
+
+item(FEAT_CARGOS, C_60, 60) {
+    graphics { station_rating: switch_station_rating; }
+}
+
+item(FEAT_CARGOS, C_61, 61) {
+    graphics { station_rating: switch_station_rating; }
+}
+
+item(FEAT_CARGOS, C_62, 62) {
+    graphics { station_rating: switch_station_rating; }
+}
+
+item(FEAT_CARGOS, C_63, 63) {
+    graphics { station_rating: switch_station_rating; }
+}
+
