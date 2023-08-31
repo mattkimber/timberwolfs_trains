@@ -69,7 +69,7 @@ if (grf_future_status("\4A\44\88\07") == 1 && param["\4A\44\88\07", 0] != 0 && p
 }
 
 
-is_axis_steeltown = (grf_future_status("\4A\4B\88\08") == 1 && param["\F1\25\00\08", 0] == 0) ? 1 : 0;
+is_axis_steeltown = (grf_future_status("\4A\4B\88\08") == 1 && param["\4A\4B\88\08", 0] == 0) ? 1 : 0;
 is_firs_temperate_basic = (grf_future_status("\F1\25\00\08") == 1 && param["\F1\25\00\08", 0] == 0) ? 1 : 0;
 is_firs_arctic_basic = (grf_future_status("\F1\25\00\08") == 1 && param["\F1\25\00\08", 0] == 1) ? 1 : 0;
 is_firs_tropic_basic = (grf_future_status("\F1\25\00\08") == 1 && param["\F1\25\00\08", 0] == 2) ? 1 : 0;
@@ -82,8 +82,8 @@ is_lumberjack = grf_future_status("TT21");
 is_pbi = grf_future_status("\44\44\06\02");
 
 is_yeti = grf_future_status("\56\42\03\03");
-is_spi_sea_cargo = (grf_future_status("\F1\25\00\08") == 1 && param["\F1\25\00\08", 0] == 0) ? 1 : 0;
-is_xis_extreme = (grf_future_status("\4A\44\88\07") == 1 && param["\F1\25\00\08", 0] == 0) ? 1 : 0;
+is_spi_sea_cargo = (grf_future_status("\31\FF\05\05") == 1 && param["\31\FF\05\05", 0] == 0) ? 1 : 0;
+is_xis_extreme = (grf_future_status("\4A\44\88\07") == 1 && param["\4A\44\88\07", 0] == 0) ? 1 : 0;
 
 has_no_active_industry_set = (grf_future_status("\F1\25\00\08") == 0 && 
     grf_future_status("\4A\44\88\07") == 0 && 
