@@ -179,6 +179,63 @@ service compared to the default rating algorithm, to negate the
 need to constantly replace vehicles and/or advertise to get full 
 station ratings at well-served stations.
 
+If you are using a NewGRF industry set, this set will need to be
+loaded after it for custom ratings to work. This will be detected
+for several common industry sets.
+
+Penalty for boring networks
+---------------------------
+
+A common frustration of OpenTTD games is that a small number of air 
+and/or sea routes can easily outperform a complex rail and road
+network financially, due to high cargo payments at 1/1 planespeed and
+the effectively infinite capacity of ship docks.
+
+This can lead to less interesting games overall, where high incomes
+can be gained despite building very little infrastructure.
+
+The penalty for boring networks attempts to compensate for this by
+applying a ratings penalty to docks and airports whenever the last
+vehicle to load cargo was a ship or aircraft. This means that players
+must serve their docks and airports with other transport methods to
+make use of their full capacity - either by having multiple vehicle
+types loading at the same station and managing ships to not wait
+extended periods of time, or by transporting the first leg via rail,
+road or tram and only using ships as the intermediate stage of a
+journey.
+
+For supported industry sets, cargo which is obtained from offshore
+industries is not affected by this penalty, allowing ships to be
+used to bring it to shore.
+
+The aircraft penalty is not applied to passengers or mail, as it
+is usually not easy to build large airports close to a town, and 
+connecting services will already need to be provided.
+
+Note: as this is a somewhat unexpected use of NML, support for
+industry sets has to be hardcoded on a set-by-set basis. Currently
+supported industry sets at the time of writing are:
+
+FIRS 4 (all economies)
+AIRS (all economies)
+AXIS (Steeltown only)
+CZIS
+ECS Vectors
+Improved Town Industries
+Industries of the Caribbean
+Lumberjack Industries
+Pikka's Basic Industries
+PIRS
+SPI 1.3
+XIS
+YETI (partial)
+
+Compatibility may be broken if industry sets introduce new cargo
+types, or otherwise reorder their cargo list.
+
+Reasonable requests to add additional industry sets will be
+accepted, providing source code is available.
+
 CC/Attributions
 ---------------
 

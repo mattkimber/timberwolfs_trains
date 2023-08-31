@@ -2,7 +2,7 @@
     "grf": {
         "author_id": "TWF",
         "grf_id": 7,
-        "name": "Timberwolf's UK Trains 1.4.0",
+        "name": "Timberwolf's UK Trains 1.4.1",
         "description": "A maximalist UK train set including vehicles from 1800-2020. Features 2cc colours, long vehicle scale, 2x zoom and extra rotation sprites.",
         "min_compat_version": 1,
         "filename": "timberwolfs_trains.nml",
@@ -57,6 +57,16 @@
                 "max_value": 1,
                 "default_value": 1,
                 "value_names": [ "Original", "Improved" ]
+            },
+            {
+                "id": "boredom_penalty",
+                "name": "Penalty for boring networks (experimental)",
+                "desc": "Applies a penalty to ship and air cargo routes with no other transport connections when using improved station ratings.{}{}The {ORANGE}Draconian{BLACK} or {ORANGE}Evil{BLACK} settings may result in stations becoming impossible to serve unless ships and aircraft are removed from the route.{}{}See readme for more details and supported industry sets.",
+                "type": "int",
+                "min_value": 0,
+                "max_value": 5,
+                "default_value": 0,
+                "value_names": [ "None", "Gentle", "Assertive", "Stern", "Draconian", "Evil" ]
             }
         ]
     },
@@ -114,7 +124,8 @@
     ],
     "fixed_strings": {
         "str_mu_cannot_attach": "Multiple units can only be coupled to another multiple unit of the same (or compatible) type.",
-        "str_needs_second_power_car": "This consist needs a second power car of the same type. Buy one from the purchase menu and attach it to the end of the train."
+        "str_needs_second_power_car": "This consist needs a second power car of the same type. Buy one from the purchase menu and attach it to the end of the train.",
+        "str_unsupported_incomplete": "Incomplete economies in sets such as AXIS may produce unexpected results when penalties for boring networks are enabled."
     },
     "cargo_table": [        
         "ACID",
