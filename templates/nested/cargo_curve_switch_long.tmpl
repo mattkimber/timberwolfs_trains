@@ -35,7 +35,7 @@ switch (FEAT_TRAINS, SELF, switch_{{.}}_height, getbits(extra_callback_info1, 0,
     1..127: return spritegroup_{{.}}_up;    
 
     // Long vehicle, use the 3-sprite layout
-    return switch_{{.}}_crest_check;
+    switch_{{.}}_crest_check;
 }
 
 switch (FEAT_TRAINS, SELF, switch_{{.}}_curve, getbits(extra_callback_info1, 0, 8) == 0 && other_veh_is_hidden(-1) != 1 ? curv_info : 0)  {
@@ -51,23 +51,23 @@ switch (FEAT_TRAINS, SELF, switch_{{.}}_curve, getbits(extra_callback_info1, 0, 
 
 // Switches for front
 switch (FEAT_TRAINS, SELF, switch_{{.}}_height_front, getbits(extra_callback_info1, 0, 8) == 0 ? abs(other_veh_z_offset(1)) + abs(other_veh_z_offset(2)) : 0) {
-    0: return switch_cargo_{{.}}_sections_front;
+    0: switch_cargo_{{.}}_sections_front;
     return spriteset_invisible;
 }
 
 switch (FEAT_TRAINS, SELF, switch_{{.}}_curve_front, getbits(extra_callback_info1, 0, 8) == 0 ? abs(other_veh_curv_info(1)) + abs(other_veh_curv_info(2)) : 0)  {
-    0: return switch_{{.}}_height_front;
+    0: switch_{{.}}_height_front;
     return spriteset_invisible;
 }
 
 // Switches for rear
 switch (FEAT_TRAINS, SELF, switch_{{.}}_height_rear, getbits(extra_callback_info1, 0, 8) == 0 ? abs(other_veh_z_offset(-1)) + abs(other_veh_z_offset(-2)): 0) {
-    0: return switch_cargo_{{.}}_sections_rear;
+    0: switch_cargo_{{.}}_sections_rear;
     return spriteset_invisible;
 }
 
 switch (FEAT_TRAINS, SELF, switch_{{.}}_curve_rear, getbits(extra_callback_info1, 0, 8) == 0 && other_veh_is_hidden(-2) != 1 ? abs(other_veh_curv_info(-1)) + abs(other_veh_curv_info(-2)) : 0)  {
-    0: return switch_{{.}}_height_rear;
+    0: switch_{{.}}_height_rear;
     return spriteset_invisible;
 }
 {{end}}

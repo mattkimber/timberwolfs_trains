@@ -149,26 +149,26 @@ switch (FEAT_TRAINS, SELF, switch_{{.id}}_length, position_in_articulated_veh % 
 
 switch (FEAT_TRAINS, SELF, switch_{{.id}}_animation, motion_counter % 4) 
 {
-    0: return switch_{{$sprite}}_anim_1_curve;
-    1: return switch_{{$sprite}}_anim_2_curve;
-    2: return switch_{{$sprite}}_anim_3_curve;
-    3: return switch_{{$sprite}}_anim_4_curve;
+    0: switch_{{$sprite}}_anim_1_curve;
+    1: switch_{{$sprite}}_anim_2_curve;
+    2: switch_{{$sprite}}_anim_3_curve;
+    3: switch_{{$sprite}}_anim_4_curve;
 }
 
 {{ if gt $plen 8}}
 switch (FEAT_TRAINS, SELF, switch_{{.id}}_animation_front, motion_counter % 4) 
 {
-    0: return switch_{{$sprite}}_anim_1_curve_front;
-    1: return switch_{{$sprite}}_anim_2_curve_front;
-    2: return switch_{{$sprite}}_anim_3_curve_front;
-    3: return switch_{{$sprite}}_anim_4_curve_front;
+    0: switch_{{$sprite}}_anim_1_curve_front;
+    1: switch_{{$sprite}}_anim_2_curve_front;
+    2: switch_{{$sprite}}_anim_3_curve_front;
+    3: switch_{{$sprite}}_anim_4_curve_front;
 }
 switch (FEAT_TRAINS, SELF, switch_{{.id}}_animation_rear, motion_counter % 4) 
 {
-    0: return switch_{{$sprite}}_anim_1_curve_rear;
-    1: return switch_{{$sprite}}_anim_2_curve_rear;
-    2: return switch_{{$sprite}}_anim_3_curve_rear;
-    3: return switch_{{$sprite}}_anim_4_curve_rear;
+    0: switch_{{$sprite}}_anim_1_curve_rear;
+    1: switch_{{$sprite}}_anim_2_curve_rear;
+    2: switch_{{$sprite}}_anim_3_curve_rear;
+    3: switch_{{$sprite}}_anim_4_curve_rear;
 }
 {{end}}
 
@@ -212,11 +212,11 @@ switch (FEAT_TRAINS, SELF, switch_{{.id}}_graphics, position_in_articulated_veh 
 {
     1: switch_{{.id}}_animation_overlay;
     {{ if gt $plen 8}}
-    0: return switch_{{.id}}_animation_overlay_front;
-    2: return switch_{{.id}}_animation_overlay_rear;
+    0: switch_{{.id}}_animation_overlay_front;
+    2: switch_{{.id}}_animation_overlay_rear;
     {{ end }}
     {{- if .tender }}
-    4: return switch_{{.tender}}_curve;
+    4: switch_{{.tender}}_curve;
     {{- end}}
     return spriteset_invisible;
 }
@@ -224,45 +224,45 @@ switch (FEAT_TRAINS, SELF, switch_{{.id}}_graphics, position_in_articulated_veh 
 {{else if .double_headed -}}
 switch (FEAT_TRAINS, SELF, switch_{{.id}}_fwd_graphics, position_in_articulated_veh % 3) 
 {
-    1: return switch_{{.id}}_curve;
+    1: switch_{{.id}}_curve;
     {{ if gt $plen 8}}
-    0: return switch_{{.id}}_curve_front;
-    2: return switch_{{.id}}_curve_rear;
+    0: switch_{{.id}}_curve_front;
+    2: switch_{{.id}}_curve_rear;
     {{ end }}
     return spriteset_invisible;
 }
 
 switch (FEAT_TRAINS, SELF, switch_{{.id}}_rev_graphics, position_in_articulated_veh % 3) 
 {
-    1: return switch_{{.id}}_rev_curve;
+    1: switch_{{.id}}_rev_curve;
     {{ if gt $plen 8}}
-    0: return switch_{{.id}}_rev_curve_front;
-    2: return switch_{{.id}}_rev_curve_rear;
+    0: switch_{{.id}}_rev_curve_front;
+    2: switch_{{.id}}_rev_curve_rear;
     {{ end }}
     return spriteset_invisible;
 }
 
 {{if eq .double_headed "2"}}
 switch (FEAT_TRAINS, SELF, switch_{{.id}}_graphics_inner, num_vehs_in_consist > 6 ? position_in_consist_from_end : -1) {
-    0..2: return switch_{{.id}}_rev_graphics;
-    return switch_{{.id}}_fwd_graphics;
+    0..2: switch_{{.id}}_rev_graphics;
+    switch_{{.id}}_fwd_graphics;
 }
 
 switch (FEAT_TRAINS, SELF, {{if le $plen 8 }}switch_{{.id}}_reverse{{else}}switch_{{.id}}_graphics{{end}}, position_in_consist % 6) {
-    0..2: return switch_{{.id}}_graphics_inner;
-    return switch_{{.id}}_rev_graphics;
+    0..2: switch_{{.id}}_graphics_inner;
+    switch_{{.id}}_rev_graphics;
 }
 {{else}}
 switch (FEAT_TRAINS, SELF, {{if le $plen 8 }}switch_{{.id}}_reverse{{else}}switch_{{.id}}_graphics{{end}},  num_vehs_in_consist > 3 ? position_in_consist_from_end : -1) {
-    0..2: return switch_{{.id}}_rev_graphics;
-    return switch_{{.id}}_fwd_graphics;
+    0..2: switch_{{.id}}_rev_graphics;
+    switch_{{.id}}_fwd_graphics;
 }
 {{end}}
 
 {{if le $plen 8 }}
 switch (FEAT_TRAINS, SELF, switch_{{.id}}_graphics, position_in_articulated_veh % 3) 
 {
-    1: return switch_{{.id}}_reverse;
+    1: switch_{{.id}}_reverse;
     return spriteset_invisible;
 }
 {{end}}
@@ -271,20 +271,20 @@ switch (FEAT_TRAINS, SELF, switch_{{.id}}_graphics, position_in_articulated_veh 
 switch (FEAT_TRAINS, SELF, switch_{{.id}}_graphics, position_in_articulated_veh % {{if .tender}}6{{else}}3{{end}}) 
 {
     {{if or (eq $type "dual_electric") (and (eq $type "dual_power") (eq .railtype "ELRL"))}}
-    1: return switch_{{$id}}_pantograph;
+    1: switch_{{$id}}_pantograph;
     {{ if gt $plen 8}}
-    0: return switch_{{$id}}_pantograph_front;
-    2: return switch_{{$id}}_pantograph_rear;
+    0: switch_{{$id}}_pantograph_front;
+    2: switch_{{$id}}_pantograph_rear;
     {{ end }}
     {{else}}
-    1: return switch_{{$sprite}}_curve;
+    1: switch_{{$sprite}}_curve;
     {{ if gt $plen 8}}
-    0: return switch_{{$sprite}}_curve_front;
-    2: return switch_{{$sprite}}_curve_rear;
+    0: switch_{{$sprite}}_curve_front;
+    2: switch_{{$sprite}}_curve_rear;
     {{ end }}
     {{end}}
     {{- if .tender }}
-    4: return switch_{{.tender}}_curve;
+    4: switch_{{.tender}}_curve;
     {{- end}}
 
     return spriteset_invisible;

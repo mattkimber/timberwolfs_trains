@@ -61,21 +61,27 @@ switch (FEAT_TRAINS, SELF, switch_{{.id}}_length, position_in_articulated_veh % 
 
 switch (FEAT_TRAINS, SELF, switch_{{.id}}_animation, motion_counter % 4) 
 {
-    0: return switch_{{$sprite}}_1_curve;
-    1: return switch_{{$sprite}}_2_curve;
-    2: return switch_{{$sprite}}_3_curve;
-    3: return switch_{{$sprite}}_4_curve;
+    0: switch_{{$sprite}}_1_curve;
+    1: switch_{{$sprite}}_2_curve;
+    2: switch_{{$sprite}}_3_curve;
+    3: switch_{{$sprite}}_4_curve;
 }
 
-
-switch (FEAT_TRAINS, SELF, switch_{{.id}}_graphics, position_in_articulated_veh % {{if .tender}}6{{else}}3{{end}}) 
+switch (FEAT_TRAINS, PARENT, switch_{{.id}}_speed, current_speed > 8 && hasbit(bitmask_consist_info, HAS_DANDY_WAGON) ? 1 : 0) 
 {
-    1: switch_{{.id}}_animation;
+    1: return spriteset_invisible;
+    switch_{{.id}}_animation;
+}
+
+switch (FEAT_TRAINS, SELF, switch_{{.id}}_graphics, position_in_articulated_veh % 3) 
+{
+    1: switch_{{.id}}_speed;
     return spriteset_invisible;
 }
 
-
 {{template "running_cost_switch" . }}
+
+{{template "tare_speed_switch" . }}
 
 item(FEAT_TRAINS, vehicle_{{.id}}, {{.numeric_id}}) {
     property {
@@ -116,9 +122,13 @@ item(FEAT_TRAINS, vehicle_{{.id}}, {{.numeric_id}}) {
         length: switch_{{.id}}_length;
         running_cost_factor: switch_{{.id}}_running_cost;
         purchase_running_cost_factor: return {{.running_cost}};
-        colour_mapping: return recolour_horses + (random_bits % 25);
+        colour_mapping: switch_horse_colour_mapping;
+        purchase_colour_mapping: return recolour_horses;
         sound_effect: switch_horse_sound_fx;
-
+        {{- if eq .railtype "NARROW_GAUGE"}}
+        speed: switch_{{.id}}_speed_brakevan;
+        purchase_speed: return {{.kmhish_speed}};
+        {{end -}}
     }
 }
 

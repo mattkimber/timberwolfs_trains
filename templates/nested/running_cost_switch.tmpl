@@ -3,7 +3,7 @@
 {{$runCost := parseint .running_cost }}
 {{if le $runCost 20 }}
 // Lower running cost ramp up for early vehicles
- switch(FEAT_TRAINS, SELF, switch_{{.id}}_running_cost, current_speed) {
+ switch(FEAT_TRAINS, PARENT, switch_{{.id}}_running_cost, current_speed) {
      0: return min(
          ({{.running_cost}} + 
                 max(
@@ -24,7 +24,7 @@
     );
  }
 {{else}}
- switch(FEAT_TRAINS, SELF, switch_{{.id}}_running_cost, current_speed) {
+ switch(FEAT_TRAINS, PARENT, switch_{{.id}}_running_cost, current_speed) {
      0: return min(
          ({{.running_cost}} + 
                 max(

@@ -1,0 +1,32 @@
+{
+    "files": [
+      "cargo/wagon/dandy_wagon_ng.vox"
+    ],
+    "operations": [
+        {
+            "name": "",
+            "type": "produce_empty"
+        },
+        {
+            "name": "_none",
+            "type": "repeat",
+            "mask_original": true,
+            "n": 1,
+            "file": "cargo/none/nothing.vox"
+        },
+        {
+            "name": "_pony_half",
+            "type": "repeat",
+            "n": 1,
+            "mask_original": true,      
+            "file": "cargo/half/pony_loaded.vox"
+        },
+        {
+            "name": "_pony_full",
+            "type": "repeat",
+            "n": 1,
+            "mask_original": true,      
+            "file": "cargo/full/pony_loaded.vox"
+        }
+    ]
+}

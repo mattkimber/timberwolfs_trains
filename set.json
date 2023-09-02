@@ -113,6 +113,9 @@
             "template":  "templates/static/recolour.nml"
         },
         {
+            "template": "templates/static/procedures.nml"
+        },
+        {
             "template": "templates/static/sprite_templates_hills.nml"
         },
         {

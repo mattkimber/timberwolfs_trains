@@ -63,7 +63,6 @@ spriteset(spriteset_{{.id}}_purchase, "1x/{{.id}}_purchase.png")
 {{ $cargo_list = "metal" -}}
 {{else if eq .cargo_handling "Bolster" -}}
 {{ $cargo_list = "bdmt,wood,crate,metal,timber,fmsp_old,fmsp_modern,ensp_old,ensp_modern,tyre,pipe,stsh,stwr,rbar" -}}
-
 {{if gt $plen 4 }}
 {{ $cargo_list = concat $cargo_list ",vehicle_1800,vehicle_1910,vehicle_1970,vehicle_2010,vehicle_body_1800,vehicle_body_1910,vehicle_body_1970,vehicle_body_2010" }}
 {{else}}
@@ -71,6 +70,8 @@ spriteset(spriteset_{{.id}}_purchase, "1x/{{.id}}_purchase.png")
 {{end}}
 {{else if eq .cargo_handling "Container" -}}
 {{ $cargo_list = "container" -}}
+{{else if eq .cargo_handling "DandyWagon" -}}
+{{ $cargo_list = "pony" -}}
 {{end -}}
 
 {{ if $cargo_list}}
@@ -129,6 +130,20 @@ spriteset(spriteset_{{.id}}_purchase, "1x/{{.id}}_purchase.png")
 
 {{end -}}
 {{$cargoid := concat $id $elus }}
+{{- if eq $cargo_handling "DandyWagon" }}
+// Dandy wagons don't get their sprites from cargo, so we need to manually emulate spritegroups
+{{template "curve_switch_short" concat $id "_none" }}
+{{template "curve_switch_short" concat $id "_pony_half" }}
+{{template "curve_switch_short" concat $id "_pony_full" }}
+
+switch(FEAT_TRAINS, PARENT, switch_{{$id}}_total_horses, count_veh_id(vehicle_pony)) { return; }
+
+switch (FEAT_TRAINS, SELF, switch_{{$id}}_pony_curve, switch_{{$id}}_total_horses() - ((count_veh_id(vehicle_{{$id}}) - 1) * 2)) {
+    2..16384: switch_dandy_wagon_ng_pony_full_curve;
+    1: switch_dandy_wagon_ng_pony_half_curve;
+    switch_dandy_wagon_ng_none_curve;
+}
+{{- else}}
 spritegroup spritegroup_{{$cargoid}} {
 	loading: [spriteset_{{$id}}_none, spriteset_{{$id}}_{{$element}}_half, spriteset_{{$id}}_{{$element}}_half, spriteset_{{$id}}_{{$element}}_full ];
 	loaded: [spriteset_{{$id}}_none, spriteset_{{$id}}_{{$element}}_half, spriteset_{{$id}}_{{$element}}_half, spriteset_{{$id}}_{{$element}}_full ];
@@ -153,7 +168,6 @@ spritegroup spritegroup_{{$cargoid}}_down {
 	loading: [spriteset_{{$id}}_none_down_down,spriteset_{{$id}}_{{$element}}_half_down_down, spriteset_{{$id}}_{{$element}}_half_down_down, spriteset_{{$id}}_{{$element}}_full_down_down ];
 	loaded: [spriteset_{{$id}}_none_down_down,spriteset_{{$id}}_{{$element}}_half_down_down, spriteset_{{$id}}_{{$element}}_half_down_down, spriteset_{{$id}}_{{$element}}_full_down_down ];
 }
-
 {{if gt $plen 8}}
 // We don't have the same spritegroups for front/mid/rear as they are emulated using switches, to avoid different sections
 // of the vehicle having different loading states
@@ -178,16 +192,16 @@ spritegroup spritegroup_{{$cargoid}}_none_sections_rear {
 {{end}}
 
 {{if gt $plen 8}}{{template "cargo_curve_switch_long" $cargoid }}{{else if gt $plen 4 }}{{template "cargo_curve_switch_medium" $cargoid }}{{else}}{{template "cargo_curve_switch_short" $cargoid }}{{end}}
-
+{{end -}}
 {{end -}}{{ end }}
 // End cargo sprites
 
 {{ $has_cargo_switch := "" }}
-{{ $bulk_cargos := "aore,bdmt,bean,cass,cblk,cmnt,cere,clay,coal,coke,core,ctcd,fecr,fert,ficr,frut,grai,grvl,iore,lime,kaol,maiz,mno2,nitr,olsd,peat,phos,pota,pore,qlme,rcyc,salt,sand,sash,scmt,sgbt,sgcn,slag,sugr,sulp,toff,uran,whea,wdpr" }}
-{{ $bolster_cargos := "bdmt,wood,batt,beer,boom,bubl,cera,fzdr,java,nuts,papr,powr,toys,veng,vpts,plas,dyes,mnsp,ficr,soap,coat,rfpr,frut,wool,fert,glas,rcyc,wste,nukf,nukw,uran,alum,copr,csti,iron,metl,stal,stcb,stel,stse,stst,zinc,wdpr,fmsp,ensp,tyre,pipe,vbod,vehi,stsh,stwr,rbar" }}
-{{ $metal_cargos := "alum,copr,csti,iron,metl,stal,stcb,stel,stse,stst,zinc" }}
-{{ $early_liquids := "acid,beer,chlo,coat,cola,ctar,dyes,eoil,fzdr,lye_,milk,nh3_,o2__,oil_,petr,plst,rfpr,rubr,soap,watr" }}
-{{ $early_cargos := "lvst,barrels" }}
+{{- $bulk_cargos := "aore,bdmt,bean,cass,cblk,cmnt,cere,clay,coal,coke,core,ctcd,fecr,fert,ficr,frut,grai,grvl,iore,lime,kaol,maiz,mno2,nitr,olsd,peat,phos,pota,pore,qlme,rcyc,salt,sand,sash,scmt,sgbt,sgcn,slag,sugr,sulp,toff,uran,whea,wdpr" }}
+{{- $bolster_cargos := "bdmt,wood,batt,beer,boom,bubl,cera,fzdr,java,nuts,papr,powr,toys,veng,vpts,plas,dyes,mnsp,ficr,soap,coat,rfpr,frut,wool,fert,glas,rcyc,wste,nukf,nukw,uran,alum,copr,csti,iron,metl,stal,stcb,stel,stse,stst,zinc,wdpr,fmsp,ensp,tyre,pipe,vbod,vehi,stsh,stwr,rbar" }}
+{{- $metal_cargos := "alum,copr,csti,iron,metl,stal,stcb,stel,stse,stst,zinc" }}
+{{- $early_liquids := "acid,beer,chlo,coat,cola,ctar,dyes,eoil,fzdr,lye_,milk,nh3_,o2__,oil_,petr,plst,rfpr,rubr,soap,watr" }}
+{{- $early_cargos := "lvst,barrels" }}
 
 {{ if eq .cargo_handling "EarlyOpen" }}
 {{ $has_cargo_switch = "1" }}
@@ -229,10 +243,10 @@ switch(FEAT_TRAINS, SELF, switch_{{$id}}_cargo_{{$element}}_rear, [
 
 switch (FEAT_TRAINS, SELF, switch_{{$id}}_graphics_{{$element}}, position_in_articulated_veh % 3) 
 {
-    1: return switch_{{$id}}_cargo_{{$element}};
+    1: switch_{{$id}}_cargo_{{$element}};
     {{ if gt $plen 8}}
-    0: return switch_{{$id}}_cargo_{{$element}}_front;
-    2: return switch_{{$id}}_cargo_{{$element}}_rear;
+    0: switch_{{$id}}_cargo_{{$element}}_front;
+    2: switch_{{$id}}_cargo_{{$element}}_rear;
     {{ end }}
     return spriteset_invisible;
 }
@@ -283,10 +297,10 @@ switch(FEAT_TRAINS, SELF, switch_{{$id}}_cargo_{{$element}}_rear, [
 
 switch (FEAT_TRAINS, SELF, switch_{{$id}}_graphics_{{$element}}, position_in_articulated_veh % 3) 
 {
-    1: return switch_{{$id}}_cargo_{{$element}};
+    1: switch_{{$id}}_cargo_{{$element}};
     {{ if gt $plen 8}}
-    0: return switch_{{$id}}_cargo_{{$element}}_front;
-    2: return switch_{{$id}}_cargo_{{$element}}_rear;
+    0: switch_{{$id}}_cargo_{{$element}}_front;
+    2: switch_{{$id}}_cargo_{{$element}}_rear;
     {{ end }}
     return spriteset_invisible;
 }
@@ -334,14 +348,40 @@ switch(FEAT_TRAINS, SELF, switch_{{$id}}_cargo_{{$element}}_rear, [
 
 switch (FEAT_TRAINS, SELF, switch_{{$id}}_graphics_{{$element}}, position_in_articulated_veh % 3) 
 {
-    1: return switch_{{$id}}_cargo_{{$element}};
+    1: switch_{{$id}}_cargo_{{$element}};
     {{ if gt $plen 8}}
-    0: return switch_{{$id}}_cargo_{{$element}}_front;
-    2: return switch_{{$id}}_cargo_{{$element}}_rear;
+    0: switch_{{$id}}_cargo_{{$element}}_front;
+    2: switch_{{$id}}_cargo_{{$element}}_rear;
     {{ end }}
     return spriteset_invisible;
 }
 {{ end }}
+{{else if eq .cargo_handling "DandyWagon" }}
+{{ $has_cargo_switch = "1" }}
+
+switch(FEAT_TRAINS, SELF, switch_{{$id}}_cargo_pony, [
+    STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 1 ? CB_FLAG_MORE_SPRITES : 0) | (getbits(extra_callback_info1, 8, 8) == 1 ? switch_dandy_wagon_mapping() : PALETTE_USE_DEFAULT), 0x100),
+    getbits(extra_callback_info1, 8, 8)
+    ]) {
+    0: switch_{{$id}}_curve;
+    1: switch_{{$id}}_pony_curve;
+
+
+    // This should never be executed
+    return spriteset_invisible;
+}
+
+switch (FEAT_TRAINS, PARENT, switch_{{$id}}_graphics_speed, current_speed) 
+{
+    0..8: switch_{{$id}}_curve;
+    switch_{{$id}}_cargo_pony;
+}
+
+switch (FEAT_TRAINS, SELF, switch_{{$id}}_graphics_pony, position_in_articulated_veh % 3) 
+{
+    1: switch_{{$id}}_graphics_speed;
+    return spriteset_invisible;
+}
 {{ else if eq .cargo_handling "Bolster" }}
 {{ $has_cargo_switch = "1" }}
 {{ range $index, $element := slice $bolster_cargos }}
@@ -481,10 +521,10 @@ switch(FEAT_TRAINS, SELF, switch_{{$id}}_cargo_{{$element}}_rear, [
 
 switch (FEAT_TRAINS, SELF, switch_{{$id}}_graphics_{{$element}}, position_in_articulated_veh % 3) 
 {
-    1: return switch_{{$id}}_cargo_{{$element}};
+    1: switch_{{$id}}_cargo_{{$element}};
     {{ if gt $plen 8}}
-    0: return switch_{{$id}}_cargo_{{$element}}_front;
-    2: return switch_{{$id}}_cargo_{{$element}}_rear;
+    0: switch_{{$id}}_cargo_{{$element}}_front;
+    2: switch_{{$id}}_cargo_{{$element}}_rear;
     {{ end }}
     return spriteset_invisible;
 }
@@ -528,10 +568,10 @@ switch(FEAT_TRAINS, SELF, switch_{{$id}}_cargo_container_rear, [
 
 switch (FEAT_TRAINS, SELF, switch_{{$id}}_graphics_container, position_in_articulated_veh % 3) 
 {
-    1: return switch_{{$id}}_cargo_container;
+    1: switch_{{$id}}_cargo_container;
     {{ if gt $plen 8}}
-    0: return switch_{{$id}}_cargo_container_front;
-    2: return switch_{{$id}}_cargo_container_rear;
+    0: switch_{{$id}}_cargo_container_front;
+    2: switch_{{$id}}_cargo_container_rear;
     {{ end }}
 
     return spriteset_invisible;
@@ -556,42 +596,49 @@ switch (FEAT_TRAINS, SELF, switch_{{.id}}_length, position_in_articulated_veh % 
 
 switch (FEAT_TRAINS, SELF, switch_{{.id}}_graphics_normal, position_in_articulated_veh % 3) 
 {
-    1: return switch_{{.id}}_curve;
+    1: switch_{{.id}}_curve;
     {{ if gt $plen 8}}
-    0: return switch_{{.id}}_curve_front;
-    2: return switch_{{.id}}_curve_rear;
+    0: switch_{{.id}}_curve_front;
+    2: switch_{{.id}}_curve_rear;
     {{ end }}
     return spriteset_invisible;
 }
 
 switch (FEAT_TRAINS, SELF, switch_{{.id}}_graphics_last, position_in_articulated_veh % 3) 
 {
-    1: return switch_{{.replace_last_wagon}}_curve;
+    1: switch_{{.replace_last_wagon}}_curve;
     {{ if gt $plen 8}}
-    0: return switch_{{.replace_last_wagon}}_curve_front;
-    2: return switch_{{.replace_last_wagon}}_curve_rear;
+    0: switch_{{.replace_last_wagon}}_curve_front;
+    2: switch_{{.replace_last_wagon}}_curve_rear;
     {{ end }}
     return spriteset_invisible;
 }
 
 switch (FEAT_TRAINS, SELF, switch_{{.id}}_graphics, position_in_consist_from_end) 
 {
-    0..2: return switch_{{.id}}_graphics_last;
-    return switch_{{.id}}_graphics_normal;
+    0..2: switch_{{.id}}_graphics_last;
+    switch_{{.id}}_graphics_normal;
 }
 {{else}}
+{{- if eq .cargo_handling "DandyWagon"}}
 switch (FEAT_TRAINS, SELF, switch_{{.id}}_graphics, position_in_articulated_veh % 3) 
 {
-    1: return switch_{{.id}}_curve;
+    1: switch_{{.id}}_graphics_pony;
+    return spriteset_invisible;
+}
+{{- else}}
+switch (FEAT_TRAINS, SELF, switch_{{.id}}_graphics, position_in_articulated_veh % 3) 
+{
+    1: switch_{{.id}}_curve;
     {{ if gt $plen 8}}
-    0: return switch_{{.id}}_curve_front;
-    2: return switch_{{.id}}_curve_rear;
+    0: switch_{{.id}}_curve_front;
+    2: switch_{{.id}}_curve_rear;
     {{ end }}
     return spriteset_invisible;
 }
+{{end -}}
+{{end -}}
 {{end}}
-{{end}}
-
 
 {{template "tare_speed_switch" . }}
 
@@ -599,6 +646,12 @@ switch (FEAT_TRAINS, SELF, switch_{{.id}}_graphics, position_in_articulated_veh 
 {{template "preserved_cargo_age_switch" . }}        
 {{- end }}
 
+{{- if eq .default_cargo "DANDY"}}
+switch (FEAT_TRAINS, PARENT, switch_{{.id}}_dandy_wagon_behaviour, (count_veh_id(vehicle_pony) / 2) - count_veh_id(vehicle_{{.id}})) {
+    1..16384: 0;
+    bitmask(HAS_DANDY_WAGON);
+}
+{{- end}}
 
 item(FEAT_TRAINS, vehicle_{{.id}}, {{.numeric_id}}) {
     property {
@@ -609,11 +662,11 @@ item(FEAT_TRAINS, vehicle_{{.id}}, {{.numeric_id}}) {
         retire_early:                 -4;        
         vehicle_life:                 {{.vehicle_life}};
 
-        {{if ne .default_cargo "BRAKE"}}
-        default_cargo_type:           {{.default_cargo}};
-        {{else}}
+        {{if eq .default_cargo "BRAKE"}}
         bitmask_vehicle_info:         bitmask(HAS_BRAKE_VAN);
-        {{end}}
+        {{- else if ne .default_cargo "DANDY"}}
+        default_cargo_type:           {{.default_cargo}};
+        {{- end}}
         engine_class:                 ENGINE_CLASS_DIESEL; // needed for all wagons to show up in purchase menu
         {{if eq .cargo_handling "Passengers" }}
         refittable_cargo_classes: bitmask(CC_PASSENGERS);
@@ -696,12 +749,16 @@ item(FEAT_TRAINS, vehicle_{{.id}}, {{.numeric_id}}) {
         {{end}}
 
 
-        {{ $speed := parseint .speed }}{{if lt $speed 60 }}{{if ne .default_cargo "BRAKE"}}speed: switch_{{.id}}_speed_brakevan;{{end}}{{end}}
+        {{ $speed := parseint .speed }}
+        {{- if lt $speed 60 }}{{if or (ne .railtype "NARROW_GAUGE") (lt $speed 45)}}
+        {{- if and (ne .default_cargo "BRAKE") (ne .default_cargo "DANDY")}}speed: switch_{{.id}}_speed_brakevan;{{end}}{{end -}}
+        {{- end}}
         additional_text: return {{.additional_text_string}};
         articulated_part: switch_{{.id}}_articulation;
         length: switch_{{.id}}_length;
         purchase:  spriteset_{{.id}}_purchase;
         purchase_cargo_capacity: spriteset_{{.id}};
         {{if .speed}}purchase_speed: return ({{.speed}} * 8) / 5;{{end}}
+        {{if eq .default_cargo "DANDY"}}bitmask_vehicle_info: switch_{{.id}}_dandy_wagon_behaviour;{{end}}
     }
 }

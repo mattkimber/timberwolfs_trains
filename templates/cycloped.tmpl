@@ -75,10 +75,10 @@ switch (FEAT_TRAINS, SELF, switch_{{.id}}_length, position_in_articulated_veh % 
 
 switch (FEAT_TRAINS, SELF, switch_{{.id}}_animation, motion_counter % 4) 
 {
-    0: return switch_{{$sprite}}_anim_1_curve;
-    1: return switch_{{$sprite}}_anim_2_curve;
-    2: return switch_{{$sprite}}_anim_3_curve;
-    3: return switch_{{$sprite}}_anim_4_curve;
+    0: switch_{{$sprite}}_anim_1_curve;
+    1: switch_{{$sprite}}_anim_2_curve;
+    2: switch_{{$sprite}}_anim_3_curve;
+    3: switch_{{$sprite}}_anim_4_curve;
 }
 
 switch(FEAT_TRAINS, SELF, switch_{{.id}}_animation_overlay, [

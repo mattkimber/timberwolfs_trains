@@ -12,6 +12,6 @@ switch (FEAT_TRAINS, SELF, switch_{{.}}_curve, getbits(extra_callback_info1, 0, 
     vehicle_curv_info(-1, 0): return spriteset_{{.}}_turn_2;
     vehicle_curv_info(0, -1): return spriteset_{{.}}_turn_1;
 
-    return switch_{{.}}_height;
+    switch_{{.}}_height;
 }
 {{end}}

@@ -94,16 +94,16 @@ switch (FEAT_TRAINS, SELF, switch_{{.id}}_graphics, position_in_articulated_veh 
     {{if $manual_ttd_len }}{{$len = index $man_ttd_len $index }}{{end}}{{$plen = parseint $len}}
 
     {{if eq $element $pantograph_unit }}
-    ({{$index}} * 3) + 1: return switch_{{$id}}_pantograph;
+    ({{$index}} * 3) + 1: switch_{{$id}}_pantograph;
     {{ if gt $plen 8}}
-    ({{$index}} * 3) + 0: return switch_{{$id}}_pantograph_front;
-    ({{$index}} * 3) + 2: return switch_{{$id}}_pantograph_rear;
+    ({{$index}} * 3) + 0: switch_{{$id}}_pantograph_front;
+    ({{$index}} * 3) + 2: switch_{{$id}}_pantograph_rear;
     {{ end }}
     {{- else }}
-    ({{$index}} * 3) + 1: return switch_{{$element}}_curve;
+    ({{$index}} * 3) + 1: switch_{{$element}}_curve;
     {{ if gt $plen 8}}
-    ({{$index}} * 3) + 0: return switch_{{$element}}_curve_front;
-    ({{$index}} * 3) + 2: return switch_{{$element}}_curve_rear;
+    ({{$index}} * 3) + 0: switch_{{$element}}_curve_front;
+    ({{$index}} * 3) + 2: switch_{{$element}}_curve_rear;
     {{ end }}
     {{- end}}
     {{end}}

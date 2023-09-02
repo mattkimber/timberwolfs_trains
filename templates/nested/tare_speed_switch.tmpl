@@ -1,12 +1,20 @@
 {{define "tare_speed_switch" -}}
 
-{{if ne .default_cargo "BRAKE"}}
-{{ $speed := parseint .speed }}{{if lt $speed 60 }}
+{{if and (ne .default_cargo "BRAKE") (ne .default_cargo "DANDY") -}}
+{{ $speed := parseint .speed }}{{if lt $speed 60 -}}
+{{if eq .railtype "NARROW_GAUGE"}}{{if lt $speed 45}}
+switch (FEAT_TRAINS, PARENT, switch_{{.id}}_speed_brakevan, hasbit(bitmask_consist_info, HAS_DANDY_WAGON)) {
+    1: return 72;
+    return ({{.speed}} * 8) / 5;
+}{{end}}
+{{else}}
 switch (FEAT_TRAINS, PARENT, switch_{{.id}}_speed_brakevan, hasbit(bitmask_consist_info, HAS_BRAKE_VAN)) {
+
     1: return (({{.speed}}+5) * 8) / 5;
     return ({{.speed}} * 8) / 5;
 }
-{{end}}
+{{end -}}
+{{end -}}
 {{end}}
 
 {{- end}}

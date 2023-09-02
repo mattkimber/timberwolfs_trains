@@ -59,7 +59,7 @@ switch (FEAT_TRAINS, SELF, switch_{{.id}}_visual_effect, position_in_articulated
     {{ else if eq .railtype "BATTERY" -}}
     {{if .effect_unit}}{{.effect_unit}}{{else}}1{{end}}: return visual_effect(VISUAL_EFFECT_ELECTRIC, 0);
     {{ else if eq .type "dual_power" -}}
-    {{if .effect_unit}}{{.effect_unit}}{{else}}1{{end}}: return switch_{{.id}}_visual_effect_railtype;
+    {{if .effect_unit}}{{.effect_unit}}{{else}}1{{end}}: switch_{{.id}}_visual_effect_railtype;
     {{else -}}
     {{if .effect_unit}}{{.effect_unit}}{{else}}1{{end}}: return visual_effect(VISUAL_EFFECT_DIESEL, 0);
     {{- end}}

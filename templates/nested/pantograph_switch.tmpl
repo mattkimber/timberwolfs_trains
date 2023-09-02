@@ -8,21 +8,21 @@
 
 switch (FEAT_TRAINS, SELF, switch_{{.pantograph_unit}}_pantograph_state, tile_powers_railtype("ELRL")) 
 {
-    1: return switch_{{.pantograph_unit}}_pan_up_curve;
-    return switch_{{.pantograph_unit}}_pan_down_curve;
+    1: switch_{{.pantograph_unit}}_pan_up_curve;
+    switch_{{.pantograph_unit}}_pan_down_curve;
 }
 
 {{if gt $plen 8}}
 switch (FEAT_TRAINS, SELF, switch_{{.pantograph_unit}}_pantograph_state_front, tile_powers_railtype("ELRL")) 
 {
-    1: return switch_{{.pantograph_unit}}_pan_up_curve_front;
-    return switch_{{.pantograph_unit}}_pan_down_curve_front;
+    1: switch_{{.pantograph_unit}}_pan_up_curve_front;
+    switch_{{.pantograph_unit}}_pan_down_curve_front;
 }
 
 switch (FEAT_TRAINS, SELF, switch_{{.pantograph_unit}}_pantograph_state_rear, tile_powers_railtype("ELRL")) 
 {
-    1: return switch_{{.pantograph_unit}}_pan_up_curve_rear;
-    return switch_{{.pantograph_unit}}_pan_down_curve_rear;
+    1: switch_{{.pantograph_unit}}_pan_up_curve_rear;
+    switch_{{.pantograph_unit}}_pan_down_curve_rear;
 }
 {{end}}
 

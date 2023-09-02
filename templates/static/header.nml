@@ -23,4 +23,5 @@ traininfo_y_offset=4;
  }
 
 HAS_BRAKE_VAN = 1;
+HAS_DANDY_WAGON = 2;
 
