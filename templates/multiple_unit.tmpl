@@ -157,7 +157,9 @@ item(FEAT_TRAINS, vehicle_{{.id}}, {{.numeric_id}}) {
         track_type:                   {{ if eq .type "dual_power" -}}RAIL{{else}}{{.railtype}}{{end}};
         dual_headed:                0;
 
-        {{if lt $speed 40}}air_drag_coefficient:         0.13;{{end}}
+        {{if lt $speed 50 -}}
+        air_drag_coefficient:         0.1;
+        {{- end}}
 
         {{if .capacity}}
         cargo_capacity:               {{.capacity}} / 3;

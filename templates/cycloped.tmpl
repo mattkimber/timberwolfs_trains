@@ -129,7 +129,7 @@ item(FEAT_TRAINS, vehicle_{{.id}}, {{.numeric_id}}) {
         track_type:                   {{.railtype}};
         dual_headed:                  0;
 
-        {{if lt $speed 40}}air_drag_coefficient:         0.13;{{end}}
+        air_drag_coefficient:         0.1;
 
         weight:                       {{.weight}} ton;
         

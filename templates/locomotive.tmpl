@@ -336,11 +336,13 @@ item(FEAT_TRAINS, vehicle_{{.id}}, {{.numeric_id}}) {
         misc_flags:                   bitmask(TRAIN_FLAG_2CC {{if .animated}}, TRAIN_FLAG_SPRITE_STACK{{end}}{{if or (eq $type "dual_electric") (and (eq $type "dual_power") (eq .railtype "ELRL"))}}, TRAIN_FLAG_SPRITE_STACK{{end}});
         refit_cost:                   0;
         track_type:                   {{ if eq .type "dual_power" -}}RAIL{{else}}{{.railtype}}{{end}};
-         dual_headed:                0;
+        dual_headed:                  0;
 
-        {{if lt $speed 40}}air_drag_coefficient:         0.13;{{end}}
+        {{if lt $speed 50 -}}
+        air_drag_coefficient:         0.1;
+        {{- end}}
 
-        {{if .capacity}}
+        {{if .capacity -}}
         cargo_capacity:               {{.capacity}} / 3;
         {{if ne .capacity "0"}}
         default_cargo_type:           {{.default_cargo}};
