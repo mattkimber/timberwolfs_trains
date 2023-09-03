@@ -668,7 +668,10 @@ item(FEAT_TRAINS, {{.id}}, {{.numeric_id}}) {
 
         {{if eq .default_cargo "BRAKE"}}
         bitmask_vehicle_info:         bitmask(HAS_BRAKE_VAN);
-        {{- else if ne .default_cargo "DANDY"}}
+        default_cargo_type:           PASS;
+        {{- else if eq .default_cargo "DANDY"}}
+        default_cargo_type:           PASS;
+        {{- else }}
         default_cargo_type:           {{.default_cargo}};
         {{- end}}
         engine_class:                 ENGINE_CLASS_DIESEL; // needed for all wagons to show up in purchase menu

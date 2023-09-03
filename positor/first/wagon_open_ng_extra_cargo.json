@@ -1,7 +1,6 @@
 {
     "files": [
-      "cargo/wagon/open_wagon.vox",      
-      "cargo/wagon/open_wagon_3pl.vox"
+      "cargo/wagon/open_wagon_ng.vox"    
     ],
     "operations": [
         {
@@ -14,7 +13,7 @@
             "mask_original": true,
             "n": 1,            
             "truncate": true,
-            "file": "cargo/half/livestock.vox"
+            "file": "cargo/half/livestock_small.vox"
         },
         {
             "name": "_lvst_full",
@@ -22,7 +21,7 @@
             "mask_original": true,
             "n": 1,            
             "truncate": true,
-            "file": "cargo/full/livestock.vox"
+            "file": "cargo/full/livestock_small.vox"
         },
         {
             "name": "_barrels_half",
