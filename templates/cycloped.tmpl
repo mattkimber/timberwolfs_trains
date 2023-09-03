@@ -6,6 +6,9 @@
 spriteset(spriteset_{{.id}}_purchase, "1x/{{.id}}_purchase.png")
 { template_purchase_1x() }
 
+alternative_sprites(spriteset_{{.id}}_purchase, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/{{.id}}_purchase.png")
+{ template_purchase_2x() }
+
 {{if eq .globals.bpp "32"}}{{ altsprites .id $template $zoom }}{{else}}{{ altsprites8 .id $template $zoom }}{{end}}
 
 {{$template_turn := concat "template_auto_turn_1_" .ttd_len -}}
@@ -50,7 +53,7 @@ spriteset(spriteset_{{.id}}_purchase, "1x/{{.id}}_purchase.png")
 
 // Articulation
 switch(FEAT_TRAINS, SELF, switch_{{.id}}_articulation, extra_callback_info1) {
-    0 .. 2: vehicle_{{.id}};
+    0 .. 2: {{.id}};
     return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
 }
 
@@ -103,7 +106,7 @@ switch (FEAT_TRAINS, SELF, switch_{{.id}}_graphics, position_in_articulated_veh 
 {{template "running_cost_switch" . }}
 {{ if .requires_second_power_car }}{{template "power_car_check" . }}{{end}}
 
-item(FEAT_TRAINS, vehicle_{{.id}}, {{.numeric_id}}) {
+item(FEAT_TRAINS, {{.id}}, {{.numeric_id}}) {
     property {
         name:                         {{.name_string}};
         climates_available:           {{ if .enable_param }} {{.enable_param}} ? {{end}} ALL_CLIMATES {{ if .enable_param }} : NO_CLIMATE {{end}};        

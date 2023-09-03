@@ -1,3 +1,10 @@
+v1.4.4
+-------
+
+More logical sort order in purchase list
+Support double-size GUI purchase sprites
+Purchase sprites correctly show valvegear for steam locos
+
 v1.4.3
 ------
 

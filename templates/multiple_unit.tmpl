@@ -11,6 +11,8 @@
 spriteset(spriteset_{{.id}}_purchase, "1x/{{.id}}_purchase.png")
 { template_purchase_1x() }
 
+alternative_sprites(spriteset_{{.id}}_purchase, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/{{.id}}_purchase.png")
+{ template_purchase_2x() }
 
 {{- range $index, $element := $layout -}}
 {{- $newsprite := index $newsprites $index -}}
@@ -51,7 +53,7 @@ spriteset(spriteset_{{.id}}_purchase, "1x/{{.id}}_purchase.png")
 
 // Articulation
 switch(FEAT_TRAINS, SELF, switch_{{.id}}_articulation, extra_callback_info1) {
-    0 .. ({{.cars}} * 3) - 1: vehicle_{{.id}};
+    0 .. ({{.cars}} * 3) - 1: {{.id}};
     return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
 }
 
@@ -115,7 +117,7 @@ switch (FEAT_TRAINS, SELF, switch_{{.id}}_graphics, position_in_articulated_veh 
 {{template "attach_mu_switch" .}}
 
 
-item(FEAT_TRAINS, vehicle_{{.id}}, {{.numeric_id}}) {
+item(FEAT_TRAINS, {{.id}}, {{.numeric_id}}) {
     property {
         name:                         {{.name_string}};
         climates_available:           {{ if .enable_param }} {{.enable_param}} ? {{end}} ALL_CLIMATES {{ if .enable_param }} : NO_CLIMATE {{end}};

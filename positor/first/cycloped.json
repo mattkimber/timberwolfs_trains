@@ -4,6 +4,14 @@
     ],
     "operations": [
       {
+        "name": "_purchase_overlay",
+        "type": "repeat",
+        "truncate": true,
+        "mask_original": true,
+        "n": 0,        
+        "file": "horse/horse_purchase.vox"
+      },    
+      {
         "name": "_anim_1",
         "type": "repeat",
         "truncate": true,

@@ -1,9 +1,9 @@
 {{define "attach_mu_switch" -}}
 
  switch(FEAT_TRAINS, SELF, switch_{{.id}}_attach_wagons, vehicle_type_id) {
-    vehicle_{{.id}}:  return CB_RESULT_ATTACH_ALLOW;
+    {{.id}}:  return CB_RESULT_ATTACH_ALLOW;
     {{ if .multiple_working}}{{range $index, $element := slice .multiple_working}}
-    vehicle_{{$element}}: return CB_RESULT_ATTACH_ALLOW;
+    {{$element}}: return CB_RESULT_ATTACH_ALLOW;
     {{end}}{{end}}
     return string(STR_MU_CANNOT_ATTACH);
  }

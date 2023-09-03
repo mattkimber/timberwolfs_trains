@@ -12,6 +12,10 @@
 spriteset(spriteset_{{.id}}_purchase, "1x/{{.id}}_purchase.png")
 { template_purchase_1x() }
 
+alternative_sprites(spriteset_{{.id}}_purchase, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/{{.id}}_purchase.png")
+{ template_purchase_2x() }
+
+
 {{if eq .globals.bpp "32"}}{{ altsprites .id $template $zoom }}{{else}}{{ altsprites8 .id $template $zoom }}{{end}}
 {{if eq .globals.bpp "32"}}{{ altspritesn .id $template_turn_1 $zoom "_turn_1" }}{{else}}{{ altsprites8n .id $template_turn_1 $zoom "_turn_1" }}{{end}}
 {{if eq .globals.bpp "32"}}{{ altspritesn .id $template_turn_2 $zoom "_turn_2" }}{{else}}{{ altsprites8n .id $template_turn_2 $zoom "_turn_2" }}{{end}}
@@ -136,9 +140,9 @@ spriteset(spriteset_{{.id}}_purchase, "1x/{{.id}}_purchase.png")
 {{template "curve_switch_short" concat $id "_pony_half" }}
 {{template "curve_switch_short" concat $id "_pony_full" }}
 
-switch(FEAT_TRAINS, PARENT, switch_{{$id}}_total_horses, count_veh_id(vehicle_pony)) { return; }
+switch(FEAT_TRAINS, PARENT, switch_{{$id}}_total_horses, count_veh_id(pony)) { return; }
 
-switch (FEAT_TRAINS, SELF, switch_{{$id}}_pony_curve, switch_{{$id}}_total_horses() - ((count_veh_id(vehicle_{{$id}}) - 1) * 2)) {
+switch (FEAT_TRAINS, SELF, switch_{{$id}}_pony_curve, switch_{{$id}}_total_horses() - ((count_veh_id({{$id}}) - 1) * 2)) {
     2..16384: switch_dandy_wagon_ng_pony_full_curve;
     1: switch_dandy_wagon_ng_pony_half_curve;
     switch_dandy_wagon_ng_none_curve;
@@ -579,7 +583,7 @@ switch (FEAT_TRAINS, SELF, switch_{{$id}}_graphics_container, position_in_articu
 {{ end }}
 
 switch(FEAT_TRAINS, SELF, switch_{{.id}}_articulation, extra_callback_info1) {
-    0 .. 2: return vehicle_{{.id}};
+    0 .. 2: return {{.id}};
     return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
 }
 
@@ -647,13 +651,13 @@ switch (FEAT_TRAINS, SELF, switch_{{.id}}_graphics, position_in_articulated_veh 
 {{- end }}
 
 {{- if eq .default_cargo "DANDY"}}
-switch (FEAT_TRAINS, PARENT, switch_{{.id}}_dandy_wagon_behaviour, (count_veh_id(vehicle_pony) / 2) - count_veh_id(vehicle_{{.id}})) {
+switch (FEAT_TRAINS, PARENT, switch_{{.id}}_dandy_wagon_behaviour, (count_veh_id(pony) / 2) - count_veh_id({{.id}})) {
     1..16384: 0;
     bitmask(HAS_DANDY_WAGON);
 }
 {{- end}}
 
-item(FEAT_TRAINS, vehicle_{{.id}}, {{.numeric_id}}) {
+item(FEAT_TRAINS, {{.id}}, {{.numeric_id}}) {
     property {
         name:                         {{.name_string}};
         climates_available:           {{ if .enable_param }} {{.enable_param}} ? {{end}} ALL_CLIMATES {{ if .enable_param }} : NO_CLIMATE {{end}};
