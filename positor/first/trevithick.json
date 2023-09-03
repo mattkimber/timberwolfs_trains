@@ -1,0 +1,39 @@
+{
+    "files": [
+      "trevithick_locomotive.vox"
+    ],
+    "operations": [
+      {
+        "name": "_anim_1",
+        "type": "repeat",
+        "truncate": true,
+        "mask_original": true,
+        "n": 1,        
+        "file": "valvegear/trevithick_1.vox"
+      },      
+      {
+        "name": "_anim_2",
+        "type": "repeat",
+        "truncate": true,
+        "mask_original": true,
+        "n": 1,        
+        "file": "valvegear/trevithick_2.vox"
+      },      
+      {
+        "name": "_anim_3",
+        "type": "repeat",
+        "truncate": true,
+        "mask_original": true,
+        "n": 1,        
+        "file": "valvegear/trevithick_3.vox"
+      },      
+      {
+        "name": "_anim_4",
+        "type": "repeat",
+        "truncate": true,
+        "mask_original": true,
+        "n": 0,        
+        "file": "valvegear/trevithick_4.vox"
+      }
+    ]
+}

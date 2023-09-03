@@ -1,3 +1,9 @@
+v1.0.21
+-------
+
+Added dandy wagons for narrow gauge
+Added Trevithick locomotive and Princess
+
 v1.0.20
 -------
 

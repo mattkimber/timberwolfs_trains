@@ -46,6 +46,25 @@ with low output.
 Due to their long life, narrow gauge locomotives are an
 excellent option for running preserved railways. 
 
+Dandy Wagons
+------------
+
+Horse-drawn trains on narrow gauge railways can benefit
+from dandy wagons - these allow the horse to ride in a
+wagon when travelling downhill and gravity to take over,
+resulting in much higher speeds.
+
+Each dandy wagon can carry two ponies. You will need to
+build enough dandy wagons for all of your horses to benefit
+from them. When a train has sufficient dandy wagons the
+colour of horses will change as an indication. (And not
+just because the set needs to do so in order to make
+horse colours consistent between when the horses are
+in or out of a wagon).
+
+Such gravity railways are a highly viable option early on
+in the game, if you can find suitably located industries.
+
 
 CC/Attributions
 ---------------

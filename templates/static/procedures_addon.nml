@@ -2,6 +2,11 @@ switch (FEAT_TRAINS, PARENT, get_parent_random_bits, random_bits) { return; }
 
 switch (FEAT_TRAINS, PARENT, parent_has_dandy_wagon, hasbit(bitmask_consist_info, HAS_DANDY_WAGON)) { return; }
 
+
 switch (FEAT_TRAINS, SELF, switch_horse_colour_mapping, recolour_horses + ((parent_has_dandy_wagon() ? get_parent_random_bits() + ((position_in_vehid_chain / 6) * ((get_parent_random_bits() % 25) + 1)) : random_bits) % 25)) {
+    return;
+}
+
+switch (FEAT_TRAINS, SELF, switch_dandy_wagon_mapping, recolour_horses + (get_parent_random_bits() + ((position_in_vehid_chain / 3) * ((get_parent_random_bits() % 25) + 1)) % 25)) {
     return;
 }
