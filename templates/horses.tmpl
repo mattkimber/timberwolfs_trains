@@ -84,7 +84,7 @@ switch (FEAT_TRAINS, SELF, switch_{{.id}}_graphics, position_in_articulated_veh 
 
 {{template "running_cost_switch" . }}
 
- {{if eq .railtype "NARROW_GAUGE"}}{{template "tare_speed_switch" . }}{{end}}
+{{if eq .railtype "NARROW_GAUGE"}}{{template "tare_speed_switch" . }}{{end}}
 
 item(FEAT_TRAINS, {{.id}}, {{.numeric_id}}) {
     property {
