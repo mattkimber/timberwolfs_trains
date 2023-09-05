@@ -6,6 +6,7 @@ mkdir -p intermediate/hills
 
 # Do cargo and animation compositing
 echo "Compositing sprites"
+../cargopositor/cargopositor.exe -o intermediate -v voxels -t positor/garratts/*
 ../cargopositor/cargopositor.exe -o intermediate -v voxels -t positor/first/*
 
 # Copy static files

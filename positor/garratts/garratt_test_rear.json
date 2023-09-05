@@ -1,0 +1,16 @@
+{
+    "files": [
+      "garratt/garratt_test_rear.vox"
+    ],
+    "operations": [
+      {
+        "name": "",
+        "type": "repeat",
+        "truncate": true,
+        "mask_new": true,
+        "flip_x": true,
+        "n": 0,        
+        "file": "garratt/garratt_test_mid.vox"
+      }
+    ]
+}

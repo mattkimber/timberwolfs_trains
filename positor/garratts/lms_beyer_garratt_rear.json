@@ -1,0 +1,16 @@
+{
+    "files": [
+      "garratt/lms_beyer_garratt_rear.vox"
+    ],
+    "operations": [
+      {
+        "name": "",
+        "type": "repeat",
+        "truncate": true,
+        "mask_new": true,
+        "flip_x": true,
+        "n": 0,        
+        "file": "garratt/lms_beyer_garratt_mid.vox"
+      }
+    ]
+}

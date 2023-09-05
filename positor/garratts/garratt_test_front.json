@@ -1,0 +1,15 @@
+{
+    "files": [
+      "garratt/garratt_test.vox"
+    ],
+    "operations": [
+      {
+        "name": "",
+        "type": "repeat",
+        "truncate": true,
+        "mask_new": true,
+        "n": 0,        
+        "file": "garratt/garratt_test_mid.vox"
+      }
+    ]
+}
