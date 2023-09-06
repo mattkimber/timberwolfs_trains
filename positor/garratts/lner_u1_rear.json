@@ -1,6 +1,6 @@
 {
     "files": [
-      "garratt/garratt_test.vox"
+      "garratt/lner_u1_rear.vox"
     ],
     "operations": [
       {
@@ -8,8 +8,9 @@
         "type": "repeat",
         "truncate": true,
         "mask_new": true,
+        "flip_x": true,
         "n": 0,        
-        "file": "garratt/garratt_test_mid.vox"
+        "file": "garratt/lner_u1_mid.vox"
       }
     ]
 }

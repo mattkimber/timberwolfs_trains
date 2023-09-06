@@ -1,0 +1,43 @@
+{
+    "files": [
+      "../intermediate/lner_u1.vox"
+    ],
+    "operations": [
+      {
+        "name": "_anim_1",
+        "type": "repeat",
+        "truncate": true,
+        "mask_original": true,
+        "ignore_mask": true,
+        "n": 1,        
+        "file": "garratt/valvegear/lner_u1_front_1.vox"
+      },      
+      {
+        "name": "_anim_2",
+        "type": "repeat",
+        "truncate": true,
+        "mask_original": true,
+        "ignore_mask": true,
+        "n": 1,        
+        "file": "garratt/valvegear/lner_u1_front_2.vox"
+      },      
+      {
+        "name": "_anim_3",
+        "type": "repeat",
+        "truncate": true,
+        "mask_original": true,
+        "ignore_mask": true,
+        "n": 1,        
+        "file": "garratt/valvegear/lner_u1_front_3.vox"
+      },      
+      {
+        "name": "_anim_4",
+        "type": "repeat",
+        "truncate": true,
+        "mask_original": true,
+        "ignore_mask": true,
+        "n": 1,        
+        "file": "garratt/valvegear/lner_u1_front_4.vox"
+      }
+    ]
+}
