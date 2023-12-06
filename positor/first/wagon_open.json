@@ -9,7 +9,8 @@
       "cargo/wagon/open_wagon_5pl.vox",
       "cargo/wagon/steel_open_wagon.vox",
       "cargo/wagon/open_wagon_ng.vox",
-      "cargo/wagon/mineral_wagon_ng.vox"    
+      "cargo/wagon/mineral_wagon_ng.vox",
+      "cargo/wagon/lner_hopper.vox"     
     ],
     "operations": [
         {
