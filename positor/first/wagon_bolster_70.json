@@ -2,7 +2,8 @@
     "files": [
       "cargo/wagon/beaver_wagon.vox",    
       "cargo/wagon/double_bolster.vox",    
-      "cargo/wagon/bolster_wagon_ng.vox"      
+      "cargo/wagon/bolster_wagon_ng.vox"   ,    
+      "cargo/wagon/long_bolster_ng.vox"    
     ],
     "operations": [
         {
