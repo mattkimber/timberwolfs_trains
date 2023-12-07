@@ -158,21 +158,21 @@ alternative_sprites(spriteset_{{.id}}_purchase, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP
 {{ end }}
 
 {{ if .has_aged_variant }}
-    switch (FEAT_TRAINS, PARENT, switch_{{.id}}_age_curve, age_in_days - max_age_in_days)
+    switch (FEAT_TRAINS, SELF, switch_{{.id}}_age_curve, get_parent_age_proportion() - random_16())
     {
-        1..65535: switch_{{.id}}_aged_curve;
+        9..65535: switch_{{.id}}_aged_curve;
         switch_{{.id}}_curve;
     }
     {{if gt $plen 8}}
-        switch (FEAT_TRAINS, PARENT, switch_{{.id}}_age_curve_front, age_in_days - max_age_in_days)
+        switch (FEAT_TRAINS, SELF, switch_{{.id}}_age_curve_front, get_parent_age_proportion() - random_16_backward())
         {
-            1..65535: switch_{{.id}}_aged_curve_front;
+            9..65535: switch_{{.id}}_aged_curve_front;
             switch_{{.id}}_curve_front;
         }
 
-        switch (FEAT_TRAINS, PARENT, switch_{{.id}}_age_curve_rear, age_in_days - max_age_in_days)
+        switch (FEAT_TRAINS, SELF, switch_{{.id}}_age_curve_rear, get_parent_age_proportion() - random_16_forward())
         {
-            1..65535: switch_{{.id}}_aged_curve_rear;
+            9..65535: switch_{{.id}}_aged_curve_rear;
             switch_{{.id}}_curve_rear;
         }
     {{end}}
@@ -429,7 +429,7 @@ alternative_sprites(spriteset_{{.id}}_purchase, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP
         }
     {{ end }}
 {{else if eq .cargo_handling "Steel" "Torpedo" }}
-    {{ $has_cargo_switch = "1" }}
+    {{ $has_aged_variant := .has_aged_variant }}{{ $has_cargo_switch = "1" }}
     {{ range $index, $element := slice $metal_cargos }}
         {{ $palette := printf "recolour_metal + %d" $index }}
 
@@ -437,7 +437,7 @@ alternative_sprites(spriteset_{{.id}}_purchase, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP
         STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 1 ? CB_FLAG_MORE_SPRITES : 0) | (getbits(extra_callback_info1, 8, 8) == 1 ? {{$palette}} : PALETTE_USE_DEFAULT), 0x100),
         getbits(extra_callback_info1, 8, 8)
         ]) {
-        0: switch_{{$id}}_curve;
+        0: {{ if $has_aged_variant}}switch_{{$id}}_age_curve{{else}}switch_{{$id}}_curve{{end}};
         1: switch_{{$id}}_metal_curve;
 
 
@@ -450,7 +450,7 @@ alternative_sprites(spriteset_{{.id}}_purchase, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP
             STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 1 ? CB_FLAG_MORE_SPRITES : 0) | (getbits(extra_callback_info1, 8, 8) == 1 ? {{$palette}} : PALETTE_USE_DEFAULT), 0x100),
             getbits(extra_callback_info1, 8, 8)
             ]) {
-            0: switch_{{$id}}_curve_front;
+            0: {{ if $has_aged_variant}}switch_{{$id}}_age_curve_front{{else}}switch_{{$id}}_curve_front{{end}};
             1: switch_{{$id}}_metal_curve_front;
 
             // This should never be executed
@@ -461,7 +461,7 @@ alternative_sprites(spriteset_{{.id}}_purchase, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP
             STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 1 ? CB_FLAG_MORE_SPRITES : 0) | (getbits(extra_callback_info1, 8, 8) == 1 ? {{$palette}} : PALETTE_USE_DEFAULT), 0x100),
             getbits(extra_callback_info1, 8, 8)
             ]) {
-            0: switch_{{$id}}_curve_rear;
+            0: {{ if $has_aged_variant}}switch_{{$id}}_age_curve_rear{{else}}switch_{{$id}}_curve_rear{{end}};
             1: switch_{{$id}}_metal_curve_rear;
 
             // This should never be executed
