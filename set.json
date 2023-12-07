@@ -62,10 +62,13 @@
         "nestable_templates": [ 
             "nested/cargo_curve_switch_long",
             "nested/curve_switch_long",
+            "nested/curve_switch_long_weathered",
             "nested/cargo_curve_switch_medium",
             "nested/curve_switch_medium",
+            "nested/curve_switch_medium_weathered",
             "nested/cargo_curve_switch_short",
             "nested/curve_switch_short",
+            "nested/curve_switch_short_weathered",
             "nested/pantograph_switch",
             "nested/pantograph_graphics",
             "nested/running_cost_switch",

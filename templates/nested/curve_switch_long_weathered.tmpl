@@ -1,0 +1,169 @@
+{{define "curve_switch_long_weathered"}}
+// Cresting hills is a special case where the full flat sprite should be used, and
+// not the 3-part set
+switch (FEAT_TRAINS, SELF, switch_{{.}}_crest_check_regular, getbits(extra_callback_info1, 0, 8) == 0 ? other_veh_z_offset(1) : 0) {
+    0: return spriteset_{{.}}_sections_mid;
+    return spriteset_{{.}};
+}
+
+switch (FEAT_TRAINS, SELF, switch_{{.}}_height_regular, getbits(extra_callback_info1, 0, 8) == 0 ? other_veh_z_offset(-1) : 0) {
+    -128..-1: return spriteset_{{.}}_down;
+    1..127: return spriteset_{{.}}_up;    
+
+    // Long vehicle, use the 3-sprite layout
+    switch_{{.}}_crest_check_regular;
+}
+
+switch (FEAT_TRAINS, SELF, switch_{{.}}_curve_regular, getbits(extra_callback_info1, 0, 8) == 0 && other_veh_is_hidden(-1) != 1 ? curv_info : 0)  {
+    vehicle_curv_info(1, 0): return spriteset_{{.}}_turn_1;
+    vehicle_curv_info(0, 1): return spriteset_{{.}}_turn_2;
+
+    vehicle_curv_info(-1, 0): return spriteset_{{.}}_turn_2;
+    vehicle_curv_info(0, -1): return spriteset_{{.}}_turn_1;
+
+    vehicle_curv_info(0, 0): switch_{{.}}_height_regular;
+    return spriteset_{{.}};
+}
+
+// Switches for front
+switch (FEAT_TRAINS, SELF, switch_{{.}}_height_front_regular, getbits(extra_callback_info1, 0, 8) == 0 ?  abs(other_veh_z_offset(1)) + abs(other_veh_z_offset(2))  : 0) {
+    0: return spriteset_{{.}}_sections_front;
+    return spriteset_invisible;
+}
+
+switch (FEAT_TRAINS, SELF, switch_{{.}}_curve_front_regular, getbits(extra_callback_info1, 0, 8) == 0 ? abs(other_veh_curv_info(1)) + abs(other_veh_curv_info(2)) : 0)  {
+    0: switch_{{.}}_height_front_regular;
+    return spriteset_invisible;
+}
+
+// Switches for rear
+switch (FEAT_TRAINS, SELF, switch_{{.}}_height_rear_regular, getbits(extra_callback_info1, 0, 8) == 0 ? abs(other_veh_z_offset(-1)) + abs(other_veh_z_offset(-2)): 0) {
+    0: return spriteset_{{.}}_sections_rear;
+    return spriteset_invisible;
+}
+
+switch (FEAT_TRAINS, SELF, switch_{{.}}_curve_rear_regular, getbits(extra_callback_info1, 0, 8) == 0 && other_veh_is_hidden(-2) != 1 ? abs(other_veh_curv_info(-1)) + abs(other_veh_curv_info(-2)) : 0)  {
+    0: switch_{{.}}_height_rear_regular;
+    return spriteset_invisible;
+}
+
+// Light variant
+// Cresting hills is a special case where the full flat sprite should be used, and
+// not the 3-part set
+switch (FEAT_TRAINS, SELF, switch_{{.}}_crest_check_light, getbits(extra_callback_info1, 0, 8) == 0 ? other_veh_z_offset(1) : 0) {
+    0: return spriteset_{{.}}_light_sections_mid;
+    return spriteset_{{.}}_light;
+}
+
+switch (FEAT_TRAINS, SELF, switch_{{.}}_height_light, getbits(extra_callback_info1, 0, 8) == 0 ? other_veh_z_offset(-1) : 0) {
+    -128..-1: return spriteset_{{.}}_light_down;
+    1..127: return spriteset_{{.}}_light_up;    
+
+    // Long vehicle, use the 3-sprite layout
+    switch_{{.}}_crest_check_light;
+}
+
+switch (FEAT_TRAINS, SELF, switch_{{.}}_curve_light, getbits(extra_callback_info1, 0, 8) == 0 && other_veh_is_hidden(-1) != 1 ? curv_info : 0)  {
+    vehicle_curv_info(1, 0): return spriteset_{{.}}_light_turn_1;
+    vehicle_curv_info(0, 1): return spriteset_{{.}}_light_turn_2;
+
+    vehicle_curv_info(-1, 0): return spriteset_{{.}}_light_turn_2;
+    vehicle_curv_info(0, -1): return spriteset_{{.}}_light_turn_1;
+
+    vehicle_curv_info(0, 0): switch_{{.}}_height_light;
+    return spriteset_{{.}}_light;
+}
+
+// Switches for front
+switch (FEAT_TRAINS, SELF, switch_{{.}}_height_front_light, getbits(extra_callback_info1, 0, 8) == 0 ?  abs(other_veh_z_offset(1)) + abs(other_veh_z_offset(2))  : 0) {
+    0: return spriteset_{{.}}_light_sections_front;
+    return spriteset_invisible;
+}
+
+switch (FEAT_TRAINS, SELF, switch_{{.}}_curve_front_light, getbits(extra_callback_info1, 0, 8) == 0 ? abs(other_veh_curv_info(1)) + abs(other_veh_curv_info(2)) : 0)  {
+    0: switch_{{.}}_height_front_light;
+    return spriteset_invisible;
+}
+
+// Switches for rear
+switch (FEAT_TRAINS, SELF, switch_{{.}}_height_rear_light, getbits(extra_callback_info1, 0, 8) == 0 ? abs(other_veh_z_offset(-1)) + abs(other_veh_z_offset(-2)): 0) {
+    0: return spriteset_{{.}}_light_sections_rear;
+    return spriteset_invisible;
+}
+
+switch (FEAT_TRAINS, SELF, switch_{{.}}_curve_rear_light, getbits(extra_callback_info1, 0, 8) == 0 && other_veh_is_hidden(-2) != 1 ? abs(other_veh_curv_info(-1)) + abs(other_veh_curv_info(-2)) : 0)  {
+    0: switch_{{.}}_height_rear_light;
+    return spriteset_invisible;
+}
+
+// Dark variant
+// Cresting hills is a special case where the full flat sprite should be used, and
+// not the 3-part set
+switch (FEAT_TRAINS, SELF, switch_{{.}}_crest_check_dark, getbits(extra_callback_info1, 0, 8) == 0 ? other_veh_z_offset(1) : 0) {
+    0: return spriteset_{{.}}_dark_sections_mid;
+    return spriteset_{{.}}_dark;
+}
+
+switch (FEAT_TRAINS, SELF, switch_{{.}}_height_dark, getbits(extra_callback_info1, 0, 8) == 0 ? other_veh_z_offset(-1) : 0) {
+    -128..-1: return spriteset_{{.}}_dark_down;
+    1..127: return spriteset_{{.}}_dark_up;    
+
+    // Long vehicle, use the 3-sprite layout
+    switch_{{.}}_crest_check_dark;
+}
+
+switch (FEAT_TRAINS, SELF, switch_{{.}}_curve_dark, getbits(extra_callback_info1, 0, 8) == 0 && other_veh_is_hidden(-1) != 1 ? curv_info : 0)  {
+    vehicle_curv_info(1, 0): return spriteset_{{.}}_dark_turn_1;
+    vehicle_curv_info(0, 1): return spriteset_{{.}}_dark_turn_2;
+
+    vehicle_curv_info(-1, 0): return spriteset_{{.}}_dark_turn_2;
+    vehicle_curv_info(0, -1): return spriteset_{{.}}_dark_turn_1;
+
+    vehicle_curv_info(0, 0): switch_{{.}}_height_dark;
+    return spriteset_{{.}}_dark;
+}
+
+// Switches for front
+switch (FEAT_TRAINS, SELF, switch_{{.}}_height_front_dark, getbits(extra_callback_info1, 0, 8) == 0 ?  abs(other_veh_z_offset(1)) + abs(other_veh_z_offset(2))  : 0) {
+    0: return spriteset_{{.}}_dark_sections_front;
+    return spriteset_invisible;
+}
+
+switch (FEAT_TRAINS, SELF, switch_{{.}}_curve_front_dark, getbits(extra_callback_info1, 0, 8) == 0 ? abs(other_veh_curv_info(1)) + abs(other_veh_curv_info(2)) : 0)  {
+    0: switch_{{.}}_height_front_dark;
+    return spriteset_invisible;
+}
+
+// Switches for rear
+switch (FEAT_TRAINS, SELF, switch_{{.}}_height_rear_dark, getbits(extra_callback_info1, 0, 8) == 0 ? abs(other_veh_z_offset(-1)) + abs(other_veh_z_offset(-2)): 0) {
+    0: return spriteset_{{.}}_dark_sections_rear;
+    return spriteset_invisible;
+}
+
+switch (FEAT_TRAINS, SELF, switch_{{.}}_curve_rear_dark, getbits(extra_callback_info1, 0, 8) == 0 && other_veh_is_hidden(-2) != 1 ? abs(other_veh_curv_info(-1)) + abs(other_veh_curv_info(-2)) : 0)  {
+    0: switch_{{.}}_height_rear_dark;
+    return spriteset_invisible;
+}
+
+// Random choice of wagon type
+random_switch (FEAT_TRAINS, FORWARD_SELF(1), switch_{{.}}_curve)
+{
+    3: switch_{{.}}_curve_regular;
+    2: switch_{{.}}_curve_light;
+    2: switch_{{.}}_curve_dark;
+}
+
+random_switch (FEAT_TRAINS, SELF, switch_{{.}}_curve_front)
+{
+    3: switch_{{.}}_curve_front_regular;
+    2: switch_{{.}}_curve_front_light;
+    2: switch_{{.}}_curve_front_dark;
+}
+
+random_switch (FEAT_TRAINS, FORWARD_SELF(2), switch_{{.}}_curve_rear)
+{
+    3: switch_{{.}}_curve_rear_regular;
+    2: switch_{{.}}_curve_rear_light;
+    2: switch_{{.}}_curve_rear_dark;
+}
+{{end}}

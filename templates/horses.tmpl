@@ -10,27 +10,27 @@ alternative_sprites(spriteset_{{.id}}_purchase, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP
 
 {{ $ani := concat .id "_1" }}{{ altsprites8 $ani $template $zoom }}
 {{$template_turn := concat "template_auto_turn_1_" .ttd_len -}}{{ altsprites8n $ani $template_turn $zoom "_turn_1" }}
-{{$template_turn := concat "template_auto_turn_2_" .ttd_len -}}{{ altsprites8n $ani $template_turn $zoom "_turn_2" }}
-{{$template_turn := concat "template_auto_up_" .ttd_len -}}{{$hill := concat $ani "_up" }}{{ altsprites8 $hill $template_turn $zoom }}
-{{$template_turn := concat "template_auto_down_" .ttd_len -}}{{$hill = concat $ani "_down" }}{{ altsprites8 $hill $template_turn $zoom }}
+{{$template_turn = concat "template_auto_turn_2_" .ttd_len -}}{{ altsprites8n $ani $template_turn $zoom "_turn_2" }}
+{{$template_turn = concat "template_auto_up_" .ttd_len -}}{{$hill := concat $ani "_up" }}{{ altsprites8 $hill $template_turn $zoom }}
+{{$template_turn = concat "template_auto_down_" .ttd_len -}}{{$hill = concat $ani "_down" }}{{ altsprites8 $hill $template_turn $zoom }}
 
-{{ $ani := concat .id "_2" }}{{ altsprites8 $ani $template $zoom }}
-{{$template_turn := concat "template_auto_turn_1_" .ttd_len -}}{{ altsprites8n $ani $template_turn $zoom "_turn_1" }}
-{{$template_turn := concat "template_auto_turn_2_" .ttd_len -}}{{ altsprites8n $ani $template_turn $zoom "_turn_2" }}
-{{$template_turn := concat "template_auto_up_" .ttd_len -}}{{$hill = concat $ani "_up" }}{{ altsprites8 $hill $template_turn $zoom }}
-{{$template_turn := concat "template_auto_down_" .ttd_len -}}{{$hill = concat $ani "_down" }}{{ altsprites8 $hill $template_turn $zoom }}
+{{ $ani = concat .id "_2" }}{{ altsprites8 $ani $template $zoom }}
+{{$template_turn = concat "template_auto_turn_1_" .ttd_len -}}{{ altsprites8n $ani $template_turn $zoom "_turn_1" }}
+{{$template_turn = concat "template_auto_turn_2_" .ttd_len -}}{{ altsprites8n $ani $template_turn $zoom "_turn_2" }}
+{{$template_turn = concat "template_auto_up_" .ttd_len -}}{{$hill = concat $ani "_up" }}{{ altsprites8 $hill $template_turn $zoom }}
+{{$template_turn = concat "template_auto_down_" .ttd_len -}}{{$hill = concat $ani "_down" }}{{ altsprites8 $hill $template_turn $zoom }}
 
-{{ $ani := concat .id "_3" }}{{ altsprites8 $ani $template $zoom }}
-{{$template_turn := concat "template_auto_turn_1_" .ttd_len -}}{{ altsprites8n $ani $template_turn $zoom "_turn_1" }}
-{{$template_turn := concat "template_auto_turn_2_" .ttd_len -}}{{ altsprites8n $ani $template_turn $zoom "_turn_2" }}
-{{$template_turn := concat "template_auto_up_" .ttd_len -}}{{$hill = concat $ani "_up" }}{{ altsprites8 $hill $template_turn $zoom }}
-{{$template_turn := concat "template_auto_down_" .ttd_len -}}{{$hill = concat $ani "_down" }}{{ altsprites8 $hill $template_turn $zoom }}
+{{ $ani = concat .id "_3" }}{{ altsprites8 $ani $template $zoom }}
+{{$template_turn = concat "template_auto_turn_1_" .ttd_len -}}{{ altsprites8n $ani $template_turn $zoom "_turn_1" }}
+{{$template_turn = concat "template_auto_turn_2_" .ttd_len -}}{{ altsprites8n $ani $template_turn $zoom "_turn_2" }}
+{{$template_turn = concat "template_auto_up_" .ttd_len -}}{{$hill = concat $ani "_up" }}{{ altsprites8 $hill $template_turn $zoom }}
+{{$template_turn = concat "template_auto_down_" .ttd_len -}}{{$hill = concat $ani "_down" }}{{ altsprites8 $hill $template_turn $zoom }}
 
-{{ $ani := concat .id "_4" }}{{ altsprites8 $ani $template $zoom }}
-{{$template_turn := concat "template_auto_turn_1_" .ttd_len -}}{{ altsprites8n $ani $template_turn $zoom "_turn_1" }}
-{{$template_turn := concat "template_auto_turn_2_" .ttd_len -}}{{ altsprites8n $ani $template_turn $zoom "_turn_2" }}
-{{$template_turn := concat "template_auto_up_" .ttd_len -}}{{$hill = concat $ani "_up" }}{{ altsprites8 $hill $template_turn $zoom }}
-{{$template_turn := concat "template_auto_down_" .ttd_len -}}{{$hill = concat $ani "_down" }}{{ altsprites8 $hill $template_turn $zoom }}
+{{ $ani = concat .id "_4" }}{{ altsprites8 $ani $template $zoom }}
+{{$template_turn = concat "template_auto_turn_1_" .ttd_len -}}{{ altsprites8n $ani $template_turn $zoom "_turn_1" }}
+{{$template_turn = concat "template_auto_turn_2_" .ttd_len -}}{{ altsprites8n $ani $template_turn $zoom "_turn_2" }}
+{{$template_turn = concat "template_auto_up_" .ttd_len -}}{{$hill = concat $ani "_up" }}{{ altsprites8 $hill $template_turn $zoom }}
+{{$template_turn = concat "template_auto_down_" .ttd_len -}}{{$hill = concat $ani "_down" }}{{ altsprites8 $hill $template_turn $zoom }}
 
 
 {{- $type := .type }}{{ $id := .id}}
@@ -54,11 +54,11 @@ switch (FEAT_TRAINS, SELF, switch_{{.id}}_length, position_in_articulated_veh % 
 {{ if not .reuse_sprites }}
 {{$anim := concat $sprite "_1" }}
 {{template "curve_switch_short" $anim }}
-{{$anim := concat $sprite "_2" }}
+{{$anim = concat $sprite "_2" }}
 {{template "curve_switch_short" $anim }}
-{{$anim := concat $sprite "_3" }}
+{{$anim = concat $sprite "_3" }}
 {{template "curve_switch_short" $anim }}
-{{$anim := concat $sprite "_4" }}
+{{$anim = concat $sprite "_4" }}
 {{template "curve_switch_short" $anim }}
 {{end}}
 
