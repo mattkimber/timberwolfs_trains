@@ -19,10 +19,10 @@ alternative_sprites(spriteset_{{.id}}_purchase, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP
 {{if eq .globals.bpp "32"}}{{ altspritesn .id $template_turn $zoom "_turn_2" }}{{else}}{{ altsprites8n .id $template_turn $zoom "_turn_2" }}{{end}}
 
 {{$template_turn := concat "template_auto_up_" .ttd_len -}}{{$hill := concat .id "_up" }}
-{{if eq .globals.bpp "32"}}{{ altspritesn $hill $template_turn $zoom "_up" }}{{else}}{{ altsprites8n $hill $template_turn $zoom "_up" }}{{end}}
+{{if eq .globals.bpp "32"}}{{ altsprites $hill $template_turn $zoom }}{{else}}{{ altsprites8 $hill $template_turn $zoom }}{{end}}
 
 {{$template_turn := concat "template_auto_down_" .ttd_len -}}{{$hill = concat .id "_down" }}
-{{if eq .globals.bpp "32"}}{{ altspritesn $hill $template_turn $zoom "_down" }}{{else}}{{ altsprites8n $hill $template_turn $zoom "_down" }}{{end}}
+{{if eq .globals.bpp "32"}}{{ altsprites $hill $template_turn $zoom }}{{else}}{{ altsprites8 $hill $template_turn $zoom }}{{end}}
 
 
 {{ if gt $plen 8}}
@@ -41,8 +41,8 @@ alternative_sprites(spriteset_{{.id}}_purchase, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP
 {{ $ani := concat .id "_anim_1" }}{{ altsprites8 $ani $template $zoom }}
 {{$template_turn := concat "template_auto_turn_1_" .ttd_len -}}{{ altsprites8n $ani $template_turn $zoom "_turn_1" }}
 {{$template_turn := concat "template_auto_turn_2_" .ttd_len -}}{{ altsprites8n $ani $template_turn $zoom "_turn_2" }}
-{{$template_turn := concat "template_auto_up_" .ttd_len -}}{{$hill := concat $ani "_up" }}{{ altsprites8n $hill $template_turn $zoom "_up" }}
-{{$template_turn := concat "template_auto_down_" .ttd_len -}}{{$hill = concat $ani "_down" }}{{ altsprites8n $hill $template_turn $zoom "_down" }}
+{{$template_turn := concat "template_auto_up_" .ttd_len -}}{{$hill := concat $ani "_up" }}{{ altsprites8 $hill $template_turn $zoom }}
+{{$template_turn := concat "template_auto_down_" .ttd_len -}}{{$hill = concat $ani "_down" }}{{ altsprites8 $hill $template_turn $zoom }}
 {{if gt $plen 8}}
 {{$template_turn = concat "template_auto_front_" .ttd_len -}}{{$sections := concat $ani "_sections" -}}{{ altsprites8n $sections $template_turn $zoom "_front" }}
 {{$template_turn = concat "template_auto_mid_" .ttd_len -}}{{$sections = concat $ani "_sections" -}}{{ altsprites8n $sections $template_turn $zoom "_mid" }}
@@ -51,8 +51,8 @@ alternative_sprites(spriteset_{{.id}}_purchase, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP
 {{ $ani := concat .id "_anim_2" }}{{ altsprites8 $ani $template $zoom }}
 {{$template_turn := concat "template_auto_turn_1_" .ttd_len -}}{{ altsprites8n $ani $template_turn $zoom "_turn_1" }}
 {{$template_turn := concat "template_auto_turn_2_" .ttd_len -}}{{ altsprites8n $ani $template_turn $zoom "_turn_2" }}
-{{$template_turn := concat "template_auto_up_" .ttd_len -}}{{$hill = concat $ani "_up" }}{{ altsprites8n $hill $template_turn $zoom "_up" }}
-{{$template_turn := concat "template_auto_down_" .ttd_len -}}{{$hill = concat $ani "_down" }}{{ altsprites8n $hill $template_turn $zoom "_down" }}
+{{$template_turn := concat "template_auto_up_" .ttd_len -}}{{$hill = concat $ani "_up" }}{{ altsprites8 $hill $template_turn $zoom }}
+{{$template_turn := concat "template_auto_down_" .ttd_len -}}{{$hill = concat $ani "_down" }}{{ altsprites8 $hill $template_turn $zoom }}
 {{if gt $plen 8}}
 {{$template_turn = concat "template_auto_front_" .ttd_len -}}{{$sections := concat $ani "_sections" -}}{{ altsprites8n $sections $template_turn $zoom "_front" }}
 {{$template_turn = concat "template_auto_mid_" .ttd_len -}}{{$sections = concat $ani "_sections" -}}{{ altsprites8n $sections $template_turn $zoom "_mid" }}
@@ -62,8 +62,8 @@ alternative_sprites(spriteset_{{.id}}_purchase, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP
 {{ $ani := concat .id "_anim_3" }}{{ altsprites8 $ani $template $zoom }}
 {{$template_turn := concat "template_auto_turn_1_" .ttd_len -}}{{ altsprites8n $ani $template_turn $zoom "_turn_1" }}
 {{$template_turn := concat "template_auto_turn_2_" .ttd_len -}}{{ altsprites8n $ani $template_turn $zoom "_turn_2" }}
-{{$template_turn := concat "template_auto_up_" .ttd_len -}}{{$hill = concat $ani "_up" }}{{ altsprites8n $hill $template_turn $zoom "_up" }}
-{{$template_turn := concat "template_auto_down_" .ttd_len -}}{{$hill = concat $ani "_down" }}{{ altsprites8n $hill $template_turn $zoom "_down" }}
+{{$template_turn := concat "template_auto_up_" .ttd_len -}}{{$hill = concat $ani "_up" }}{{ altsprites8 $hill $template_turn $zoom }}
+{{$template_turn := concat "template_auto_down_" .ttd_len -}}{{$hill = concat $ani "_down" }}{{ altsprites8 $hill $template_turn $zoom }}
 {{if gt $plen 8}}
 {{$template_turn = concat "template_auto_front_" .ttd_len -}}{{$sections := concat $ani "_sections" -}}{{ altsprites8n $sections $template_turn $zoom "_front" }}
 {{$template_turn = concat "template_auto_mid_" .ttd_len -}}{{$sections = concat $ani "_sections" -}}{{ altsprites8n $sections $template_turn $zoom "_mid" }}
@@ -72,8 +72,8 @@ alternative_sprites(spriteset_{{.id}}_purchase, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP
 {{ $ani := concat .id "_anim_4" }}{{ altsprites8 $ani $template $zoom }}
 {{$template_turn := concat "template_auto_turn_1_" .ttd_len -}}{{ altsprites8n $ani $template_turn $zoom "_turn_1" }}
 {{$template_turn := concat "template_auto_turn_2_" .ttd_len -}}{{ altsprites8n $ani $template_turn $zoom "_turn_2" }}
-{{$template_turn := concat "template_auto_up_" .ttd_len -}}{{$hill = concat $ani "_up" }}{{ altsprites8n $hill $template_turn $zoom "_up" }}
-{{$template_turn := concat "template_auto_down_" .ttd_len -}}{{$hill = concat $ani "_down" }}{{ altsprites8n $hill $template_turn $zoom "_down" }}
+{{$template_turn := concat "template_auto_up_" .ttd_len -}}{{$hill = concat $ani "_up" }}{{ altsprites8 $hill $template_turn $zoom }}
+{{$template_turn := concat "template_auto_down_" .ttd_len -}}{{$hill = concat $ani "_down" }}{{ altsprites8 $hill $template_turn $zoom }}
 {{if gt $plen 8}}
 {{$template_turn = concat "template_auto_front_" .ttd_len -}}{{$sections := concat $ani "_sections" -}}{{ altsprites8n $sections $template_turn $zoom "_front" }}
 {{$template_turn = concat "template_auto_mid_" .ttd_len -}}{{$sections = concat $ani "_sections" -}}{{ altsprites8n $sections $template_turn $zoom "_mid" }}
@@ -91,10 +91,10 @@ alternative_sprites(spriteset_{{.id}}_purchase, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP
 {{if eq .globals.bpp "32"}}{{ altspritesn $rev $template_turn $zoom "_turn_2" }}{{else}}{{ altsprites8n $rev $template_turn $zoom "_turn_2" }}{{end}}
 
 {{$template_turn := concat "template_auto_up_" .ttd_len -}}{{$hill := concat $rev "_up" }}
-{{if eq .globals.bpp "32"}}{{ altspritesn $hill $template_turn $zoom "_up" }}{{else}}{{ altsprites8n $hill $template_turn $zoom "_up" }}{{end}}
+{{if eq .globals.bpp "32"}}{{ altsprites $hill $template_turn $zoom }}{{else}}{{ altsprites8 $hill $template_turn $zoom }}{{end}}
 
 {{$template_turn := concat "template_auto_down_" .ttd_len -}}{{$hill = concat $rev "_down" }}
-{{if eq .globals.bpp "32"}}{{ altspritesn $hill $template_turn $zoom "_down" }}{{else}}{{ altsprites8n $hill $template_turn $zoom "_down" }}{{end}}
+{{if eq .globals.bpp "32"}}{{ altsprites $hill $template_turn $zoom }}{{else}}{{ altsprites8 $hill $template_turn $zoom }}{{end}}
 
 {{ if gt $plen 8}}
 {{$sections := concat $rev "_sections" -}}

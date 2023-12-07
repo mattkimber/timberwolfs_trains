@@ -10,6 +10,18 @@
             "type": "produce_empty"
         },
         {
+            "name": "_light",
+            "type": "produce_empty",
+            "input_ramps": ["200-206,82-88"],
+            "output_ramps": ["201-207,83-89"]
+        },
+        {
+            "name": "_dark",
+            "type": "produce_empty",
+            "input_ramps": ["201-207,83-89"],
+            "output_ramps": ["200-206,82-88"]
+        },
+        {
             "name": "_none",
             "type": "repeat",
             "mask_original": true,

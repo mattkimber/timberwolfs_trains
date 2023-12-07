@@ -11,12 +11,12 @@
 {{ altsprites8n $pan_up $template_turn $zoom "_turn_2" }}{{ altsprites8n $pan_down $template_turn $zoom "_turn_2" }}
 
 {{$template_turn := concat "template_auto_up_" .ttd_len -}}
-{{$hill := concat $pan_up "_up" }}{{ altsprites8n $hill $template_turn $zoom "_up" }}
-{{$hill = concat $pan_down "_up" }}{{ altsprites8n $hill $template_turn $zoom "_up" }}
+{{$hill := concat $pan_up "_up" }}{{ altsprites8 $hill $template_turn $zoom }}
+{{$hill = concat $pan_down "_up" }}{{ altsprites8 $hill $template_turn $zoom }}
 
 {{$template_turn := concat "template_auto_down_" .ttd_len -}}
-{{$hill = concat $pan_up "_down" }}{{ altsprites8n $hill $template_turn $zoom "_down" }}
-{{$hill = concat $pan_down "_down" }}{{ altsprites8n $hill $template_turn $zoom "_down" }}
+{{$hill = concat $pan_up "_down" }}{{ altsprites8 $hill $template_turn $zoom }}
+{{$hill = concat $pan_down "_down" }}{{ altsprites8 $hill $template_turn $zoom }}
 
 {{ if gt $plen 8}}
 {{$sections := concat $pan_up "_sections" -}}

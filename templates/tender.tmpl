@@ -11,9 +11,9 @@
 {{if eq .globals.bpp "32"}}{{ altspritesn .id $template_turn $zoom "_turn_2" }}{{else}}{{ altsprites8n .id $template_turn $zoom "_turn_2" }}{{end}}
 
 {{$template_turn = concat "template_auto_up_" .ttd_len -}}
-{{$hill := concat .id "_up"}}{{if eq .globals.bpp "32"}}{{ altspritesn $hill $template_turn $zoom "_up" }}{{else}}{{ altsprites8n $hill $template_turn $zoom "_up" }}{{end}}
+{{$hill := concat .id "_up"}}{{if eq .globals.bpp "32"}}{{ altsprites $hill $template_turn $zoom }}{{else}}{{ altsprites8 $hill $template_turn $zoom }}{{end}}
 
 {{$template_turn = concat "template_auto_down_" .ttd_len -}}
-{{$hill = concat .id "_down"}}{{if eq .globals.bpp "32"}}{{ altspritesn $hill $template_turn $zoom "_down" }}{{else}}{{ altsprites8n $hill $template_turn $zoom "_down" }}{{end}}
+{{$hill = concat .id "_down"}}{{if eq .globals.bpp "32"}}{{ altsprites $hill $template_turn $zoom }}{{else}}{{ altsprites8 $hill $template_turn $zoom }}{{end}}
 
 {{if gt $plen 8}}{{template "curve_switch_long" .id }}{{else if gt $plen 4 }}{{template "curve_switch_medium" .id }}{{else}}{{template "curve_switch_short" .id }}{{end}}
