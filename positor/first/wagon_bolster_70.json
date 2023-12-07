@@ -2,8 +2,14 @@
     "files": [
       "cargo/wagon/beaver_wagon.vox",    
       "cargo/wagon/double_bolster.vox",    
+<<<<<<< HEAD
       "cargo/wagon/bolster_wagon_ng.vox"   ,    
       "cargo/wagon/long_bolster_ng.vox"    
+=======
+      "cargo/wagon/bolster_wagon_ng.vox",    
+      "cargo/wagon/long_bolster_ng.vox",
+      "cargo/wagon/br_lowmac.vox"   
+>>>>>>> 539f7a7535081e93844060dda8a4802c4b0f455d
     ],
     "operations": [
         {
