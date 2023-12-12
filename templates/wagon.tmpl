@@ -752,10 +752,10 @@ switch (FEAT_TRAINS, SELF, switch_{{.id}}_length, position_in_articulated_veh % 
         {{- else}}
             switch (FEAT_TRAINS, SELF, switch_{{.id}}_graphics, position_in_articulated_veh % 3)
             {
-            1: switch_{{.id}}_curve;
+            1: {{ if .has_aged_variant}}switch_{{.id}}_age_curve{{else}}switch_{{.id}}_curve{{end}};
             {{ if gt $plen 8}}
-                0: switch_{{.id}}_curve_front;
-                2: switch_{{.id}}_curve_rear;
+                0: {{ if .has_aged_variant}}switch_{{.id}}_age_curve_front{{else}}switch_{{.id}}_curve_front{{end}};
+                2: {{ if .has_aged_variant}}switch_{{.id}}_age_curve_rear{{else}}switch_{{.id}}_curve_rear{{end}};
             {{ end }}
             return spriteset_invisible;
             }
