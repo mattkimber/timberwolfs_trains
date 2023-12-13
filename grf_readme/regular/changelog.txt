@@ -4,6 +4,7 @@ v1.5.0
 Remove station rating code (now its own GRF)
 Added BR Lowmac and LNER hopper
 Added "graffiti" variants to highlight old trains
+Brake vans can be shown in non-company colours
 
 v1.4.4
 -------

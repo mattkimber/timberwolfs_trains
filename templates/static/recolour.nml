@@ -921,3 +921,54 @@ replace(recolour_horses + 24) {
         0xc6..0xcd: 0x20..0x27; 
     }
 }
+
+// Brake van recolours
+recolour_brakevan = reserve_sprites(8);
+
+replace(recolour_brakevan + 0) {
+    recolour_sprite {
+        0xc6..0xcd: 0x71..0x78; 
+    }
+}
+
+replace(recolour_brakevan + 1) {
+    recolour_sprite {
+        0xc6..0xcd: 0x20..0x27; 
+    }
+}
+
+replace(recolour_brakevan + 2) {
+    recolour_sprite {
+        0xc6..0xcd: 0x48..0x4f; 
+    }
+}
+
+replace(recolour_brakevan + 3) {
+    recolour_sprite {
+        0xc6..0xcd: 0x68..0x6f; 
+    }
+}
+
+replace(recolour_brakevan + 4) {
+    recolour_sprite {
+        0xc6..0xcd: 0x46..0x4d; 
+    }
+}
+
+replace(recolour_brakevan + 5) {
+    recolour_sprite {
+        0xc6..0xcd: 0x10..0x17; 
+    }
+}
+
+replace(recolour_brakevan + 6) {
+    recolour_sprite {
+        0xc6..0xcd: 0x2..0x9; 
+    }
+}
+
+replace(recolour_brakevan + 7) {
+    recolour_sprite {
+        0xc6..0xcd: 0x4..0xB; 
+    }
+}

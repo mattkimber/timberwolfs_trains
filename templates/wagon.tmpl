@@ -763,6 +763,13 @@ switch (FEAT_TRAINS, SELF, switch_{{.id}}_length, position_in_articulated_veh % 
     {{end -}}
 {{end}}
 
+{{- if eq .cargo_handling "Brakevan"}}
+    switch (FEAT_TRAINS, SELF, switch_{{.id}}_colour_mapping, param_brake_van_no_recolour ? -1 : recolour_brakevan + (random_bits % 8)) {
+        -1: return base_sprite_2cc + CB_RESULT_COLOUR_MAPPING_ADD_CC;
+        return;
+    }
+{{- end }}
+
 {{template "tare_speed_switch" . }}
 
 {{ if eq .cargo_handling "NGPassengers" -}}
@@ -886,5 +893,6 @@ purchase:  spriteset_{{.id}}_purchase;
 purchase_cargo_capacity: spriteset_{{.id}};
 {{if .speed}}purchase_speed: return ({{.speed}} * 8) / 5;{{end}}
 {{if eq .default_cargo "DANDY"}}bitmask_vehicle_info: switch_{{.id}}_dandy_wagon_behaviour;{{end}}
+{{if eq .cargo_handling "Brakevan"}}colour_mapping: switch_{{.id}}_colour_mapping;{{end}}
 }
 }

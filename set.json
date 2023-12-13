@@ -53,6 +53,13 @@
                 "name": "Graffiti",
                 "desc": "When a locomotive gets old, some freight wagons will show weathering and graffiti as an indication it is reaching the end of its life, with more graffiti the older it gets.{}{}As this may be visually distracting, you can switch off the accumulation of graffiti over a train with this parameter.",
                 "type": "bool",
+                "default_value": 1
+            },
+            {
+                "id": "brake_van_no_recolour",
+                "name": "Use company colours for brake vans",
+                "desc": "By default, brake vans are shown in a variety of prototypical real-world colours to make them visually distinct from freight vehicles. This option allows showing them in company colours instead.",
+                "type": "bool",
                 "default_value": 0
             }
         ]
