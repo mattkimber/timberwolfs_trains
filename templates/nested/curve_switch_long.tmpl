@@ -7,8 +7,8 @@ switch (FEAT_TRAINS, SELF, switch_{{.}}_crest_check, getbits(extra_callback_info
 }
 
 switch (FEAT_TRAINS, SELF, switch_{{.}}_height, getbits(extra_callback_info1, 0, 8) == 0 ? other_veh_z_offset(-1) : 0) {
-    -128..-1: return spriteset_{{.}}_down_down;
-    1..127: return spriteset_{{.}}_up_up;    
+    -128..-1: return spriteset_{{.}}_down;
+    1..127: return spriteset_{{.}}_up;    
 
     // Long vehicle, use the 3-sprite layout
     switch_{{.}}_crest_check;

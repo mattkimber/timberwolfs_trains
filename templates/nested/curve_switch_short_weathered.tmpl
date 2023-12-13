@@ -1,0 +1,56 @@
+{{define "curve_switch_short_weathered"}}
+switch (FEAT_TRAINS, SELF, switch_{{.}}_height_regular, getbits(extra_callback_info1, 0, 8) == 0 ? other_veh_z_offset(-1) + other_veh_z_offset(1) : 0) {
+    -128..-1: return spriteset_{{.}}_down;
+    1..127: return spriteset_{{.}}_up;
+    return spriteset_{{.}};
+}
+
+switch (FEAT_TRAINS, SELF, switch_{{.}}_curve_regular, getbits(extra_callback_info1, 0, 8) == 0 ? curv_info : 0)  {
+    vehicle_curv_info(1, 0): return spriteset_{{.}}_turn_1;
+    vehicle_curv_info(0, 1): return spriteset_{{.}}_turn_2;
+
+    vehicle_curv_info(-1, 0): return spriteset_{{.}}_turn_2;
+    vehicle_curv_info(0, -1): return spriteset_{{.}}_turn_1;
+
+    switch_{{.}}_height_regular;
+}
+
+switch (FEAT_TRAINS, SELF, switch_{{.}}_height_light, getbits(extra_callback_info1, 0, 8) == 0 ? other_veh_z_offset(-1) + other_veh_z_offset(1) : 0) {
+    -128..-1: return spriteset_{{.}}_light_down;
+    1..127: return spriteset_{{.}}_light_up;
+    return spriteset_{{.}}_light;
+}
+
+switch (FEAT_TRAINS, SELF, switch_{{.}}_curve_light, getbits(extra_callback_info1, 0, 8) == 0 ? curv_info : 0)  {
+    vehicle_curv_info(1, 0): return spriteset_{{.}}_light_turn_1;
+    vehicle_curv_info(0, 1): return spriteset_{{.}}_light_turn_2;
+
+    vehicle_curv_info(-1, 0): return spriteset_{{.}}_light_turn_2;
+    vehicle_curv_info(0, -1): return spriteset_{{.}}_light_turn_1;
+
+    switch_{{.}}_height_light;
+}
+
+switch (FEAT_TRAINS, SELF, switch_{{.}}_height_dark, getbits(extra_callback_info1, 0, 8) == 0 ? other_veh_z_offset(-1) + other_veh_z_offset(1) : 0) {
+    -128..-1: return spriteset_{{.}}_dark_down;
+    1..127: return spriteset_{{.}}_dark_up;
+    return spriteset_{{.}}_dark;
+}
+
+switch (FEAT_TRAINS, SELF, switch_{{.}}_curve_dark, getbits(extra_callback_info1, 0, 8) == 0 ? curv_info : 0)  {
+    vehicle_curv_info(1, 0): return spriteset_{{.}}_dark_turn_1;
+    vehicle_curv_info(0, 1): return spriteset_{{.}}_dark_turn_2;
+
+    vehicle_curv_info(-1, 0): return spriteset_{{.}}_dark_turn_2;
+    vehicle_curv_info(0, -1): return spriteset_{{.}}_dark_turn_1;
+
+    switch_{{.}}_height_dark;
+}
+
+random_switch (FEAT_TRAINS, SELF, switch_{{.}}_curve)
+{
+    3: switch_{{.}}_curve_regular;
+    2: switch_{{.}}_curve_light;
+    2: switch_{{.}}_curve_dark;
+}
+{{end}}

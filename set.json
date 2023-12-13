@@ -47,6 +47,13 @@
                 "max_value": 2,
                 "default_value": 1,
                 "value_names": [ "Mild", "Spicy", "Painful" ]
+            },
+            {
+                "id": "graffiti",
+                "name": "Graffiti",
+                "desc": "When a locomotive gets old, some freight wagons will show weathering and graffiti as an indication it is reaching the end of its life, with more graffiti the older it gets.{}{}As this may be visually distracting, you can switch off the accumulation of graffiti over a train with this parameter.",
+                "type": "bool",
+                "default_value": 0
             }
         ]
     },
@@ -62,10 +69,13 @@
         "nestable_templates": [ 
             "nested/cargo_curve_switch_long",
             "nested/curve_switch_long",
+            "nested/curve_switch_long_weathered",
             "nested/cargo_curve_switch_medium",
             "nested/curve_switch_medium",
+            "nested/curve_switch_medium_weathered",
             "nested/cargo_curve_switch_short",
             "nested/curve_switch_short",
+            "nested/curve_switch_short_weathered",
             "nested/pantograph_switch",
             "nested/pantograph_graphics",
             "nested/running_cost_switch",
