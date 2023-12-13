@@ -158,19 +158,19 @@ alternative_sprites(spriteset_{{.id}}_purchase, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP
 {{ end }}
 
 {{ if .has_aged_variant }}
-    switch (FEAT_TRAINS, SELF, switch_{{.id}}_age_curve, get_parent_age_proportion() - random_16())
+    switch (FEAT_TRAINS, SELF, switch_{{.id}}_age_curve, param_graffiti ? get_parent_age_proportion() - random_16() : 0)
     {
         9..65535: switch_{{.id}}_aged_curve;
         switch_{{.id}}_curve;
     }
     {{if gt $plen 8}}
-        switch (FEAT_TRAINS, SELF, switch_{{.id}}_age_curve_front, get_parent_age_proportion() - random_16_backward())
+        switch (FEAT_TRAINS, SELF, switch_{{.id}}_age_curve_front, param_graffiti ? get_parent_age_proportion() - random_16_backward() : 0)
         {
             9..65535: switch_{{.id}}_aged_curve_front;
             switch_{{.id}}_curve_front;
         }
 
-        switch (FEAT_TRAINS, SELF, switch_{{.id}}_age_curve_rear, get_parent_age_proportion() - random_16_forward())
+        switch (FEAT_TRAINS, SELF, switch_{{.id}}_age_curve_rear, param_graffiti ? get_parent_age_proportion() - random_16_forward() : 0)
         {
             9..65535: switch_{{.id}}_aged_curve_rear;
             switch_{{.id}}_curve_rear;
