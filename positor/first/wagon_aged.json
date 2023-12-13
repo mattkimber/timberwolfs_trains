@@ -1,0 +1,11 @@
+{
+    "files": [
+      "cargo/wagon/aged/*.vox"
+    ],
+    "operations": [
+        {
+            "name": "",
+            "type": "produce_empty"
+        }
+    ]
+}

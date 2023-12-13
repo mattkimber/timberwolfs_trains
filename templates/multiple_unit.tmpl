@@ -29,11 +29,11 @@ alternative_sprites(spriteset_{{.id}}_purchase, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP
 {{$template_turn = concat "template_auto_turn_2_" $len -}}
 {{if eq $bpp "32"}}{{ altspritesn $element $template_turn $zoom "_turn_2" }}{{else}}{{ altsprites8n $element $template_turn $zoom "_turn_2" }}{{end}}
 
-{{$template_turn := concat "template_auto_up_" $len -}}{{$hill := concat $element "_up" }}
-{{if eq $bpp "32"}}{{ altspritesn $hill $template_turn $zoom "_up" }}{{else}}{{ altsprites8n $hill $template_turn $zoom "_up" }}{{end}}
+{{$template_turn = concat "template_auto_up_" $len -}}{{$hill := concat $element "_up" }}
+{{if eq $bpp "32"}}{{ altsprites $hill $template_turn $zoom }}{{else}}{{ altsprites8 $hill $template_turn $zoom }}{{end}}
 
-{{$template_turn := concat "template_auto_down_" $len -}}{{$hill = concat $element "_down" }}
-{{if eq $bpp "32"}}{{ altspritesn $hill $template_turn $zoom "_down" }}{{else}}{{ altsprites8n $hill $template_turn $zoom "_down" }}{{end}}
+{{$template_turn = concat "template_auto_down_" $len -}}{{$hill = concat $element "_down" }}
+{{if eq $bpp "32"}}{{ altsprites $hill $template_turn $zoom }}{{else}}{{ altsprites8 $hill $template_turn $zoom }}{{end}}
 
 {{$plen = parseint $len}}
 {{ if gt $plen 8}}
@@ -49,39 +49,39 @@ alternative_sprites(spriteset_{{.id}}_purchase, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP
 {{- if and (gt (len $animated) $index) (eq (index $animated $index) "1") -}}
 {{ $ani := concat $element "_anim_1" }}{{ altsprites8 $ani $template $zoom }}
 {{$template_turn := concat "template_auto_turn_1_" $len -}}{{ altsprites8n $ani $template_turn $zoom "_turn_1" }}
-{{$template_turn := concat "template_auto_turn_2_" $len -}}{{ altsprites8n $ani $template_turn $zoom "_turn_2" }}
-{{$template_turn := concat "template_auto_up_" $len -}}{{$hill := concat $ani "_up" }}{{ altsprites8n $hill $template_turn $zoom "_up" }}
-{{$template_turn := concat "template_auto_down_" $len -}}{{$hill = concat $ani "_down" }}{{ altsprites8n $hill $template_turn $zoom "_down" }}
+{{$template_turn = concat "template_auto_turn_2_" $len -}}{{ altsprites8n $ani $template_turn $zoom "_turn_2" }}
+{{$template_turn = concat "template_auto_up_" $len -}}{{$hill := concat $ani "_up" }}{{ altsprites8 $hill $template_turn $zoom }}
+{{$template_turn = concat "template_auto_down_" $len -}}{{$hill = concat $ani "_down" }}{{ altsprites8 $hill $template_turn $zoom }}
 {{if gt $plen 8}}
 {{$template_turn = concat "template_auto_front_" $len -}}{{$sections := concat $ani "_sections" -}}{{ altsprites8n $sections $template_turn $zoom "_front" }}
 {{$template_turn = concat "template_auto_mid_" $len -}}{{$sections = concat $ani "_sections" -}}{{ altsprites8n $sections $template_turn $zoom "_mid" }}
 {{$template_turn = concat "template_auto_rear_" $len -}}{{$sections = concat $ani "_sections" -}}{{ altsprites8n $sections $template_turn $zoom "_rear" }}
 {{end}}
-{{ $ani := concat $element "_anim_2" }}{{ altsprites8 $ani $template $zoom }}
-{{$template_turn := concat "template_auto_turn_1_" $len -}}{{ altsprites8n $ani $template_turn $zoom "_turn_1" }}
-{{$template_turn := concat "template_auto_turn_2_" $len -}}{{ altsprites8n $ani $template_turn $zoom "_turn_2" }}
-{{$template_turn := concat "template_auto_up_" $len -}}{{$hill = concat $ani "_up" }}{{ altsprites8n $hill $template_turn $zoom "_up" }}
-{{$template_turn := concat "template_auto_down_" $len -}}{{$hill = concat $ani "_down" }}{{ altsprites8n $hill $template_turn $zoom "_down" }}
+{{ $ani = concat $element "_anim_2" }}{{ altsprites8 $ani $template $zoom }}
+{{$template_turn = concat "template_auto_turn_1_" $len -}}{{ altsprites8n $ani $template_turn $zoom "_turn_1" }}
+{{$template_turn = concat "template_auto_turn_2_" $len -}}{{ altsprites8n $ani $template_turn $zoom "_turn_2" }}
+{{$template_turn = concat "template_auto_up_" $len -}}{{$hill = concat $ani "_up" }}{{ altsprites8 $hill $template_turn $zoom }}
+{{$template_turn = concat "template_auto_down_" $len -}}{{$hill = concat $ani "_down" }}{{ altsprites8 $hill $template_turn $zoom }}
 {{if gt $plen 8}}
 {{$template_turn = concat "template_auto_front_" $len -}}{{$sections := concat $ani "_sections" -}}{{ altsprites8n $sections $template_turn $zoom "_front" }}
 {{$template_turn = concat "template_auto_mid_" $len -}}{{$sections = concat $ani "_sections" -}}{{ altsprites8n $sections $template_turn $zoom "_mid" }}
 {{$template_turn = concat "template_auto_rear_" $len -}}{{$sections = concat $ani "_sections" -}}{{ altsprites8n $sections $template_turn $zoom "_rear" }}
 {{end}}
-{{ $ani := concat $element "_anim_3" }}{{ altsprites8 $ani $template $zoom }}
-{{$template_turn := concat "template_auto_turn_1_" $len -}}{{ altsprites8n $ani $template_turn $zoom "_turn_1" }}
-{{$template_turn := concat "template_auto_turn_2_" $len -}}{{ altsprites8n $ani $template_turn $zoom "_turn_2" }}
-{{$template_turn := concat "template_auto_up_" $len -}}{{$hill = concat $ani "_up" }}{{ altsprites8n $hill $template_turn $zoom "_up" }}
-{{$template_turn := concat "template_auto_down_" $len -}}{{$hill = concat $ani "_down" }}{{ altsprites8n $hill $template_turn $zoom "_down" }}
+{{ $ani = concat $element "_anim_3" }}{{ altsprites8 $ani $template $zoom }}
+{{$template_turn = concat "template_auto_turn_1_" $len -}}{{ altsprites8n $ani $template_turn $zoom "_turn_1" }}
+{{$template_turn = concat "template_auto_turn_2_" $len -}}{{ altsprites8n $ani $template_turn $zoom "_turn_2" }}
+{{$template_turn = concat "template_auto_up_" $len -}}{{$hill = concat $ani "_up" }}{{ altsprites8 $hill $template_turn $zoom }}
+{{$template_turn = concat "template_auto_down_" $len -}}{{$hill = concat $ani "_down" }}{{ altsprites8 $hill $template_turn $zoom }}
 {{if gt $plen 8}}
 {{$template_turn = concat "template_auto_front_" $len -}}{{$sections := concat $ani "_sections" -}}{{ altsprites8n $sections $template_turn $zoom "_front" }}
 {{$template_turn = concat "template_auto_mid_" $len -}}{{$sections = concat $ani "_sections" -}}{{ altsprites8n $sections $template_turn $zoom "_mid" }}
 {{$template_turn = concat "template_auto_rear_" $len -}}{{$sections = concat $ani "_sections" -}}{{ altsprites8n $sections $template_turn $zoom "_rear" }}
 {{end}}
-{{ $ani := concat $element "_anim_4" }}{{ altsprites8 $ani $template $zoom }}
-{{$template_turn := concat "template_auto_turn_1_" $len -}}{{ altsprites8n $ani $template_turn $zoom "_turn_1" }}
-{{$template_turn := concat "template_auto_turn_2_" $len -}}{{ altsprites8n $ani $template_turn $zoom "_turn_2" }}
-{{$template_turn := concat "template_auto_up_" $len -}}{{$hill = concat $ani "_up" }}{{ altsprites8n $hill $template_turn $zoom "_up" }}
-{{$template_turn := concat "template_auto_down_" $len -}}{{$hill = concat $ani "_down" }}{{ altsprites8n $hill $template_turn $zoom "_down" }}
+{{ $ani = concat $element "_anim_4" }}{{ altsprites8 $ani $template $zoom }}
+{{$template_turn = concat "template_auto_turn_1_" $len -}}{{ altsprites8n $ani $template_turn $zoom "_turn_1" }}
+{{$template_turn = concat "template_auto_turn_2_" $len -}}{{ altsprites8n $ani $template_turn $zoom "_turn_2" }}
+{{$template_turn = concat "template_auto_up_" $len -}}{{$hill = concat $ani "_up" }}{{ altsprites8 $hill $template_turn $zoom }}
+{{$template_turn = concat "template_auto_down_" $len -}}{{$hill = concat $ani "_down" }}{{ altsprites8 $hill $template_turn $zoom }}
 {{if gt $plen 8}}
 {{$template_turn = concat "template_auto_front_" $len -}}{{$sections := concat $ani "_sections" -}}{{ altsprites8n $sections $template_turn $zoom "_front" }}
 {{$template_turn = concat "template_auto_mid_" $len -}}{{$sections = concat $ani "_sections" -}}{{ altsprites8n $sections $template_turn $zoom "_mid" }}
@@ -130,11 +130,11 @@ switch (FEAT_TRAINS, SELF, switch_{{.id}}_length, position_in_articulated_veh % 
 {{- if and (gt (len $animated) $index) (eq (index $animated $index) "1") -}}
 {{$anim := concat $element "_anim_1" }}
 {{if gt $plen 8}}{{template "curve_switch_long" $anim }}{{else if gt $plen 4 }}{{template "curve_switch_medium" $anim }}{{else}}{{template "curve_switch_short" $anim }}{{end}}
-{{$anim := concat $element "_anim_2" }}
+{{$anim = concat $element "_anim_2" }}
 {{if gt $plen 8}}{{template "curve_switch_long" $anim }}{{else if gt $plen 4 }}{{template "curve_switch_medium" $anim }}{{else}}{{template "curve_switch_short" $anim }}{{end}}
-{{$anim := concat $element "_anim_3" }}
+{{$anim = concat $element "_anim_3" }}
 {{if gt $plen 8}}{{template "curve_switch_long" $anim }}{{else if gt $plen 4 }}{{template "curve_switch_medium" $anim }}{{else}}{{template "curve_switch_short" $anim }}{{end}}
-{{$anim := concat $element "_anim_4" }}
+{{$anim = concat $element "_anim_4" }}
 {{if gt $plen 8}}{{template "curve_switch_long" $anim }}{{else if gt $plen 4 }}{{template "curve_switch_medium" $anim }}{{else}}{{template "curve_switch_short" $anim }}{{end}}
 
 switch (FEAT_TRAINS, SELF, switch_{{$element}}_animation, motion_counter % 4) 
