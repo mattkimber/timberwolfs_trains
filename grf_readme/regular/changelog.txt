@@ -1,3 +1,8 @@
+v1.5.1
+------
+
+Reduce running costs of Tube trains for better balance
+
 v1.5.0
 ------
 
