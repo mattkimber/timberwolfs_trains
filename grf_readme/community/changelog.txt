@@ -1,3 +1,8 @@
+v1.0.26
+-------
+
+Added LNWR Precedent classes
+
 v1.0.25
 -------
 

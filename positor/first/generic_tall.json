@@ -1,0 +1,32 @@
+{
+    "files": [
+      "lnwr_precedent.vox",
+      "lnwr_improved_precedent.vox"
+    ],
+    "operations": [
+      {
+        "name": "_anim_1",
+        "type": "scale",
+        "mask_original": true,
+        "file": "valvegear/generic_tall_1.vox"
+      },      
+      {
+        "name": "_anim_2",
+        "type": "scale",
+        "mask_original": true,
+        "file": "valvegear/generic_tall_2.vox"
+      },      
+      {
+        "name": "_anim_3",
+        "type": "scale",
+        "mask_original": true,
+        "file": "valvegear/generic_tall_3.vox"
+      },      
+      {
+        "name": "_anim_4",
+        "type": "scale",
+        "mask_original": true,
+        "file": "valvegear/generic_tall_4.vox"
+      }
+    ]
+}
