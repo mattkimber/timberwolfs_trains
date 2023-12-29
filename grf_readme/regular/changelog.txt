@@ -1,3 +1,8 @@
+v1.5.3
+------
+
+Fix: TEA tanker was always showing aged variant
+
 v1.5.2
 ------
 
