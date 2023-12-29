@@ -281,6 +281,8 @@ item(FEAT_TRAINS, {{.id}}, {{.numeric_id}}) {
 
         {{if lt $speed 50 -}}
         air_drag_coefficient:         0.1;
+        {{- else -}}
+        air_drag_coefficient:         7 / ({{.speed}} * 1.6);
         {{- end}}
 
         {{if .capacity}}

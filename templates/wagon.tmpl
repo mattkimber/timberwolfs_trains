@@ -514,7 +514,7 @@ alternative_sprites(spriteset_{{.id}}_purchase, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP
         // Be careful to update numbers when adding/removing cargo types
         {{if eq $element "batt" "beer" "boom" "bubl" "cera" "fzdr" "java" "nuts" "papr" "powr" "toys" "veng" "vpts" "plas" "dyes" "ficr" "mnsp" "soap" "coat" "rfpr" "frut" "wool" "fert" "glas" "rcyc" "wste" "nukf" "nukw" "uran" }}{{ $palette = printf "recolour_crate + %d - 2" $index }}{{ $cargosprite = "crate"}}{{end}}
         // Metal number = (number of crate recolours + 2)
-        {{if eq $element "alum" "copr" "csti" "iron" "metl" "stal" "stcb" "stel" "stse" "stst" "zinc" }}{{ $palette =  printf "recolour_metal + %d - 30" $index }}{{ $cargosprite = "metal"}}{{end}}
+        {{if eq $element "alum" "copr" "csti" "iron" "metl" "stal" "stcb" "stel" "stse" "stst" "zinc" }}{{ $palette =  printf "recolour_metal + %d - 31" $index }}{{ $cargosprite = "metal"}}{{end}}
         {{if eq $element "wdpr" }}{{ $cargosprite = "timber"}}{{end}}
         {{if eq $element "vbod" }}{{ $cargosprite = "vehicle_body"}}{{end}}
         {{if eq $element "vehi" }}{{ $cargosprite = "vehicle"}}{{end}}

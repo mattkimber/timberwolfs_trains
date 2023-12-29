@@ -1,3 +1,11 @@
+v1.5.2
+------
+
+Show expected length in tiles in purchase menu
+Tweaked air resistance to reduce (not eliminate) tunnel slowdown
+Fix: incorrect metal colours
+Fix: multiple unit overlays not showing on purchase sprite
+
 v1.5.1
 ------
 
