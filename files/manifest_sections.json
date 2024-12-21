@@ -17,7 +17,7 @@
     "slice_threshold": 136,
     "slice_length": 88,
     "slice_overlap": 0,
-	"max_colour_push": 2,
+    "dither_flat_areas": true,
 	"fosterise": true,
     "size": {
         "x": 256,
