@@ -1,3 +1,8 @@
+v1.6.0
+------
+
+Improved rendering of sprites throughout the set
+
 v1.5.3
 ------
 
