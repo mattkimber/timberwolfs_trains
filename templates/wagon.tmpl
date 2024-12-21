@@ -187,7 +187,7 @@ alternative_sprites(spriteset_{{.id}}_purchase, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP
 {{else if eq .cargo_handling "Steel" "Torpedo" -}}
     {{ $cargo_list = "metal" -}}
 {{else if eq .cargo_handling "Bolster" -}}
-    {{ $cargo_list = "bdmt,wood,crate,metal,timber,fmsp_old,fmsp_modern,ensp_old,ensp_modern,tyre,pipe,stsh,stwr,rbar" -}}
+    {{ $cargo_list = "bdmt,wood,ccpr,crate,metal,timber,foca,fmsp_old,fmsp_modern,ensp_old,ensp_modern,tyco,tyre,pipe,stbl,stbr,stig,stpp,sttb,stsh,stsl,stwr,rbar,weld" -}}
     {{if gt $plen 4 }}
         {{ $cargo_list = concat $cargo_list ",vehicle_1800,vehicle_1910,vehicle_1970,vehicle_2010,vehicle_body_1800,vehicle_body_1910,vehicle_body_1970,vehicle_body_2010" }}
     {{else}}
@@ -322,8 +322,8 @@ alternative_sprites(spriteset_{{.id}}_purchase, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP
 // End cargo sprites
 
 {{ $has_cargo_switch := "" }}
-{{- $bulk_cargos := "aore,bdmt,bean,cass,cblk,cmnt,cere,clay,coal,coke,core,ctcd,fecr,fert,ficr,frut,grai,grvl,iore,lime,kaol,maiz,mno2,nitr,olsd,peat,phos,pota,pore,qlme,rcyc,salt,sand,sash,scmt,sgbt,sgcn,slag,sugr,sulp,toff,uran,whea,wdpr" }}
-{{- $bolster_cargos := "bdmt,wood,batt,beer,boom,bubl,cera,fzdr,java,nuts,papr,powr,toys,veng,vpts,plas,dyes,mnsp,ficr,soap,coat,rfpr,frut,wool,fert,glas,rcyc,wste,nukf,nukw,uran,alum,copr,csti,iron,metl,stal,stcb,stel,stse,stst,zinc,wdpr,fmsp,ensp,tyre,pipe,vbod,vehi,stsh,stwr,rbar" }}
+{{- $bulk_cargos := "aore,bdmt,bean,cass,cblk,cmnt,cere,clay,coal,coke,core,ctcd,fecr,fert,ficr,frut,grai,grvl,iore,lime,kaol,maiz,mno2,nitr,olsd,peat,phos,pota,pore,qlme,rcyc,salt,sand,sash,scmt,sgbt,sgcn,slag,sugr,sulp,toff,uran,hwar,whea,wdpr" }}
+{{- $bolster_cargos := "bdmt,wood,batt,beer,boom,bubl,ccpr,cera,fzdr,java,nuts,papr,powr,toys,veng,vpts,plas,dyes,mnsp,ficr,soap,coat,rfpr,foca,frut,wool,fert,glas,rcyc,wste,nukf,nukw,uran,alum,copr,csti,iron,metl,stal,stcb,stel,stse,stst,zinc,wdpr,fmsp,ensp,tyre,tyco,pipe,vbod,vehi,stpp,sttb,stbl,stig,stbr,stsl,stsh,stwr,rbar,weld" }}
 {{- $metal_cargos := "alum,copr,csti,iron,metl,stal,stcb,stel,stse,stst,zinc" }}
 {{- $early_liquids := "acid,beer,chlo,coat,cola,ctar,dyes,eoil,fzdr,lye_,milk,nh3_,o2__,oil_,petr,plst,rfpr,rubr,soap,watr" }}
 {{- $early_cargos := "lvst,barrels" }}
@@ -512,7 +512,7 @@ alternative_sprites(spriteset_{{.id}}_purchase, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP
 
         // Check recolour cargo
         // Be careful to update numbers when adding/removing cargo types
-        {{if eq $element "batt" "beer" "boom" "bubl" "cera" "fzdr" "java" "nuts" "papr" "powr" "toys" "veng" "vpts" "plas" "dyes" "ficr" "mnsp" "soap" "coat" "rfpr" "frut" "wool" "fert" "glas" "rcyc" "wste" "nukf" "nukw" "uran" }}{{ $palette = printf "recolour_crate + %d - 2" $index }}{{ $cargosprite = "crate"}}{{end}}
+        {{if eq $element "batt" "beer" "boom" "bubl" "cera" "fzdr" "java" "nuts" "papr" "powr" "toys" "veng" "vpts" "plas" "dyes" "ficr" "mnsp" "soap" "coat" "rfpr" "frut" "wool" "fert" "glas" "rcyc" "wste" "nukf" "nukw" "uran" "hwar" }}{{ $palette = printf "recolour_crate + %d - 2" $index }}{{ $cargosprite = "crate"}}{{end}}
         // Metal number = (number of crate recolours + 2)
         {{if eq $element "alum" "copr" "csti" "iron" "metl" "stal" "stcb" "stel" "stse" "stst" "zinc" }}{{ $palette =  printf "recolour_metal + %d - 31" $index }}{{ $cargosprite = "metal"}}{{end}}
         {{if eq $element "wdpr" }}{{ $cargosprite = "timber"}}{{end}}

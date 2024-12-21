@@ -166,6 +166,20 @@
             "file": "cargo/full/tyres.vox"
         },
         {
+            "name": "_tyco_half",
+            "type": "repeat",
+            "n": 1,
+            "mask_original": true,
+            "file": "cargo/full/tyre_cords.vox"
+        },
+        {
+            "name": "_tyco_full",
+            "type": "repeat",
+            "n": 2,
+            "mask_original": true,
+            "file": "cargo/full/tyre_cords.vox"
+        },
+        {
             "name": "_pipe_half",
             "type": "scale",
             "mask_original": true,
@@ -290,6 +304,34 @@
             "file": "cargo/full/vehicle_body_2010.vox"
         },
         {
+            "name": "_ccpr_half",
+            "type": "repeat",
+            "mask_original": true,
+            "n": 1,
+            "file": "cargo/full/concrete_35.vox"
+        },
+        {
+            "name": "_ccpr_full",
+            "type": "repeat",
+            "mask_original": true,
+            "n": 2,
+            "file": "cargo/full/concrete_35.vox"
+        },
+        {
+            "name": "_foca_half",
+            "type": "repeat",
+            "mask_original": true,
+            "n": 1,
+            "file": "cargo/full/metal_castings_35.vox"
+        },
+        {
+            "name": "_foca_full",
+            "type": "repeat",
+            "mask_original": true,
+            "n": 2,
+            "file": "cargo/full/metal_castings_35.vox"
+        },
+        {
             "name": "_stsh_half",
             "type": "repeat",
             "mask_original": true,
@@ -302,6 +344,90 @@
             "mask_original": true,
             "n": 2,
             "file": "cargo/full/metal_coil_35.vox"
+        },
+        {
+            "name": "_stbl_half",
+            "type": "repeat",
+            "mask_original": true,
+            "n": 1,
+            "file": "cargo/full/metal_billets_35.vox"
+        },
+        {
+            "name": "_stbl_full",
+            "type": "repeat",
+            "mask_original": true,
+            "n": 2,
+            "file": "cargo/full/metal_billets_35.vox"
+        },
+        {
+            "name": "_stig_half",
+            "type": "repeat",
+            "mask_original": true,
+            "n": 1,
+            "file": "cargo/full/metal_ingots_35.vox"
+        },
+        {
+            "name": "_stig_full",
+            "type": "repeat",
+            "mask_original": true,
+            "n": 2,
+            "file": "cargo/full/metal_ingots_35.vox"
+        },
+        {
+            "name": "_stpp_half",
+            "type": "repeat",
+            "mask_original": true,
+            "n": 1,
+            "file": "cargo/full/steel_pipe_35.vox"
+        },
+        {
+            "name": "_stpp_full",
+            "type": "repeat",
+            "mask_original": true,
+            "n": 2,
+            "file": "cargo/full/steel_pipe_35.vox"
+        },
+        {
+            "name": "_sttb_half",
+            "type": "repeat",
+            "mask_original": true,
+            "n": 1,
+            "file": "cargo/full/steel_tube_35.vox"
+        },
+        {
+            "name": "_sttb_full",
+            "type": "repeat",
+            "mask_original": true,
+            "n": 3,
+            "file": "cargo/full/steel_tube_35.vox"
+        },
+        {
+            "name": "_stsl_half",
+            "type": "repeat",
+            "mask_original": true,
+            "n": 1,
+            "file": "cargo/full/metal_slabs_35.vox"
+        },
+        {
+            "name": "_stsl_full",
+            "type": "repeat",
+            "mask_original": true,
+            "n": 2,
+            "file": "cargo/full/metal_slabs_35.vox"
+        },
+        {
+            "name": "_stbr_half",
+            "type": "repeat",
+            "mask_original": true,
+            "n": 1,
+            "file": "cargo/full/metal_bars_35.vox"
+        },
+        {
+            "name": "_stbr_full",
+            "type": "repeat",
+            "mask_original": true,
+            "n": 2,
+            "file": "cargo/full/metal_bars_35.vox"
         },
         {
             "name": "_stwr_half",
@@ -328,6 +454,20 @@
             "type": "scale",
             "mask_original": true,
             "file": "cargo/full/rebar_70.vox"
+        },
+        {
+            "name": "_weld_half",
+            "type": "repeat",
+            "mask_original": true,
+            "n": 1,
+            "file": "cargo/full/welding_bottles_35.vox"
+        },
+        {
+            "name": "_weld_full",
+            "type": "repeat",
+            "mask_original": true,
+            "n": 2,
+            "file": "cargo/full/welding_bottles_35.vox"
         }
     ]
 }

@@ -1,7 +1,6 @@
 {
     "files": [
-      "cargo/wagon/bda_bolster.vox",
-      "cargo/wagon/bogie_bolster.vox"
+      "cargo/wagon/fea_bolster.vox"
     ],
     "operations": [
         {
@@ -32,7 +31,7 @@
             "type": "repeat",
             "mask_original": true,
             "n": 2,
-            "file": "cargo/half/building_materials_2.vox"
+            "file": "cargo/half/building_materials.vox"
         },
         {
             "name": "_bdmt_full",
@@ -44,20 +43,20 @@
             "name": "_wood_half",
             "type": "scale",
             "mask_original": true,
-            "file": "cargo/half/logs_large_2.vox"
+            "file": "cargo/half/logs_large.vox"
         },
         {
             "name": "_wood_full",
             "type": "scale",
             "mask_original": true,
-            "file": "cargo/full/logs_large_2.vox"
+            "file": "cargo/full/logs_large.vox"
         },
         {
             "name": "_crate_half",
             "type": "repeat",
             "n": 2,
             "mask_original": true,
-            "file": "cargo/full/crate.vox"
+            "file": "cargo/half/crate.vox"
         },
         {
             "name": "_crate_full",
@@ -69,9 +68,9 @@
         {
             "name": "_metal_half",
             "type": "repeat",
-            "n": 2,
+            "n": 3,
             "mask_original": true,
-            "file": "cargo/full/metal_45.vox"
+            "file": "cargo/half/metal_45.vox"
         },
         {
             "name": "_metal_full",
@@ -83,9 +82,9 @@
         {
             "name": "_timber_half",
             "type": "repeat",
-            "n": 2,
+            "n": 3,
             "mask_original": true,
-            "file": "cargo/full/timber.vox"
+            "file": "cargo/half/timber.vox"
         },
         {
             "name": "_timber_full",
@@ -97,58 +96,58 @@
         {
             "name": "_ensp_modern_half",
             "type": "repeat",
-            "n": 1,
+            "n": 2,
             "mask_original": true,
-            "file": "cargo/full/ensp_modern_70.vox"
+            "file": "cargo/full/ensp_modern_40.vox"
         },
         {
             "name": "_ensp_modern_full",
             "type": "repeat",
-            "n": 2,
+            "n": 4,
             "mask_original": true,
-            "file": "cargo/full/ensp_modern_70.vox"
+            "file": "cargo/full/ensp_modern_40.vox"
         },
         {
             "name": "_ensp_old_half",
             "type": "repeat",
-            "n": 1,
+            "n": 2,
             "mask_original": true,
-            "file": "cargo/full/ensp_old_70.vox"
+            "file": "cargo/full/ensp_old_40.vox"
         },
         {
             "name": "_ensp_old_full",
             "type": "repeat",
-            "n": 2,
+            "n": 4,
             "mask_original": true,
-            "file": "cargo/full/ensp_old_70.vox"
+            "file": "cargo/full/ensp_old_40.vox"
         },
         {
             "name": "_fmsp_modern_half",
             "type": "repeat",
-            "n": 1,
+            "n": 2,
             "mask_original": true,
-            "file": "cargo/full/fmsp_modern_70.vox"
+            "file": "cargo/full/fmsp_modern_40.vox"
         },
         {
             "name": "_fmsp_modern_full",
             "type": "repeat",
-            "n": 2,
+            "n": 4,
             "mask_original": true,
-            "file": "cargo/full/fmsp_modern_70.vox"
+            "file": "cargo/full/fmsp_modern_40.vox"
         },
         {
             "name": "_fmsp_old_half",
             "type": "repeat",
-            "n": 1,
+            "n": 2,
             "mask_original": true,
-            "file": "cargo/full/fmsp_old_70.vox"
+            "file": "cargo/full/fmsp_old_40.vox"
         },
         {
             "name": "_fmsp_old_full",
             "type": "repeat",
-            "n": 2,
+            "n": 4,
             "mask_original": true,
-            "file": "cargo/full/fmsp_old_70.vox"
+            "file": "cargo/full/fmsp_old_40.vox"
         },
         {
             "name": "_tyre_half",
@@ -162,7 +161,7 @@
             "type": "repeat",
             "n": 4,
             "mask_original": true,
-            "file": "cargo/full/tyres.vox"
+            "file": "cargo/full/tyres_46.vox"
         },
         {
             "name": "_tyco_half",
@@ -176,7 +175,7 @@
             "type": "repeat",
             "n": 4,
             "mask_original": true,
-            "file": "cargo/full/tyre_cords.vox"
+            "file": "cargo/full/tyre_cords_46.vox"
         },
         {
             "name": "_pipe_half",
@@ -191,297 +190,197 @@
             "file": "cargo/full/pipe.vox"
         },
         {
-            "name": "_vehicle_1800_half",
+            "name": "_vehicle_half",
             "type": "repeat",
-            "n": 1,
+            "n": 3,
             "mask_original": true,
-            "input_ramps": ["200-207,82-89", "200-207,82-89"],
-            "output_ramps": ["200-207,82-89", "82-89,200-207"],
-            "file": "cargo/full/vehicle_1800.vox"
+            "file": "cargo/half/vehicle_small.vox"
         },
         {
-            "name": "_vehicle_1800_full",
+            "name": "_vehicle_full",
             "type": "repeat",
-            "n": 2,
+            "n": 4,
             "mask_original": true,
-            "input_ramps": ["200-207,82-89", "200-207,82-89"],
-            "output_ramps": ["200-207,82-89", "82-89,200-207"],
-            "file": "cargo/full/vehicle_1800.vox"
+            "file": "cargo/full/vehicle_small.vox"
         },
         {
-            "name": "_vehicle_1910_half",
+            "name": "_vehicle_body_half",
             "type": "repeat",
-            "n": 1,
+            "n": 3,
             "mask_original": true,
-            "input_ramps": ["200-207,82-89", "200-207,82-89"],
-            "output_ramps": ["200-207,82-89", "82-89,200-207"],
-            "file": "cargo/full/vehicle_1910.vox"
+            "file": "cargo/half/vehicle_body_small.vox"
         },
         {
-            "name": "_vehicle_1910_full",
+            "name": "_vehicle_body_full",
             "type": "repeat",
-            "n": 2,
+            "n": 4,
             "mask_original": true,
-            "input_ramps": ["200-207,82-89", "200-207,82-89"],
-            "output_ramps": ["200-207,82-89", "82-89,200-207"],
-            "file": "cargo/full/vehicle_1910.vox"
-        },
-        {
-            "name": "_vehicle_1970_half",
-            "type": "repeat",
-            "n": 1,
-            "mask_original": true,
-            "input_ramps": ["200-207,82-89", "200-207,82-89"],
-            "output_ramps": ["200-207,82-89", "82-89,200-207"],
-            "file": "cargo/full/vehicle_1970.vox"
-        },
-        {
-            "name": "_vehicle_1970_full",
-            "type": "repeat",
-            "n": 2,
-            "mask_original": true,
-            "input_ramps": ["200-207,82-89", "200-207,82-89"],
-            "output_ramps": ["200-207,82-89", "82-89,200-207"],
-            "file": "cargo/full/vehicle_1970.vox"
-        },
-        {
-            "name": "_vehicle_2010_half",
-            "type": "repeat",
-            "n": 1,
-            "mask_original": true,
-            "input_ramps": ["200-207,82-89", "200-207,82-89"],
-            "output_ramps": ["200-207,82-89", "82-89,200-207"],
-            "file": "cargo/full/vehicle_2010.vox"
-        },
-        {
-            "name": "_vehicle_2010_full",
-            "type": "repeat",
-            "n": 2,
-            "mask_original": true,
-            "input_ramps": ["200-207,82-89", "200-207,82-89"],
-            "output_ramps": ["200-207,82-89", "82-89,200-207"],
-            "file": "cargo/full/vehicle_2010.vox"
-        },
-        {
-            "name": "_vehicle_body_1800_half",
-            "type": "repeat",
-            "n": 1,
-            "mask_original": true,
-            "file": "cargo/full/vehicle_body_1800.vox"
-        },
-        {
-            "name": "_vehicle_body_1800_full",
-            "type": "repeat",
-            "n": 2,
-            "mask_original": true,
-            "file": "cargo/full/vehicle_body_1800.vox"
-        },
-        {
-            "name": "_vehicle_body_1910_half",
-            "type": "repeat",
-            "n": 1,
-            "mask_original": true,
-            "file": "cargo/full/vehicle_body_1910.vox"
-        },
-        {
-            "name": "_vehicle_body_1910_full",
-            "type": "repeat",
-            "n": 2,
-            "mask_original": true,
-            "file": "cargo/full/vehicle_body_1910.vox"
-        },
-        {
-            "name": "_vehicle_body_1970_half",
-            "type": "repeat",
-            "n": 1,
-            "mask_original": true,
-            "file": "cargo/full/vehicle_body_1970.vox"
-        },
-        {
-            "name": "_vehicle_body_1970_full",
-            "type": "repeat",
-            "n": 2,
-            "mask_original": true,
-            "file": "cargo/full/vehicle_body_1970.vox"
-        },
-        {
-            "name": "_vehicle_body_2010_half",
-            "type": "repeat",
-            "n": 1,
-            "mask_original": true,
-            "file": "cargo/full/vehicle_body_2010.vox"
-        },
-        {
-            "name": "_vehicle_body_2010_full",
-            "type": "repeat",
-            "n": 2,
-            "mask_original": true,
-            "file": "cargo/full/vehicle_body_2010.vox"
+            "file": "cargo/full/vehicle_body_small.vox"
         },
         {
             "name": "_ccpr_half",
             "type": "repeat",
             "mask_original": true,
-            "n": 1,
-            "file": "cargo/full/concrete.vox"
+            "n": 3,
+            "file": "cargo/half/concrete.vox"
         },
         {
             "name": "_ccpr_full",
             "type": "repeat",
             "mask_original": true,
-            "n": 3,
+            "n": 4,
             "file": "cargo/full/concrete.vox"
         },
         {
             "name": "_foca_half",
             "type": "repeat",
             "mask_original": true,
-            "n": 1,
-            "file": "cargo/full/metal_castings.vox"
+            "n": 3,
+            "file": "cargo/half/metal_castings.vox"
         },
         {
             "name": "_foca_full",
             "type": "repeat",
             "mask_original": true,
-            "n": 3,
+            "n": 4,
             "file": "cargo/full/metal_castings.vox"
         },
         {
             "name": "_stsh_half",
             "type": "repeat",
             "mask_original": true,
-            "n": 1,
+            "n": 3,
             "file": "cargo/full/metal_coil.vox"
         },
         {
             "name": "_stsh_full",
             "type": "repeat",
             "mask_original": true,
-            "n": 3,
+            "n": 4,
             "file": "cargo/full/metal_coil.vox"
         },
         {
             "name": "_stbl_half",
             "type": "repeat",
             "mask_original": true,
-            "n": 1,
-            "file": "cargo/full/metal_billets.vox"
+            "n": 3,
+            "file": "cargo/half/metal_billets.vox"
         },
         {
             "name": "_stbl_full",
             "type": "repeat",
             "mask_original": true,
-            "n": 3,
+            "n": 4,
             "file": "cargo/full/metal_billets.vox"
         },
         {
             "name": "_stig_half",
             "type": "repeat",
             "mask_original": true,
-            "n": 1,
-            "file": "cargo/full/metal_ingots.vox"
+            "n": 3,
+            "file": "cargo/half/metal_ingots.vox"
         },
         {
             "name": "_stig_full",
             "type": "repeat",
             "mask_original": true,
-            "n": 3,
+            "n": 4,
             "file": "cargo/full/metal_ingots.vox"
+        },
+        {
+            "name": "_stbr_half",
+            "type": "repeat",
+            "mask_original": true,
+            "n": 3,
+            "file": "cargo/half/metal_bars.vox"
+        },
+        {
+            "name": "_stbr_full",
+            "type": "repeat",
+            "mask_original": true,
+            "n": 4,
+            "file": "cargo/full/metal_bars.vox"
         },
         {
             "name": "_stpp_half",
             "type": "repeat",
             "mask_original": true,
-            "n": 1,
-            "file": "cargo/full/steel_pipe.vox"
+            "n": 3,
+            "file": "cargo/half/steel_pipe.vox"
         },
         {
             "name": "_stpp_full",
             "type": "repeat",
             "mask_original": true,
-            "n": 3,
+            "n": 4,
             "file": "cargo/full/steel_pipe.vox"
         },
         {
             "name": "_sttb_half",
             "type": "repeat",
             "mask_original": true,
-            "n": 1,
-            "file": "cargo/full/steel_tube.vox"
+            "n": 3,
+            "file": "cargo/half/steel_tube.vox"
         },
         {
             "name": "_sttb_full",
             "type": "repeat",
             "mask_original": true,
-            "n": 3,
+            "n": 4,
             "file": "cargo/full/steel_tube.vox"
         },
         {
             "name": "_stsl_half",
             "type": "repeat",
             "mask_original": true,
-            "n": 1,
-            "file": "cargo/full/metal_slabs.vox"
+            "n": 3,
+            "file": "cargo/half/metal_slabs.vox"
         },
         {
             "name": "_stsl_full",
             "type": "repeat",
             "mask_original": true,
-            "n": 3,
+            "n": 4,
             "file": "cargo/full/metal_slabs.vox"
-        },
-        {
-            "name": "_stbr_half",
-            "type": "repeat",
-            "mask_original": true,
-            "n": 1,
-            "file": "cargo/full/metal_bars.vox"
-        },
-        {
-            "name": "_stbr_full",
-            "type": "repeat",
-            "mask_original": true,
-            "n": 3,
-            "file": "cargo/full/metal_bars.vox"
         },
         {
             "name": "_stwr_half",
             "type": "repeat",
             "mask_original": true,
-            "n": 1,
+            "n": 2,
             "file": "cargo/full/wire_rod.vox"
         },
         {
             "name": "_stwr_full",
             "type": "repeat",
             "mask_original": true,
-            "n": 3,
+            "n": 4,
             "file": "cargo/full/wire_rod.vox"
         },
         {
             "name": "_rbar_half",
             "type": "scale",
             "mask_original": true,
-            "file": "cargo/half/rebar_70.vox"
+            "file": "cargo/half/rebar.vox"
         },
         {
             "name": "_rbar_full",
             "type": "scale",
             "mask_original": true,
-            "file": "cargo/full/rebar_70.vox"
+            "file": "cargo/full/rebar.vox"
         },
         {
             "name": "_weld_half",
             "type": "repeat",
             "mask_original": true,
-            "n": 1,
-            "file": "cargo/full/welding_bottles.vox"
+            "n": 3,
+            "file": "cargo/half/welding_bottles.vox"
         },
         {
             "name": "_weld_full",
             "type": "repeat",
             "mask_original": true,
-            "n": 3,
+            "n": 4,
             "file": "cargo/full/welding_bottles.vox"
         }
     ]

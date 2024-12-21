@@ -382,7 +382,7 @@ replace(recolour_bulk + 43) {
 
 // Crate recolours
 
-recolour_crate = reserve_sprites(29);
+recolour_crate = reserve_sprites(30);
 
 // -> Batteries (yellow)
 replace(recolour_crate) {
@@ -631,6 +631,14 @@ replace(recolour_crate + 27) {
 replace(recolour_crate + 28) {
     recolour_sprite {
         0x50..0x57: 0x58..0x5F;
+    }
+}
+
+
+// -> Hardware (steel grey)
+replace(recolour_crate + 29) {
+    recolour_sprite {
+        0x50..0x57: 0x10..0x17;
     }
 }
 
