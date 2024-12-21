@@ -366,14 +366,14 @@
             "name": "_stbl_half",
             "type": "repeat",
             "mask_original": true,
-            "n": 1,
+            "n": 2,
             "file": "cargo/full/metal_billets.vox"
         },
         {
             "name": "_stbl_full",
             "type": "repeat",
             "mask_original": true,
-            "n": 2,
+            "n": 4,
             "file": "cargo/full/metal_billets.vox"
         },
         {
@@ -471,6 +471,34 @@
             "type": "scale",
             "mask_original": true,
             "file": "cargo/full/rebar_70.vox"
+        },
+        {
+            "name": "_o2___half",
+            "type": "repeat",
+            "mask_original": true,
+            "n": 2,
+            "file": "cargo/full/oxygen_bottles.vox"
+        },
+        {
+            "name": "_o2___full",
+            "type": "repeat",
+            "mask_original": true,
+            "n": 4,
+            "file": "cargo/full/oxygen_bottles.vox"
+        },
+        {
+            "name": "_n7___half",
+            "type": "repeat",
+            "mask_original": true,
+            "n": 2,
+            "file": "cargo/full/nitrogen_bottles.vox"
+        },
+        {
+            "name": "_n7___full",
+            "type": "repeat",
+            "mask_original": true,
+            "n": 4,
+            "file": "cargo/full/nitrogen_bottles.vox"
         },
         {
             "name": "_weld_half",

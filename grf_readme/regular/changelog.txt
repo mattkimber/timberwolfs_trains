@@ -1,3 +1,9 @@
+v1.7.0
+------
+
+Improved FIRS v5 support
+New FEA-W bolster wagon
+
 v1.6.0
 ------
 

@@ -382,7 +382,7 @@ replace(recolour_bulk + 43) {
 
 // Crate recolours
 
-recolour_crate = reserve_sprites(30);
+recolour_crate = reserve_sprites(33);
 
 // -> Batteries (yellow)
 replace(recolour_crate) {
@@ -641,6 +641,35 @@ replace(recolour_crate + 29) {
         0x50..0x57: 0x10..0x17;
     }
 }
+
+// -> Pumps (teal)
+replace(recolour_crate + 30) {
+    recolour_sprite {
+        0x50: 0x9A;
+        0x51: 0x9A;
+        0x52: 0x9B;
+        0x53: 0x9C;
+        0x54: 0x9D;
+        0x55: 0x9E;
+        0x56: 0x9E;
+        0x57: 0x9F;
+    }
+}
+
+// -> Hoses and Seals (dingy green)
+replace(recolour_crate + 31) {
+    recolour_sprite {
+        0x50..0x57: 0x18..0x1F;
+    }
+}
+
+// -> Rubber (black)
+replace(recolour_crate + 32) {
+    recolour_sprite {
+        0x50..0x57: 0x01..0x08;
+    }
+}
+
 
 
 //

@@ -471,6 +471,34 @@
             "file": "cargo/full/rebar_70.vox"
         },
         {
+            "name": "_o2___half",
+            "type": "repeat",
+            "mask_original": true,
+            "n": 1,
+            "file": "cargo/full/oxygen_bottles.vox"
+        },
+        {
+            "name": "_o2___full",
+            "type": "repeat",
+            "mask_original": true,
+            "n": 3,
+            "file": "cargo/full/oxygen_bottles.vox"
+        },
+        {
+            "name": "_n7___half",
+            "type": "repeat",
+            "mask_original": true,
+            "n": 1,
+            "file": "cargo/full/nitrogen_bottles.vox"
+        },
+        {
+            "name": "_n7___full",
+            "type": "repeat",
+            "mask_original": true,
+            "n": 3,
+            "file": "cargo/full/nitrogen_bottles.vox"
+        },
+        {
             "name": "_weld_half",
             "type": "repeat",
             "mask_original": true,
