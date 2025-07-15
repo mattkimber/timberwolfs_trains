@@ -1,3 +1,8 @@
+v1.7.1
+------
+
+Added two early Stockton and Darlington locomotives
+
 v1.7.0
 ------
 
