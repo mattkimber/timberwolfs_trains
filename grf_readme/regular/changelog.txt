@@ -1,3 +1,8 @@
+v1.7.2
+------
+
+Ensure Stephenson Locomotion is available with 1825 game start
+
 v1.7.1
 ------
 
