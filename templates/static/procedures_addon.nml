@@ -10,3 +10,11 @@ switch (FEAT_TRAINS, SELF, switch_horse_colour_mapping, recolour_horses + ((pare
 switch (FEAT_TRAINS, SELF, switch_dandy_wagon_mapping, recolour_horses + ((get_parent_random_bits() + ((position_in_vehid_chain / 3) * (get_parent_random_bits() % 25))) % 25)) { 
     return;
 }
+
+// 0 = 2
+// 1 = 1
+// 2 = 4
+// 3 = 6
+// 4 = 8
+cargo_age_multiplier = param_slower_cargo_aging == 0 ? 2 : 
+    (param_slower_cargo_aging == 1 ? 1 : param_slower_cargo_aging * 2);

@@ -1,3 +1,13 @@
+v1.7.4
+------
+
+Small code cleanup
+
+v1.7.3
+------
+
+Allow modifying cargo aging for extremely large/small maps
+
 v1.7.2
 ------
 

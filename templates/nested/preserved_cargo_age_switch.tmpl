@@ -1,9 +1,9 @@
 {{define "preserved_cargo_age_switch" -}}
 
 switch (FEAT_TRAINS, PARENT, switch_{{.id}}_preserved_cargo_age, age_in_days) {
-    0..9125: return {{.cargo_age_period}};
-    9126..73000: return ({{.cargo_age_period}} * (age_in_days / 365)) / 25;
-    return {{.cargo_age_period}} * 8;
+    0..9125: return ({{.cargo_age_period}} * cargo_age_multiplier) / 2;
+    9126..73000: return (({{.cargo_age_period}} * (age_in_days / 365)) * cargo_age_multiplier) / 50;
+    return {{.cargo_age_period}} * cargo_age_multiplier * 4;
 }
 
 {{- end}}

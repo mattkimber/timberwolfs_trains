@@ -1,3 +1,13 @@
+v1.2.2
+------
+
+Fix broken preserved railway logic
+
+v1.2.1
+------
+
+Allow modifying cargo aging for extremely large/small maps
+
 v1.2.0
 ------
 

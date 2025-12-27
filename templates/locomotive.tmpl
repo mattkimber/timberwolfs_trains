@@ -326,7 +326,10 @@ item(FEAT_TRAINS, {{.id}}, {{.numeric_id}}) {
         engine_class:                 ENGINE_CLASS_DIESEL;
         {{- end}}
 
-        {{if .cargo_age_period}}cargo_age_period:             {{.cargo_age_period}};{{end}}
+        {{if .default_cargo -}}
+        cargo_age_period:             ({{if .cargo_age_period -}}
+            {{.cargo_age_period}}{{else}}185
+        {{- end}} * cargo_age_multiplier) / 2;{{end}}
         running_cost_base:            RUNNING_COST_DIESEL;
         tractive_effort_coefficient:  {{.te_coeff}};
         power:                        {{.power}} hp;
@@ -356,8 +359,8 @@ item(FEAT_TRAINS, {{.id}}, {{.numeric_id}}) {
         
     }
 
-    graphics {
-        default:  switch_{{.id}}_graphics;
+        graphics {    
+        default:  switch_{{.id}}_graphics;   
         purchase:  spriteset_{{.id}}_purchase;
         additional_text: return {{.additional_text_string}};
         articulated_part: switch_{{.id}}_articulation;

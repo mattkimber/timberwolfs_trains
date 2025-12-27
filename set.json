@@ -2,7 +2,7 @@
     "grf": {
         "author_id": "TWF",
         "grf_id": 7,
-        "name": "Timberwolf's UK Trains 1.7.2",
+        "name": "Timberwolf's UK Trains 1.7.4",
         "description": "A maximalist UK train set including vehicles from 1800-2020. Features 2cc colours, long vehicle scale, 2x zoom and extra rotation sprites.",
         "min_compat_version": 1,
         "filename": "timberwolfs_trains.nml",
@@ -61,6 +61,16 @@
                 "desc": "By default, brake vans are shown in a variety of prototypical real-world colours to make them visually distinct from freight vehicles. This option allows showing them in company colours instead.",
                 "type": "bool",
                 "default_value": 0
+            },
+            {
+                "id": "slower_cargo_aging",
+                "name": "Cargo decay time",
+                "desc": "When using extreme sized maps with slow economy speeds (e.g. in JGRPP) the default cargo payment algorithm does not scale well to long train routes. This parameter allows slowing down cargo payment decay to allow more satisfying gameplay on extreme map sizes. {SILVER}Note:{BLACK} will make the game significantly easier - you may wish to increase running costs to compensate.",
+                "type": "int",
+                "min_value": 0,
+                "max_value": 4,
+                "default_value": 0,
+                "value_names": [ "Normal (1x)", "Savage {RED}(0.5x)", "Relaxed (2x)", "Casual (3x)", "Silly (4x)" ]
             }
         ]
     },

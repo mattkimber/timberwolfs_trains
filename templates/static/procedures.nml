@@ -64,3 +64,12 @@ random_switch (FEAT_TRAINS, BACKWARD_SELF(1), random_16_backward) {
     1: return 63;
     1: return 127;
 }
+
+// 0 = 2
+// 1 = 1
+// 2 = 4
+// 3 = 6
+// 4 = 8
+cargo_age_multiplier = param_slower_cargo_aging == 0 ? 2 : 
+    (param_slower_cargo_aging == 1 ? 1 : param_slower_cargo_aging * 2);
+
