@@ -7,7 +7,15 @@
 {{$template_up := concat "template_auto_up_" .ttd_len -}}
 {{$template_down := concat "template_auto_down_" .ttd_len -}}
 {{$cargo_handling := .cargo_handling -}}
+{{$running_cost := parseint .running_cost -}}{{$cost := parseint .cost -}}
+{{ $has_cargo_switch := "" -}}
+{{ $id := .id -}}
 
+{{- $bulk_cargos := "aore,bdmt,bean,cass,cblk,cmnt,cere,clay,coal,coke,core,ctcd,fecr,fert,ficr,frut,grai,grvl,iore,lime,kaol,maiz,mno2,nitr,olsd,peat,phos,pota,pore,qlme,rcyc,salt,sand,sash,scmt,sgbt,sgcn,slag,sugr,sulp,toff,uran,whea,wdpr" }}
+{{- $bolster_cargos := "bdmt,wood,batt,beer,boom,bubl,cera,fzdr,java,nuts,papr,powr,toys,veng,vpts,plas,dyes,mnsp,ficr,soap,coat,rfpr,frut,wool,fert,glas,rcyc,wste,nukf,nukw,uran,hwar,pump,seal,rubr,alum,copr,csti,iron,metl,stal,stcb,stel,stse,stst,zinc,wdpr,fmsp,ensp,tyre,tyco,pipe,vbod,vehi,stpp,sttb,stbl,stig,stbr,stsl,stsh,stwr,rbar,o2__,n7__,ccpr,foca,weld" }}
+{{- $metal_cargos := "alum,copr,csti,iron,metl,stal,stcb,stel,stse,stst,zinc" }}
+{{- $early_liquids := "acid,beer,chlo,coat,cola,ctar,dyes,eoil,fzdr,lye_,milk,nh3_,o2__,n7__,oil_,petr,plst,rfpr,rubr,soap,watr" }}
+{{- $early_cargos := "lvst,barrels" }}
 
 spriteset(spriteset_{{.id}}_purchase, "1x/{{.id}}_purchase.png")
 { template_purchase_1x() }
@@ -16,6 +24,7 @@ alternative_sprites(spriteset_{{.id}}_purchase, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP
 { template_purchase_2x() }
 
 
+{{ if not .reuse_sprites }}
 {{if eq .globals.bpp "32"}}{{ altsprites .id $template $zoom }}{{else}}{{ altsprites8 .id $template $zoom }}{{end}}
 {{if eq .globals.bpp "32"}}{{ altspritesn .id $template_turn_1 $zoom "_turn_1" }}{{else}}{{ altsprites8n .id $template_turn_1 $zoom "_turn_1" }}{{end}}
 {{if eq .globals.bpp "32"}}{{ altspritesn .id $template_turn_2 $zoom "_turn_2" }}{{else}}{{ altsprites8n .id $template_turn_2 $zoom "_turn_2" }}{{end}}
@@ -157,6 +166,7 @@ alternative_sprites(spriteset_{{.id}}_purchase, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP
     {{if .has_aged_variant}}{{$variant := concat .id "_aged"}}{{if gt $plen 8}}{{template "curve_switch_long" $variant }}{{else if gt $plen 4 }}{{template "curve_switch_medium" $variant }}{{else}}{{template "curve_switch_short" $variant }}{{end}}{{end}}
 {{ end }}
 
+
 {{ if .has_aged_variant }}
     switch (FEAT_TRAINS, SELF, switch_{{.id}}_age_curve, param_graffiti ? get_parent_age_proportion() - random_16() : 0)
     {
@@ -178,8 +188,9 @@ alternative_sprites(spriteset_{{.id}}_purchase, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP
     {{end}}
 {{ end }}
 
+
 // Cargo sprites
-{{ $cargo_list := "" -}}{{ $id := .id -}}
+{{ $cargo_list := "" -}}
 {{if eq .cargo_handling "Bulk" -}}
     {{ $cargo_list = "bulk" -}}
 {{else if eq .cargo_handling "EarlyOpen" -}}
@@ -319,14 +330,8 @@ alternative_sprites(spriteset_{{.id}}_purchase, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP
         {{if gt $plen 8}}{{template "cargo_curve_switch_long" $cargoid }}{{else if gt $plen 4 }}{{template "cargo_curve_switch_medium" $cargoid }}{{else}}{{template "cargo_curve_switch_short" $cargoid }}{{end}}
     {{end -}}
 {{end -}}{{ end }}
-// End cargo sprites
 
-{{ $has_cargo_switch := "" }}
-{{- $bulk_cargos := "aore,bdmt,bean,cass,cblk,cmnt,cere,clay,coal,coke,core,ctcd,fecr,fert,ficr,frut,grai,grvl,iore,lime,kaol,maiz,mno2,nitr,olsd,peat,phos,pota,pore,qlme,rcyc,salt,sand,sash,scmt,sgbt,sgcn,slag,sugr,sulp,toff,uran,whea,wdpr" }}
-{{- $bolster_cargos := "bdmt,wood,batt,beer,boom,bubl,cera,fzdr,java,nuts,papr,powr,toys,veng,vpts,plas,dyes,mnsp,ficr,soap,coat,rfpr,frut,wool,fert,glas,rcyc,wste,nukf,nukw,uran,hwar,pump,seal,rubr,alum,copr,csti,iron,metl,stal,stcb,stel,stse,stst,zinc,wdpr,fmsp,ensp,tyre,tyco,pipe,vbod,vehi,stpp,sttb,stbl,stig,stbr,stsl,stsh,stwr,rbar,o2__,n7__,ccpr,foca,weld" }}
-{{- $metal_cargos := "alum,copr,csti,iron,metl,stal,stcb,stel,stse,stst,zinc" }}
-{{- $early_liquids := "acid,beer,chlo,coat,cola,ctar,dyes,eoil,fzdr,lye_,milk,nh3_,o2__,n7__,oil_,petr,plst,rfpr,rubr,soap,watr" }}
-{{- $early_cargos := "lvst,barrels" }}
+// End cargo sprites
 
 {{ if eq .cargo_handling "EarlyOpen" }}
     {{ $has_cargo_switch = "1" }}
@@ -701,6 +706,9 @@ alternative_sprites(spriteset_{{.id}}_purchase, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP
     }
 {{ end }}
 
+{{end}}
+{{ $sprite := .id}}{{ if .reuse_sprites }}{{ $sprite = .reuse_sprites }}{{end -}}
+
 switch(FEAT_TRAINS, SELF, switch_{{.id}}_articulation, extra_callback_info1) {
 0 .. 2: return {{.id}};
 return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
@@ -713,6 +721,7 @@ switch (FEAT_TRAINS, SELF, switch_{{.id}}_length, position_in_articulated_veh % 
 {{end}}
 }
 
+{{ if not .reuse_sprites }}
 {{ if ne .cargo_handling "Container" }}
     {{if .replace_last_wagon}}
         {{if gt $plen 8}}{{template "curve_switch_long" .replace_last_wagon }}{{else if gt $plen 4 }}{{template "curve_switch_medium" .replace_last_wagon }}{{else}}{{template "curve_switch_short" .replace_last_wagon }}{{end}}
@@ -769,11 +778,14 @@ switch (FEAT_TRAINS, SELF, switch_{{.id}}_length, position_in_articulated_veh % 
         return;
     }
 {{- end }}
+{{- end }}
 
 {{template "tare_speed_switch" . }}
 
 {{ if eq .cargo_handling "NGPassengers" -}}
     {{template "preserved_cargo_age_switch" . }}
+{{ else if eq .cargo_handling "Passengers" -}}
+    {{template "passenger_cargo_age_switch" . }}
 {{- end }}
 
 {{- if eq .default_cargo "DANDY"}}
@@ -800,7 +812,10 @@ vehicle_life:                 {{.vehicle_life}};
 {{- else }}
     default_cargo_type:           {{.default_cargo}};
 {{- end}}
-engine_class:                 ENGINE_CLASS_DIESEL; // needed for all wagons to show up in purchase menu
+{{- if eq .pax_special "buffet" }}
+    bitmask_vehicle_info:         bitmask(HAS_BUFFET_CAR);
+{{- end}}
+    engine_class:                 ENGINE_CLASS_DIESEL; // needed for all wagons to show up in purchase menu
 {{if eq .cargo_handling "Passengers" }}
     refittable_cargo_classes: bitmask(CC_PASSENGERS);
     cargo_allow_refit: [ YETI, YETY ];
@@ -833,21 +848,19 @@ engine_class:                 ENGINE_CLASS_DIESEL; // needed for all wagons to s
     refittable_cargo_classes: bitmask(CC_LIQUID);
     cargo_allow_refit: [ACID, CHLO];
 {{end}}
-
-{{ if ne .cargo_handling "NGPassengers" -}}
+{{ if or (eq .cargo_handling "Passengers") (eq .cargo_handling "NGPPassengers") -}}
+{{- else }}
 cargo_age_period:             ({{if .cargo_age_period -}}
             {{.cargo_age_period}}{{else}}185
         {{- end}} * cargo_age_multiplier) / 2;
-{{- else }}
-cargo_age_period:            {{.cargo_age_period}};
 {{end}}
 
 power:                        0 hp;
 {{if .speed}}speed:                        {{.speed}} mph;{{end}}
 reliability_decay:            20;
 {{if .loading_speed}}loading_speed:                {{.loading_speed}};{{end}}
-cost_factor:                  {{.cost}};
-running_cost_factor:          {{.running_cost}};
+{{if le $cost 255}}cost_factor:                  {{.cost}};{{end}}
+{{if le $running_cost 255}}running_cost_factor:          {{.running_cost}};{{end}}
 sprite_id:                    SPRITE_ID_NEW_TRAIN;
 misc_flags:                   bitmask(TRAIN_FLAG_2CC, TRAIN_FLAG_AUTOREFIT {{if $has_cargo_switch}}, TRAIN_FLAG_SPRITE_STACK{{end}});
 refit_cost:                   0;
@@ -855,20 +868,27 @@ track_type:                   {{.railtype}};
 running_cost_base:            RUNNING_COST_STEAM;
 cargo_capacity:               {{.capacity}} / 3;
 weight:                       {{.weight}} ton;
+{{- if .variant_group}}
+variant_group:                {{.variant_group}};
+extra_flags:                  bitmask(VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW, VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+{{- end}}
 }
 
 graphics {
-    {{ if eq .cargo_handling "NGPassengers" -}}
-        cargo_age_period: switch_{{.id}}_preserved_cargo_age;
-    {{- end }}
+{{ if eq .cargo_handling "NGPassengers" -}}
+    cargo_age_period: switch_{{.id}}_preserved_cargo_age;
+{{ else if eq .cargo_handling "Passengers" -}}
+    cargo_age_period: switch_{{.id}}_passenger_cargo_age;
+{{- end }}
+
 {{ if eq .cargo_handling "Container" }}
     cargo_capacity: return {{.capacity}} / 3;
     default:  switch_{{$id}}_graphics_container;
 {{ else if eq .cargo_handling "Van" }}
     cargo_capacity: return {{.capacity}} / 3;
-    default:  switch_{{.id}}_graphics;
+    default:  switch_{{$sprite}}_graphics;
 {{else}}
-    default:  switch_{{.id}}_graphics;
+    default:  switch_{{$sprite}}_graphics;
 {{end}}
 {{ if eq .cargo_handling "EarlyOpen" }}
     {{ range $index, $element := slice $early_liquids }}
@@ -897,9 +917,11 @@ additional_text: return {{.additional_text_string}};
 articulated_part: switch_{{.id}}_articulation;
 length: switch_{{.id}}_length;
 purchase:  spriteset_{{.id}}_purchase;
-purchase_cargo_capacity: spriteset_{{.id}};
+purchase_cargo_capacity: spriteset_{{$sprite}};
 {{if .speed}}purchase_speed: return ({{.speed}} * 8) / 5;{{end}}
 {{if eq .default_cargo "DANDY"}}bitmask_vehicle_info: switch_{{.id}}_dandy_wagon_behaviour;{{end}}
 {{if eq .cargo_handling "Brakevan"}}colour_mapping: switch_{{.id}}_colour_mapping;{{end}}
+{{if gt $cost 255}}cost_factor:                  return {{.cost}};{{end}}
+{{if gt $running_cost 255}}running_cost_factor:          return {{.running_cost}};{{end}}
 }
 }

@@ -82,6 +82,14 @@ to 4 tiles) with a parameter, but beware you will need
 some very large stations to handle a full 20-car
 Eurostar consist.
 
+## Buffet Cars
+
+Some of the carriages offer buffet/restaurant cars.
+These have a high running cost and small passenger
+capacity, but provide a bonus to long distance travel
+for the entire consist. This can be well worth using
+on long, busy routes.
+
 ## Unit Bonuses
 
 Some vehicles have bonuses or penalties which apply to
@@ -98,6 +106,80 @@ types of bonus:
 
 The brake van bonus can be useful early game when wagons
 are slow.
+
+Preservation Railways
+---------------------
+
+Preservation railways are a new feature for the Community
+Addon. In order to build a preservation railway, attach
+a carriage marked as having the "Preserve railway bonus"
+to an old locomotive.
+
+As locomotives get older, passengers will enjoy longer
+trips before the amount they pay for their journey reduces;
+people in the OpenTTD world are more interested in travelling
+behind a 100 year old locomotive than a 30-40 year old one.
+A longer preserved line with smaller and cheaper locomotives
+over a century old can be very profitable!
+
+Note that elderly mainline locomotives will be very expensive
+to run, even at the restricted speeds of a preservation
+railway. Long-lived narrow gauge locomotives may be an easier
+option, emulating the very first preserved railways.
+
+## Narrow Gauge
+
+The Community Addon features a new type of railway:
+narrow gauge. This will show up if you have a railtype set
+that includes the NGRL track type - as ever, Timberwolf's
+Tracks is recommended.
+
+Narrow gauge trains are smaller, slower and have lower
+capacities than their mainline counterparts. However they
+are also cheaper to buy and run, and exceptionally long
+lived. This makes them a good option for starting the
+game when funds are limited, or for servicing industries
+with low output.
+
+Due to their long life, narrow gauge locomotives are an
+excellent option for running preserved railways. 
+
+## Dandy Wagons
+
+Horse-drawn trains on narrow gauge railways can benefit
+from dandy wagons - these allow the horse to ride in a
+wagon when travelling downhill and gravity to take over,
+resulting in much higher speeds.
+
+Each dandy wagon can carry two ponies. You will need to
+build enough dandy wagons for all of your horses to benefit
+from them. When a train has sufficient dandy wagons the
+colour of horses will change as an indication. (And not
+just because the set needs to do so in order to make
+horse colours consistent between when the horses are
+in or out of a wagon).
+
+Such gravity railways are a highly viable option early on
+in the game, if you can find suitably located industries.
+
+## Fictional Vehicles
+
+British Railways had a complex and often difficult history,
+especially in the 1960s when some considered the railways
+to be a historical irrelevance and that road transport was
+to be the future.
+
+This means that BR either did not continue to develop or
+abandoned some forms of cargo transport entirely, even
+where a keen OpenTTD player might consider that a matter
+for the railway to handle.
+
+To enable this style of gameplay, a small number of extra
+vehicles representing plausible "what-if?" scenarios are
+included with this set. These are noted in the description
+whan purchasing, but if you prefer the challenge of working
+out what to do with cargo that BR stopped transporting in
+the mid 20th century, they can be disabled via parameter.
 
 ## Symbols
 

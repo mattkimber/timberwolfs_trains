@@ -1,3 +1,9 @@
+v1.2.3
+------
+
+BR carriages now offered in multiple variants
+Added parameter to hide hypothetical vehicles
+
 v1.2.2
 ------
 

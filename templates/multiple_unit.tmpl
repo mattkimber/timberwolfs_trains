@@ -293,7 +293,10 @@ item(FEAT_TRAINS, {{.id}}, {{.numeric_id}}) {
         default_cargo_type:           {{.default_cargo}};
         {{end}}{{end}}
         weight:                       {{.weight}} ton;
-        
+        {{- if .variant_group}}
+        variant_group:                {{.variant_group}};
+        extra_flags:                  bitmask(VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW, VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+        {{- end}}
     }
 
     graphics {

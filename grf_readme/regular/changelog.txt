@@ -1,3 +1,11 @@
+v1.7.5
+------
+
+BR carriages now offered in multiple variants
+Added parameter to hide fictional vehicles
+Small capacity boost to Mk1/Mk2 TSO
+Fix incorrect flavour text for (fictional) Mk2 BG
+
 v1.7.4
 ------
 

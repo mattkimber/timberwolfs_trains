@@ -1,0 +1,7 @@
+{{define "passenger_cargo_age_switch" -}}
+
+switch (FEAT_TRAINS, PARENT, switch_{{.id}}_passenger_cargo_age, hasbit(bitmask_consist_info, HAS_BUFFET_CAR)) {
+    1: return ({{if .cargo_age_period -}}{{.cargo_age_period}}{{else}}185{{- end}} * cargo_age_multiplier * 5) / 8;
+    return ({{if .cargo_age_period -}}{{.cargo_age_period}}{{else}}185{{- end}} * cargo_age_multiplier) / 2;
+}
+{{- end}}

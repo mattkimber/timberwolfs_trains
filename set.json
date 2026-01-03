@@ -2,7 +2,7 @@
     "grf": {
         "author_id": "TWF",
         "grf_id": 7,
-        "name": "Timberwolf's UK Trains 1.7.4",
+        "name": "Timberwolf's UK Trains 1.7.5",
         "description": "A maximalist UK train set including vehicles from 1800-2020. Features 2cc colours, long vehicle scale, 2x zoom and extra rotation sprites.",
         "min_compat_version": 1,
         "filename": "timberwolfs_trains.nml",
@@ -65,12 +65,19 @@
             {
                 "id": "slower_cargo_aging",
                 "name": "Cargo decay time",
-                "desc": "When using extreme sized maps with slow economy speeds (e.g. in JGRPP) the default cargo payment algorithm does not scale well to long train routes. This parameter allows slowing down cargo payment decay to allow more satisfying gameplay on extreme map sizes. {SILVER}Note:{BLACK} will make the game significantly easier - you may wish to increase running costs to compensate.",
+                "desc": "When using extreme sized maps with slow economy speeds (e.g. in JGRPP) the default cargo payment algorithm does not scale well to long train routes. This parameter allows slowing down cargo payment decay to allow more satisfying gameplay on extreme map sizes.{}{}{SILVER}Note:{BLACK} will make the game significantly easier - you may wish to increase running costs to compensate.",
                 "type": "int",
                 "min_value": 0,
                 "max_value": 4,
                 "default_value": 0,
                 "value_names": [ "Normal (1x)", "Savage {RED}(0.5x)", "Relaxed (2x)", "Casual (3x)", "Silly (4x)" ]
+            },
+            {
+                "id": "no_gameplay_units",
+                "name": "Disable extra gameplay vehicles",
+                "desc": "The 1960s rationalisation of BR resulted in a number of sectors abandoned to road transport. Since players may wish to explore the possibilities had BR continued to provide these types of traffic, a number of plausible fictional vehicles are included in this set. For extra realism, these can be turned off with this flag.",
+                "type": "bool",
+                "default_value": 0
             }
         ]
     },
@@ -100,7 +107,8 @@
             "nested/power_car_check",
             "nested/tare_speed_switch",
             "nested/visual_effect_power",
-            "nested/preserved_cargo_age_switch"
+            "nested/preserved_cargo_age_switch",
+            "nested/passenger_cargo_age_switch"
         ]
     },
     "static_templates": [
@@ -131,7 +139,8 @@
     ],
     "fixed_strings": {
         "str_mu_cannot_attach": "Multiple units can only be coupled to another multiple unit of the same (or compatible) type.",
-        "str_needs_second_power_car": "This consist needs a second power car of the same type. Buy one from the purchase menu and attach it to the end of the train."
+        "str_needs_second_power_car": "This consist needs a second power car of the same type. Buy one from the purchase menu and attach it to the end of the train.",
+        "str_first_class_cannot_attach": "No more than 50% of a train may be first class carriages."
     },
     "cargo_table": [        
         "ACID",

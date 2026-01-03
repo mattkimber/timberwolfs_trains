@@ -96,6 +96,15 @@ to 4 tiles) with a parameter, but beware you will need
 some very large stations to handle a full 20-car
 Eurostar consist.
 
+Buffet Cars
+-----------
+
+Some of the carriages offer buffet/restaurant cars.
+These have a high running cost and small passenger
+capacity, but provide a bonus to long distance travel
+for the entire consist. This can be well worth using
+on long, busy routes.
+
 Unit Bonuses
 ------------
 
@@ -113,6 +122,26 @@ types of bonus:
 
 The brake van bonus can be useful early game when wagons
 are slow.
+
+Fictional Vehicles
+------------------
+
+British Railways had a complex and often difficult history,
+especially in the 1960s when some considered the railways
+to be a historical irrelevance and that road transport was
+to be the future.
+
+This means that BR either did not continue to develop or
+abandoned some forms of cargo transport entirely, even
+where a keen OpenTTD player might consider that a matter
+for the railway to handle.
+
+To enable this style of gameplay, a small number of extra
+vehicles representing plausible "what-if?" scenarios are
+included with this set. These are noted in the description
+whan purchasing, but if you prefer the challenge of working
+out what to do with cargo that BR stopped transporting in
+the mid 20th century, they can be disabled via parameter.
 
 Symbols
 -------

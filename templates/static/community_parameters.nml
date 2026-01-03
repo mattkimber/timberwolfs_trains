@@ -14,3 +14,5 @@ param_run_cost_penalty = param["TWF\07",3];
 // param_graffiti = param["TWF\07", 4];
 
 param_slower_cargo_aging = param["TWF\07", 6];
+
+param_no_gameplay_units = param["TWF\07", 7];
