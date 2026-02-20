@@ -22,7 +22,7 @@ traininfo_y_offset=4;
      PR_RUNNING_TRAIN_DIESEL: param_running_costs;    // Train running costs
  }
 
-HAS_BRAKE_VAN = 1;
-HAS_DANDY_WAGON = 2;
-HAS_BUFFET_CAR = 3;
+const HAS_BRAKE_VAN = 1;
+const HAS_DANDY_WAGON = 2;
+const HAS_BUFFET_CAR = 3;
 
