@@ -8,7 +8,11 @@
       "dual_power/abb_class_325_power.vox",
       "dual_power/eurostar.vox",
       "dual_power/class_710_aventra_power.vox",
-      "dual_power/class_700_city_power.vox"
+      "dual_power/class_700_city_power.vox",
+      "dual_power/stadler_class_398_mid.vox",
+      "dual_power/stadler_class_93.vox",
+      "dual_power/stadler_class_99.vox",
+      "dual_power/stadler_class_99_caledonian.vox"
     ],
     "operations": [
       {

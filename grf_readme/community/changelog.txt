@@ -1,3 +1,24 @@
+v1.2.8
+------
+
+More locomotives and multiple units
+
+v1.2.7
+------
+
+Add more 1950s/1960s BR diesel railcar units
+Extend Precedent family, more accurate top speeds
+Add GWR Duke/Bulldog classes
+Added Class 15/Class 16 early diesels
+DBSO/Mk5 DVT now use OpenTTD 16 reversing logic
+Improved vehicle effect locations
+
+v1.2.6
+------
+
+Add class 398
+Correct introduction date of GWR Star
+
 v1.2.4
 ------
 

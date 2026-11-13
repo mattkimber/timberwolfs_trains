@@ -151,13 +151,13 @@ indicate certain vehicle behaviours:
 
 * x1...x20: this is a multiple unit, with the specified
             number of cars.
-* <> (green): this vehicle will reverse when placed at
-              the end of a train, or can be coupled
+* <> (green): this vehicle will act as a cab when placed 
+              at the end of a train, or can be coupled
               nose to nose when doubled headed. A
               second power car is not required.
-* <> (orange): this vehicle will reverse when placed at
-               the end of a train. A second power car is
-               required. (i.e. you must purchase at
+* <> (orange): this vehicle will act as a cab when placed 
+               at the end of a train. A second power car 
+               is required. (i.e. you must purchase at
                least two and place them in the same
                consist)
 

@@ -224,23 +224,23 @@ switch (FEAT_TRAINS, SELF, switch_{{.id}}_graphics, position_in_articulated_veh 
     return spriteset_invisible;
 }
 
-{{else if .double_headed -}}
+{{else if or (.double_headed) (.dvt) -}}
 switch (FEAT_TRAINS, SELF, switch_{{.id}}_fwd_graphics, position_in_articulated_veh % 3) 
 {
-    1: switch_{{.id}}_curve;
+    1: switch_{{$sprite}}_curve;
     {{ if gt $plen 8}}
-    0: switch_{{.id}}_curve_front;
-    2: switch_{{.id}}_curve_rear;
+    0: switch_{{$sprite}}_curve_front;
+    2: switch_{{$sprite}}_curve_rear;
     {{ end }}
     return spriteset_invisible;
 }
 
 switch (FEAT_TRAINS, SELF, switch_{{.id}}_rev_graphics, position_in_articulated_veh % 3) 
 {
-    1: switch_{{.id}}_rev_curve;
+    1: switch_{{$sprite}}_rev_curve;
     {{ if gt $plen 8}}
-    0: switch_{{.id}}_rev_curve_front;
-    2: switch_{{.id}}_rev_curve_rear;
+    0: switch_{{$sprite}}_rev_curve_front;
+    2: switch_{{$sprite}}_rev_curve_rear;
     {{ end }}
     return spriteset_invisible;
 }
@@ -356,7 +356,10 @@ item(FEAT_TRAINS, {{.id}}, {{.numeric_id}}) {
         default_cargo_type:           {{.default_cargo}};
         {{end}}{{end}}
         weight:                       {{.weight}} {{if .tender_weight}} + {{.tender_weight}} {{end}} ton;
-        
+        {{- if .variant_group}}
+        variant_group:                {{.variant_group}};
+        extra_flags:                  bitmask(VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW, VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
+        {{- end}}    
     }
 
         graphics {    
