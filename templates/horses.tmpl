@@ -70,10 +70,16 @@ switch (FEAT_TRAINS, SELF, switch_{{.id}}_animation, motion_counter % 4)
     3: switch_{{$sprite}}_4_curve;
 }
 
-switch (FEAT_TRAINS, PARENT, switch_{{.id}}_speed, current_speed > 8 && hasbit(bitmask_consist_info, HAS_DANDY_WAGON) ? 1 : 0) 
+switch (FEAT_TRAINS, PARENT, switch_{{.id}}_dandy_wagon,hasbit(bitmask_consist_info, HAS_DANDY_WAGON)) 
 {
     1: return spriteset_invisible;
     switch_{{.id}}_animation;
+}
+
+switch (FEAT_TRAINS, PARENT, switch_{{.id}}_speed, current_speed) 
+{
+    0..8: switch_{{.id}}_animation;
+    switch_{{.id}}_dandy_wagon;
 }
 
 switch (FEAT_TRAINS, SELF, switch_{{.id}}_graphics, position_in_articulated_veh % 3) 

@@ -2,6 +2,7 @@ v1.2.8
 ------
 
 More locomotives and multiple units
+Fix short-lived models becoming unavailable too quickly
 
 v1.2.7
 ------
