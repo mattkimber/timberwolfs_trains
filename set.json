@@ -105,7 +105,6 @@
             "nested/pantograph_switch",
             "nested/pantograph_graphics",
             "nested/attach_mu_switch",
-            "nested/power_car_check",
             "nested/running_cost_cb",
             "nested/visual_effect_power"
         ]

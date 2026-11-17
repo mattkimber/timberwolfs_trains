@@ -921,12 +921,6 @@ weight:                       {{.weight}} ton;
 variant_group:                {{.variant_group}};
 extra_flags:                  bitmask(VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW, VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
 {{- end}}
-
-{{if .badges}}
-    badges: [
-    {{- range $index, $element := slice .badges -}}
-    {{if $element}}{{if $index}}, {{end}}"{{ $element }}"{{end}}{{end}}];
-{{end}}
 }
 
 graphics {

@@ -140,12 +140,6 @@ item(FEAT_TRAINS, {{.id}}, {{.numeric_id}}) {
         weight:                       {{.weight}} ton;
 
         cargo_capacity:               0;
-
-        {{if .badges}}
-            badges: [
-            {{- range $index, $element := slice .badges -}}
-            {{if $element}}{{if $index}}, {{end}}"{{ $element }}"{{end}}{{end}}];
-        {{end}}
     }
 
     graphics {
