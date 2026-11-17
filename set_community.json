@@ -2,7 +2,7 @@
     "grf": {
         "author_id": "TWF",
         "grf_id": 12,
-        "name": "Timberwolf's UK Trains Community Addon 1.2.9",
+        "name": "Timberwolf's UK Trains Community Addon 1.3.0",
         "description": "Community addon for Timberwolf's UK Trains, including trains and wagons requested by the community. Features 2cc colours, long vehicle scale, 2x zoom and extra rotation sprites.",
         "min_compat_version": 1,
         "filename": "timberwolfs_community_addon.nml",
@@ -22,6 +22,7 @@
             "nested/cargo_curve_switch_long",
             "nested/curve_switch_long",
             "nested/curve_switch_long_weathered",
+            "nested/curve_switch_long_weathered_inner",
             "nested/cargo_curve_switch_medium",
             "nested/curve_switch_medium",
             "nested/curve_switch_medium_weathered",
@@ -30,13 +31,10 @@
             "nested/curve_switch_short_weathered",
             "nested/pantograph_switch",
             "nested/pantograph_graphics",
-            "nested/running_cost_switch",
             "nested/attach_mu_switch",
             "nested/power_car_check",
-            "nested/tare_speed_switch",
-            "nested/visual_effect_power",
-            "nested/preserved_cargo_age_switch",
-            "nested/passenger_cargo_age_switch"
+            "nested/running_cost_cb",
+            "nested/visual_effect_power"
         ]
     },
     "static_templates": [
@@ -59,7 +57,13 @@
             "template":  "templates/static/recolour.nml"
         },
         {
-            "template": "templates/static/procedures_addon.nml"
+            "template": "templates/static/procedures.nml"
+        },
+        {
+            "template": "templates/static/procedures_community.nml"
+        },
+        {
+            "template": "templates/static/procedures_sprites.nml"
         },
         {
             "template": "templates/static/sprite_templates_hills.nml"

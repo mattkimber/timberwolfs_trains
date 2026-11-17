@@ -1,0 +1,14 @@
+switch (FEAT_TRAINS, SELF, switch_dandy_wagon_mapping, recolour_horses + ((get_parent_random_bits() + ((position_in_vehid_chain / 3) * (get_parent_random_bits() % 25))) % 25)) {
+    return;
+}
+
+switch (FEAT_TRAINS, PARENT, procedure_preserved_cargo_age, cargo_age_period, age_in_days) {
+    0..9125: return (cargo_age_period * cargo_age_multiplier) / 2;
+    9126..73000: return ((cargo_age_period * (age_in_days / 365)) * cargo_age_multiplier) / 50;
+    return cargo_age_period * cargo_age_multiplier * 4;
+}
+
+switch (FEAT_TRAINS, PARENT, procedure_speed_dandy_wagon, speed, hasbit(bitmask_consist_info, HAS_DANDY_WAGON)) {
+    1: return 72;
+    return (speed * 8) / 5;
+}

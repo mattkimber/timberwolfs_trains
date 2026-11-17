@@ -2,8 +2,12 @@
 {{$template := concat "template_auto_" .ttd_len -}}
 {{$plen := parseint .ttd_len -}}
 
-spriteset(spriteset_{{.id}}_purchase, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "4x/{{.id}}_purchase.png")
-{ template_purchase_4x() }
+spriteset(spriteset_{{.id}}_purchase, "1x/{{.id}}_purchase.png")
+{ template_purchase_1x() }
+
+alternative_sprites(spriteset_{{.id}}_purchase, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/{{.id}}_purchase.png")
+{ template_purchase_2x() }
+
 
 {{ $ani := concat .id "_1" }}{{ altsprites8 $ani $template $zoom }}
 {{$template_turn := concat "template_auto_turn_1_" .ttd_len -}}{{ altsprites8n $ani $template_turn $zoom "_turn_1" }}
@@ -135,6 +139,8 @@ item(FEAT_TRAINS, {{.id}}, {{.numeric_id}}) {
 
         weight:                       {{.weight}} ton;
 
+        cargo_capacity:               0;
+
         {{if .badges}}
             badges: [
             {{- range $index, $element := slice .badges -}}
@@ -154,7 +160,7 @@ item(FEAT_TRAINS, {{.id}}, {{.numeric_id}}) {
         purchase_colour_mapping: return recolour_horses;
         sound_effect: switch_horse_sound_fx;
         {{- if eq .railtype "NARROW_GAUGE"}}
-        speed: procedure_speed_brakevan_ng({{.speed}});
+        speed: procedure_speed_dandy_wagon({{.speed}});
         purchase_speed: return {{.kmhish_speed}};
         {{end -}}
     }

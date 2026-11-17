@@ -1,87 +1,11 @@
 switch (FEAT_TRAINS, PARENT, get_parent_random_bits, random_bits) { return; }
 
-switch (FEAT_TRAINS, PARENT, get_parent_age_proportion, age_in_days / (max_age_in_days / 10)) { return; }
-
 switch (FEAT_TRAINS, PARENT, parent_has_dandy_wagon, hasbit(bitmask_consist_info, HAS_DANDY_WAGON)) { return; }
 
 switch (FEAT_TRAINS, SELF, switch_horse_colour_mapping, recolour_horses + ((parent_has_dandy_wagon() ? get_parent_random_bits() + ((position_in_vehid_chain / 6) * ((get_parent_random_bits() % 25) + 1)) : random_bits) % 25)) {
     return;
 }
 
-switch (FEAT_TRAINS, SELF, switch_dandy_wagon_mapping, recolour_horses + ((get_parent_random_bits() + ((position_in_vehid_chain / 3) * (get_parent_random_bits() % 25))) % 25)) {
-    return;
-}
-
-switch (FEAT_TRAINS, SELF, switch_container_random_colour, recolour_container + (random_bits % 8)) {
-    return;
-}
-
-switch (FEAT_TRAINS, BACKWARD_SELF(1), switch_container_random_colour_front, recolour_container + (random_bits % 8)) {
-    return;
-}
-
-switch (FEAT_TRAINS, FORWARD_SELF(1), switch_container_random_colour_rear, recolour_container + (random_bits % 8)) {
-    return;
-}
-
-concept_trains = param_concept_trains;
-
-random_switch (FEAT_TRAINS, SELF, random_16) {
-    1: return 0;
-    1: return 1;
-    1: return 2;
-    1: return 3;
-    1: return 4;
-    1: return 5;
-    1: return 6;
-    1: return 7;
-    1: return 8;
-    1: return 9;
-    1: return 10;
-    1: return 15;
-    1: return 23;
-    1: return 31;
-    1: return 63;
-    1: return 127;
-}
-
-random_switch (FEAT_TRAINS, FORWARD_SELF(1), random_16_forward) {
-    1: return 0;
-    1: return 1;
-    1: return 2;
-    1: return 3;
-    1: return 4;
-    1: return 5;
-    1: return 6;
-    1: return 7;
-    1: return 8;
-    1: return 9;
-    1: return 10;
-    1: return 15;
-    1: return 23;
-    1: return 31;
-    1: return 63;
-    1: return 127;
-}
-
-random_switch (FEAT_TRAINS, BACKWARD_SELF(1), random_16_backward) {
-    1: return 0;
-    1: return 1;
-    1: return 2;
-    1: return 3;
-    1: return 4;
-    1: return 5;
-    1: return 6;
-    1: return 7;
-    1: return 8;
-    1: return 9;
-    1: return 10;
-    1: return 15;
-    1: return 23;
-    1: return 31;
-    1: return 63;
-    1: return 127;
-}
 
 // 0 = 2
 // 1 = 1
@@ -94,12 +18,6 @@ cargo_age_multiplier = param_slower_cargo_aging == 0 ? 2 :
 switch (FEAT_TRAINS, PARENT, procedure_passenger_cargo_age, cargo_age_period, hasbit(bitmask_consist_info, HAS_BUFFET_CAR)) {
     1: return (cargo_age_period * cargo_age_multiplier * 5) / 8;
     return (cargo_age_period * cargo_age_multiplier) / 2;
-}
-
-switch (FEAT_TRAINS, PARENT, procedure_preserved_cargo_age, cargo_age_period, age_in_days) {
-    0..9125: return (cargo_age_period * cargo_age_multiplier) / 2;
-    9126..73000: return ((cargo_age_period * (age_in_days / 365)) * cargo_age_multiplier) / 50;
-    return cargo_age_period * cargo_age_multiplier * 4;
 }
 
 // Lower running cost ramp up for early vehicles
@@ -145,11 +63,6 @@ switch (FEAT_TRAINS, PARENT, procedure_preserved_cargo_age, cargo_age_period, ag
     );
  }
 
-switch (FEAT_TRAINS, PARENT, procedure_speed_brakevan_ng, speed, hasbit(bitmask_consist_info, HAS_DANDY_WAGON)) {
-    1: return 72;
-    return (speed * 8) / 5;
-}
-
 switch (FEAT_TRAINS, PARENT, procedure_speed_brakevan, speed, hasbit(bitmask_consist_info, HAS_BRAKE_VAN)) {
     1: return ((speed + 5) * 8) / 5;
     return (speed * 8) / 5;
@@ -194,8 +107,3 @@ switch (FEAT_TRAINS, SELF, procedure_loco_tender_length, a, b, c, d, e, f, posit
     4: return e;
     5: return f;
 }
-
- switch(FEAT_TRAINS, SELF, procedure_inhibit_lead, position_in_consist) {
-    0:  return string(STR_CANNOT_LEAD);
-    return CB_RESULT_NO_TEXT;
- }

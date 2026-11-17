@@ -3,8 +3,11 @@
 {{$plen := parseint .ttd_len -}}
 {{$speed := parseint .speed -}}
 
-spriteset(spriteset_{{.id}}_purchase, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "4x/{{.id}}_purchase.png")
-{ template_purchase_4x() }
+spriteset(spriteset_{{.id}}_purchase, "1x/{{.id}}_purchase.png")
+{ template_purchase_1x() }
+
+alternative_sprites(spriteset_{{.id}}_purchase, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/{{.id}}_purchase.png")
+{ template_purchase_2x() }
 
 {{if eq .globals.bpp "32"}}{{ altsprites .id $template $zoom }}{{else}}{{ altsprites8 .id $template $zoom }}{{end}}
 
@@ -153,6 +156,8 @@ item(FEAT_TRAINS, {{.id}}, {{.numeric_id}}) {
         air_drag_coefficient:         0.1;
 
         weight:                       {{.weight}} ton;
+
+        cargo_capacity:               0;
 
         {{if .badges}}
             badges: [

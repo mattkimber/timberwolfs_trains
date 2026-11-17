@@ -39,7 +39,7 @@ ls intermediate/*.vox | xargs ../gorender/renderobject.exe -8 -m files/manifest_
 echo ""
 echo "Rendering hill sprites"
 
-ls intermediate/hills/* .vox | xargs ../gorender/renderobject.exe -8 -m files/manifest_hill.json -p -r -s 2,1 -u 
+ls intermediate/hills/*.vox | xargs ../gorender/renderobject.exe -8 -m files/manifest_hill.json -p -r -s 2,1 -u 
 
 
 echo ""

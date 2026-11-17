@@ -70,7 +70,7 @@ CC/Attributions
 ---------------
 
 Voxel models and tooling: Matt Kimber / Timberwolf
-Pikka's finescale tracks compatibility: Will Marshall
+Many, many code fixes and improvements: Will Marshall
 Class 398 based on a model by Eggs Hertzog
 
 

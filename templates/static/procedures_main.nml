@@ -1,0 +1,66 @@
+
+
+switch (FEAT_TRAINS, PARENT, get_parent_age_proportion, age_in_days / (max_age_in_days / 10)) { return; }
+
+switch(FEAT_TRAINS, SELF, procedure_power_car_check, vehicle_id, count_veh_id(vehicle_id)) {
+    // Articulated units are counted independently
+    0..3:  return string(STR_NEEDS_SECOND_POWER_CAR);
+    return CB_RESULT_NO_TEXT;
+}
+
+random_switch (FEAT_TRAINS, SELF, random_16) {
+    1: return 0;
+    1: return 1;
+    1: return 2;
+    1: return 3;
+    1: return 4;
+    1: return 5;
+    1: return 6;
+    1: return 7;
+    1: return 8;
+    1: return 9;
+    1: return 10;
+    1: return 15;
+    1: return 23;
+    1: return 31;
+    1: return 63;
+    1: return 127;
+}
+
+random_switch (FEAT_TRAINS, FORWARD_SELF(1), random_16_forward) {
+    1: return 0;
+    1: return 1;
+    1: return 2;
+    1: return 3;
+    1: return 4;
+    1: return 5;
+    1: return 6;
+    1: return 7;
+    1: return 8;
+    1: return 9;
+    1: return 10;
+    1: return 15;
+    1: return 23;
+    1: return 31;
+    1: return 63;
+    1: return 127;
+}
+
+random_switch (FEAT_TRAINS, BACKWARD_SELF(1), random_16_backward) {
+    1: return 0;
+    1: return 1;
+    1: return 2;
+    1: return 3;
+    1: return 4;
+    1: return 5;
+    1: return 6;
+    1: return 7;
+    1: return 8;
+    1: return 9;
+    1: return 10;
+    1: return 15;
+    1: return 23;
+    1: return 31;
+    1: return 63;
+    1: return 127;
+}

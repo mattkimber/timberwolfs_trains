@@ -2,7 +2,7 @@
     "grf": {
         "author_id": "TWF",
         "grf_id": 7,
-        "name": "Timberwolf's UK Trains 1.7.10",
+        "name": "Timberwolf's UK Trains 1.8.0",
         "description": "A maximalist UK train set including vehicles from 1800-2020. Features 2cc colours, long vehicle scale, 2x zoom and extra rotation sprites.",
         "min_compat_version": 1,
         "filename": "timberwolfs_trains.nml",
@@ -104,13 +104,10 @@
             "nested/curve_switch_short_weathered",
             "nested/pantograph_switch",
             "nested/pantograph_graphics",
-            "nested/running_cost_switch",
             "nested/attach_mu_switch",
             "nested/power_car_check",
-            "nested/tare_speed_switch",
-            "nested/visual_effect_power",
-            "nested/preserved_cargo_age_switch",
-            "nested/passenger_cargo_age_switch"
+            "nested/running_cost_cb",
+            "nested/visual_effect_power"
         ]
     },
     "static_templates": [
@@ -130,7 +127,13 @@
             "template":  "templates/static/recolour.nml"
         },
         {
+            "template":  "templates/static/recolour_main.nml"
+        },
+        {
             "template": "templates/static/procedures.nml"
+        },
+        {
+            "template": "templates/static/procedures_main.nml"
         },
         {
             "template": "templates/static/procedures_sprites.nml"

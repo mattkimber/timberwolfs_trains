@@ -9,8 +9,11 @@
 {{- $len := .ttd_len -}}{{- $plen := parseint .ttd_len -}}{{- $bpp := .globals.bpp -}}
 {{$speed := parseint .speed -}}
 
-spriteset(spriteset_{{.id}}_purchase, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "4x/{{.id}}_purchase.png")
-{ template_purchase_4x() }
+spriteset(spriteset_{{.id}}_purchase, "1x/{{.id}}_purchase.png")
+{ template_purchase_1x() }
+
+alternative_sprites(spriteset_{{.id}}_purchase, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/{{.id}}_purchase.png")
+{ template_purchase_2x() }
 
 {{- range $index, $element := $layout -}}
 {{- $newsprite := index $newsprites $index -}}
@@ -164,7 +167,10 @@ switch (FEAT_TRAINS, SELF, switch_{{.id}}_length, position_in_articulated_veh % 
         }
     {{end}}
 
-    switch(FEAT_TRAINS, SELF, switch_{{$element}}_animation_overlay, getbits(extra_callback_info1, 8, 8)) {
+    switch(FEAT_TRAINS, SELF, switch_{{$element}}_animation_overlay, [
+        STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 1 ? CB_FLAG_MORE_SPRITES : 0) | PALETTE_USE_DEFAULT, 0x100),
+        getbits(extra_callback_info1, 8, 8)
+        ]) {
         0: switch_{{$element}}_curve;
         1: switch_{{$element}}_animation;
 
@@ -189,20 +195,8 @@ switch (FEAT_TRAINS, SELF, switch_{{.id}}_length, position_in_articulated_veh % 
             return spriteset_invisible;
         }
         {{end -}}
-    {{end -}}
-{{end}}
-{{end}}
 
-switch(FEAT_TRAINS, SELF, switch_{{$element}}_animation_overlay, [
-    STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 1 ? CB_FLAG_MORE_SPRITES : 0) | PALETTE_USE_DEFAULT, 0x100),
-    getbits(extra_callback_info1, 8, 8)
-    ]) {
-    0: switch_{{$element}}_curve;
-    1: switch_{{$element}}_animation;
 
-    // This should never be executed
-    return spriteset_invisible;
-}
 
 {{ if gt $plen 8}}
 switch(FEAT_TRAINS, SELF, switch_{{$element}}_animation_overlay_front, [

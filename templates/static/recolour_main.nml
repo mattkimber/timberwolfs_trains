@@ -1,0 +1,7 @@
+
+
+switch (FEAT_TRAINS, SELF, procedure_brakevan_colour_mapping, param_brake_van_no_recolour ? -1 : recolour_brakevan + (random_bits % 8)) {
+    -1: return base_sprite_2cc + CB_RESULT_COLOUR_MAPPING_ADD_CC;
+    return;
+}
+
