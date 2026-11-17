@@ -4,7 +4,6 @@ template template_invisible() {
 }
 
 // Invisible sprites for articulated vehicles
-spriteset (spriteset_invisible, "files/transparent.png" ) { 
-    template_invisible() 
+spriteset (spriteset_invisible, "files/transparent.png" ) {
+    template_invisible()
 }
-

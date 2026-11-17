@@ -42,6 +42,38 @@
         "mask_original": true,
         "n": 0,        
         "file": "horse/horse_4.vox"
+      },
+      {
+        "name": "_anim_1_r",
+        "type": "repeat",
+        "truncate": true,
+        "mask_original": true,
+        "n": 0,
+        "file": "horse/horse_1_r.vox"
+      },
+      {
+        "name": "_anim_2_r",
+        "type": "repeat",
+        "truncate": true,
+        "mask_original": true,
+        "n": 0,
+        "file": "horse/horse_2_r.vox"
+      },
+      {
+        "name": "_anim_3_r",
+        "type": "repeat",
+        "truncate": true,
+        "mask_original": true,
+        "n": 0,
+        "file": "horse/horse_3_r.vox"
+      },
+      {
+        "name": "_anim_4_r",
+        "type": "repeat",
+        "truncate": true,
+        "mask_original": true,
+        "n": 0,
+        "file": "horse/horse_4_r.vox"
       }
     ]
 }

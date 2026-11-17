@@ -1,0 +1,173 @@
+
+const TWF_SPRITE_NONE = 0;
+const TWF_SPRITE_NORMAL = 1;
+const TWF_SPRITE_TURN_1 = 2;
+const TWF_SPRITE_TURN_2 = 3;
+const TWF_SPRITE_UP = 4;
+const TWF_SPRITE_DOWN = 5;
+const TWF_SECTION_FRONT = 6;
+const TWF_SECTION_MID = 7;
+const TWF_SECTION_REAR = 8;
+
+switch (FEAT_TRAINS, SELF, procedure_height_fwd_short, getbits(extra_callback_info1, 0, 8) == 0 ? other_veh_z_offset(-1) + other_veh_z_offset(1) : 0) {
+    -128..-1: return TWF_SPRITE_DOWN;
+    1..127: return TWF_SPRITE_UP;
+    return TWF_SPRITE_NORMAL;
+}
+
+switch (FEAT_TRAINS, SELF, procedure_height_rev_short, getbits(extra_callback_info1, 0, 8) == 0 ? other_veh_z_offset(-1) + other_veh_z_offset(1) : 0) {
+    -128..-1: return TWF_SPRITE_UP;
+    1..127: return TWF_SPRITE_DOWN;
+    return TWF_SPRITE_NORMAL;
+}
+
+switch (FEAT_TRAINS, SELF, procedure_height_short, vehicle_is_flipped) {
+    0: procedure_height_fwd_short;
+    1: procedure_height_rev_short;
+}
+
+switch (FEAT_TRAINS, SELF, procedure_curve_short, getbits(extra_callback_info1, 0, 8) == 0 ? curv_info : 0)  {
+    vehicle_curv_info(1, 0): return TWF_SPRITE_TURN_1;
+    vehicle_curv_info(0, 1): return TWF_SPRITE_TURN_2;
+
+    vehicle_curv_info(-1, 0): return TWF_SPRITE_TURN_2;
+    vehicle_curv_info(0, -1): return TWF_SPRITE_TURN_1;
+
+    procedure_height_short;
+}
+
+switch (FEAT_TRAINS, SELF, procedure_height_fwd_medium, getbits(extra_callback_info1, 0, 8) == 0 ? other_veh_z_offset(-1) : 0) {
+    -128..-1: return TWF_SPRITE_DOWN;
+    1..127: return TWF_SPRITE_UP;
+    return TWF_SPRITE_NORMAL;
+}
+
+switch (FEAT_TRAINS, SELF, procedure_height_rev_medium, getbits(extra_callback_info1, 0, 8) == 0 ? other_veh_z_offset(1) : 0) {
+    -128..-1: return TWF_SPRITE_UP;
+    1..127: return TWF_SPRITE_DOWN;
+    return TWF_SPRITE_NORMAL;
+}
+
+switch (FEAT_TRAINS, SELF, procedure_height_medium, vehicle_is_flipped)  {
+    0: procedure_height_fwd_medium;
+    1: procedure_height_rev_medium;
+}
+
+switch (FEAT_TRAINS, SELF, procedure_curve_medium, getbits(extra_callback_info1, 0, 8) == 0 ? curv_info : 0)  {
+    vehicle_curv_info(1, 0): return TWF_SPRITE_TURN_1;
+    vehicle_curv_info(0, 1): return TWF_SPRITE_TURN_2;
+
+    vehicle_curv_info(-1, 0): return TWF_SPRITE_TURN_2;
+    vehicle_curv_info(0, -1): return TWF_SPRITE_TURN_1;
+
+    procedure_height_medium;
+}
+
+// Cresting hills is a special case where the full flat sprite should be used, and
+// not the 3-part set
+switch (FEAT_TRAINS, SELF, procedure_crest_check_fwd_long, getbits(extra_callback_info1, 0, 8) == 0 ? other_veh_z_offset(1) : 0) {
+    0: return TWF_SECTION_MID;
+    return TWF_SPRITE_NORMAL;
+}
+
+switch (FEAT_TRAINS, SELF, procedure_height_fwd_long, getbits(extra_callback_info1, 0, 8) == 0 ? other_veh_z_offset(-1) : 0) {
+    -128..-1: return TWF_SPRITE_DOWN;
+    1..127: return TWF_SPRITE_UP;
+
+    // Long vehicle, use the 3-sprite layout
+    procedure_crest_check_fwd_long;
+}
+
+switch (FEAT_TRAINS, SELF, procedure_curve_fwd_long, getbits(extra_callback_info1, 0, 8) == 0 && other_veh_is_hidden(-1) != 1 ? curv_info : 0)  {
+    vehicle_curv_info(1, 0): return TWF_SPRITE_TURN_1;
+    vehicle_curv_info(0, 1): return TWF_SPRITE_TURN_2;
+
+    vehicle_curv_info(-1, 0): return TWF_SPRITE_TURN_2;
+    vehicle_curv_info(0, -1): return TWF_SPRITE_TURN_1;
+
+    vehicle_curv_info(0, 0): procedure_height_fwd_long;
+    return TWF_SPRITE_NORMAL;
+}
+
+switch (FEAT_TRAINS, SELF, procedure_crest_check_rev_long, getbits(extra_callback_info1, 0, 8) == 0 ? other_veh_z_offset(-1) : 0) {
+    0: return TWF_SECTION_MID;
+    return TWF_SPRITE_NORMAL;
+}
+
+switch (FEAT_TRAINS, SELF, procedure_height_rev_long, getbits(extra_callback_info1, 0, 8) == 0 ? other_veh_z_offset(1) : 0) {
+    -128..-1: return TWF_SPRITE_UP;
+    1..127: return TWF_SPRITE_DOWN;
+
+    // Long vehicle, use the 3-sprite layout
+    procedure_crest_check_rev_long;
+}
+
+switch (FEAT_TRAINS, SELF, procedure_curve_rev_long, getbits(extra_callback_info1, 0, 8) == 0 && other_veh_is_hidden(1) != 1 ? curv_info : 0)  {
+    vehicle_curv_info(-1, 0): return TWF_SPRITE_TURN_2;
+    vehicle_curv_info(0, -1): return TWF_SPRITE_TURN_1;
+
+    vehicle_curv_info(1, 0): return TWF_SPRITE_TURN_1;
+    vehicle_curv_info(0, 1): return TWF_SPRITE_TURN_2;
+
+    vehicle_curv_info(0, 0): procedure_height_rev_long;
+    return TWF_SPRITE_NORMAL;
+}
+
+switch (FEAT_TRAINS, SELF, procedure_curve_long, vehicle_is_flipped)  {
+    0: procedure_curve_fwd_long;
+    1: procedure_curve_rev_long;
+}
+
+// Switches for front
+switch (FEAT_TRAINS, SELF, procedure_height_front_fwd_long, getbits(extra_callback_info1, 0, 8) == 0 ?  abs(other_veh_z_offset(1)) + abs(other_veh_z_offset(2))  : 0) {
+    0: return TWF_SECTION_FRONT;
+    return TWF_SPRITE_NONE;
+}
+
+switch (FEAT_TRAINS, SELF, procedure_curve_front_fwd_long, getbits(extra_callback_info1, 0, 8) == 0 ? abs(other_veh_curv_info(1)) + abs(other_veh_curv_info(2)) : 0)  {
+    0: procedure_height_front_fwd_long;
+    return TWF_SPRITE_NONE;
+}
+
+// Switches for front
+switch (FEAT_TRAINS, SELF, procedure_height_front_rev_long, getbits(extra_callback_info1, 0, 8) == 0 ?  abs(other_veh_z_offset(-1)) + abs(other_veh_z_offset(-2))  : 0) {
+    0: return TWF_SECTION_FRONT;
+    return TWF_SPRITE_NONE;
+}
+
+switch (FEAT_TRAINS, SELF, procedure_curve_front_rev_long, getbits(extra_callback_info1, 0, 8) == 0 ? abs(other_veh_curv_info(-1)) + abs(other_veh_curv_info(-2)) : 0)  {
+    0: procedure_height_front_rev_long;
+    return TWF_SPRITE_NONE;
+}
+
+switch (FEAT_TRAINS, SELF, procedure_curve_front_long, vehicle_is_flipped)  {
+    0: procedure_curve_front_fwd_long;
+    1: procedure_curve_front_rev_long;
+}
+
+// Switches for rear
+switch (FEAT_TRAINS, SELF, procedure_height_rear_fwd_long, getbits(extra_callback_info1, 0, 8) == 0 ? abs(other_veh_z_offset(-1)) + abs(other_veh_z_offset(-2)): 0) {
+    0: return TWF_SECTION_REAR;
+    return TWF_SPRITE_NONE;
+}
+
+switch (FEAT_TRAINS, SELF, procedure_curve_rear_fwd_long, getbits(extra_callback_info1, 0, 8) == 0 && other_veh_is_hidden(-2) != 1 ? abs(other_veh_curv_info(-1)) + abs(other_veh_curv_info(-2)) : 0)  {
+    0: procedure_height_rear_fwd_long;
+    return TWF_SPRITE_NONE;
+}
+
+// Switches for rear
+switch (FEAT_TRAINS, SELF, procedure_height_rear_rev_long, getbits(extra_callback_info1, 0, 8) == 0 ? abs(other_veh_z_offset(1)) + abs(other_veh_z_offset(2)): 0) {
+    0: return TWF_SECTION_REAR;
+    return TWF_SPRITE_NONE;
+}
+
+switch (FEAT_TRAINS, SELF, procedure_curve_rear_rev_long, getbits(extra_callback_info1, 0, 8) == 0 && other_veh_is_hidden(2) != 1 ? abs(other_veh_curv_info(1)) + abs(other_veh_curv_info(2)) : 0)  {
+    0: procedure_height_rear_rev_long;
+    return TWF_SPRITE_NONE;
+}
+
+switch (FEAT_TRAINS, SELF, procedure_curve_rear_long, vehicle_is_flipped)  {
+    0: procedure_curve_rear_fwd_long;
+    1: procedure_curve_rear_rev_long;
+}

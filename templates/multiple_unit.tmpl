@@ -9,11 +9,8 @@
 {{- $len := .ttd_len -}}{{- $plen := parseint .ttd_len -}}{{- $bpp := .globals.bpp -}}
 {{$speed := parseint .speed -}}
 
-spriteset(spriteset_{{.id}}_purchase, "1x/{{.id}}_purchase.png")
-{ template_purchase_1x() }
-
-alternative_sprites(spriteset_{{.id}}_purchase, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/{{.id}}_purchase.png")
-{ template_purchase_2x() }
+spriteset(spriteset_{{.id}}_purchase, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "4x/{{.id}}_purchase.png")
+{ template_purchase_4x() }
 
 {{- range $index, $element := $layout -}}
 {{- $newsprite := index $newsprites $index -}}
@@ -110,14 +107,6 @@ switch (FEAT_TRAINS, SELF, switch_{{.id}}_length, position_in_articulated_veh % 
     {{$index }}: return {{ $element }};
     {{end}}    
 }
-{{ else }}
-// All parts of this MU are the same length
-switch (FEAT_TRAINS, SELF, switch_{{.id}}_length, position_in_articulated_veh % 3 ) 
-{
-    {{range $index, $element := slice .articulated_lengths -}}
-    {{$index }}: return {{ $element }};
-    {{end}}    
-}
 {{end}}
 
 {{range $index, $element := $layout -}}
@@ -137,29 +126,71 @@ switch (FEAT_TRAINS, SELF, switch_{{.id}}_length, position_in_articulated_veh % 
 {{$anim = concat $element "_anim_4" }}
 {{if gt $plen 8}}{{template "curve_switch_long" $anim }}{{else if gt $plen 4 }}{{template "curve_switch_medium" $anim }}{{else}}{{template "curve_switch_short" $anim }}{{end}}
 
-switch (FEAT_TRAINS, SELF, switch_{{$element}}_animation, motion_counter % 4) 
-{
-    0: switch_{{$element}}_anim_1_curve;
-    1: switch_{{$element}}_anim_2_curve;
-    2: switch_{{$element}}_anim_3_curve;
-    3: switch_{{$element}}_anim_4_curve;
-}
 
-{{ if gt $plen 8}}
-switch (FEAT_TRAINS, SELF, switch_{{$element}}_animation_front, motion_counter % 4) 
-{
-    0: switch_{{$element}}_anim_1_curve_front;
-    1: switch_{{$element}}_anim_2_curve_front;
-    2: switch_{{$element}}_anim_3_curve_front;
-    3: switch_{{$element}}_anim_4_curve_front;
-}
-switch (FEAT_TRAINS, SELF, switch_{{$element}}_animation_rear, motion_counter % 4) 
-{
-    0: switch_{{$element}}_anim_1_curve_rear;
-    1: switch_{{$element}}_anim_2_curve_rear;
-    2: switch_{{$element}}_anim_3_curve_rear;
-    3: switch_{{$element}}_anim_4_curve_rear;
-}
+    switch (FEAT_TRAINS, SELF, switch_{{$element}}_animation, ((motion_counter % 4) * 2) + (vehicle_is_flipped ^ train_is_driving_backwards))
+    {
+    0: switch_{{$element}}_anim_1_curve;
+    1: switch_{{$element}}_anim_4_curve;
+    2: switch_{{$element}}_anim_2_curve;
+    3: switch_{{$element}}_anim_3_curve;
+    4: switch_{{$element}}_anim_3_curve;
+    5: switch_{{$element}}_anim_2_curve;
+    6: switch_{{$element}}_anim_4_curve;
+    7: switch_{{$element}}_anim_1_curve;
+    }
+
+    {{ if gt $plen 8}}
+        switch (FEAT_TRAINS, SELF, switch_{{$element}}_animation_front, ((motion_counter % 4) * 2) + (vehicle_is_flipped ^ train_is_driving_backwards))
+        {
+        0: switch_{{$element}}_anim_1_curve_front;
+        1: switch_{{$element}}_anim_4_curve_front;
+        2: switch_{{$element}}_anim_2_curve_front;
+        3: switch_{{$element}}_anim_3_curve_front;
+        4: switch_{{$element}}_anim_3_curve_front;
+        5: switch_{{$element}}_anim_2_curve_front;
+        6: switch_{{$element}}_anim_4_curve_front;
+        7: switch_{{$element}}_anim_1_curve_front;
+        }
+        switch (FEAT_TRAINS, SELF, switch_{{$element}}_animation_rear, ((motion_counter % 4) * 2) + (vehicle_is_flipped ^ train_is_driving_backwards))
+        {
+        0: switch_{{$element}}_anim_1_curve_rear;
+        1: switch_{{$element}}_anim_4_curve_rear;
+        2: switch_{{$element}}_anim_2_curve_rear;
+        3: switch_{{$element}}_anim_3_curve_rear;
+        4: switch_{{$element}}_anim_3_curve_rear;
+        5: switch_{{$element}}_anim_2_curve_rear;
+        6: switch_{{$element}}_anim_4_curve_rear;
+        7: switch_{{$element}}_anim_1_curve_rear;
+        }
+    {{end}}
+
+    switch(FEAT_TRAINS, SELF, switch_{{$element}}_animation_overlay, getbits(extra_callback_info1, 8, 8)) {
+        0: switch_{{$element}}_curve;
+        1: switch_{{$element}}_animation;
+
+        // This should never be executed
+        return spriteset_invisible;
+    }
+
+    {{ if gt $plen 8}}
+        switch(FEAT_TRAINS, SELF, switch_{{$element}}_animation_overlay_front, getbits(extra_callback_info1, 8, 8)) {
+            0: switch_{{$element}}_curve_front;
+            1: switch_{{$element}}_animation_front;
+
+            // This should never be executed
+            return spriteset_invisible;
+        }
+
+        switch(FEAT_TRAINS, SELF, switch_{{$element}}_animation_overlay_rear, getbits(extra_callback_info1, 8, 8)) {
+            0: switch_{{$element}}_curve_rear;
+            1: switch_{{$element}}_animation_rear;
+
+            // This should never be executed
+            return spriteset_invisible;
+        }
+        {{end -}}
+    {{end -}}
+{{end}}
 {{end}}
 
 switch(FEAT_TRAINS, SELF, switch_{{$element}}_animation_overlay, [
@@ -204,9 +235,7 @@ switch(FEAT_TRAINS, SELF, switch_{{$element}}_animation_overlay_rear, [
 {{template "pantograph_switch" . }}
 {{end}}
 
-{{template "running_cost_switch" . }}
-
-switch (FEAT_TRAINS, SELF, switch_{{.id}}_graphics, position_in_articulated_veh % ({{.cars}} * 3)) 
+switch (FEAT_TRAINS, SELF, switch_{{.id}}_graphics, position_in_articulated_veh % ({{.cars}} * 3))
 {
     {{- range $index, $element := $layout -}}
     {{if $manual_ttd_len }}{{$len = index $man_ttd_len $index }}{{end}}{{$plen = parseint $len}}
@@ -248,7 +277,10 @@ item(FEAT_TRAINS, {{.id}}, {{.numeric_id}}) {
 
         {{if eq .default_cargo "PASS" }}
         refittable_cargo_classes: bitmask(CC_PASSENGERS);
-        cargo_allow_refit: [ YETI, YETY ]; 
+        cargo_allow_refit: [ YETI, YETY ];
+            {{ if eq .pax_special "buffet" }}
+                bitmask_vehicle_info:         bitmask(HAS_BUFFET_CAR);
+            {{end -}}
         {{ else if eq .default_cargo "MAIL" }}
         refittable_cargo_classes: bitmask(CC_MAIL);
         {{end}}
@@ -297,6 +329,12 @@ item(FEAT_TRAINS, {{.id}}, {{.numeric_id}}) {
         variant_group:                {{.variant_group}};
         extra_flags:                  bitmask(VEHICLE_FLAG_SYNC_VARIANT_EXCLUSIVE_PREVIEW, VEHICLE_FLAG_SYNC_VARIANT_RELIABILITY);
         {{- end}}
+
+        {{if .badges}}
+            badges: [
+            {{- range $index, $element := slice .badges -}}
+            {{if $element}}{{if $index}}, {{end}}"{{ $element }}"{{end}}{{end}}];
+        {{end}}
     }
 
     graphics {
@@ -304,15 +342,16 @@ item(FEAT_TRAINS, {{.id}}, {{.numeric_id}}) {
         purchase:  spriteset_{{.id}}_purchase;
         additional_text: return {{.additional_text_string}};
         articulated_part: switch_{{.id}}_articulation;
-        length: switch_{{.id}}_length;
-        running_cost_factor: switch_{{.id}}_running_cost;
+        length: {{ if .manual_lengths }}switch_{{.id}}_length;{{else}}procedure_loco_length({{.articulated_lengths}});{{end}}
+{{template "running_cost_cb" . }}
         purchase_running_cost_factor: return {{.running_cost}};
         visual_effect_and_powered: switch_{{.id}}_visual_effect;
-        {{- if .secondary_speed }}
-        speed: switch_{{.id}}_speed; 
-        {{ end -}}
+        {{ if .secondary_speed }}speed: switch_{{.id}}_speed;{{ end -}}
         {{if .secondary_power}}{{ if eq .type "dual_power" -}}power: switch_{{.id}}_power;{{end}}{{ if eq .type "dual_electric" -}}power: switch_{{.id}}_power;{{end}}{{end}}
         {{if .capacity}}purchase_cargo_capacity:  {{if .reuse_sprites}}spriteset_{{.reuse_sprites}}{{else}}spriteset_{{.id}}{{end}};{{end}}
         {{if not .use_mu_engine_logic}}can_attach_wagon: switch_{{.id}}_attach_wagons;{{end}}
+        {{ if eq .cargo_handling "Passengers" -}}
+            cargo_age_period: procedure_passenger_cargo_age({{if .cargo_age_period -}}{{.cargo_age_period}}{{else}}185{{- end}});
+        {{- end }}
     }
 }

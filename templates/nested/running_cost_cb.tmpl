@@ -1,0 +1,8 @@
+{{define "running_cost_cb" -}}
+{{- $runCost := parseint .running_cost -}}
+{{- if le $runCost 20 }}
+        running_cost_factor: procedure_running_cost_cheap({{.running_cost}});
+{{else}}
+        running_cost_factor: procedure_running_cost({{.running_cost}});
+{{ end -}}
+{{- end -}}

@@ -1,0 +1,30 @@
+{{define "curve_switch_long_weathered_inner"}}
+switch (FEAT_TRAINS, SELF, switch_{{.id}}_curve_{{.variant}}, procedure_curve_long())  {
+    TWF_SPRITE_NONE: return spriteset_invisible;
+    TWF_SPRITE_NORMAL: return spriteset_{{.id}}{{.innervariant}};
+
+    TWF_SPRITE_TURN_1: return spriteset_{{.id}}{{.innervariant}}_turn_1;
+    TWF_SPRITE_TURN_2: return spriteset_{{.id}}{{.innervariant}}_turn_2;
+
+    TWF_SPRITE_DOWN: return spriteset_{{.id}}{{.innervariant}}_down;
+    TWF_SPRITE_UP: return spriteset_{{.id}}{{.innervariant}}_up;
+
+    TWF_SECTION_MID: return spriteset_{{.id}}{{.innervariant}}_sections_mid;
+
+    CB_FAILED;
+}
+
+switch (FEAT_TRAINS, SELF, switch_{{.id}}_curve_front_{{.variant}}, procedure_curve_front_long())  {
+    TWF_SPRITE_NONE: return spriteset_invisible;
+    TWF_SECTION_FRONT: return spriteset_{{.id}}{{.innervariant}}_sections_front;
+
+    CB_FAILED;
+}
+
+switch (FEAT_TRAINS, SELF, switch_{{.id}}_curve_rear_{{.variant}}, procedure_curve_rear_long())  {
+    TWF_SPRITE_NONE: return spriteset_invisible;
+    TWF_SECTION_REAR: return spriteset_{{.id}}{{.innervariant}}_sections_rear;
+
+    CB_FAILED;
+}
+{{end}}

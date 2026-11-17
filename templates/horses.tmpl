@@ -2,11 +2,8 @@
 {{$template := concat "template_auto_" .ttd_len -}}
 {{$plen := parseint .ttd_len -}}
 
-spriteset(spriteset_{{.id}}_purchase, "1x/{{.id}}_purchase.png")
-{ template_purchase_1x() }
-
-alternative_sprites(spriteset_{{.id}}_purchase, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/{{.id}}_purchase.png")
-{ template_purchase_2x() }
+spriteset(spriteset_{{.id}}_purchase, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "4x/{{.id}}_purchase.png")
+{ template_purchase_4x() }
 
 {{ $ani := concat .id "_1" }}{{ altsprites8 $ani $template $zoom }}
 {{$template_turn := concat "template_auto_turn_1_" .ttd_len -}}{{ altsprites8n $ani $template_turn $zoom "_turn_1" }}
@@ -32,22 +29,29 @@ alternative_sprites(spriteset_{{.id}}_purchase, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP
 {{$template_turn = concat "template_auto_up_" .ttd_len -}}{{$hill = concat $ani "_up" }}{{ altsprites8 $hill $template_turn $zoom }}
 {{$template_turn = concat "template_auto_down_" .ttd_len -}}{{$hill = concat $ani "_down" }}{{ altsprites8 $hill $template_turn $zoom }}
 
+{{ $ani = concat .id "_1_r" }}{{ altsprites8 $ani $template $zoom }}
+{{$template_turn = concat "template_auto_turn_1_" .ttd_len -}}{{ altsprites8n $ani $template_turn $zoom "_turn_1" }}
+{{$template_turn = concat "template_auto_turn_2_" .ttd_len -}}{{ altsprites8n $ani $template_turn $zoom "_turn_2" }}
+{{$template_turn = concat "template_auto_up_" .ttd_len -}}{{$hill = concat $ani "_up" }}{{ altsprites8 $hill $template_turn $zoom }}
+{{$template_turn = concat "template_auto_down_" .ttd_len -}}{{$hill = concat $ani "_down" }}{{ altsprites8 $hill $template_turn $zoom }}
 
-{{- $type := .type }}{{ $id := .id}}
+{{ $ani = concat .id "_2_r" }}{{ altsprites8 $ani $template $zoom }}
+{{$template_turn = concat "template_auto_turn_1_" .ttd_len -}}{{ altsprites8n $ani $template_turn $zoom "_turn_1" }}
+{{$template_turn = concat "template_auto_turn_2_" .ttd_len -}}{{ altsprites8n $ani $template_turn $zoom "_turn_2" }}
+{{$template_turn = concat "template_auto_up_" .ttd_len -}}{{$hill = concat $ani "_up" }}{{ altsprites8 $hill $template_turn $zoom }}
+{{$template_turn = concat "template_auto_down_" .ttd_len -}}{{$hill = concat $ani "_down" }}{{ altsprites8 $hill $template_turn $zoom }}
 
-// Articulation
-switch(FEAT_TRAINS, SELF, switch_{{.id}}_articulation, extra_callback_info1) {
-    0..2: {{.id}};
-    return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
-}
+{{ $ani = concat .id "_3_r" }}{{ altsprites8 $ani $template $zoom }}
+{{$template_turn = concat "template_auto_turn_1_" .ttd_len -}}{{ altsprites8n $ani $template_turn $zoom "_turn_1" }}
+{{$template_turn = concat "template_auto_turn_2_" .ttd_len -}}{{ altsprites8n $ani $template_turn $zoom "_turn_2" }}
+{{$template_turn = concat "template_auto_up_" .ttd_len -}}{{$hill = concat $ani "_up" }}{{ altsprites8 $hill $template_turn $zoom }}
+{{$template_turn = concat "template_auto_down_" .ttd_len -}}{{$hill = concat $ani "_down" }}{{ altsprites8 $hill $template_turn $zoom }}
 
-switch (FEAT_TRAINS, SELF, switch_{{.id}}_length, position_in_articulated_veh % 3) 
-{
-    {{range $index, $element := slice .articulated_lengths -}}
-    {{$index }}: return {{ $element }};
-    {{end}}    
-}
-
+{{ $ani = concat .id "_4_r" }}{{ altsprites8 $ani $template $zoom }}
+{{$template_turn = concat "template_auto_turn_1_" .ttd_len -}}{{ altsprites8n $ani $template_turn $zoom "_turn_1" }}
+{{$template_turn = concat "template_auto_turn_2_" .ttd_len -}}{{ altsprites8n $ani $template_turn $zoom "_turn_2" }}
+{{$template_turn = concat "template_auto_up_" .ttd_len -}}{{$hill = concat $ani "_up" }}{{ altsprites8 $hill $template_turn $zoom }}
+{{$template_turn = concat "template_auto_down_" .ttd_len -}}{{$hill = concat $ani "_down" }}{{ altsprites8 $hill $template_turn $zoom }}
 
 {{ $sprite := .id}}
 
@@ -60,14 +64,27 @@ switch (FEAT_TRAINS, SELF, switch_{{.id}}_length, position_in_articulated_veh % 
 {{template "curve_switch_short" $anim }}
 {{$anim = concat $sprite "_4" }}
 {{template "curve_switch_short" $anim }}
+
+{{$anim = concat $sprite "_1_r" }}
+{{template "curve_switch_short" $anim }}
+{{$anim = concat $sprite "_2_r" }}
+{{template "curve_switch_short" $anim }}
+{{$anim = concat $sprite "_3_r" }}
+{{template "curve_switch_short" $anim }}
+{{$anim = concat $sprite "_4_r" }}
+{{template "curve_switch_short" $anim }}
 {{end}}
 
-switch (FEAT_TRAINS, SELF, switch_{{.id}}_animation, motion_counter % 4) 
+switch (FEAT_TRAINS, SELF, switch_{{.id}}_animation, ((motion_counter % 4) * 2) + (vehicle_is_flipped ^ train_is_driving_backwards))
 {
-    0: switch_{{$sprite}}_1_curve;
-    1: switch_{{$sprite}}_2_curve;
-    2: switch_{{$sprite}}_3_curve;
-    3: switch_{{$sprite}}_4_curve;
+0: switch_{{$sprite}}_1_curve;
+1: switch_{{$sprite}}_1_r_curve;
+2: switch_{{$sprite}}_2_curve;
+3: switch_{{$sprite}}_2_r_curve;
+4: switch_{{$sprite}}_3_curve;
+5: switch_{{$sprite}}_3_r_curve;
+6: switch_{{$sprite}}_4_curve;
+7: switch_{{$sprite}}_4_r_curve;
 }
 
 switch (FEAT_TRAINS, PARENT, switch_{{.id}}_dandy_wagon,hasbit(bitmask_consist_info, HAS_DANDY_WAGON)) 
@@ -87,10 +104,6 @@ switch (FEAT_TRAINS, SELF, switch_{{.id}}_graphics, position_in_articulated_veh 
     1: switch_{{.id}}_speed;
     return spriteset_invisible;
 }
-
-{{template "running_cost_switch" . }}
-
-{{if eq .railtype "NARROW_GAUGE"}}{{template "tare_speed_switch" . }}{{end}}
 
 item(FEAT_TRAINS, {{.id}}, {{.numeric_id}}) {
     property {
@@ -120,22 +133,28 @@ item(FEAT_TRAINS, {{.id}}, {{.numeric_id}}) {
 
         air_drag_coefficient:         0.1;
 
-        weight:                       {{.weight}} ton;        
+        weight:                       {{.weight}} ton;
+
+        {{if .badges}}
+            badges: [
+            {{- range $index, $element := slice .badges -}}
+            {{if $element}}{{if $index}}, {{end}}"{{ $element }}"{{end}}{{end}}];
+        {{end}}
     }
 
     graphics {
         default:  switch_{{.id}}_graphics;
         purchase:  spriteset_{{.id}}_purchase;
         additional_text: return {{.additional_text_string}};
-        articulated_part: switch_{{.id}}_articulation;
-        length: switch_{{.id}}_length;
-        running_cost_factor: switch_{{.id}}_running_cost;
+        articulated_part: procedure_loco_articulation({{.id}});
+        length: procedure_loco_length({{.articulated_lengths}});
+{{template "running_cost_cb" . }}
         purchase_running_cost_factor: return {{.running_cost}};
         colour_mapping: switch_horse_colour_mapping;
         purchase_colour_mapping: return recolour_horses;
         sound_effect: switch_horse_sound_fx;
         {{- if eq .railtype "NARROW_GAUGE"}}
-        speed: switch_{{.id}}_speed_brakevan;
+        speed: procedure_speed_brakevan_ng({{.speed}});
         purchase_speed: return {{.kmhish_speed}};
         {{end -}}
     }

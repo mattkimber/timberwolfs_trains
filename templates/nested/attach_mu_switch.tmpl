@@ -1,10 +1,13 @@
 {{define "attach_mu_switch" -}}
 
+{{$hasself := ""}}
+{{$id := .id}}
  switch(FEAT_TRAINS, SELF, switch_{{.id}}_attach_wagons, vehicle_type_id) {
-    {{.id}}:  return CB_RESULT_ATTACH_ALLOW;
     {{ if .multiple_working}}{{range $index, $element := slice .multiple_working}}
+    {{if eq $element $id}}{{$hasself = "1"}}{{end}}
     {{$element}}: return CB_RESULT_ATTACH_ALLOW;
     {{end}}{{end}}
+    {{- if not $hasself }}{{.id}}:  return CB_RESULT_ATTACH_ALLOW;{{end}}
     return string(STR_MU_CANNOT_ATTACH);
  }
 

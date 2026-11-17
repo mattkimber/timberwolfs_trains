@@ -1,3 +1,5 @@
+#!/bin/bash
+
 echo "Compiling set"
 ../roadie/roadie.exe set.json
 echo "Compiling NML"

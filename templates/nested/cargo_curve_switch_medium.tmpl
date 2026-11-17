@@ -1,18 +1,13 @@
 {{define "cargo_curve_switch_medium"}}
-switch (FEAT_TRAINS, SELF, switch_{{.}}_height, getbits(extra_callback_info1, 0, 8) == 0 ? other_veh_z_offset(-1) : 0) {
-    -128..-1: return spritegroup_{{.}}_down;
-    1..127: return spritegroup_{{.}}_up;
-    return spritegroup_{{.}};
-}
+switch (FEAT_TRAINS, SELF, switch_{{.}}_curve, procedure_curve_medium())  {
+    TWF_SPRITE_NORMAL: return spritegroup_{{.}};
 
-switch (FEAT_TRAINS, SELF, switch_{{.}}_curve, getbits(extra_callback_info1, 0, 8) == 0 ? curv_info : 0)  {
-    vehicle_curv_info(1, 0): return spritegroup_{{.}}_turn_1;
-    vehicle_curv_info(0, 1): return spritegroup_{{.}}_turn_2;
+    TWF_SPRITE_TURN_1: return spritegroup_{{.}}_turn_1;
+    TWF_SPRITE_TURN_2: return spritegroup_{{.}}_turn_2;
 
-    vehicle_curv_info(-1, 0): return spritegroup_{{.}}_turn_2;
-    vehicle_curv_info(0, -1): return spritegroup_{{.}}_turn_1;
+    TWF_SPRITE_DOWN: return spritegroup_{{.}}_down;
+    TWF_SPRITE_UP: return spritegroup_{{.}}_up;
 
-
-    switch_{{.}}_height;
+    CB_FAILED;
 }
 {{end}}

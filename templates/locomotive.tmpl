@@ -3,11 +3,8 @@
 {{$plen := parseint .ttd_len -}}
 {{$speed := parseint .speed -}}
 
-spriteset(spriteset_{{.id}}_purchase, "1x/{{.id}}_purchase.png")
-{ template_purchase_1x() }
-
-alternative_sprites(spriteset_{{.id}}_purchase, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP, "2x/{{.id}}_purchase.png")
-{ template_purchase_2x() }
+spriteset(spriteset_{{.id}}_purchase, ZOOM_LEVEL_IN_4X, BIT_DEPTH_8BPP, "4x/{{.id}}_purchase.png")
+{ template_purchase_4x() }
 
 {{ if not .reuse_sprites -}}
 {{if eq .globals.bpp "32"}}{{ altsprites .id $template $zoom }}{{else}}{{ altsprites8 .id $template $zoom }}{{end}}
@@ -119,19 +116,6 @@ alternative_sprites(spriteset_{{.id}}_purchase, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP
 {{if gt $plen 8}}{{template "curve_switch_long" $rev }}{{else if gt $plen 4 }}{{template "curve_switch_medium" $rev }}{{else}}{{template "curve_switch_short"  $rev }}{{end}}
 {{end}}
 
-// Articulation
-switch(FEAT_TRAINS, SELF, switch_{{.id}}_articulation, extra_callback_info1) {
-    0 .. {{if .tender}}5{{else}}2{{end}}: {{.id}};
-    return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
-}
-
-switch (FEAT_TRAINS, SELF, switch_{{.id}}_length, position_in_articulated_veh % {{if .tender}}6{{else}}3{{end}}) 
-{
-    {{range $index, $element := slice .articulated_lengths -}}
-    {{$index }}: return {{ $element }};
-    {{end}}    
-}
-
 {{if or (eq $type "dual_electric") (and (eq $type "dual_power") (eq .railtype "ELRL"))}}
 {{template "pantograph_switch" . }}
 {{end}}
@@ -150,29 +134,41 @@ switch (FEAT_TRAINS, SELF, switch_{{.id}}_length, position_in_articulated_veh % 
 {{if gt $plen 8}}{{template "curve_switch_long" $anim }}{{else if gt $plen 4 }}{{template "curve_switch_medium" $anim }}{{else}}{{template "curve_switch_short" $anim }}{{end}}
 {{end}}
 
-switch (FEAT_TRAINS, SELF, switch_{{.id}}_animation, motion_counter % 4) 
+switch (FEAT_TRAINS, SELF, switch_{{.id}}_animation, ((motion_counter % 4) * 2) + (vehicle_is_flipped ^ train_is_driving_backwards))
 {
-    0: switch_{{$sprite}}_anim_1_curve;
-    1: switch_{{$sprite}}_anim_2_curve;
-    2: switch_{{$sprite}}_anim_3_curve;
-    3: switch_{{$sprite}}_anim_4_curve;
+0: switch_{{.id}}_anim_1_curve;
+1: switch_{{.id}}_anim_4_curve;
+2: switch_{{.id}}_anim_2_curve;
+3: switch_{{.id}}_anim_3_curve;
+4: switch_{{.id}}_anim_3_curve;
+5: switch_{{.id}}_anim_2_curve;
+6: switch_{{.id}}_anim_4_curve;
+7: switch_{{.id}}_anim_1_curve;
 }
 
 {{ if gt $plen 8}}
-switch (FEAT_TRAINS, SELF, switch_{{.id}}_animation_front, motion_counter % 4) 
-{
-    0: switch_{{$sprite}}_anim_1_curve_front;
-    1: switch_{{$sprite}}_anim_2_curve_front;
-    2: switch_{{$sprite}}_anim_3_curve_front;
-    3: switch_{{$sprite}}_anim_4_curve_front;
-}
-switch (FEAT_TRAINS, SELF, switch_{{.id}}_animation_rear, motion_counter % 4) 
-{
-    0: switch_{{$sprite}}_anim_1_curve_rear;
-    1: switch_{{$sprite}}_anim_2_curve_rear;
-    2: switch_{{$sprite}}_anim_3_curve_rear;
-    3: switch_{{$sprite}}_anim_4_curve_rear;
-}
+    switch (FEAT_TRAINS, SELF, switch_{{.id}}_animation_front, ((motion_counter % 4) * 2) + (vehicle_is_flipped ^ train_is_driving_backwards))
+    {
+    0: switch_{{.id}}_anim_1_curve_front;
+    1: switch_{{.id}}_anim_4_curve_front;
+    2: switch_{{.id}}_anim_2_curve_front;
+    3: switch_{{.id}}_anim_3_curve_front;
+    4: switch_{{.id}}_anim_3_curve_front;
+    5: switch_{{.id}}_anim_2_curve_front;
+    6: switch_{{.id}}_anim_4_curve_front;
+    7: switch_{{.id}}_anim_1_curve_front;
+    }
+    switch (FEAT_TRAINS, SELF, switch_{{.id}}_animation_rear, ((motion_counter % 4) * 2) + (vehicle_is_flipped ^ train_is_driving_backwards))
+    {
+    0: switch_{{.id}}_anim_1_curve_rear;
+    1: switch_{{.id}}_anim_4_curve_rear;
+    2: switch_{{.id}}_anim_2_curve_rear;
+    3: switch_{{.id}}_anim_3_curve_rear;
+    4: switch_{{.id}}_anim_3_curve_rear;
+    5: switch_{{.id}}_anim_2_curve_rear;
+    6: switch_{{.id}}_anim_4_curve_rear;
+    7: switch_{{.id}}_anim_1_curve_rear;
+    }
 {{end}}
 
 
@@ -295,10 +291,6 @@ switch (FEAT_TRAINS, SELF, switch_{{.id}}_graphics, position_in_articulated_veh 
 {{- end}}
 
 {{template "visual_effect_power" . }}
-{{template "running_cost_switch" . }}
-{{ if .requires_second_power_car }}{{template "power_car_check" . }}{{end}}
-
-{{if .inhibit_lead}}{{template "inhibit_lead_vehicle" .}}{{end}}
 
 item(FEAT_TRAINS, {{.id}}, {{.numeric_id}}) {
     property {
@@ -368,9 +360,14 @@ item(FEAT_TRAINS, {{.id}}, {{.numeric_id}}) {
         default:  switch_{{.id}}_graphics;   
         purchase:  spriteset_{{.id}}_purchase;
         additional_text: return {{.additional_text_string}};
-        articulated_part: switch_{{.id}}_articulation;
-        length: switch_{{.id}}_length;
-        running_cost_factor: switch_{{.id}}_running_cost;
+{{if .tender}}
+        articulated_part: procedure_loco_tender_articulation({{.id}});
+        length: procedure_loco_tender_length({{.articulated_lengths}});
+{{else}}
+        articulated_part: procedure_loco_articulation({{.id}});
+        length: procedure_loco_length({{.articulated_lengths}});
+{{end}}
+{{template "running_cost_cb" . }}
         purchase_running_cost_factor: return {{.running_cost}};
         visual_effect_and_powered: switch_{{.id}}_visual_effect;
         {{if .secondary_power}}{{ if eq .type "dual_power" "dual_electric" -}}power: switch_{{.id}}_power;{{end}}{{end}}

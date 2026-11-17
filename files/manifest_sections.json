@@ -19,6 +19,7 @@
     "slice_overlap": 0,
     "dither_flat_areas": true,
 	"fosterise": true,
+    "suppress_edge_fosterisation": true,
     "size": {
         "x": 256,
         "y": 42,
