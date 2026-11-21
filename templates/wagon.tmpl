@@ -389,7 +389,7 @@ alternative_sprites(spriteset_{{.id}}_purchase, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP
 {{ if eq .cargo_handling "Bulk" "EarlyOpen" }}
    {{ $has_aged_variant := .has_aged_variant }}
     switch(FEAT_TRAINS, SELF, switch_{{$id}}_bulk, [
-    STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 2 ? CB_FLAG_MORE_SPRITES : 0) | (getbits(extra_callback_info1, 8, 8) == 2 ? LOAD_TEMP(0) : PALETTE_USE_DEFAULT), 0x100),
+    STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 1 ? CB_FLAG_MORE_SPRITES : 0) | (getbits(extra_callback_info1, 8, 8) == 1 ? LOAD_TEMP(0) : PALETTE_USE_DEFAULT), 0x100),
     getbits(extra_callback_info1, 8, 8)
     ]) {
     0: {{ if $has_aged_variant}}switch_{{$id}}_age_curve{{else}}switch_{{$id}}_curve{{end}};
@@ -401,7 +401,7 @@ alternative_sprites(spriteset_{{.id}}_purchase, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP
 
     {{ if gt $plen 8}}
         switch(FEAT_TRAINS, SELF, switch_{{$id}}_bulk_front, [
-        STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 2 ? CB_FLAG_MORE_SPRITES : 0) | (getbits(extra_callback_info1, 8, 8) == 2 ? LOAD_TEMP(0) : PALETTE_USE_DEFAULT), 0x100),
+        STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 1 ? CB_FLAG_MORE_SPRITES : 0) | (getbits(extra_callback_info1, 8, 8) == 1 ? LOAD_TEMP(0) : PALETTE_USE_DEFAULT), 0x100),
         getbits(extra_callback_info1, 8, 8)
         ]) {
         0: {{ if $has_aged_variant}}switch_{{$id}}_age_curve_front{{else}}switch_{{$id}}_curve_front{{end}};
@@ -412,7 +412,7 @@ alternative_sprites(spriteset_{{.id}}_purchase, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP
         }
 
         switch(FEAT_TRAINS, SELF, switch_{{$id}}_bulk_rear, [
-        STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 2 ? CB_FLAG_MORE_SPRITES : 0) | (getbits(extra_callback_info1, 8, 8) == 2 ? LOAD_TEMP(0) : PALETTE_USE_DEFAULT), 0x100),
+        STORE_TEMP((getbits(extra_callback_info1, 8, 8) < 1 ? CB_FLAG_MORE_SPRITES : 0) | (getbits(extra_callback_info1, 8, 8) == 1 ? LOAD_TEMP(0) : PALETTE_USE_DEFAULT), 0x100),
         getbits(extra_callback_info1, 8, 8)
         ]) {
         0: {{ if $has_aged_variant}}switch_{{$id}}_age_curve_rear{{else}}switch_{{$id}}_curve_rear{{end}};
@@ -424,7 +424,7 @@ alternative_sprites(spriteset_{{.id}}_purchase, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP
 
     {{ end }}
 
-    switch (FEAT_TRAINS, SELF, procedure_{{$id}}_bulk_cargo, recolor, [STORE_TEMP(recolor, 0), position_in_articulated_veh % 3])
+    switch (FEAT_TRAINS, SELF, procedure_{{$id}}_bulk_cargo, recolour, [STORE_TEMP(recolour, 0), position_in_articulated_veh % 3])
     {
     1: switch_{{$id}}_bulk;
     {{ if gt $plen 8}}

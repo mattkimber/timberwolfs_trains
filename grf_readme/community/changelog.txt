@@ -1,7 +1,9 @@
 v1.2.9
 ------
 
-
+Added Class 701 Arterio
+Added Class 805 Evero
+Use WUTS-style procedures instead of repeated switches
 
 v1.2.8
 ------

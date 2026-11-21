@@ -1,6 +1,9 @@
 v1.7.10
 -------
 
+Class 444/450 compatibility fixes and liveries
+Use WUTS-style procedures instead of repeated switches
+
 v1.7.9
 ------
 
