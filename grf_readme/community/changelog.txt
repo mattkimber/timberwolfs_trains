@@ -1,8 +1,9 @@
-v1.2.9
+v1.3.0
 ------
 
 Added Class 701 Arterio
 Added Class 805 Evero
+Added Class 458 Junipers
 Added Class 769 and 768 parcels variant
 Use WUTS-style procedures instead of repeated switches
 

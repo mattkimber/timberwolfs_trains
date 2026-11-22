@@ -1,7 +1,8 @@
-v1.7.10
--------
+v1.8.0
+------
 
 Class 444/450 compatibility fixes and liveries
+Added CAF Class 331 variants and 195/1
 Use WUTS-style procedures instead of repeated switches
 
 v1.7.9
