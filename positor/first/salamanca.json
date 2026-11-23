@@ -1,0 +1,39 @@
+{
+    "files": [
+      "ng/salamanca.vox"
+    ],
+    "operations": [
+      {
+        "name": "_anim_1",
+        "type": "repeat",
+        "truncate": true,
+        "mask_original": true,
+        "n": 0,        
+        "file": "valvegear/salamanca_1.vox"
+      },      
+      {
+        "name": "_anim_2",
+        "type": "repeat",
+        "truncate": true,
+        "mask_original": true,
+        "n": 0,        
+        "file": "valvegear/salamanca_2.vox"
+      },      
+      {
+        "name": "_anim_3",
+        "type": "repeat",
+        "truncate": true,
+        "mask_original": true,
+        "n": 0,        
+        "file": "valvegear/salamanca_3.vox"
+      },      
+      {
+        "name": "_anim_4",
+        "type": "repeat",
+        "truncate": true,
+        "mask_original": true,
+        "n": 0,        
+        "file": "valvegear/salamanca_4.vox"
+      }
+    ]
+}
