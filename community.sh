@@ -49,7 +49,7 @@ echo "Rendering purchase sprites"
 echo "Compiling set"
 ../roadie/roadie.exe set_community.json
 echo "Compiling NML"
-../nml/nmlc.exe -c timberwolfs_community_addon.nml
+../nml/nmlc.exe  --no-palette-validation -p DEFAULT -c timberwolfs_community_addon.nml
 
 echo "Building TAR"
 mkdir -p timberwolfs_community_addon
