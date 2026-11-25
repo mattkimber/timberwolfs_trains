@@ -1,7 +1,10 @@
 v1.3.1
 ------
 
+Added Hastings/Thumper/Tadpole multiple units
+Add class 416 2-EPB
 Added early narrow gauge locos
+Narrow gauge buffed slightly
 
 v1.3.0
 ------

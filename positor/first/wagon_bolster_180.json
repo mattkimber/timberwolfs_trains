@@ -5,6 +5,10 @@
     ],
     "operations": [
         {
+            "name": "",
+            "type": "produce_empty"
+        },
+        {
             "name": "_light",
             "type": "produce_empty",
             "input_ramps": ["200-206,82-88,217-222,223-228,255-255"],
