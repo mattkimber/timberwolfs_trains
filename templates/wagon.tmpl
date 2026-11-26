@@ -12,9 +12,9 @@
 
 {{ $id := .id -}}
 
-{{- $bulk_cargos := "aore,bdmt,bean,cass,cblk,cmnt,cere,clay,coal,coke,core,ctcd,fecr,fert,ficr,frut,grai,grvl,iore,lime,kaol,maiz,mno2,nitr,olsd,peat,phos,pota,pore,qlme,rcyc,salt,sand,sash,scmt,sgbt,sgcn,slag,sugr,sulp,toff,uran,whea,wdpr" }}
-{{- $bolster_cargos := "bdmt,wood,batt,beer,boom,bubl,cera,fzdr,java,nuts,papr,powr,toys,veng,vpts,plas,dyes,mnsp,ficr,soap,coat,rfpr,frut,wool,fert,glas,rcyc,wste,nukf,nukw,uran,hwar,pump,seal,rubr,alum,copr,csti,iron,metl,stal,stcb,stel,stse,stst,zinc,wdpr,fmsp,ensp,tyre,tyco,pipe,vbod,vehi,stpp,sttb,stbl,stig,stbr,stsl,stsh,stwr,rbar,o2__,n7__,ccpr,foca,weld" }}
-{{- $metal_cargos := "alum,copr,csti,iron,metl,stal,stcb,stel,stse,stst,zinc" }}
+{{- $bulk_cargos := "aore,bdmt,bean,cass,cblk,cmnt,cere,clay,coal,coke,core,ctcd,fecr,fert,ficr,frut,grai,grvl,iore,lime,kaol,maiz,mno2,nitr,olsd,peat,phos,pota,pore,qlme,rcyc,salt,sand,sash,scmt,sgbt,sgcn,slag,sugr,sulp,toff,uran,whea,wdpr,feal" }}
+{{- $bolster_cargos := "bdmt,wood,batt,beer,boom,bubl,cera,fzdr,java,nuts,papr,powr,toys,veng,vpts,plas,dyes,mnsp,ficr,soap,coat,rfpr,frut,wool,fert,glas,rcyc,wste,nukf,nukw,uran,hwar,pump,seal,rubr,alum,copr,csti,iron,metl,stal,stcb,stel,stse,stst,zinc,feal,wdpr,fmsp,ensp,tyre,tyco,pipe,vbod,vehi,stpp,sttb,stbl,stig,stbr,stsl,stsh,stwr,rbar,o2__,n7__,ccpr,foca,weld" }}
+{{- $metal_cargos := "alum,copr,csti,iron,metl,stal,stcb,stel,stse,stst,zinc,feal" }}
 {{- $early_liquids := "acid,beer,chlo,coat,cola,ctar,dyes,eoil,fzdr,lye_,milk,nh3_,o2__,n7__,oil_,petr,plst,rfpr,rubr,soap,watr" }}
 {{- $early_cargos := "lvst,barrels" }}
 
@@ -519,7 +519,7 @@ alternative_sprites(spriteset_{{.id}}_purchase, ZOOM_LEVEL_IN_2X, BIT_DEPTH_8BPP
         // Be careful to update numbers when adding/removing cargo types
         {{if eq $element "batt" "beer" "boom" "bubl" "cera" "fzdr" "java" "nuts" "papr" "powr" "toys" "veng" "vpts" "plas" "dyes" "ficr" "mnsp" "soap" "coat" "rfpr" "frut" "wool" "fert" "glas" "rcyc" "wste" "nukf" "nukw" "uran" "hwar" "pump" "seal" "rubr" }}{{ $palette = printf "recolour_crate + %d - 2" $index }}{{ $cargosprite = "crate"}}{{end}}
         // Metal number = (number of crate recolours + 2)
-        {{if eq $element "alum" "copr" "csti" "iron" "metl" "stal" "stcb" "stel" "stse" "stst" "zinc" }}{{ $palette =  printf "recolour_metal + %d - 35" $index }}{{ $cargosprite = "metal"}}{{end}}
+        {{if eq $element "alum" "copr" "csti" "iron" "metl" "stal" "stcb" "stel" "stse" "stst" "zinc" "feal" }}{{ $palette =  printf "recolour_metal + %d - 35" $index }}{{ $cargosprite = "metal"}}{{end}}
         {{if eq $element "wdpr" }}{{ $cargosprite = "timber"}}{{end}}
         {{if eq $element "vbod" }}{{ $cargosprite = "vehicle_body"}}{{end}}
         {{if eq $element "vehi" }}{{ $cargosprite = "vehicle"}}{{end}}
@@ -877,9 +877,9 @@ vehicle_life:                 {{.vehicle_life}};
     refittable_cargo_classes: bitmask(CC_MAIL, CC_ARMOURED, CC_REFRIGERATED);
     cargo_allow_refit: [MILK];
 {{else if eq .cargo_handling "Steel" }}
-    cargo_allow_refit: [ALUM, STEL, METL, COPR, CSTI, IRON, PIPE, STAL, STCB, STSE, STST, ZINC];
+    cargo_allow_refit: [ALUM, STEL, METL, COPR, CSTI, IRON, PIPE, PPWK, STAL, STCB, STSE, STST, ZINC];
 {{else if eq .cargo_handling "SteelCovered" }}
-    cargo_allow_refit: [ALUM, STEL, METL, COPR, CSTI, IRON, PIPE, STAL, STCB, STSE, STST, ZINC];
+    cargo_allow_refit: [ALUM, STEL, METL, COPR, CSTI, IRON, PIPE, PPWK, STAL, STCB, STSE, STST, ZINC];
 {{else if eq .cargo_handling "Torpedo" }}
     cargo_allow_refit: [ALUM, STEL, METL, COPR, IRON, STAL, STCB, STST, ZINC];
 {{else if eq .cargo_handling "Container" }}
@@ -956,8 +956,9 @@ graphics {
 {{ else if eq .cargo_handling "Bolster" }}
     {{ range $index, $element := slice $bolster_cargos }}
         {{ toupper $element }}: switch_{{$id}}_graphics_{{$element}};{{end}}
-    // Manual re-used bolster cargo
+    // Manual re-used bolster cargo types
     BRCK: switch_{{$id}}_graphics_bdmt;
+    PPWK: switch_{{$id}}_graphics_pipe;
 {{ else if eq .cargo_handling "Steel" "Torpedo" }}
     {{ range $index, $element := slice $metal_cargos }}
         {{ toupper $element }}: switch_{{$id}}_graphics_{{$element}};{{end}}

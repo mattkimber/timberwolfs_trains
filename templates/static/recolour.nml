@@ -1,7 +1,7 @@
 // Bulk cargo
 
 // -> Aluminium Ore
-recolour_bulk = reserve_sprites(44);
+recolour_bulk = reserve_sprites(45);
 
 replace(recolour_bulk + 0) {
     recolour_sprite {
@@ -378,6 +378,13 @@ replace(recolour_bulk + 43) {
     }
 }
 
+// -> Ferroalloys
+replace(recolour_bulk + 44) {
+    recolour_sprite {
+        0x01..0x04: 0x11..0x14;
+        0x05..0x06: 0x9f..0xa0;
+    }
+}
 
 
 // Crate recolours
@@ -677,7 +684,7 @@ replace(recolour_crate + 32) {
 //
 
 
-recolour_metal = reserve_sprites(11);
+recolour_metal = reserve_sprites(12);
 
 // Aluminium
 replace(recolour_metal) {
@@ -769,6 +776,15 @@ replace(recolour_metal + 10) {
         0xc6..0xcb: 0x10..0x15;
         0xcc..0xcd: 0x76..0x77;
         0x50..0x57: 0xb7..0xbe;        
+    }
+}
+
+// Ferroalloys
+replace(recolour_metal + 11) {
+    recolour_sprite {
+        0xC6..0xCA: 0x10..0x14;
+        0xCB..0xCD: 0x9e..0xa0;
+        0x50..0x57: 0x3E..0x45;        
     }
 }
 

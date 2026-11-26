@@ -1,0 +1,44 @@
+{
+    "files": [
+        "cargo/wagon/kta_container_wagon.vox"
+    ],
+    "operations": [
+        {
+            "name": "",
+            "type": "produce_empty"
+        },
+        {
+            "name": "_light",
+            "type": "produce_empty",
+            "input_ramps": ["200-206,82-88,217-222,223-228,255-255"],
+            "output_ramps": ["201-207,83-89,6-6,0-0,0-0"]
+        },
+        {
+            "name": "_dark",
+            "type": "produce_empty",
+            "input_ramps": ["201-207,83-89,217-222,223-228,255-255"],
+            "output_ramps": ["200-206,82-88,6-6,0-0,0-0"]
+        },
+        {
+            "name": "_none",
+            "type": "scale",
+            "mask_original": true,
+            "n": 0,
+            "file": "cargo/none/hicube_container.vox"
+        },
+        {
+            "name": "_container_half",
+            "type": "scale",
+            "mask_original": true,
+            "n": 0,
+            "file": "cargo/half/hicube_container.vox"
+        },
+        {
+            "name": "_container_full",
+            "type": "scale",
+            "mask_original": true,
+            "n": 0,
+            "file": "cargo/full/hicube_container.vox"
+        }
+    ]
+}

@@ -1,3 +1,8 @@
+v1.3.2
+------
+
+Fix ferroalloys and pipework not showing in FIRS 5
+
 v1.3.1
 ------
 
