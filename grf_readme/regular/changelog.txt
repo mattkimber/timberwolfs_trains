@@ -1,3 +1,10 @@
+v1.8.2
+------
+
+Improve Pacer sprites and add variations
+Class 755 and Sprinter length variations
+Apply Will Marshall's depot sprite fix
+
 v1.8.1
 ------
 
